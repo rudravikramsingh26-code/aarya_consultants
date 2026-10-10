@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#081b45" />
+  <title>Our Services — Aarya Consultants | Fiduciaries for a lifetime & beyond</title>
+  <link rel="icon" href="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/favicon-1783876190136-01f3cca3.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy: #081b45;
+      --navy-dark: #040e25;
+      --red: #e31e24;
+      --muted: #5e6b7e;
+      --line: #dfe5ee;
+      --paper: #f8fbff;
+      --paper-2: #edf3fa;
+      --white: #ffffff;
+      --max: 1320px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--navy);overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
+    .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--red)}
+    .serif{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500}
+
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,229,238,.85)}
+    nav{height:80px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand-logo-img{height:42px;width:auto}
+    .brand-text strong{font-family:Manrope,sans-serif;font-size:17px;color:var(--navy)}
+    .brand-text span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:700;display:block}
+    .nav-links{display:flex;gap:26px;align-items:center}
+    .nav-links a{font-size:13px;color:#415065;font-weight:600}
+    .nav-links a:hover{color:var(--red)}
+    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700}
+    .pill.red{background:var(--red);color:white;border-color:var(--red)}
+
+    .page-hero{padding:90px 0 60px;background:linear-gradient(135deg,rgba(8,27,69,.05),rgba(227,30,36,.03))}
+    .page-hero h1{font:800 clamp(40px,5vw,68px)/1.02 Manrope;letter-spacing:-.05em;margin-top:14px;color:var(--navy)}
+    .page-hero p{max-width:680px;font-size:17px;color:#506277;line-height:1.75;margin-top:20px}
+
+    section{padding:80px 0}
+    .services-list{display:flex;flex-direction:column;gap:30px}
+    .service-row{background:#fff;border:1px solid var(--line);border-radius:24px;padding:40px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;transition:transform .3s ease,box-shadow .3s ease}
+    .service-row:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(8,27,69,.08);border-color:var(--red)}
+    .service-row h2{font:700 32px Manrope;color:var(--navy);margin:10px 0 14px}
+    .service-row p{font-size:14px;line-height:1.7;color:#546478;margin-bottom:20px}
+    .feat-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+    .feat-item{font-size:13px;color:#334155;font-weight:500;display:flex;align-items:center;gap:8px}
+    .feat-item:before{content:"✓";color:var(--red);font-weight:bold}
+    .service-img{border-radius:18px;overflow:hidden;height:240px;background:var(--paper-2)}
+    .service-img img{width:100%;height:100%;object-fit:cover}
+
+    footer{background:var(--navy-dark);color:#bccce2;padding:58px 0 30px;border-top:4px solid var(--red)}
+    .footer-grid{display:grid;grid-template-columns:1.4fr .7fr .7fr .9fr;gap:35px}
+    .foot-logo{height:36px;filter:brightness(0) invert(1);margin-bottom:14px}
+    .foot-col h4{font:700 11px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#f0f5fc;margin-bottom:13px}
+    .foot-col a{display:block;font-size:12px;color:#8fa5c2;margin:9px 0}
+    .foot-col a:hover{color:var(--red)}
+    .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-top:20px;color:#6d83a1;font-size:10px}
+
+    @media(max-width:860px){
+      .service-row{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+    }
+  
+    /* Navigation Dropdown & Mobile Menu Styles */
+    .nav-dropdown{position:relative;display:inline-block}
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
+    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:10px;min-width:220px;flex-direction:column;gap:4px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
+    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
+    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
+    .menu{display:none;border:0;background:var(--white);width:42px;height:42px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
+    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
+    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center}
+    .pill:hover{border-color:var(--navy);background:var(--paper)}
+    .pill.red{background:var(--red);color:white;border-color:var(--red);padding-inline:20px;box-shadow:0 4px 16px rgba(227,30,36,.25)}
+    .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
+
+    @media (max-width: 992px){
+      .nav-links{display:none}
+      .menu{display:flex}
+      .nav-links[data-open="1"]{
+        display:flex !important;
+        position:absolute;top:80px;left:14px;right:14px;
+        padding:22px;border-radius:20px;background:white;
+        border:1px solid var(--line);
+        box-shadow:0 24px 60px rgba(8,27,69,.18);
+        flex-direction:column;align-items:flex-start;gap:14px;
+        z-index:999;
+      }
+      .nav-links[data-open="1"] .dropdown-menu{
+        position:static;display:flex;opacity:1;transform:none;
+        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
+      }
+      .footer-grid{grid-template-columns:1fr !important}
+    }
+
+
+    /* Crisp Unified Header Layout */
+    nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;flex-shrink:0}
+    .brand-logo-img{height:44px;width:auto;object-fit:contain}
+    .nav-links{display:flex;gap:20px;align-items:center;flex-shrink:0}
+    .nav-links a{font-size:13px;color:#334155;font-weight:600;white-space:nowrap;transition:color .2s ease}
+    .nav-links a:hover{color:var(--red)}
+    .nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;white-space:nowrap}
+    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:9px 16px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center;white-space:nowrap}
+    .pill:hover{border-color:var(--navy);background:var(--paper)}
+    .pill.red{background:var(--red);color:white;border-color:var(--red);padding:9px 20px;box-shadow:0 4px 16px rgba(227,30,36,.25);white-space:nowrap}
+    .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
+    .menu{display:none;border:0;background:var(--white);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
+    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
+
+
+    /* Universal Mobile & Tablet Grid Adjustments */
+    @media (max-width: 992px){
+      .grid-2, .career-grid, .contact-grid, .service-row{grid-template-columns:1fr !important;gap:36px}
+      .pillars, .values-grid{grid-template-columns:repeat(2,1fr) !important}
+      .feat-list{grid-template-columns:1fr 1fr !important}
+      .wrap{width:calc(100% - 32px)}
+      .nav-links{display:none}
+      .menu{display:flex !important}
+      .nav-links[data-open="1"]{
+        display:flex !important;
+        position:absolute;top:78px;left:14px;right:14px;
+        padding:22px;border-radius:20px;background:white;
+        border:1px solid var(--line);
+        box-shadow:0 24px 60px rgba(8,27,69,.18);
+        flex-direction:column;align-items:flex-start;gap:14px;
+        z-index:999;
+      }
+      .nav-links[data-open="1"] .dropdown-menu{
+        position:static;display:flex;opacity:1;transform:none;
+        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
+      }
+      .footer-grid{grid-template-columns:1fr !important}
+    }
+    @media (max-width: 580px){
+      .pillars, .values-grid, .feat-list{grid-template-columns:1fr !important}
+      .nav-actions .pill:first-child{display:none}
+      .wrap{width:calc(100% - 24px)}
+    }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="brand" aria-label="Aarya Consultants home">
+        <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/arya-consultants-jpg-1790597676188-7d47f6c2.webp" alt="Aarya Consultants Logo" class="brand-logo-img">
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about-agc.html">About Us</a>
+        <div class="nav-dropdown">
+          <a href="services.html" style="color:var(--red)">Services ▾</a>
+          <div class="dropdown-menu">
+            <a href="financial-planning.html">Financial Planning</a>
+            <a href="financial-services.html">Financial Services</a>
+            <a href="taxation.html">Taxation</a>
+            <a href="legal-services.html">Legal Services</a>
+            <a href="hr-solutions.html">HR Solutions</a>
+            <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+          </div>
+        </div>
+        <a href="index.html#wall-of-frames">Wall of Frames</a>
+        <a href="index.html#leadership">Leadership</a>
+        <a href="career.html">Career</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a class="pill" href="tel:+919038620055">Call +91 90386 20055</a>
+        <a class="pill red" href="contact.html">Book Consultation ↗</a>
+        <button class="menu" type="button" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Our Capabilities</span>
+      <h1>Comprehensive Financial, <br><span class="serif">Legal & Corporate Solutions.</span></h1>
+      <p>From your first SIP to your family trust deed, from a GST return to a statutory audit, our teams operate from a single, unified view of your affairs.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap services-list">
+      
+      <!-- 01 Financial Planning -->
+      <div class="service-row" id="planning">
+        <div>
+          <span class="eyebrow">01 · Personal & Family Wealth</span>
+          <h2>Financial Planning</h2>
+          <p>Goal mapping, investment architecture, portfolio management, customized SIP design, retirement blueprints, and child higher education funds.</p>
+          <div class="feat-list">
+            <span class="feat-item">Goal-based Wealth Creation</span>
+            <span class="feat-item">Personalized SIP Strategies</span>
+            <span class="feat-item">Asset Allocation & Risk Profiling</span>
+            <span class="feat-item">Periodic Portfolio Rebalancing</span>
+          </div>
+          <a href="financial-planning.html" class="pill red">Learn More About Planning ↗</a>
+        </div>
+        <div class="service-img">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/market-insight-1784705567719-6dbc984a.webp" alt="Financial Planning">
+        </div>
+      </div>
+
+      <!-- 02 Financial Services & Audit -->
+      <div class="service-row" id="audit">
+        <div>
+          <span class="eyebrow">02 · Assurance & Corporate Governance</span>
+          <h2>Audit & Financial Services</h2>
+          <p>Full-scale statutory audit, internal controls, stock audits, tax audit representation, forensic analysis, bookkeeping, and management accounting.</p>
+          <div class="feat-list">
+            <span class="feat-item">Statutory & Internal Audit</span>
+            <span class="feat-item">Forensic Review & Stock Verification</span>
+            <span class="feat-item">Bookkeeping & Financial Statements</span>
+            <span class="feat-item">GAAP / Ind AS Compliance</span>
+          </div>
+          <a href="financial-services.html" class="pill red">Explore Audit Capabilities ↗</a>
+        </div>
+        <div class="service-img">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/strategy-consulting-1784705588687-f8052a5c.webp" alt="Audit & Assurance">
+        </div>
+      </div>
+
+      <!-- 03 Taxation -->
+      <div class="service-row" id="taxation">
+        <div>
+          <span class="eyebrow">03 · Compliance & Strategy</span>
+          <h2>Taxation & GST Advisory</h2>
+          <p>Direct tax advisory, individual and corporate returns, GST registration and periodic reconciliation, and scrutiny assessments.</p>
+          <div class="feat-list">
+            <span class="feat-item">Direct Tax & Income Tax Planning</span>
+            <span class="feat-item">GST Filings & Audit Compliance</span>
+            <span class="feat-item">Scrutiny & Assessment Handling</span>
+            <span class="feat-item">Cross-border / NRI Tax Advisory</span>
+          </div>
+          <a href="taxation.html" class="pill red">View Tax Solutions ↗</a>
+        </div>
+        <div class="service-img">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/industry-expertise-1784705555444-22e7f460.webp" alt="Taxation">
+        </div>
+      </div>
+
+      <!-- 04 Legal & Succession -->
+      <div class="service-row" id="legal">
+        <div>
+          <span class="eyebrow">04 · Governance & Legacy</span>
+          <h2>Legal & Succession Planning</h2>
+          <p>Private family trust creation, will drafting and execution, partnership deeds, dispute mediation, and succession governance for family offices.</p>
+          <div class="feat-list">
+            <span class="feat-item">Private Family Trust Creation</span>
+            <span class="feat-item">Will Drafting & Execution</span>
+            <span class="feat-item">Generational Wealth Transfer</span>
+            <span class="feat-item">Corporate Legal Structuring</span>
+          </div>
+          <a href="legal-services.html" class="pill red">View Legal Solutions ↗</a>
+        </div>
+        <div class="service-img">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/whatsapp-image-2026-08-05-at-18-44-33-1785935760358-8844488f.webp" alt="Legal & Succession">
+        </div>
+      </div>
+
+      <!-- 05 HR Solutions -->
+      <div class="service-row" id="hr">
+        <div>
+          <span class="eyebrow">05 · People & Enterprise</span>
+          <h2>HR Solutions & Corporate Support</h2>
+          <p>Organizational structures, executive recruitment, payroll administration, employee benefit frameworks, and statutory labor compliance.</p>
+          <div class="feat-list">
+            <span class="feat-item">Payroll & Labor Compliance</span>
+            <span class="feat-item">Talent Advisory & Placement</span>
+            <span class="feat-item">Employee Benefit Architectures</span>
+            <span class="feat-item">Manpower Scalability Systems</span>
+          </div>
+          <a href="hr-solutions.html" class="pill red">View HR Solutions ↗</a>
+        </div>
+        <div class="service-img">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/digital-tranformation-1784705541599-596c9b2e.webp" alt="HR Solutions">
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/arya-consultants-transparent-white-1790588771793-4be8e1be.webp" alt="Aarya Consultants" class="foot-logo" onerror="this.style.display='none'" />
+        <div class="brand-text" style="color:white;margin-bottom:6px">
+          <strong style="font-size:16px;letter-spacing:.04em;color:white">AARYA CONSULTANTS</strong>
+          <span style="font-size:9px;color:var(--red);letter-spacing:.16em;font-weight:700">Fiduciaries for a lifetime & beyond</span>
+        </div>
+        <p class="foot-desc">A consortium of entrepreneurs and a family of advisors—connecting financial, investment, accounting, audit, legal, and business support around a single client view.</p>
+      </div>
+
+      <div class="foot-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Home</a>
+        <a href="about-agc.html">About Us</a>
+        <a href="services.html">Services Overview</a>
+        <a href="index.html#wall-of-frames">Wall of Frames</a>
+        <a href="index.html#leadership">Leadership</a>
+        <a href="career.html">Careers</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="financial-planning.html">Financial Planning</a>
+        <a href="financial-services.html">Audit & Assurance</a>
+        <a href="taxation.html">Taxation & GST</a>
+        <a href="legal-services.html">Legal & Succession</a>
+        <a href="hr-solutions.html">HR Solutions</a>
+        <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Offices & Contact</h4>
+        <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:12px">
+          <strong style="color:#fff;display:block">Kolkata Head Office:</strong>
+          73C, Shyama Prasad Mukherjee Road,<br>Kolkata - 700026, West Bengal
+        </p>
+        <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:14px">
+          <strong style="color:#fff;display:block">Gurugram Office:</strong>
+          Regus, Welldone Tech Park, Badshahpur Sohna Rd, Sector 49, Gurugram 122018
+        </p>
+        <a href="tel:+919038620055">+91 90386 20055</a>
+        <a href="mailto:connect@aaryaconsultants.com">connect@aaryaconsultants.com</a>
+        <a href="mailto:gurgaon@aaryaconsultants.com">gurgaon@aaryaconsultants.com</a>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Aarya Consultants. All rights reserved.</span>
+      <span>Kolkata · Gurugram · Pan-India</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const menu = document.querySelector('.menu');
+  menu?.addEventListener('click', () => {
+    const links = document.querySelector('.nav-links');
+    const open = links.dataset.open === '1';
+    links.dataset.open = open ? '0' : '1';
+  });
+</script>
+
+</body>
+</html>

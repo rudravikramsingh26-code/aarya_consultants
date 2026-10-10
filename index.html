@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#081b45" />
+  <title>Aarya Consultants — Fiduciaries for a lifetime & beyond</title>
+  <meta name="description" content="One Advisor. Every Financial Decision of Your Life. Comprehensive financial planning, investments, assurance, taxation, legal, and HR solutions." />
+  <link rel="icon" href="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/favicon-1783876190136-01f3cca3.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Official Aarya Consultants Brand Colors */
+      --navy: #081b45;        /* Primary Deep Corporate Navy */
+      --navy-dark: #040e25;   /* Deep Midnight Navy */
+      --navy-surface: #0c2356;/* Elevated Navy Card Background */
+      --red: #e31e24;         /* Primary Accent Red */
+      --red-hover: #c41419;   /* Deep Red Hover */
+      --red-glow: rgba(227, 30, 36, 0.22);
+      
+      /* Neutrals & Supporting Tones */
+      --muted: #5e6b7e;
+      --line: #dfe5ee;
+      --paper: #f8fbff;       /* Crisp Platinum / Soft Corporate Slate */
+      --paper-2: #edf3fa;
+      --white: #ffffff;
+      --max: 1320px;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(8, 27, 69, 0.12);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--navy);overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img{display:block;max-width:100%}
+    ::selection{background:var(--red);color:var(--white)}
+
+    /* Ambient cursor glow adapted to corporate navy & subtle red warmth */
+    .cursor-glow{position:fixed;width:380px;height:380px;border-radius:50%;pointer-events:none;z-index:0;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(8,27,69,.12),rgba(227,30,36,.04) 50%,transparent 70%);mix-blend-mode:multiply;opacity:.8;transition:opacity .25s ease}
+    .noise{position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E")}
+
+    .wrap{width:min(calc(100% - 40px),var(--max));margin-inline:auto;position:relative;z-index:2}
+    .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--red)}
+    .serif{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500}
+
+    /* announcement */
+    .announcement{background:var(--navy-dark);color:#c5d2e7;font-size:12px;letter-spacing:.01em}
+    .announcement .wrap{display:flex;justify-content:space-between;gap:20px;align-items:center;min-height:36px}
+    .announcement .left{display:flex;gap:12px;align-items:center}
+    .dot{width:7px;height:7px;background:var(--red);border-radius:50%;box-shadow:0 0 0 4px rgba(227,30,36,.25)}
+    .announcement a{opacity:.9}
+
+    /* nav */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,229,238,.85)}
+    nav{height:80px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand-logo-img{height:42px;width:auto;object-fit:contain}
+    .brand-text{display:flex;flex-direction:column}
+    .brand-text strong{font-family:Manrope,sans-serif;font-size:17px;letter-spacing:.02em;line-height:1.1;color:var(--navy)}
+    .brand-text span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:700}
+    .nav-links{display:flex;gap:26px;align-items:center}
+    .nav-links a{font-size:13px;color:#415065;position:relative;font-weight:600}
+    .nav-links a:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:2px;background:var(--red);transition:width .3s ease}
+    .nav-links a:hover{color:var(--navy)}
+    .nav-links a:hover:after{width:100%}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease}
+    .pill:hover{border-color:var(--navy);background:var(--paper)}
+    .pill.red{background:var(--red);color:white;border-color:var(--red);padding-inline:20px;box-shadow:0 4px 16px rgba(227,30,36,.25)}
+    .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
+    .menu{display:none;border:0;background:transparent;width:42px;height:42px;border-radius:50%;background:var(--white);border:1px solid var(--line)}
+    .menu span,.menu:before,.menu:after{content:"";display:block;width:16px;height:1.5px;background:var(--navy);margin:3px auto}
+
+    
+    /* Hero video background */
+    .hero-video-bg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;z-index:0;pointer-events:none}
+    .hero-video-bg video{width:100%;height:100%;object-fit:cover;opacity:.28;filter:saturate(1.2)}
+    .hero-video-bg .mobile-video{display:none}
+    .hero-video-bg .desktop-video{display:block}
+    @media (max-width:768px){
+      .hero-video-bg .desktop-video{display:none}
+      .hero-video-bg .mobile-video{display:block}
+    }
+    .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(248,251,255,.95) 0%,rgba(248,251,255,.82) 50%,rgba(248,251,255,.4) 100%)}
+
+    /* Nav Dropdown */
+    .nav-dropdown{position:relative;display:inline-block}
+    .nav-dropdown:hover .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
+    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:12px;min-width:210px;flex-direction:column;gap:6px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
+    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
+    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
+
+    /* hero */
+    .hero{padding:58px 0 34px;min-height:calc(100vh - 116px);display:grid;align-items:center;position:relative;background:radial-gradient(ellipse at 80% 20%,rgba(237,243,250,.8),transparent 60%)}
+    .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:50px;align-items:center}
+    .hero h1{font:800 clamp(48px,5.8vw,88px)/.94 Manrope,sans-serif;letter-spacing:-.065em;max-width:740px;color:var(--navy)}
+    .hero h1 .soft{color:#6b7c93;font-weight:500}
+    .hero h1 .serif{font-size:1.05em;letter-spacing:-.05em;color:var(--red)}
+    .hero-copy{margin-top:26px;max-width:580px;color:#4a596d;font-size:16px;line-height:1.75}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+    .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:15px 24px;font-size:13px;font-weight:800;border:1px solid var(--line);transition:transform .3s ease,box-shadow .3s ease,background .3s ease}
+    .cta:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(8,27,69,.15)}
+    .cta.primary{background:var(--navy);color:white;border-color:var(--navy)}
+    .cta.primary:hover{background:var(--navy-dark)}
+    .cta.red{background:var(--red);border-color:var(--red);color:white;box-shadow:0 6px 20px var(--red-glow)}
+    .cta.red:hover{background:var(--red-hover);border-color:var(--red-hover)}
+    .mini-proof{display:flex;align-items:center;gap:14px;margin-top:34px;color:#617288;font-size:12px}
+    .avatars{display:flex}
+    .avatars span{width:30px;height:30px;border-radius:50%;margin-left:-8px;border:2px solid var(--paper);background-size:cover;background-position:center}
+    .avatars span:first-child{margin-left:0}
+    .avatar-1{background-image:url('https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/whatsapp-image-2026-08-03-at-18-30-56-1785762567369-91c0daf3.webp')}
+    .avatar-2{background-image:url('https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/whatsapp-image-2026-08-03-at-18-32-41-1785762566558-6afe63ce.webp')}
+    .avatar-3{background-image:url('https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/media-content/-mg-7677-1789028921001-dce34308.webp')}
+
+    /* dashboard visual - corporate navy aesthetic */
+    .hero-art{position:relative;min-height:620px;display:flex;align-items:center;justify-content:center}
+    .glow{position:absolute;width:520px;height:520px;background:radial-gradient(circle,rgba(8,27,69,.18),rgba(227,30,36,.08) 45%,transparent 70%);filter:blur(8px)}
+    .orbit{position:absolute;inset:8% 2%;border:1px dashed rgba(8,27,69,.16);border-radius:50%;transform:rotate(-14deg)}
+    .orbit.o2{inset:20% 10%;transform:rotate(22deg);border-color:rgba(227,30,36,.2)}
+    
+    .dashboard{position:relative;width:min(530px,92%);background:var(--navy-dark);color:#f0f4fa;border-radius:28px;padding:22px;box-shadow:0 40px 100px rgba(8,27,69,.32);transform:rotate(-2.8deg);border:1px solid rgba(255,255,255,.14);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+    .hero-art:hover .dashboard{transform:rotate(0deg) translateY(-8px)}
+    .dash-top{display:flex;justify-content:space-between;align-items:center;color:#9bb2d4;font-size:11px;padding:4px 4px 16px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:14px}
+    .dash-balance{border-radius:21px;padding:20px;background:linear-gradient(145deg,#0c2356,#061537);border:1px solid rgba(255,255,255,.1)}
+    .dash-label{font-size:11px;color:#9bb2d4;display:flex;justify-content:space-between}
+    .dash-value{font:700 38px/1 Manrope,sans-serif;letter-spacing:-.05em;margin:10px 0 6px;color:white}
+    .up{color:#5eead4;font-size:11px;font-weight:600}
+    .chart{height:175px;margin-top:14px;position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(to bottom,rgba(255,255,255,.04),rgba(255,255,255,0))}
+    .chart svg{width:100%;height:100%}
+    .dash-bottom{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+    .dash-card{background:#0a1c42;border:1px solid rgba(255,255,255,.08);padding:14px;border-radius:17px}
+    .dash-card .num{font:700 22px Manrope;margin-top:6px;color:#ffffff}
+    .dash-card small{font-size:10px;color:#9bb2d4}
+    
+    .floating-card{position:absolute;background:white;color:var(--navy);border:1px solid rgba(8,27,69,.12);box-shadow:0 18px 45px rgba(8,27,69,.16);border-radius:18px;padding:14px 16px;display:flex;align-items:center;gap:11px;animation:float 6s ease-in-out infinite;z-index:3}
+    .floating-card .icon{width:36px;height:36px;background:var(--paper-2);border-radius:12px;display:grid;place-items:center;font-size:14px;color:var(--red);font-weight:bold}
+    .floating-card strong{font:700 16px Manrope;color:var(--navy)}
+    .floating-card small{display:block;font-size:10px;color:#6b7c93;margin-top:2px}
+    .fc1{left:3%;top:14%;animation-delay:-1.2s}.fc2{right:-2%;bottom:18%;animation-delay:-2.7s}.fc3{left:8%;bottom:6%;animation-delay:-4.1s}
+    @keyframes float{50%{transform:translateY(-13px)}}
+
+    /* credibility */
+    .credibility{padding:26px 0 50px}
+    .cred-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .cred-item{padding:25px 22px;position:relative}
+    .cred-item:not(:last-child):after{content:"";position:absolute;right:0;top:18px;bottom:18px;width:1px;background:var(--line)}
+    .cred-num{font:800 clamp(30px,3vw,46px)/1 Manrope;letter-spacing:-.06em;color:var(--navy)}
+    .cred-label{color:#677890;font-size:11px;margin-top:7px;text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+
+    /* ticker with red divider accents */
+    .ticker{overflow:hidden;background:var(--navy);color:#e2ecfb;border-block:1px solid rgba(255,255,255,.08);padding:14px 0}
+    .ticker-track{display:flex;width:max-content;animation:marquee 32s linear infinite;gap:30px;align-items:center}
+    .ticker-track span{font-size:12px;text-transform:uppercase;letter-spacing:.14em;white-space:nowrap;font-weight:500}
+    .ticker-track b{color:var(--red);font-weight:900}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+
+    /* client logos strip */
+    .client-strip{padding:34px 0;background:#fff;border-bottom:1px solid var(--line);overflow:hidden}
+    .client-track{display:flex;gap:48px;align-items:center;width:max-content;animation:marquee 36s linear infinite}
+    .client-item{height:46px;display:flex;align-items:center;filter:grayscale(1) contrast(0.65) opacity(0.75);transition:.3s ease}
+    .client-item:hover{filter:none;opacity:1}
+    .client-item img{height:38px;width:auto;object-fit:contain}
+
+    /* sections */
+    section{padding:105px 0}
+    .section-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:48px}
+    .section-head h2{font:700 clamp(36px,4.4vw,68px)/.98 Manrope;letter-spacing:-.06em;max-width:820px;color:var(--navy)}
+    .section-head p{max-width:380px;color:#546478;line-height:1.7;font-size:14px}
+
+    /* services */
+    .service-section{background:#fff}
+    .service-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .service{background:var(--paper);border:1px solid #dbe4ef;border-radius:24px;padding:28px;min-height:250px;position:relative;overflow:hidden;transition:transform .35s ease,background .35s ease,border-color .35s ease,box-shadow .35s ease}
+    .service:hover{transform:translateY(-8px);background:#ffffff;border-color:var(--red);box-shadow:0 16px 45px rgba(8,27,69,.09)}
+    .service.s1{grid-column:span 6;min-height:330px}.service.s2{grid-column:span 6;min-height:330px}
+    .service.s3{grid-column:span 4;min-height:290px}.service.s4{grid-column:span 4;min-height:290px}.service.s5{grid-column:span 4;min-height:290px}
+    .service.s6{grid-column:span 12;min-height:180px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .service-tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:800}
+    .service h3{font:700 28px/1.08 Manrope;letter-spacing:-.045em;margin-top:46px;max-width:440px;color:var(--navy)}
+    .service.s6 h3{margin-top:10px}
+    .service p{font-size:13px;color:#596a80;line-height:1.68;max-width:480px;margin-top:13px}
+    .service .arrow{position:absolute;right:22px;top:22px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:.3s ease;color:var(--navy)}
+    .service:hover .arrow{background:var(--red);color:white;border-color:var(--red);transform:rotate(45deg)}
+    .service .orb{position:absolute;right:-90px;bottom:-120px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(8,27,69,.12),rgba(227,30,36,.06) 50%,transparent 70%);filter:blur(7px);opacity:.9}
+    .service.s3 .orb,.service.s4 .orb,.service.s5 .orb{width:180px;height:180px;right:-40px;bottom:-60px}
+
+    /* operating model */
+    .model{background:var(--paper)}
+    .model-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start}
+    .sticky-title{position:sticky;top:120px}
+    .sticky-title h2{font:700 clamp(44px,5vw,74px)/.96 Manrope;letter-spacing:-.065em;margin-top:14px;color:var(--navy)}
+    .sticky-title h2 .serif{color:var(--red)}
+    .steps{display:flex;flex-direction:column;gap:12px}
+    .step{display:grid;grid-template-columns:58px 1fr;gap:18px;padding:22px;border:1px solid var(--line);border-radius:20px;background:#fff;transition:.35s ease}
+    .step.active,.step:hover{background:var(--navy);color:white;transform:translateX(-8px);border-color:var(--navy);box-shadow:var(--shadow)}
+    .step-no{font:700 14px Manrope;color:#8596ac}.step.active .step-no{color:var(--red)}
+    .step h3{font:700 20px Manrope;letter-spacing:-.03em}
+    .step p{color:#64758b;font-size:13px;line-height:1.65;margin-top:7px;max-width:520px}.step.active p{color:#cbd5e1}
+
+    /* wall of frames (awards) */
+    .awards{background:var(--paper-2);overflow:hidden}
+    .award-carousel{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;-webkit-overflow-scrolling:touch}
+    .award-carousel::-webkit-scrollbar{height:6px}
+    .award-carousel::-webkit-scrollbar-thumb{background:#b8c7db;border-radius:10px}
+    .award-card{flex:0 0 320px;scroll-snap-align:start;background:var(--white);border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 12px 30px rgba(8,27,69,.06);transition:transform .3s ease}
+    .award-card:hover{transform:translateY(-6px)}
+    .award-card img{width:100%;height:230px;object-fit:cover;background:#e9edf3}
+    .award-copy{padding:16px 18px}
+    .award-copy strong{font:700 15px Manrope;display:block;color:var(--navy)}
+    .award-copy span{font-size:11px;color:#718299}
+
+    /* intelligence panel */
+    .intelligence{background:var(--navy-dark);color:#f0f5fc;overflow:hidden}
+    .intelligence .section-head p{color:#9bb2d4}
+    .intelligence .section-head h2{color:white}
+    .intelligence .eyebrow{color:var(--red)}
+    .intel-wrap{position:relative}
+    .intel-canvas{border:1px solid rgba(255,255,255,.14);border-radius:28px;padding:14px;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015));box-shadow:0 40px 90px rgba(0,0,0,.25)}
+    .intel-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    .intel-panel{border-radius:21px;background:#09193d;border:1px solid rgba(255,255,255,.09);padding:22px;min-height:270px}
+    .intel-panel.large{min-height:430px}
+    .intel-title{font:700 17px Manrope;letter-spacing:-.03em}
+    .intel-sub{color:#8da5c7;font-size:11px;margin-top:4px}
+    .bars{display:flex;gap:10px;height:225px;align-items:flex-end;margin-top:24px;padding-top:8px}
+    .bar{flex:1;background:linear-gradient(to top,#0c2356,#e31e24);border-radius:6px 6px 2px 2px;min-width:16px;height:var(--h);animation:grow 1.2s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes grow{from{height:0;opacity:0}to{height:var(--h);opacity:1}}
+    .ring{width:166px;height:166px;border-radius:50%;margin:28px auto 8px;background:conic-gradient(var(--red) 0 73%,#162a56 73% 100%);display:grid;place-items:center;position:relative}
+    .ring:after{content:"";position:absolute;inset:18px;background:#09193d;border-radius:50%}
+    .ring strong{position:relative;z-index:1;font:800 31px Manrope;letter-spacing:-.06em;color:white}.ring small{display:block;color:#8da5c7;font-size:9px;text-align:center;margin-top:-5px}
+    .metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+    .metric{background:#061433;border:1px solid rgba(255,255,255,.08);padding:15px;border-radius:16px}
+    .metric b{font:700 25px Manrope;letter-spacing:-.04em;color:var(--red)}.metric span{display:block;color:#8da5c7;font-size:10px;margin-top:4px}
+    .quote{margin-top:14px;padding:16px 18px;border-radius:16px;background:rgba(227,30,36,.08);border:1px solid rgba(227,30,36,.18);color:#d1e0f3;font-size:12px;line-height:1.7}
+
+    
+    /* Leadership Grid Dual Card Layout */
+    .leadership-dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px}
+    .leader-card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 14px 40px rgba(8,27,69,.06);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;display:flex;flex-direction:column}
+    .leader-card:hover{transform:translateY(-6px);border-color:var(--red);box-shadow:0 24px 60px rgba(8,27,69,.12)}
+    .leader-img-box{position:relative;width:100%;height:340px;background:#081b45;overflow:hidden}
+    .leader-img-box img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+    .leader-card:hover .leader-img-box img{transform:scale(1.03)}
+    .leader-badge{position:absolute;bottom:16px;left:16px;background:rgba(8,27,69,.85);backdrop-filter:blur(8px);color:#fff;padding:6px 14px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.15)}
+    .leader-info{padding:30px;display:flex;flex-direction:column;flex:1;justify-content:space-between}
+    .leader-title{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+    .leader-name{font:800 28px Manrope;color:var(--navy);letter-spacing:-.03em;margin-bottom:12px}
+    .leader-desc{font-size:13px;line-height:1.75;color:#546478;margin-bottom:18px}
+    .leader-credentials{border-top:1px solid var(--line);padding-top:16px;font-size:11px;color:#718299;line-height:1.6}
+    .chip-tag{display:inline-block;background:var(--paper-2);color:var(--navy);font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;margin:2px;border:1px solid var(--line)}
+
+    /* Why Families & Founders section */
+    .why-section{background:var(--white);padding:105px 0}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .why-list{display:flex;flex-direction:column;gap:18px}
+    .why-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;display:flex;gap:18px;align-items:flex-start;transition:.3s ease}
+    .why-card:hover{border-color:var(--red);background:#fff;transform:translateX(6px);box-shadow:0 12px 35px rgba(8,27,69,.06)}
+    .why-icon{width:46px;height:46px;border-radius:14px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+    .why-card h4{font:700 18px Manrope;color:var(--navy);margin-bottom:6px}
+    .why-card p{font-size:13px;color:#5a6b82;line-height:1.65;margin:0}
+    .why-visual{border-radius:26px;overflow:hidden;box-shadow:0 24px 60px rgba(8,27,69,.12);border:1px solid var(--line);position:relative}
+    .why-visual img{width:100%;height:auto;object-fit:cover}
+
+    /* leadership */
+    .leaders{background:#fff}
+    .leader-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}
+    .leader{border:1px solid var(--line);border-radius:24px;background:var(--paper);overflow:hidden;display:grid;grid-template-columns:42% 58%;min-height:340px}
+    .leader img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);transition:transform .7s ease}
+    .leader:hover img{transform:scale(1.04)}
+    .leader-copy{padding:30px;display:flex;flex-direction:column;justify-content:space-between}
+    .leader-role{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--red);font-weight:800}
+    .leader h3{font:700 30px/1.05 Manrope;letter-spacing:-.05em;margin-top:12px;color:var(--navy)}
+    .leader p{font-size:13px;color:#5a6b82;line-height:1.7;margin-top:14px}
+    .credential{margin-top:20px;padding-top:17px;border-top:1px solid var(--line);font-size:10px;color:#718299;line-height:1.6}
+    .leader-mini{border:1px solid var(--line);border-radius:24px;background:var(--navy);color:white;padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:340px}
+    .leader-mini .big{font:700 62px/.95 Manrope;letter-spacing:-.08em;color:white}.leader-mini p{color:#9bb2d4;font-size:13px;line-height:1.7;max-width:330px}
+    .chip-row{display:flex;flex-wrap:wrap;gap:7px}.chip{font-size:10px;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:8px 10px;color:#cbdcf0}
+
+    /* coverage */
+    .coverage{background:var(--paper)}
+    .coverage-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .map-card{min-height:460px;border-radius:26px;background:#e5edf7;position:relative;overflow:hidden;border:1px solid #d3e0f0}
+    .map-card:before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 48% 38%,rgba(8,27,69,.18),rgba(227,30,36,.12) 23%,transparent 45%),repeating-radial-gradient(circle at 50% 50%,transparent 0 50px,rgba(8,27,69,.06) 51px 52px);transform:rotate(-12deg)}
+    .map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(8,27,69,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(8,27,69,.06) 1px,transparent 1px);background-size:40px 40px;opacity:.5}
+    .pin{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--red);border:4px solid white;box-shadow:0 0 0 8px rgba(227,30,36,.22)}
+    .pin span{position:absolute;left:18px;top:-8px;white-space:nowrap;font-size:10px;color:var(--navy);font-weight:800}.p1{left:62%;top:52%}.p2{left:38%;top:32%}.p3{left:30%;top:64%}.p4{left:52%;top:74%}
+    .map-caption{position:absolute;left:20px;bottom:20px;right:20px;background:rgba(255,255,255,.92);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.8);padding:18px;border-radius:18px;box-shadow:0 10px 30px rgba(8,27,69,.08)}
+    .map-caption strong{font:700 18px Manrope;letter-spacing:-.03em;color:var(--navy)}.map-caption p{font-size:11px;color:#677890;margin-top:4px}
+    .coverage-copy{padding:10px 8px}
+    .coverage-copy h2{font:700 clamp(40px,4.8vw,68px)/.96 Manrope;letter-spacing:-.065em;margin:16px 0 20px;color:var(--navy)}.coverage-copy h2 .serif{color:var(--red)}
+    .coverage-copy p{font-size:15px;line-height:1.75;color:#546478;max-width:480px}
+    .office-list{margin-top:34px;border-top:1px solid #d2deed}
+    .office{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid #d2deed;font-size:13px;color:var(--navy)}.office span:last-child{color:#6c7d95}
+
+    /* CTA */
+    .final-cta{padding:30px 0 110px;background:#fff}
+    .cta-box{border-radius:30px;background:var(--navy);color:white;overflow:hidden;position:relative;padding:68px}
+    .cta-box:before{content:"";position:absolute;width:530px;height:530px;border-radius:50%;right:-120px;top:-230px;background:radial-gradient(circle,rgba(227,30,36,.28),rgba(8,27,69,0) 68%)}
+    .cta-box:after{content:"AARYA";position:absolute;right:32px;bottom:-10px;font:800 140px/.8 Manrope;color:rgba(255,255,255,.04);letter-spacing:-.08em}
+    .cta-box .eyebrow{color:var(--red)}
+    .cta-box h2{font:700 clamp(42px,5vw,72px)/.97 Manrope;letter-spacing:-.065em;max-width:720px;margin-top:18px;color:white}.cta-box h2 .serif{color:#fca5a5}
+    .cta-box p{color:#c5d7ed;max-width:540px;line-height:1.75;font-size:14px;margin-top:18px}
+    .cta-box .hero-actions{position:relative;z-index:2}
+
+    /* footer */
+    footer{background:var(--navy-dark);color:#bccce2;padding:58px 0 30px;border-top:4px solid var(--red)}
+    .footer-grid{display:grid;grid-template-columns:1.4fr .7fr .7fr .9fr;gap:35px}
+    .foot-logo{height:36px;filter:brightness(0) invert(1);margin-bottom:14px}
+    .foot-desc{font-size:12px;line-height:1.7;color:#859bb7;max-width:340px;margin-top:14px}
+    .foot-col h4{font:700 11px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#f0f5fc;margin-bottom:13px}.foot-col a{display:block;font-size:12px;color:#8fa5c2;margin:9px 0}.foot-col a:hover{color:var(--red)}
+    .foot-bottom{display:flex;justify-content:space-between;gap:20px;border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-top:20px;color:#6d83a1;font-size:10px}
+
+    /* reveals */
+    [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+    [data-reveal].visible{opacity:1;transform:none}
+    .delay-1{transition-delay:.08s}.delay-2{transition-delay:.16s}.delay-3{transition-delay:.24s}.delay-4{transition-delay:.32s}
+
+    @media (max-width:1000px){
+      .hero-grid,.model-grid,.coverage-grid{grid-template-columns:1fr}
+      .hero{padding-top:42px}.hero-art{min-height:500px}.sticky-title{position:static}.leader-grid{grid-template-columns:1fr}.leader-mini{min-height:280px}
+      .cred-grid{grid-template-columns:repeat(2,1fr)}.cred-item:nth-child(2):after{display:none}
+      .service.s1,.service.s2,.service.s3,.service.s4,.service.s5{grid-column:span 6}.service.s6{grid-column:span 12}
+      .intel-grid{grid-template-columns:1fr}.intel-panel.large{min-height:360px}
+      .footer-grid{grid-template-columns:1.2fr .8fr .8fr}
+    }
+    @media (max-width:740px){
+      .wrap{width:min(calc(100% - 28px),var(--max))}.announcement .wrap{font-size:10px}.announcement .right{display:none}
+      nav{height:68px}.nav-links,.nav-actions .pill{display:none}.menu{display:block}
+      .hero{min-height:auto;padding:48px 0 30px}.hero-grid{gap:20px}.hero h1{font-size:clamp(46px,13vw,72px)}.hero-copy{font-size:14px}.mini-proof{margin-top:25px}.hero-art{min-height:410px}.dashboard{width:95%;padding:14px}.dash-value{font-size:30px}.chart{height:145px}.floating-card{padding:10px 11px}.fc1{left:-2%;top:9%}.fc2{right:-2%;bottom:22%}.fc3{left:2%;bottom:4%}
+      section{padding:75px 0}.section-head{display:block;margin-bottom:34px}.section-head p{margin-top:14px}
+      .cred-grid{grid-template-columns:1fr 1fr}.cred-item{padding:18px 14px}.cred-item:after{display:none}.cred-num{font-size:30px}
+      .service-grid{grid-template-columns:1fr}.service.s1,.service.s2,.service.s3,.service.s4,.service.s5,.service.s6{grid-column:span 1;min-height:230px}.service.s6{display:block}.service h3{margin-top:40px;font-size:24px}
+      .intel-canvas{padding:8px}.intel-panel{padding:17px}.metric-row{grid-template-columns:1fr}.bars{height:170px}.ring{width:145px;height:145px}
+      .leader{grid-template-columns:1fr}.leader img{height:300px}.leader-copy{min-height:330px}.leader-mini{min-height:310px}
+      .map-card{min-height:380px}.coverage-copy h2{font-size:46px}
+      .cta-box{padding:40px 24px}.cta-box:after{font-size:82px}.cta-box h2{font-size:44px}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:30px}.footer-grid>div:first-child{grid-column:span 2}.foot-bottom{display:block}.foot-bottom span{display:block;margin-top:8px}
+      .cursor-glow{display:none}
+    }
+  
+    /* Enhanced Regional Presence Styles */
+    .presence-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;margin-top:32px;margin-bottom:40px}
+    .map-card-real{border-radius:26px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 18px 50px rgba(8,27,69,.08);position:relative;display:flex;align-items:center;justify-content:center;padding:24px}
+    .india-map-img{max-height:460px;width:auto;object-fit:contain;transition:transform .4s ease}
+    .map-card-real:hover .india-map-img{transform:scale(1.02)}
+    .map-overlay-badge{position:absolute;bottom:20px;left:24px;background:rgba(8,27,69,.88);backdrop-filter:blur(8px);color:white;padding:8px 16px;border-radius:999px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:8px}
+    .pulse-dot{width:8px;height:8px;background:var(--red);border-radius:50%;box-shadow:0 0 0 4px rgba(227,30,36,.35);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.6}}
+    .presence-hubs-box{display:flex;flex-direction:column;gap:18px}
+    .hq-feature-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:0 10px 30px rgba(8,27,69,.05);transition:transform .3s ease,box-shadow .3s ease}
+    .hq-feature-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(8,27,69,.1)}
+    .hq-badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:rgba(8,27,69,.08);color:var(--navy);margin-bottom:8px}
+    .hq-feature-card h3{font:800 20px Manrope;color:var(--navy);margin-bottom:6px}
+    .hq-addr{font-size:13px;color:#546478;line-height:1.6;margin-bottom:12px}
+    .hq-meta{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;font-weight:700;color:var(--red);border-top:1px solid var(--line);padding-top:10px}
+    .nri-global-note{display:flex;align-items:flex-start;gap:14px;background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:16px 20px}
+    .nri-global-note .globe-icon{font-size:24px}
+    .nri-global-note strong{font-size:13px;color:var(--navy);display:block;margin-bottom:3px}
+    .nri-global-note p{font-size:12px;color:#546478;line-height:1.55;margin:0}
+
+    /* 8 Cities Grid */
+    .eight-cities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .city-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 18px;text-align:center;box-shadow:0 8px 24px rgba(8,27,69,.04);transition:all .3s ease;position:relative;overflow:hidden}
+    .city-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(8,27,69,.12);border-color:rgba(8,27,69,.25)}
+    .city-icon{font-size:24px;margin-bottom:8px}
+    .city-card h4{font:800 17px Manrope;color:var(--navy);margin:0}
+    .city-line{width:28px;height:3px;background:var(--red);border-radius:2px;margin:8px auto}
+    .city-card p{font-size:12px;color:#546478;line-height:1.45;margin:0}
+    .city-state{color:#8da0b8;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-top:4px;display:block}
+
+    @media (max-width:992px){
+      .presence-hero-grid{grid-template-columns:1fr}
+      .eight-cities-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:560px){
+      .eight-cities-grid{grid-template-columns:1fr}
+    }
+
+
+    /* Crisp Unified Header Layout */
+    nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;flex-shrink:0}
+    .brand-logo-img{height:44px;width:auto;object-fit:contain}
+    .nav-links{display:flex;gap:20px;align-items:center;flex-shrink:0}
+    .nav-links a{font-size:13px;color:#334155;font-weight:600;white-space:nowrap;transition:color .2s ease}
+    .nav-links a:hover{color:var(--red)}
+    .nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;white-space:nowrap}
+    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:9px 16px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center;white-space:nowrap}
+    .pill:hover{border-color:var(--navy);background:var(--paper)}
+    .pill.red{background:var(--red);color:white;border-color:var(--red);padding:9px 20px;box-shadow:0 4px 16px rgba(227,30,36,.25);white-space:nowrap}
+    .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
+    .menu{display:none;border:0;background:var(--white);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
+    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
+
+
+    /* Polished Mobile & Tablet Responsive Rules */
+    @media (max-width: 992px){
+      .leadership-dual-grid{grid-template-columns:1fr !important;gap:24px}
+      .why-grid{grid-template-columns:1fr !important;gap:36px}
+      .hero-grid{grid-template-columns:1fr !important}
+      .presence-hero-grid{grid-template-columns:1fr !important}
+      .eight-cities-grid{grid-template-columns:repeat(2,1fr) !important}
+      .nav-links{display:none}
+      .menu{display:flex !important}
+      .nav-links[data-open="1"]{
+        display:flex !important;
+        position:absolute;top:78px;left:14px;right:14px;
+        padding:22px;border-radius:20px;background:white;
+        border:1px solid var(--line);
+        box-shadow:0 24px 60px rgba(8,27,69,.18);
+        flex-direction:column;align-items:flex-start;gap:14px;
+        z-index:999;
+      }
+      .nav-links[data-open="1"] .dropdown-menu{
+        position:static;display:flex;opacity:1;transform:none;
+        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
+      }
+      .footer-grid{grid-template-columns:1fr !important}
+    }
+    @media (max-width: 580px){
+      .eight-cities-grid{grid-template-columns:1fr !important}
+      .cred-grid{grid-template-columns:1fr 1fr !important}
+      .nav-actions .pill:first-child{display:none}
+      .wrap{width:calc(100% - 28px)}
+    }
+
+</style>
+</head>
+<body>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="noise"></div>
+
+<!-- Top Announcement -->
+<div class="announcement">
+  <div class="wrap">
+    <div class="left"><span class="dot"></span><span>Fiduciaries for a lifetime & beyond — Independent thinking across wealth, tax, assurance & legal matters.</span></div>
+    <div class="right">Kolkata (HO) · Gurugram · Pan-India</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="top">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="brand" aria-label="Aarya Consultants home">
+        <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/arya-consultants-jpg-1790597676188-7d47f6c2.webp" alt="Aarya Consultants Logo" class="brand-logo-img" />
+        
+      </a>
+      <div class="nav-links">
+        <a href="about-agc.html">About Us</a>
+        <div class="nav-dropdown">
+          <a href="services.html">Services ▾</a>
+          <div class="dropdown-menu">
+            <a href="financial-planning.html">Financial Planning</a>
+            <a href="financial-services.html">Financial Services</a>
+            <a href="taxation.html">Taxation</a>
+            <a href="legal-services.html">Legal Services</a>
+            <a href="hr-solutions.html">HR Solutions</a>
+            <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+          </div>
+        </div>
+        <a href="#wall-of-frames">Wall of Frames</a>
+        <a href="#leadership">Leadership</a>
+        <a href="career.html">Career</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a class="pill" href="tel:+919038620055">Call +91 90386 20055</a>
+        <a class="pill red" href="#contact">Book Consultation ↗</a>
+        <button class="menu" type="button" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero" id="top">
+    <!-- Authentic Responsive Live Video Background from Cartface S3 -->
+    <div class="hero-video-bg">
+      <video class="desktop-video" autoplay muted loop playsinline preload="metadata">
+        <source src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/hero-video/arya-consultants-web-site-without-text-1600x640-21-1784704547717-29677375.mp4" type="video/mp4">
+      </video>
+      <video class="mobile-video" autoplay muted loop playsinline preload="metadata">
+        <source src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/hero-video/aarya-web-site-1080x1920-revised-1789973609443-bada4908.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+    <div class="wrap hero-grid">
+      <div data-reveal>
+        <div class="eyebrow">Fiduciaries for a lifetime & beyond ...</div>
+        <h1>One Advisor.<br><span class="soft">Every financial decision</span><br><span class="serif">of your life.</span></h1>
+        <p class="hero-copy">Most families deal with four different professionals—one for investments, one for tax, one for accounts, and one for legal matters. None of them talk to each other. Aarya was built to end that.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="cta red">Book a Free Consultation <span>↗</span></a>
+          <a href="#capabilities" class="cta">Explore Services <span>↓</span></a>
+        </div>
+        <div class="mini-proof">
+          <div class="avatars"><span class="avatar-1"></span><span class="avatar-2"></span><span class="avatar-3"></span></div>
+          <span>From your first SIP to your family trust deed — Let's Grow Together.</span>
+        </div>
+      </div>
+
+      <!-- Dashboard Interactive Art -->
+      <div class="hero-art" data-reveal data-reveal-delay="1">
+        <div class="glow"></div>
+        <div class="orbit"></div><div class="orbit o2"></div>
+        <div class="floating-card fc1"><div class="icon">↗</div><div><strong>25+ yrs</strong><small>wealth & advisory trust</small></div></div>
+        <div class="floating-card fc2"><div class="icon">◎</div><div><strong>2,000+</strong><small>families & HNIs served</small></div></div>
+        <div class="floating-card fc3"><div class="icon">◌</div><div><strong>42+</strong><small>associates & specialists</small></div></div>
+
+        <div class="dashboard" id="tiltCard">
+          <div class="dash-top"><span>AARYA / CONSOLIDATED VIEW</span><span>Fiduciary Standard · INR</span></div>
+          <div class="dash-balance">
+            <div class="dash-label"><span>Holistic Client Wealth Track</span><span>+8.2%</span></div>
+            <div class="dash-value">₹ 14.85 Cr</div>
+            <div class="up">↑ Unified SIP, Equity, Trust & Tax Alignment</div>
+            <div class="chart">
+              <svg viewBox="0 0 500 180" preserveAspectRatio="none" aria-hidden="true">
+                <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#e31e24" stop-opacity=".32"/><stop offset="1" stop-color="#e31e24" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0 156 C35 147 43 130 68 138 C94 147 112 114 137 121 C166 131 179 85 209 104 C237 121 258 92 284 96 C318 102 327 52 360 68 C391 84 414 46 447 58 C467 65 482 30 500 18 L500 180 L0 180 Z" fill="url(#area)"/>
+                <path d="M0 156 C35 147 43 130 68 138 C94 147 112 114 137 121 C166 131 179 85 209 104 C237 121 258 92 284 96 C318 102 327 52 360 68 C391 84 414 46 447 58 C467 65 482 30 500 18" fill="none" stroke="#e31e24" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="dash-bottom">
+            <div class="dash-card"><small>Cross-Domain Alignment</small><div class="num">100%</div><small>Tax, Legal, Wealth & Audit</small></div>
+            <div class="dash-card"><small>Fiduciary Integrity</small><div class="num">NISM 10A</div><small>Objective & product-agnostic</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credibility Stats -->
+  <section class="credibility" id="about">
+    <div class="wrap cred-grid">
+      <div class="cred-item" data-reveal><div class="cred-num counter" data-target="25">0</div><div class="cred-label">Years of Trust & Experience</div></div>
+      <div class="cred-item" data-reveal><div class="cred-num counter" data-target="2000">0</div><div class="cred-label">Families & Entrepreneurs Served</div></div>
+      <div class="cred-item" data-reveal><div class="cred-num counter" data-target="42">0</div><div class="cred-label">Specialist Associates</div></div>
+      <div class="cred-item" data-reveal><div class="cred-num">6+</div><div class="cred-label">Integrated Business Verticals</div></div>
+    </div>
+  </section>
+
+  <!-- Philosophy Callout -->
+  <div class="ticker" aria-hidden="true"><div class="ticker-track">
+    <span>Financial Planning</span><b>•</b><span>Wealth Management</span><b>•</b><span>Statutory & Tax Audit</span><b>•</b><span>GST & Direct Tax</span><b>•</b><span>Family Trust & Succession</span><b>•</b><span>HR Solutions</span><b>•</b><span>Samman Older Care</span><b>•</b>
+    <span>Financial Planning</span><b>•</b><span>Wealth Management</span><b>•</b><span>Statutory & Tax Audit</span><b>•</b><span>GST & Direct Tax</span><b>•</b><span>Family Trust & Succession</span><b>•</b><span>HR Solutions</span><b>•</b><span>Samman Older Care</span><b>•</b>
+  </div></div>
+
+  <!-- Real Client Logos Marquee from Cartface S3 -->
+  <div class="client-strip">
+    <div class="wrap" style="margin-bottom:14px"><span class="eyebrow">Trusted by Leading Enterprises & Institutions</span></div>
+    <div class="client-track" aria-hidden="true">
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/1-1784739890916-b12606e9.webp" alt="Client Logo 1"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/2-1784739892646-b5d8bdd2.webp" alt="Client Logo 2"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/3-1784739894703-cbfd470a.webp" alt="Client Logo 3"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/4-1784739896521-df6a718d.webp" alt="Client Logo 4"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/5-1784739898535-191f82e3.webp" alt="Client Logo 5"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/6-1784739900033-2a1d7de3.webp" alt="Client Logo 6"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/7-1784739902556-a0e93bad.webp" alt="Client Logo 7"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/8-1784739904316-7dcb782c.webp" alt="Client Logo 8"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/9-1784739905512-ff7f20a0.webp" alt="Client Logo 9"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/10-1784739906661-dd61b4d5.webp" alt="Client Logo 10"></div>
+      <!-- Duplicate for infinite marquee loop -->
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/11-1784739908050-7ce151d5.webp" alt="Client Logo 11"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/12-1784739909984-c3eb37ec.webp" alt="Client Logo 12"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/13-1784739912092-563f5346.webp" alt="Client Logo 13"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/14-1784739913916-e441da4d.webp" alt="Client Logo 14"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/15-1784739915795-dc28df12.webp" alt="Client Logo 15"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/16-1784739917545-cbda608a.webp" alt="Client Logo 16"></div>
+      <div class="client-item"><img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/clients/1-1784739890916-b12606e9.webp" alt="Client Logo 1"></div>
+    </div>
+  </div>
+
+  <!-- Capabilities (Services of Aarya) -->
+  <section class="service-section" id="capabilities">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div><div class="eyebrow">Our Core Verticals</div><h2>One firm.<br><span class="serif">The complete financial picture.</span></h2></div>
+        <p>From your first SIP to your family trust deed, from a GST return to a statutory audit, our teams work off a single view of your affairs.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service s1" data-reveal>
+          <span class="service-tag">01 · Personal Wealth</span>
+          <div class="arrow">↗</div>
+          <h3>Financial Planning & Wealth Management</h3>
+          <p>Goal-based investment architecture, customized SIP planning, risk profiling, portfolio review, and long-term capital preservation designed around your family's milestones.</p>
+          <div class="orb"></div>
+        </article>
+
+        <article class="service s2" data-reveal>
+          <span class="service-tag">02 · Corporate Assurance</span>
+          <div class="arrow">↗</div>
+          <h3>Audit & Assurance Services</h3>
+          <p>Statutory audit, internal audit, tax audits, stock verification, forensic analysis, bookkeeping, and GAAP-compliant financial reporting for businesses of all scales.</p>
+          <div class="orb"></div>
+        </article>
+
+        <article class="service s3" data-reveal>
+          <span class="service-tag">03 · Compliance</span>
+          <div class="arrow">↗</div>
+          <h3>Taxation & Filings</h3>
+          <p>Direct tax strategy, GST filings, corporate tax planning, assessment handling, and ongoing tax compliance to optimize business cash flows.</p>
+          <div class="orb"></div>
+        </article>
+
+        <article class="service s4" data-reveal>
+          <span class="service-tag">04 · Governance</span>
+          <div class="arrow">↗</div>
+          <h3>Legal & Succession Planning</h3>
+          <p>Family trust creation, wills & estate transition, partnership & corporate deeds, legal audits, and succession strategies to protect generational wealth.</p>
+          <div class="orb"></div>
+        </article>
+
+        <article class="service s5" data-reveal>
+          <span class="service-tag">05 · People</span>
+          <div class="arrow">↗</div>
+          <h3>HR Solutions & Business Support</h3>
+          <p>Organizational design, HR compliance, talent advisory, payroll architecture, and specialized manpower systems to power growth.</p>
+          <div class="orb"></div>
+        </article>
+
+        <article class="service s6" data-reveal>
+          <div>
+            <span class="service-tag">06 · Social Impact</span>
+            <h3>Elderly Care — Samman Older Care</h3>
+            <p>Our dedicated initiative providing dignified, compassionate, and holistic care solutions for elders in our communities.</p>
+          </div>
+          <a href="https://sammanoldercare.com/" target="_blank" rel="noopener" class="cta" style="background:var(--paper);border-color:var(--line);white-space:nowrap;color:var(--navy)">Visit Samman ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wall of Frames (Real Awards from Aarya) -->
+  <section class="awards" id="wall-of-frames">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <div class="eyebrow">Recognition & Honors</div>
+          <h2>Wall of <span class="serif">Frames.</span></h2>
+        </div>
+        <p>Awards, citations and recognitions collected across two decades and several countries, celebrating enduring client trust.</p>
+      </div>
+
+      <div class="award-carousel" data-reveal>
+        <div class="award-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/media-content/aarya-awards-1-jpg-1789113844986-4a6fd47d.webp" alt="Aarya Award Citation 1" loading="lazy">
+          <div class="award-copy"><strong>Excellence in Financial Advisory</strong><span>National Financial Conclave</span></div>
+        </div>
+        <div class="award-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/media-content/aarya-awards-2-jpg-1789113848123-1994cb48.webp" alt="Aarya Award Citation 2" loading="lazy">
+          <div class="award-copy"><strong>MDRT Court of the Table</strong><span>Global Milestone Recognition</span></div>
+        </div>
+        <div class="award-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/media-content/aarya-awards-3-jpg-1789113850932-698cf615.webp" alt="Aarya Award Citation 3" loading="lazy">
+          <div class="award-copy"><strong>Premier Wealth Leadership</strong><span>International Financial Forum</span></div>
+        </div>
+        <div class="award-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/media-content/aarya-awards-4-jpg-1789113853789-ea92f827.webp" alt="Aarya Award Citation 4" loading="lazy">
+          <div class="award-copy"><strong>Legacy Trust Honour</strong><span>Wealth & Governance Awards</span></div>
+        </div>
+        <div class="award-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/media-content/aarya-awards-5-jpg-1789113857351-94316abd.webp" alt="Aarya Award Citation 5" loading="lazy">
+          <div class="award-copy"><strong>Fiduciary Standard Citation</strong><span>Industry Excellence Award</span></div>
+        </div>
+        <div class="award-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/media-content/aarya-awards-6-jpg-1789113861145-6d265571.webp" alt="Aarya Award Citation 6" loading="lazy">
+          <div class="award-copy"><strong>Top Performer Recognition</strong><span>Regional Asset Summit</span></div>
+        </div>
+        <div class="award-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/media-content/aarya-awards-7-jpg-1789113865165-55842a50.webp" alt="Aarya Award Citation 7" loading="lazy">
+          <div class="award-copy"><strong>Distinguished Practitioner</strong><span>Consultancy Forum</span></div>
+        </div>
+        <div class="award-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/media-content/aarya-awards-8-jpg-1789113870123-8c4968e7.webp" alt="Aarya Award Citation 8" loading="lazy">
+          <div class="award-copy"><strong>25 Years of Service Dedication</strong><span>Silver Jubilee Citations</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="model" id="approach">
+    <div class="wrap model-grid">
+      <div class="sticky-title" data-reveal>
+        <div class="eyebrow">Our Operating Model</div>
+        <h2>Less noise.<br><span class="serif">More context.</span></h2>
+        <p style="margin-top:22px;max-width:390px;color:#546478;line-height:1.75;font-size:14px">
+          Aarya's public positioning is advice-first: understand your actual situation, then select what solutions fit, and review them over time as your life and business evolve.
+        </p>
+      </div>
+      <div class="steps">
+        <div class="step active" data-reveal>
+          <div class="step-no">01</div>
+          <div>
+            <h3>Understand the whole position</h3>
+            <p>Map income, cash flows, assets, liabilities, family goals, liabilities and risks under one synchronized umbrella.</p>
+          </div>
+        </div>
+        <div class="step" data-reveal>
+          <div class="step-no">02</div>
+          <div>
+            <h3>Make trade-offs transparent</h3>
+            <p>Separate urgent short-term needs from long-term wealth preservation, eliminating contradictory advice across tax and investment.</p>
+          </div>
+        </div>
+        <div class="step" data-reveal>
+          <div class="step-no">03</div>
+          <div>
+            <h3>Build objective architecture</h3>
+            <p>Deploy unbiased solutions across SIPs, assurance, corporate audits, and succession deeds aligned to a defined mandate, never product targets.</p>
+          </div>
+        </div>
+        <div class="step" data-reveal>
+          <div class="step-no">04</div>
+          <div>
+            <h3>Review with discipline</h3>
+            <p>Markets fluctuate. Regulations evolve. Families grow. Scheduled review cadences keep your financial blueprint future-proof.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intelligence / Portfolio Clarity -->
+  <section class="intelligence">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <div class="eyebrow">Consolidated Financial Clarity</div>
+          <h2>Decision-making,<br><span class="serif">not fragmented advice.</span></h2>
+        </div>
+        <p>We connect the dots between your balance sheet, your tax returns, your investment portfolio, and your estate transfer.</p>
+      </div>
+      <div class="intel-canvas" data-reveal>
+        <div class="intel-grid">
+          <div class="intel-panel large">
+            <div class="intel-title">Illustrative Wealth Allocation</div>
+            <div class="intel-sub">Holistic portfolio balance · calibrated against goals</div>
+            <div class="bars">
+              <span class="bar" style="--h:46%"></span><span class="bar" style="--h:61%"></span><span class="bar" style="--h:53%"></span><span class="bar" style="--h:77%"></span><span class="bar" style="--h:69%"></span><span class="bar" style="--h:88%"></span><span class="bar" style="--h:72%"></span><span class="bar" style="--h:95%"></span><span class="bar" style="--h:82%"></span><span class="bar" style="--h:100%"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;color:#8da5c7;font-size:9px;text-transform:uppercase;letter-spacing:.09em">
+              <span>SIP & Equity</span><span>Fixed Income</span><span>Business Assets</span><span>Cash Reserves</span>
+            </div>
+          </div>
+          <div class="intel-panel">
+            <div class="intel-title">Goal Readiness Index</div>
+            <div class="intel-sub">Measured across life stages</div>
+            <div class="ring"><div style="position:relative;z-index:2;text-align:center"><strong>73%</strong><small>on track</small></div></div>
+            <div class="quote">“The strongest financial plan is the one that still makes complete sense when the market is noisy.”</div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <div class="metric"><b>01</b><span>Review the total portfolio</span></div>
+          <div class="metric"><b>02</b><span>Stress-test tax & legal risks</span></div>
+          <div class="metric"><b>03</b><span>Act with unified context</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Leadership Section: Founder & Co-Founder -->
+  <section class="leaders" id="leadership">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <div class="eyebrow">Leadership & Stewardship</div>
+          <h2>Guided by Experience,<br><span class="serif">Powered by Innovation.</span></h2>
+        </div>
+        <p>Aarya Consultants brings together seasoned fiduciary stewardship with modern technological execution to advise client families and enterprises across generations.</p>
+      </div>
+
+      <div class="leadership-dual-grid" data-reveal>
+        <!-- Founder Profile -->
+        <article class="leader-card">
+          <div class="leader-img-box">
+            <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/media-content/whatsapp-image-2026-08-05-at-19-19-37-1785937839084-fc26458e.webp" alt="Sanjay K. Gupta - Founder & Chairman, Chief Mentor" style="object-position:center top">
+            <span class="leader-badge">Founder & Chairman</span>
+          </div>
+          <div class="leader-info">
+            <div>
+              <div class="leader-title">Founder · Chairman · Chief Mentor</div>
+              <h3 class="leader-name">Sanjay K. Gupta</h3>
+              <p class="leader-desc">
+                NISM Level 10A Investment Advisor with over 25 years in financial planning, wealth portfolio management, and succession planning. Former bank executive and visiting faculty at business schools; advisor to 2,000+ families and business founders across India and abroad.
+              </p>
+              <div style="margin-bottom:16px">
+                <span class="chip-tag">NISM Level 10A Advisor</span>
+                <span class="chip-tag">MDRT Court of the Table</span>
+                <span class="chip-tag">Chartered Inheritance Planner</span>
+              </div>
+            </div>
+            <div class="leader-credentials">
+              <strong>Professional Certifications:</strong> Certified Financial Consultant · LUTCF · Financial Services Specialist · Chartered Inheritance & Succession Planner · MDRT Court of the Table Qualifier.
+            </div>
+          </div>
+        </article>
+
+        <!-- Co-Founder Profile -->
+        <article class="leader-card">
+          <div class="leader-img-box">
+            <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/media-content/whatsapp-image-2026-08-05-at-19-16-52--1--1785937800106-0ac3a9a8.webp" alt="Aarya Gupta - Co-Founder & Technology Lead" style="object-position:center top">
+            <span class="leader-badge">Co-Founder & Strategy Head</span>
+          </div>
+          <div class="leader-info">
+            <div>
+              <div class="leader-title">Co-Founder · Innovation & Technology Head</div>
+              <h3 class="leader-name">Aarya Gupta</h3>
+              <p class="leader-desc">
+                The youngest entrepreneur in the team, pursuing a BBA at JD Birla Institute. Drives technology and AI adoption across service delivery, leads market research and new-venture strategy, and champions the firm's 'first time right' quality governance standard.
+              </p>
+              <div style="margin-bottom:16px">
+                <span class="chip-tag">Technology & AI Lead</span>
+                <span class="chip-tag">Venture Strategy</span>
+                <span class="chip-tag">Process Governance</span>
+                <span class="chip-tag">Family Office Modernisation</span>
+              </div>
+            </div>
+            <div class="leader-credentials">
+              <strong>Focus Areas:</strong> End-to-end client digital delivery, institutional analytics, AI workflow integration, quality governance, and expanding cross-border NRI family solutions.
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Families and Founders Stay With Us (Exact Live Website Section) -->
+  <section class="why-section" id="why-us">
+    <div class="wrap why-grid" data-reveal>
+      <div>
+        <span class="eyebrow">Our Distinct Advantage</span>
+        <h2 style="font:800 48px/1.05 Manrope;color:var(--navy);margin:12px 0 20px">
+          Why <span style="color:#718299">Families & Founders</span> <br><i class="serif" style="color:var(--red)">Stay With Us.</i>
+        </h2>
+        <p style="font-size:15px;line-height:1.75;color:#546478;margin-bottom:32px">
+          We combine industry expertise, strategic thinking, and personalized fiduciary service to help clients achieve sustainable, generation-spanning growth.
+        </p>
+
+        <div class="why-list">
+          <div class="why-card">
+            <div class="why-icon">🛡️</div>
+            <div>
+              <h4>Fiduciary by Practice</h4>
+              <p>We are paid to be right, not to be busy. Every recommendation is documented with the analytical reasoning behind it.</p>
+            </div>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">🎓</div>
+            <div>
+              <h4>One Team, Every Discipline</h4>
+              <p>Chartered Accountants, NISM certified advisors, attorneys, and advocates sitting in the same room working for you.</p>
+            </div>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">💡</div>
+            <div>
+              <h4>Review, Not Just Advice</h4>
+              <p>A structured review and monitoring cycle: quarterly for portfolios, annually for estate, trust, and tax compliance.</p>
+            </div>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">🤝</div>
+            <div>
+              <h4>Available When It Matters</h4>
+              <p>Dedicated direct helplines for insurance, accounts, and operations. Our senior consultants answer, not a call centre.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-visual">
+        <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/trust---integrity-1784705589661-b372085c.webp" alt="Trust and Integrity">
+      </div>
+    </div>
+  </section>
+
+  <!-- Presence Section -->
+    <!-- Presence Section -->
+  <section class="coverage" id="presence">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <div class="eyebrow">Pan-India Network</div>
+          <h2>Head Office in Kolkata.<br><span class="serif">Presence across eight regions.</span></h2>
+        </div>
+        <p>From our corporate headquarters in South Kolkata to regional advisory hubs across India, Aarya Consultants serves client families, corporations, and NRI estates with synchronized fiduciary governance.</p>
+      </div>
+
+      <!-- Map & Regional Summary Row -->
+      <div class="presence-hero-grid" data-reveal>
+        <div class="map-card-real">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/location-map2-1787506603919-8fb5abc4.webp" alt="Map of India network presence - Aarya Consultants" class="india-map-img" loading="lazy">
+          <div class="map-overlay-badge">
+            <span class="pulse-dot"></span>
+            <strong>Pan-India Operating Footprint</strong>
+          </div>
+        </div>
+
+        <div class="presence-hubs-box">
+          <div class="hq-feature-card">
+            <div class="hq-badge">Principal Headquarters</div>
+            <h3>Kolkata Corporate Office</h3>
+            <p class="hq-addr">73C, Shyama Prasad Mukherjee Road, Kolkata - 700026, West Bengal</p>
+            <div class="hq-meta">
+              <span>Direct: +91 90386 20055</span>
+              <span>Email: connect@aaryaconsultants.com</span>
+            </div>
+          </div>
+
+          <div class="hq-feature-card ncr-card">
+            <div class="hq-badge" style="background:rgba(227,30,36,.12);color:var(--red)">NCR Regional Office</div>
+            <h3>Gurugram Corporate Advisory</h3>
+            <p class="hq-addr">Regus, Welldone Tech Park, Badshahpur Sohna Road, Sector 48-49, Gurugram - 122018, Haryana</p>
+            <div class="hq-meta">
+              <span>Direct: +91 90386 20055</span>
+              <span>Email: gurgaon@aaryaconsultants.com</span>
+            </div>
+          </div>
+
+          <div class="nri-global-note">
+            <span class="globe-icon">🌐</span>
+            <div>
+              <strong>Cross-Border NRI & Family Office Desk</strong>
+              <p>Advising Indian diaspora across Singapore, Dubai, UK, US, and Canada on India repatriation, tax treaties, and succession trusts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 Regional City Presence Grid (Exact from live site) -->
+      <div class="eight-cities-grid" data-reveal>
+        <!-- 1. Kolkata HQ -->
+        <div class="city-card">
+          <div class="city-icon">🏢</div>
+          <h4>Kolkata (HQ)</h4>
+          <div class="city-line"></div>
+          <p>Head Office & Corporate Office<br><span class="city-state">West Bengal</span></p>
+        </div>
+
+        <!-- 2. Entire NCR -->
+        <div class="city-card">
+          <div class="city-icon">🏛️</div>
+          <h4>Entire NCR</h4>
+          <div class="city-line"></div>
+          <p>Delhi · Noida · Gurugram<br><span class="city-state">National Capital Region</span></p>
+        </div>
+
+        <!-- 3. Mumbai -->
+        <div class="city-card">
+          <div class="city-icon">🏙️</div>
+          <h4>Mumbai</h4>
+          <div class="city-line"></div>
+          <p>Financial Capital Advisory<br><span class="city-state">Maharashtra</span></p>
+        </div>
+
+        <!-- 4. Bengaluru -->
+        <div class="city-card">
+          <div class="city-icon">💻</div>
+          <h4>Bengaluru</h4>
+          <div class="city-line"></div>
+          <p>Tech & Venture Family Office<br><span class="city-state">Karnataka</span></p>
+        </div>
+
+        <!-- 5. Patna -->
+        <div class="city-card">
+          <div class="city-icon">🏦</div>
+          <h4>Patna</h4>
+          <div class="city-line"></div>
+          <p>Regional Wealth Desk<br><span class="city-state">Bihar</span></p>
+        </div>
+
+        <!-- 6. Ranchi -->
+        <div class="city-card">
+          <div class="city-icon">🛡️</div>
+          <h4>Ranchi</h4>
+          <div class="city-line"></div>
+          <p>Industrial & Business Advisory<br><span class="city-state">Jharkhand</span></p>
+        </div>
+
+        <!-- 7. Siliguri -->
+        <div class="city-card">
+          <div class="city-icon">⛰️</div>
+          <h4>Siliguri</h4>
+          <div class="city-line"></div>
+          <p>North Bengal Corridor Hub<br><span class="city-state">West Bengal</span></p>
+        </div>
+
+        <!-- 8. Guwahati -->
+        <div class="city-card">
+          <div class="city-icon">🌏</div>
+          <h4>Guwahati</h4>
+          <div class="city-line"></div>
+          <p>North-East Regional Center<br><span class="city-state">Assam</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="final-cta" id="contact">
+    <div class="wrap">
+      <div class="cta-box" data-reveal>
+        <div class="eyebrow">Start with a conversation</div>
+        <h2>Bring us the decision.<br><span class="serif">We'll bring the context.</span></h2>
+        <p>Tell us what you are trying to solve—wealth management, SIPs, taxation, audit, succession, HR, or elder care—and we'll route you directly to the right specialist.</p>
+        <div class="hero-actions">
+          <a href="tel:+919038620055" class="cta red">Call +91 90386 20055 ↗</a>
+          <a href="mailto:info@aaryaconsultants.com" class="cta" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:white">Email Us ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/arya-consultants-transparent-white-1790588771793-4be8e1be.webp" alt="Aarya Consultants" class="foot-logo" onerror="this.style.display='none'" />
+        <div class="brand-text" style="color:white;margin-bottom:6px">
+          <strong style="font-size:16px;letter-spacing:.04em;color:white">AARYA CONSULTANTS</strong>
+          <span style="font-size:9px;color:var(--red);letter-spacing:.16em;font-weight:700">Fiduciaries for a lifetime & beyond</span>
+        </div>
+        <p class="foot-desc">A consortium of entrepreneurs and a family of advisors—connecting financial, investment, accounting, audit, legal, and business support around a single client view.</p>
+      </div>
+
+      <div class="foot-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Home</a>
+        <a href="about-agc.html">About Us</a>
+        <a href="services.html">Services Overview</a>
+        <a href="index.html#wall-of-frames">Wall of Frames</a>
+        <a href="index.html#leadership">Leadership</a>
+        <a href="career.html">Careers</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="financial-planning.html">Financial Planning</a>
+        <a href="financial-services.html">Audit & Assurance</a>
+        <a href="taxation.html">Taxation & GST</a>
+        <a href="legal-services.html">Legal & Succession</a>
+        <a href="hr-solutions.html">HR Solutions</a>
+        <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Offices & Contact</h4>
+        <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:12px">
+          <strong style="color:#fff;display:block">Kolkata Head Office:</strong>
+          73C, Shyama Prasad Mukherjee Road,<br>Kolkata - 700026, West Bengal
+        </p>
+        <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:14px">
+          <strong style="color:#fff;display:block">Gurugram Office:</strong>
+          Regus, Welldone Tech Park, Badshahpur Sohna Rd, Sector 49, Gurugram 122018
+        </p>
+        <a href="tel:+919038620055">+91 90386 20055</a>
+        <a href="mailto:connect@aaryaconsultants.com">connect@aaryaconsultants.com</a>
+        <a href="mailto:gurgaon@aaryaconsultants.com">gurgaon@aaryaconsultants.com</a>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Aarya Consultants. All rights reserved.</span>
+      <span>Kolkata · Gurugram · Pan-India</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal observer
+  const revealEls = [...document.querySelectorAll('[data-reveal]')];
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    })
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  revealEls.forEach((el,i)=>{ el.style.transitionDelay = (el.dataset.revealDelay ? `${Number(el.dataset.revealDelay)*.11}s` : '') || (i%4)*.045 + 's'; obs.observe(el); });
+
+  // Number Counter
+  const counters = document.querySelectorAll('.counter');
+  const countObs = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el=entry.target, target=Number(el.dataset.target), start=performance.now(), duration=1200;
+      const tick=(t)=>{
+        const p=Math.min(1,(t-start)/duration), eased=1-Math.pow(1-p,3);
+        el.textContent = target>=1000 ? Math.round(target*eased).toLocaleString('en-IN')+'+' : Math.round(target*eased)+'+';
+        if(p<1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick); countObs.unobserve(el);
+    })
+  },{threshold:.7}); counters.forEach(c=>countObs.observe(c));
+
+  // Glow cursor follower adapted for corporate navy/red
+  const glow=document.getElementById('cursorGlow');
+  window.addEventListener('pointermove',(e)=>{ glow.style.left=e.clientX+'px'; glow.style.top=e.clientY+'px'; },{passive:true});
+
+  // Tilt Card on Mousemove
+  const tilt=document.getElementById('tiltCard');
+  if(tilt && matchMedia('(pointer:fine)').matches){
+    tilt.addEventListener('pointermove',(e)=>{
+      const r=tilt.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      tilt.style.transform=`rotateX(${(-y*4).toFixed(2)}deg) rotateY(${(x*5).toFixed(2)}deg) rotateZ(-2deg) translateY(-5px)`;
+    });
+    tilt.addEventListener('pointerleave',()=> tilt.style.transform='rotate(-2.8deg)');
+  }
+
+  // Interactive Operating Steps
+  document.querySelectorAll('.step').forEach(step=>step.addEventListener('mouseenter',()=>{
+    document.querySelectorAll('.step').forEach(s=>s.classList.remove('active')); step.classList.add('active');
+  }));
+
+  // Mobile menu toggle
+  const menu=document.querySelector('.menu');
+  menu?.addEventListener('click',()=>{
+    const links=document.querySelector('.nav-links');
+    const open=links.dataset.open==='1'; links.dataset.open=open?'0':'1';
+    links.style.cssText = open ? '' : 'display:flex;position:absolute;top:74px;left:14px;right:14px;padding:18px;border-radius:18px;background:white;border:1px solid #dfe5ee;box-shadow:0 20px 45px rgba(8,27,69,.15);flex-direction:column;align-items:flex-start;gap:16px;z-index:99;';
+  });
+
+  // Header shadow on scroll
+  const nav=document.querySelector('header');
+  window.addEventListener('scroll',()=>{ 
+    const y=window.scrollY; 
+    nav.style.boxShadow=y>18?'0 12px 35px rgba(8,27,69,.08)':'none'; 
+  },{passive:true});
+</script>
+</body>
+</html>

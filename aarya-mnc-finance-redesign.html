@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08120f" />
+  <title>Aarya Group — Financial clarity. Strategic growth.</title>
+  <meta name="description" content="A premium corporate finance website concept for Aarya Group." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#07120f;
+      --ink-2:#0d1c18;
+      --muted:#6b746f;
+      --line:#dfe5e1;
+      --paper:#f7f8f5;
+      --paper-2:#eef2ed;
+      --white:#fff;
+      --green:#9be25d;
+      --green-2:#c9f49f;
+      --gold:#d7b871;
+      --max:1320px;
+      --radius:24px;
+      --shadow:0 24px 70px rgba(7,18,15,.11);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img{display:block;max-width:100%}
+    ::selection{background:var(--green);color:var(--ink)}
+
+    .cursor-glow{position:fixed;width:360px;height:360px;border-radius:50%;pointer-events:none;z-index:0;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(155,226,93,.15),rgba(155,226,93,0) 70%);mix-blend-mode:multiply;opacity:.75;transition:opacity .25s ease}
+    .noise{position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E")}
+
+    .wrap{width:min(calc(100% - 40px),var(--max));margin-inline:auto;position:relative;z-index:2}
+    .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#728078}
+    .serif{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500}
+
+    /* announcement */
+    .announcement{background:var(--ink);color:#dfe8e2;font-size:12px;letter-spacing:.01em}
+    .announcement .wrap{display:flex;justify-content:space-between;gap:20px;align-items:center;min-height:34px}
+    .announcement .left{display:flex;gap:12px;align-items:center}
+    .dot{width:6px;height:6px;background:var(--green);border-radius:50%;box-shadow:0 0 0 4px rgba(155,226,93,.09)}
+    .announcement a{opacity:.85}
+
+    /* nav */
+    header{position:sticky;top:0;z-index:50;background:rgba(247,248,245,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,229,225,.75)}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:11px}
+    .brand-mark{width:38px;height:38px;border:1px solid var(--ink);border-radius:12px;display:grid;place-items:center;position:relative;overflow:hidden}
+    .brand-mark:before,.brand-mark:after{content:"";position:absolute;width:16px;height:16px;border-radius:4px;background:var(--ink);transform:rotate(45deg)}
+    .brand-mark:after{background:var(--green);transform:translate(5px,-5px) rotate(45deg)}
+    .brand-copy strong{display:block;font-family:Manrope,sans-serif;font-size:15px;letter-spacing:.03em}
+    .brand-copy span{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#738079}
+    .nav-links{display:flex;gap:30px;align-items:center}
+    .nav-links a{font-size:13px;color:#53605a;position:relative}
+    .nav-links a:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:1px;background:var(--ink);transition:width .3s ease}
+    .nav-links a:hover:after{width:100%}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .pill{border:1px solid var(--line);background:var(--white);padding:11px 16px;border-radius:999px;font-size:12px;font-weight:700}
+    .pill.dark{background:var(--ink);color:white;border-color:var(--ink);padding-inline:18px}
+    .menu{display:none;border:0;background:transparent;width:42px;height:42px;border-radius:50%;background:var(--white);border:1px solid var(--line)}
+    .menu span,.menu:before,.menu:after{content:"";display:block;width:16px;height:1.5px;background:var(--ink);margin:3px auto}
+
+    /* hero */
+    .hero{padding:58px 0 30px;min-height:calc(100vh - 110px);display:grid;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:50px;align-items:center}
+    .hero h1{font:800 clamp(52px,6.1vw,92px)/.93 Manrope,sans-serif;letter-spacing:-.07em;max-width:730px}
+    .hero h1 .soft{color:#758079;font-weight:500}
+    .hero h1 .serif{font-size:1.05em;letter-spacing:-.055em;color:var(--ink)}
+    .hero-copy{margin-top:28px;max-width:560px;color:#64706a;font-size:16px;line-height:1.7}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:15px 19px;font-size:13px;font-weight:800;border:1px solid var(--line);transition:transform .3s ease,box-shadow .3s ease,background .3s ease}
+    .cta:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(7,18,15,.13)}
+    .cta.primary{background:var(--ink);color:white;border-color:var(--ink)}
+    .cta.lime{background:var(--green);border-color:var(--green)}
+    .mini-proof{display:flex;align-items:center;gap:14px;margin-top:34px;color:#727c77;font-size:12px}
+    .avatars{display:flex}
+    .avatars span{width:30px;height:30px;border-radius:50%;margin-left:-8px;border:2px solid var(--paper);background-size:cover;background-position:center}
+    .avatars span:first-child{margin-left:0}
+    .avatar-1{background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80')}
+    .avatar-2{background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80')}
+    .avatar-3{background-image:url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=80&q=80')}
+
+    /* dashboard visual */
+    .hero-art{position:relative;min-height:620px;display:flex;align-items:center;justify-content:center}
+    .glow{position:absolute;width:520px;height:520px;background:radial-gradient(circle,rgba(155,226,93,.27),rgba(155,226,93,0) 68%);filter:blur(6px)}
+    .orbit{position:absolute;inset:8% 2%;border:1px dashed rgba(7,18,15,.18);border-radius:50%;transform:rotate(-14deg)}
+    .orbit.o2{inset:20% 10%;transform:rotate(22deg)}
+    .dashboard{position:relative;width:min(530px,90%);background:#0b1714;color:#f3f6f2;border-radius:28px;padding:18px;box-shadow:0 40px 100px rgba(7,18,15,.26);transform:rotate(-2.8deg);border:1px solid rgba(255,255,255,.11);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+    .hero-art:hover .dashboard{transform:rotate(0deg) translateY(-8px)}
+    .dash-top{display:flex;justify-content:space-between;align-items:center;color:#b1bdb6;font-size:11px;padding:4px 4px 16px}
+    .dash-balance{border-radius:21px;padding:20px;background:linear-gradient(145deg,#13231d,#0d1915);border:1px solid rgba(255,255,255,.08)}
+    .dash-label{font-size:11px;color:#8b9a92;display:flex;justify-content:space-between}
+    .dash-value{font:700 40px/1 Manrope,sans-serif;letter-spacing:-.05em;margin:8px 0 4px}
+    .up{color:var(--green);font-size:11px}
+    .chart{height:180px;margin-top:14px;position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(to bottom,rgba(255,255,255,.03),rgba(255,255,255,0))}
+    .chart svg{width:100%;height:100%}
+    .dash-bottom{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+    .dash-card{background:#111e1a;border:1px solid rgba(255,255,255,.07);padding:15px;border-radius:17px}
+    .dash-card .num{font:700 23px Manrope;margin-top:6px}
+    .dash-card small{font-size:9px;color:#7f9088}
+    .floating-card{position:absolute;background:white;color:var(--ink);border:1px solid rgba(7,18,15,.1);box-shadow:0 18px 45px rgba(7,18,15,.17);border-radius:18px;padding:14px 16px;display:flex;align-items:center;gap:11px;animation:float 6s ease-in-out infinite}
+    .floating-card .icon{width:34px;height:34px;background:var(--paper-2);border-radius:12px;display:grid;place-items:center;font-size:14px}
+    .floating-card strong{font:700 16px Manrope}
+    .floating-card small{display:block;font-size:10px;color:#77827d;margin-top:2px}
+    .fc1{left:4%;top:16%;animation-delay:-1.2s}.fc2{right:0;bottom:17%;animation-delay:-2.7s}.fc3{left:11%;bottom:7%;animation-delay:-4.1s}
+    @keyframes float{50%{transform:translateY(-13px)}}
+
+    /* credibility */
+    .credibility{padding:26px 0 50px}
+    .cred-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .cred-item{padding:25px 22px;position:relative}
+    .cred-item:not(:last-child):after{content:"";position:absolute;right:0;top:18px;bottom:18px;width:1px;background:var(--line)}
+    .cred-num{font:800 clamp(30px,3vw,46px)/1 Manrope;letter-spacing:-.06em}
+    .cred-label{color:#707b75;font-size:11px;margin-top:7px;text-transform:uppercase;letter-spacing:.1em}
+
+    /* sections */
+    section{padding:110px 0}
+    .section-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:48px}
+    .section-head h2{font:700 clamp(38px,4.5vw,70px)/.98 Manrope;letter-spacing:-.06em;max-width:820px}
+    .section-head p{max-width:360px;color:#6d7772;line-height:1.7;font-size:14px}
+
+    .service-section{background:#fff}
+    .service-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .service{background:var(--paper);border:1px solid #e1e7e2;border-radius:24px;padding:24px;min-height:240px;position:relative;overflow:hidden;transition:transform .35s ease,background .35s ease,border-color .35s ease}
+    .service:hover{transform:translateY(-8px);background:#f8fbf6;border-color:#c7d3cb}
+    .service.s1{grid-column:span 7;min-height:330px}.service.s2{grid-column:span 5}.service.s3{grid-column:span 5}.service.s4{grid-column:span 7;min-height:330px}.service.s5{grid-column:span 12;min-height:180px}
+    .service-tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#77827c;font-weight:800}
+    .service h3{font:700 30px/1.05 Manrope;letter-spacing:-.045em;margin-top:58px;max-width:380px}
+    .service p{font-size:13px;color:#747f79;line-height:1.65;max-width:460px;margin-top:13px}
+    .service .arrow{position:absolute;right:20px;top:20px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:.3s ease}
+    .service:hover .arrow{background:var(--ink);color:white;border-color:var(--ink);transform:rotate(45deg)}
+    .service .orb{position:absolute;right:-90px;bottom:-120px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(155,226,93,.9),rgba(155,226,93,.1) 50%,transparent 70%);filter:blur(7px);opacity:.9}
+    .service.s2 .orb,.service.s3 .orb{width:190px;height:190px;right:-35px;bottom:-60px}
+    .service.s5{display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .service.s5 h3{margin-top:10px}.service.s5 p{max-width:650px}
+
+    /* marquee */
+    .ticker{overflow:hidden;background:var(--ink);color:#dce8df;border-block:1px solid rgba(255,255,255,.06);padding:15px 0}
+    .ticker-track{display:flex;width:max-content;animation:marquee 28s linear infinite;gap:26px;align-items:center}
+    .ticker-track span{font-size:12px;text-transform:uppercase;letter-spacing:.14em;white-space:nowrap}
+    .ticker-track b{color:var(--green);font-weight:600}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+
+    /* operating model */
+    .model{background:var(--paper)}
+    .model-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start}
+    .sticky-title{position:sticky;top:120px}
+    .sticky-title h2{font:700 clamp(46px,5vw,76px)/.96 Manrope;letter-spacing:-.065em;margin-top:14px}
+    .sticky-title h2 .serif{color:#68746e}
+    .steps{display:flex;flex-direction:column;gap:12px}
+    .step{display:grid;grid-template-columns:58px 1fr;gap:18px;padding:22px;border:1px solid var(--line);border-radius:20px;background:#fff;transition:.35s ease}
+    .step.active,.step:hover{background:var(--ink);color:white;transform:translateX(-8px);border-color:var(--ink);box-shadow:var(--shadow)}
+    .step-no{font:700 14px Manrope;color:#8a9690}.step.active .step-no{color:var(--green)}
+    .step h3{font:700 20px Manrope;letter-spacing:-.03em}
+    .step p{color:#718079;font-size:13px;line-height:1.65;margin-top:7px;max-width:520px}.step.active p{color:#aebbb4}
+
+    /* intelligence panel */
+    .intelligence{background:var(--ink);color:#f6faf7;overflow:hidden}
+    .intelligence .section-head p{color:#9aa9a1}
+    .intelligence .eyebrow{color:#91a199}
+    .intel-wrap{position:relative}
+    .intel-canvas{border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:14px;background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.015));box-shadow:0 40px 90px rgba(0,0,0,.18)}
+    .intel-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    .intel-panel{border-radius:21px;background:#0d1a16;border:1px solid rgba(255,255,255,.08);padding:22px;min-height:270px}
+    .intel-panel.large{min-height:430px}
+    .intel-title{font:700 17px Manrope;letter-spacing:-.03em}
+    .intel-sub{color:#829089;font-size:11px;margin-top:4px}
+    .bars{display:flex;gap:10px;height:225px;align-items:flex-end;margin-top:24px;padding-top:8px}
+    .bar{flex:1;background:linear-gradient(to top,#83c64b,#b7ee89);border-radius:6px 6px 2px 2px;min-width:16px;height:var(--h);animation:grow 1.2s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes grow{from{height:0;opacity:0}to{height:var(--h);opacity:1}}
+    .ring{width:166px;height:166px;border-radius:50%;margin:28px auto 8px;background:conic-gradient(var(--green) 0 73%,#263830 73% 100%);display:grid;place-items:center;position:relative}
+    .ring:after{content:"";position:absolute;inset:18px;background:#0d1a16;border-radius:50%}
+    .ring strong{position:relative;z-index:1;font:800 31px Manrope;letter-spacing:-.06em}.ring small{display:block;color:#839088;font-size:9px;text-align:center;margin-top:-5px}
+    .metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+    .metric{background:#0a1512;border:1px solid rgba(255,255,255,.07);padding:15px;border-radius:16px}
+    .metric b{font:700 25px Manrope;letter-spacing:-.04em}.metric span{display:block;color:#76857e;font-size:10px;margin-top:4px}
+    .quote{margin-top:14px;padding:16px 18px;border-radius:16px;background:rgba(155,226,93,.07);border:1px solid rgba(155,226,93,.12);color:#bac8c0;font-size:12px;line-height:1.7}
+
+    /* leadership */
+    .leaders{background:#fff}
+    .leader-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}
+    .leader{border:1px solid var(--line);border-radius:24px;background:var(--paper);overflow:hidden;display:grid;grid-template-columns:42% 58%;min-height:340px}
+    .leader img{width:100%;height:100%;object-fit:cover;filter:saturate(.72);transition:transform .7s ease}
+    .leader:hover img{transform:scale(1.04)}
+    .leader-copy{padding:30px;display:flex;flex-direction:column;justify-content:space-between}
+    .leader-role{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:#7b8580;font-weight:800}
+    .leader h3{font:700 32px/1 Manrope;letter-spacing:-.05em;margin-top:12px}
+    .leader p{font-size:13px;color:#718079;line-height:1.7;margin-top:14px}
+    .credential{margin-top:20px;padding-top:17px;border-top:1px solid var(--line);font-size:10px;color:#707b75;line-height:1.6}
+    .leader-mini{border:1px solid var(--line);border-radius:24px;background:var(--ink);color:white;padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:340px}
+    .leader-mini .big{font:700 64px/.95 Manrope;letter-spacing:-.08em}.leader-mini p{color:#9aa8a1;font-size:13px;line-height:1.7;max-width:330px}
+    .chip-row{display:flex;flex-wrap:wrap;gap:7px}.chip{font-size:10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 10px;color:#b7c3bd}
+
+    /* coverage */
+    .coverage{background:var(--paper-2)}
+    .coverage-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .map-card{min-height:460px;border-radius:26px;background:#e0e7e0;position:relative;overflow:hidden;border:1px solid #d1d9d2}
+    .map-card:before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 48% 38%,rgba(155,226,93,.48),rgba(155,226,93,0) 23%),repeating-radial-gradient(circle at 50% 50%,transparent 0 50px,rgba(7,18,15,.08) 51px 52px);transform:rotate(-12deg)}
+    .map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(7,18,15,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(7,18,15,.06) 1px,transparent 1px);background-size:40px 40px;opacity:.45}
+    .pin{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--ink);border:4px solid rgba(155,226,93,.65);box-shadow:0 0 0 8px rgba(155,226,93,.13)}
+    .pin span{position:absolute;left:18px;top:-8px;white-space:nowrap;font-size:10px;color:var(--ink);font-weight:800}.p1{left:34%;top:31%}.p2{left:48%;top:55%}.p3{left:61%;top:43%}.p4{left:57%;top:68%}
+    .map-caption{position:absolute;left:20px;bottom:20px;right:20px;background:rgba(247,248,245,.85);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.8);padding:17px;border-radius:17px}
+    .map-caption strong{font:700 19px Manrope;letter-spacing:-.03em}.map-caption p{font-size:11px;color:#6e7973;margin-top:4px}
+    .coverage-copy{padding:10px 8px}
+    .coverage-copy h2{font:700 clamp(42px,5vw,72px)/.96 Manrope;letter-spacing:-.065em;margin:16px 0 20px}.coverage-copy h2 .serif{color:#6e7772}
+    .coverage-copy p{font-size:15px;line-height:1.75;color:#6d7872;max-width:470px}
+    .office-list{margin-top:34px;border-top:1px solid #ced8d0}
+    .office{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid #ced8d0;font-size:13px}.office span:last-child{color:#7d8982}
+
+    /* CTA */
+    .final-cta{padding:30px 0 110px;background:#fff}
+    .cta-box{border-radius:30px;background:var(--ink);color:white;overflow:hidden;position:relative;padding:68px}
+    .cta-box:before{content:"";position:absolute;width:530px;height:530px;border-radius:50%;right:-120px;top:-230px;background:radial-gradient(circle,rgba(155,226,93,.28),rgba(155,226,93,0) 68%)}
+    .cta-box:after{content:"AARYA";position:absolute;right:32px;bottom:-10px;font:800 140px/.8 Manrope;color:rgba(255,255,255,.035);letter-spacing:-.08em}
+    .cta-box .eyebrow{color:#87978f}.cta-box h2{font:700 clamp(44px,5vw,74px)/.97 Manrope;letter-spacing:-.065em;max-width:720px;margin-top:18px}.cta-box h2 .serif{color:#b2c1b8}
+    .cta-box p{color:#9eaca5;max-width:520px;line-height:1.7;font-size:14px;margin-top:18px}
+    .cta-box .hero-actions{position:relative;z-index:2}
+
+    /* footer */
+    footer{background:#07100d;color:#bfcac3;padding:55px 0 28px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr .7fr .7fr .9fr;gap:35px}
+    footer .brand-copy strong{color:white} footer .brand-mark{border-color:white} footer .brand-mark:before{background:white}
+    .foot-desc{font-size:12px;line-height:1.7;color:#7f8f87;max-width:340px;margin-top:17px}
+    .foot-col h4{font:700 11px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#ecf2ee;margin-bottom:13px}.foot-col a{display:block;font-size:12px;color:#87958e;margin:9px 0}.foot-col a:hover{color:var(--green)}
+    .foot-bottom{display:flex;justify-content:space-between;gap:20px;border-top:1px solid rgba(255,255,255,.08);margin-top:38px;padding-top:20px;color:#66766d;font-size:10px}
+
+    /* reveals */
+    [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+    [data-reveal].visible{opacity:1;transform:none}
+    .delay-1{transition-delay:.08s}.delay-2{transition-delay:.16s}.delay-3{transition-delay:.24s}.delay-4{transition-delay:.32s}
+
+    @media (max-width:1000px){
+      .hero-grid,.model-grid,.coverage-grid{grid-template-columns:1fr}
+      .hero{padding-top:42px}.hero-art{min-height:500px}.sticky-title{position:static}.leader-grid{grid-template-columns:1fr}.leader-mini{min-height:280px}
+      .cred-grid{grid-template-columns:repeat(2,1fr)}.cred-item:nth-child(2):after{display:none}
+      .service.s1,.service.s2,.service.s3,.service.s4{grid-column:span 6}.service.s5{grid-column:span 12}
+      .intel-grid{grid-template-columns:1fr}.intel-panel.large{min-height:360px}
+      .footer-grid{grid-template-columns:1.2fr .8fr .8fr}
+    }
+    @media (max-width:740px){
+      .wrap{width:min(calc(100% - 28px),var(--max))}.announcement .wrap{font-size:10px}.announcement .right{display:none}
+      nav{height:68px}.nav-links,.nav-actions .pill{display:none}.menu{display:block}
+      .hero{min-height:auto;padding:48px 0 30px}.hero-grid{gap:20px}.hero h1{font-size:clamp(48px,14vw,76px)}.hero-copy{font-size:14px}.mini-proof{margin-top:25px}.hero-art{min-height:410px}.dashboard{width:95%;padding:12px}.dash-value{font-size:32px}.chart{height:145px}.floating-card{padding:10px 11px}.fc1{left:-2%;top:9%}.fc2{right:-2%;bottom:22%}.fc3{left:2%;bottom:4%}
+      section{padding:78px 0}.section-head{display:block;margin-bottom:34px}.section-head p{margin-top:14px}
+      .cred-grid{grid-template-columns:1fr 1fr}.cred-item{padding:18px 14px}.cred-item:after{display:none}.cred-num{font-size:30px}
+      .service-grid{grid-template-columns:1fr}.service.s1,.service.s2,.service.s3,.service.s4,.service.s5{grid-column:span 1;min-height:230px}.service.s5{display:block}.service h3{margin-top:50px;font-size:26px}
+      .intel-canvas{padding:8px}.intel-panel{padding:17px}.metric-row{grid-template-columns:1fr}.bars{height:170px}.ring{width:145px;height:145px}
+      .leader{grid-template-columns:1fr}.leader img{height:300px}.leader-copy{min-height:330px}.leader-mini{min-height:310px}
+      .map-card{min-height:380px}.coverage-copy h2{font-size:48px}
+      .cta-box{padding:40px 24px}.cta-box:after{font-size:82px}.cta-box h2{font-size:47px}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:30px}.footer-grid>div:first-child{grid-column:span 2}.foot-bottom{display:block}.foot-bottom span{display:block;margin-top:8px}
+      .cursor-glow{display:none}
+    }
+  </style>
+</head>
+<body>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="noise"></div>
+
+<div class="announcement">
+  <div class="wrap">
+    <div class="left"><span class="dot"></span><span>Independent thinking across wealth, tax, assurance & business finance.</span></div>
+    <div class="right">Kolkata · Gurugram · Pan-India</div>
+  </div>
+</div>
+
+<header id="top">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="brand" aria-label="Aarya Group home">
+        <span class="brand-mark"></span>
+        <span class="brand-copy"><strong>AARYA</strong><span>Group</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#approach">Approach</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#presence">Presence</a>
+      </div>
+      <div class="nav-actions">
+        <a class="pill" href="tel:+919038620055">Call us</a>
+        <a class="pill dark" href="#contact">Start a conversation ↗</a>
+        <button class="menu" type="button" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div data-reveal>
+        <div class="eyebrow">Financial advisory, built around the whole picture</div>
+        <h1>Strategic capital.<br><span class="soft">Financial clarity.</span><br><span class="serif">Enduring growth.</span></h1>
+        <p class="hero-copy">Aarya Group brings financial planning, investments, assurance, taxation, legal and people solutions into one coordinated view — so every important decision gets better context.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="cta primary">Book a consultation <span>↗</span></a>
+          <a href="#capabilities" class="cta">Explore capabilities <span>↓</span></a>
+        </div>
+        <div class="mini-proof">
+          <div class="avatars"><span class="avatar-1"></span><span class="avatar-2"></span><span class="avatar-3"></span></div>
+          <span>Built on long-term relationships, not one-off transactions.</span>
+        </div>
+      </div>
+
+      <div class="hero-art" data-reveal data-reveal-delay="1">
+        <div class="glow"></div>
+        <div class="orbit"></div><div class="orbit o2"></div>
+        <div class="floating-card fc1"><div class="icon">↗</div><div><strong>25+ yrs</strong><small>of financial planning</small></div></div>
+        <div class="floating-card fc2"><div class="icon">◎</div><div><strong>2,000+</strong><small>clients served</small></div></div>
+        <div class="floating-card fc3"><div class="icon">◌</div><div><strong>42</strong><small>associates & specialists</small></div></div>
+
+        <div class="dashboard" id="tiltCard">
+          <div class="dash-top"><span>AARYA / CAPITAL VIEW</span><span>Updated now · INR</span></div>
+          <div class="dash-balance">
+            <div class="dash-label"><span>Illustrative net position</span><span>+7.4%</span></div>
+            <div class="dash-value">₹ 8.62 Cr</div>
+            <div class="up">↑ aligned to long-term objectives</div>
+            <div class="chart">
+              <svg viewBox="0 0 500 180" preserveAspectRatio="none" aria-hidden="true">
+                <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#9be25d" stop-opacity=".28"/><stop offset="1" stop-color="#9be25d" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0 156 C35 147 43 130 68 138 C94 147 112 114 137 121 C166 131 179 85 209 104 C237 121 258 92 284 96 C318 102 327 52 360 68 C391 84 414 46 447 58 C467 65 482 30 500 18 L500 180 L0 180 Z" fill="url(#area)"/>
+                <path d="M0 156 C35 147 43 130 68 138 C94 147 112 114 137 121 C166 131 179 85 209 104 C237 121 258 92 284 96 C318 102 327 52 360 68 C391 84 414 46 447 58 C467 65 482 30 500 18" fill="none" stroke="#b8ef8a" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="dash-bottom">
+            <div class="dash-card"><small>Goal coverage</small><div class="num">73%</div><small>across mapped objectives</small></div>
+            <div class="dash-card"><small>Risk score</small><div class="num">Low</div><small>reviewed periodically</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="credibility">
+    <div class="wrap cred-grid">
+      <div class="cred-item" data-reveal><div class="cred-num counter" data-target="25">0</div><div class="cred-label">Years of experience</div></div>
+      <div class="cred-item" data-reveal><div class="cred-num counter" data-target="2000">0</div><div class="cred-label">Clients & families</div></div>
+      <div class="cred-item" data-reveal><div class="cred-num counter" data-target="42">0</div><div class="cred-label">Associates</div></div>
+      <div class="cred-item" data-reveal><div class="cred-num">∞</div><div class="cred-label">Long-term relationships</div></div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker-track">
+    <span>Financial planning</span><b>•</b><span>Wealth management</span><b>•</b><span>Audit & assurance</span><b>•</b><span>Taxation</span><b>•</b><span>Legal & succession</span><b>•</b><span>HR solutions</span><b>•</b>
+    <span>Financial planning</span><b>•</b><span>Wealth management</span><b>•</b><span>Audit & assurance</span><b>•</b><span>Taxation</span><b>•</b><span>Legal & succession</span><b>•</b><span>HR solutions</span><b>•</b>
+  </div></div>
+
+  <section class="service-section" id="capabilities">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div><div class="eyebrow">Capabilities</div><h2>One firm.<br><span class="serif">The full financial picture.</span></h2></div>
+        <p>Advice becomes more useful when your investment, tax, accounts and legal decisions are connected. That is the operating idea behind Aarya.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service s1" data-reveal><span class="service-tag">01 · Advisory</span><div class="arrow">↗</div><h3>Financial planning & wealth strategy</h3><p>Goal mapping, risk analysis, portfolio construction and scheduled reviews — designed around the life and business decisions ahead.</p><div class="orb"></div></article>
+        <article class="service s2" data-reveal><span class="service-tag">02 · Assurance</span><div class="arrow">↗</div><h3>Audit & assurance</h3><p>Statutory, internal, tax, stock and forensic audit, plus bookkeeping and financial reporting.</p><div class="orb"></div></article>
+        <article class="service s3" data-reveal><span class="service-tag">03 · Protection</span><div class="arrow">↗</div><h3>Insurance architecture</h3><p>Life, health and general insurance solutions selected against real risk, liabilities and protection needs.</p><div class="orb"></div></article>
+        <article class="service s4" data-reveal><span class="service-tag">04 · Governance</span><div class="arrow">↗</div><h3>Tax, legal & succession</h3><p>Tax planning, compliance, legal support, estate planning and succession conversations designed to keep wealth transfer intentional.</p><div class="orb"></div></article>
+        <article class="service s5" data-reveal><div><span class="service-tag">05 · Organisation</span><h3>HR solutions & business support</h3></div><p>From people systems to specialist support, the group extends beyond financial products to the operating decisions that help organisations move forward.</p><div class="arrow">↗</div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="model" id="approach">
+    <div class="wrap model-grid">
+      <div class="sticky-title" data-reveal><div class="eyebrow">Our approach</div><h2>Less noise.<br><span class="serif">More context.</span></h2><p style="margin-top:22px;max-width:390px;color:#718079;line-height:1.75;font-size:14px">Aarya's public positioning is advice-first: understand the client's actual situation, then determine what solutions fit, and review them over time.</p></div>
+      <div class="steps">
+        <div class="step active" data-reveal><div class="step-no">01</div><div><h3>Understand the whole position</h3><p>Map income, expenses, assets, liabilities, goals, risks and the decisions that matter most.</p></div></div>
+        <div class="step" data-reveal><div class="step-no">02</div><div><h3>Make the trade-offs visible</h3><p>Separate urgent problems from important ones — and make the cost of inaction easier to see.</p></div></div>
+        <div class="step" data-reveal><div class="step-no">03</div><div><h3>Build the right architecture</h3><p>Choose investments, insurance, tax, legal or business solutions against a defined objective rather than a product list.</p></div></div>
+        <div class="step" data-reveal><div class="step-no">04</div><div><h3>Review with discipline</h3><p>Markets change. Businesses change. Families change. A review rhythm keeps the strategy aligned.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intelligence">
+    <div class="wrap">
+      <div class="section-head" data-reveal><div><div class="eyebrow">A better way to look at money</div><h2>Decision-making,<br><span class="serif">not dashboards.</span></h2></div><p>Use the visual language of institutional finance without pretending this demo is a live client portal. The point is confidence, context and clarity.</p></div>
+      <div class="intel-canvas" data-reveal>
+        <div class="intel-grid">
+          <div class="intel-panel large"><div class="intel-title">Illustrative wealth allocation</div><div class="intel-sub">Long-term mix · reviewed against goals</div><div class="bars">
+            <span class="bar" style="--h:46%"></span><span class="bar" style="--h:61%"></span><span class="bar" style="--h:53%"></span><span class="bar" style="--h:77%"></span><span class="bar" style="--h:69%"></span><span class="bar" style="--h:88%"></span><span class="bar" style="--h:72%"></span><span class="bar" style="--h:95%"></span><span class="bar" style="--h:82%"></span><span class="bar" style="--h:100%"></span>
+          </div><div style="display:flex;justify-content:space-between;color:#72827a;font-size:9px;text-transform:uppercase;letter-spacing:.09em"><span>Equity</span><span>Fixed income</span><span>Alternatives</span><span>Cash</span></div></div>
+          <div class="intel-panel"><div class="intel-title">Goal readiness</div><div class="intel-sub">Illustrative coverage index</div><div class="ring"><div style="position:relative;z-index:2;text-align:center"><strong>73%</strong><small>on track</small></div></div><div class="quote">“The strongest financial plan is the one that still makes sense when the market is noisy.”</div></div>
+        </div>
+        <div class="metric-row"><div class="metric"><b>01</b><span>Review the portfolio</span></div><div class="metric"><b>02</b><span>Stress-test the plan</span></div><div class="metric"><b>03</b><span>Act with context</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="leaders" id="leadership">
+    <div class="wrap">
+      <div class="section-head" data-reveal><div><div class="eyebrow">Leadership</div><h2>Experience with an<br><span class="serif">entrepreneurial lens.</span></h2></div><p>The existing Aarya Group team combines experienced financial professionals with a focus on technology and new-business strategy.</p></div>
+      <div class="leader-grid">
+        <article class="leader" data-reveal><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1000&q=86" alt="Professional portrait placeholder"><div class="leader-copy"><div><div class="leader-role">Founder & Chairman · Chief Mentor</div><h3>Sanjay K Gupta</h3><p>NISM Level 10A Investment Advisor with 25+ years across financial planning, wealth portfolio management and succession planning.</p></div><div class="credential">Certified Financial Consultant · LUTCF · Financial Services Specialist · Chartered Inheritance & Succession Planner · MDRT Court of the Table qualifier</div></div></article>
+        <article class="leader-mini" data-reveal><div><div class="leader-role">Innovation & new business strategy</div><div class="big">Tech +<br>human<br>judgement.</div></div><div><p>Aarya Gupta leads technology and AI adoption across service delivery, while driving market research and new-venture strategy.</p><div class="chip-row" style="margin-top:17px"><span class="chip">AI adoption</span><span class="chip">Research</span><span class="chip">New ventures</span><span class="chip">Quality systems</span></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="coverage" id="presence">
+    <div class="wrap coverage-grid">
+      <div class="map-card" data-reveal>
+        <div class="map-grid"></div><div class="pin p1"><span>Kolkata · HO</span></div><div class="pin p2"><span>Gurugram</span></div><div class="pin p3"><span>Mumbai</span></div><div class="pin p4"><span>Pan-India</span></div>
+        <div class="map-caption"><strong>Local enough to understand.</strong><p>Structured enough to serve complex, long-term relationships.</p></div>
+      </div>
+      <div class="coverage-copy" data-reveal><div class="eyebrow">Presence</div><h2>Rooted in <span class="serif">India.</span><br>Built for the long term.</h2><p>Headquartered in Kolkata, Aarya Group describes a pan-India presence and serves clients in India and internationally. The redesigned experience turns that breadth into a calmer, more institutional brand language.</p><div class="office-list"><div class="office"><strong>Kolkata</strong><span>Head Office</span></div><div class="office"><strong>Gurugram</strong><span>Office</span></div><div class="office"><strong>Across India</strong><span>Pan-India presence</span></div></div></div>
+    </div>
+  </section>
+
+  <section class="final-cta" id="contact">
+    <div class="wrap">
+      <div class="cta-box" data-reveal>
+        <div class="eyebrow">Start with a conversation</div>
+        <h2>Bring us the decision.<br><span class="serif">We'll bring the context.</span></h2>
+        <p>Tell us what you are trying to solve — wealth, tax, assurance, legal, people or a bigger business decision — and we'll route you to the right team.</p>
+        <div class="hero-actions"><a href="tel:+919038620055" class="cta lime">Call +91 90386 20055 ↗</a><a href="https://aaryaconsultants.com/contact" class="cta" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12);color:white">Send an email</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div><a href="#top" class="brand"><span class="brand-mark"></span><span class="brand-copy"><strong>AARYA</strong><span style="color:#75857d">Group</span></span></a><p class="foot-desc">A consortium of entrepreneurs and a family of advisors — connecting financial, investment, accounting, audit, legal and business support around a single client view.</p></div>
+      <div class="foot-col"><h4>Explore</h4><a href="#approach">Our approach</a><a href="#capabilities">Capabilities</a><a href="#leadership">Leadership</a><a href="#presence">Presence</a></div>
+      <div class="foot-col"><h4>Services</h4><a href="#capabilities">Financial planning</a><a href="#capabilities">Audit & assurance</a><a href="#capabilities">Taxation</a><a href="#capabilities">Legal & succession</a></div>
+      <div class="foot-col"><h4>Contact</h4><a href="tel:+919038620055">+91 90386 20055</a><a href="https://aaryaconsultants.com/contact">hello@aaryaconsultants.com</a><a href="#contact">Book a consultation ↗</a></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Aarya Group. Concept redesign / prototype.</span><span>73C, Shyama Prasad Mukherjee Road · Kolkata 700026</span></div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = [...document.querySelectorAll('[data-reveal]')];
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    })
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  revealEls.forEach((el,i)=>{ el.style.transitionDelay = (el.dataset.revealDelay ? `${Number(el.dataset.revealDelay)*.11}s` : '') || (i%4)*.045 + 's'; obs.observe(el); });
+
+  const counters = document.querySelectorAll('.counter');
+  const countObs = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el=entry.target, target=Number(el.dataset.target), start=performance.now(), duration=1200;
+      const tick=(t)=>{
+        const p=Math.min(1,(t-start)/duration), eased=1-Math.pow(1-p,3);
+        el.textContent = target>=1000 ? Math.round(target*eased).toLocaleString('en-IN')+'+' : Math.round(target*eased)+'+';
+        if(p<1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick); countObs.unobserve(el);
+    })
+  },{threshold:.7}); counters.forEach(c=>countObs.observe(c));
+
+  const glow=document.getElementById('cursorGlow');
+  window.addEventListener('pointermove',(e)=>{ glow.style.left=e.clientX+'px'; glow.style.top=e.clientY+'px'; },{passive:true});
+
+  const tilt=document.getElementById('tiltCard');
+  if(tilt && matchMedia('(pointer:fine)').matches){
+    tilt.addEventListener('pointermove',(e)=>{
+      const r=tilt.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      tilt.style.transform=`rotateX(${(-y*4).toFixed(2)}deg) rotateY(${(x*5).toFixed(2)}deg) rotateZ(-2deg) translateY(-5px)`;
+    });
+    tilt.addEventListener('pointerleave',()=> tilt.style.transform='rotate(-2.8deg)');
+  }
+
+  document.querySelectorAll('.step').forEach(step=>step.addEventListener('mouseenter',()=>{
+    document.querySelectorAll('.step').forEach(s=>s.classList.remove('active')); step.classList.add('active');
+  }));
+
+  const menu=document.querySelector('.menu');
+  menu?.addEventListener('click',()=>{
+    const links=document.querySelector('.nav-links');
+    const open=links.dataset.open==='1'; links.dataset.open=open?'0':'1';
+    links.style.cssText = open ? '' : 'display:flex;position:absolute;top:68px;left:14px;right:14px;padding:16px;border-radius:18px;background:white;border:1px solid #dfe5e1;box-shadow:0 20px 45px rgba(7,18,15,.12);flex-direction:column;align-items:flex-start;gap:16px;';
+  });
+
+  const nav=document.querySelector('header');
+  let last=0; window.addEventListener('scroll',()=>{ const y=window.scrollY; nav.style.boxShadow=y>18?'0 12px 35px rgba(7,18,15,.06)':'none'; last=y; },{passive:true});
+</script>
+</body>
+</html>
