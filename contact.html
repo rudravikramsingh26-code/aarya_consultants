@@ -155,7 +155,16 @@
     @media (max-width:860px){
       .footer-grid{grid-template-columns:1fr !important}
     }
-  </style>
+  
+    /* GSAP magnetic tilt support */
+    .card, .why-card, .perk-card, .value-card, .info-card, .reg-card, .leader-card, .channel-card {
+      will-change: transform;
+      transform-style: preserve-3d;
+    }
+    .grid-2, .grid-3, .grid-4, .grid-5, .why-grid, .pillars, .hubs-grid {
+      perspective: 1200px;
+    }
+</style>
 </head>
 <body>
 
@@ -455,6 +464,12 @@
     }
   });
 </script>
+
+
+<!-- GSAP & ScrollTrigger Animation Engine -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="animations.js"></script>
 
 </body>
 </html>
