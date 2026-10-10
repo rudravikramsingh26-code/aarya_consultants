@@ -1,151 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#081b45" />
-  <title>Taxation & GST Advisory — Aarya Consultants | Tax Planning</title>
-  <link rel="icon" href="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/favicon-1783876190136-01f3cca3.webp" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taxation & Audit | Aarya Consultants — Direct Tax, GST & Statutory Audit.</title>
+  <meta name="description" content="Statutory, internal, tax, stock and forensic audit. Income tax return filing, GST, TDS, PF & ESI, ROC compliance, and assessment representation for businesses and individuals.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   <style>
     :root{
       --navy: #081b45;
-      --navy-dark: #040e25;
+      --navy-dark: #040e24;
       --red: #e31e24;
-      --muted: #5e6b7e;
-      --line: #dfe5ee;
+      --red-hover: #c0141a;
       --paper: #f8fbff;
+      --paper-2: #eef4fc;
+      --line: rgba(8,27,69,0.08);
       --white: #ffffff;
-      --max: 1320px;
+      --max: 1220px;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--navy);overflow-x:hidden}
+    body{font-family:'DM Sans',sans-serif;color:#1e293b;background:var(--paper);line-height:1.6}
     a{color:inherit;text-decoration:none}
-    .wrap{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
-    .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--red)}
-    .serif{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500}
+    .wrap{width:min(calc(100% - 48px),var(--max));margin-inline:auto}
+    .eyebrow{font:800 11px/1 Manrope;color:var(--red);letter-spacing:.18em;text-transform:uppercase;display:inline-block;margin-bottom:12px}
+    .serif{font-family:'Playfair Display',serif;font-style:italic}
 
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,229,238,.85)}
-    nav{height:80px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:14px}
-    .brand-logo-img{height:42px;width:auto}
-    .brand-text strong{font-family:Manrope,sans-serif;font-size:17px;color:var(--navy)}
-    .brand-text span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:700;display:block}
-    .nav-links{display:flex;gap:26px;align-items:center}
-    .nav-links a{font-size:13px;color:#415065;font-weight:600}
-    .nav-links a:hover{color:var(--red)}
-    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700}
-    .pill.red{background:var(--red);color:white;border-color:var(--red)}
-
-    .page-hero{padding:90px 0 60px;background:linear-gradient(135deg,rgba(8,27,69,.05),rgba(227,30,36,.03))}
-    .page-hero h1{font:800 clamp(40px,5vw,68px)/1.02 Manrope;letter-spacing:-.05em;margin-top:14px;color:var(--navy)}
-    .page-hero p{max-width:680px;font-size:17px;color:#506277;line-height:1.75;margin-top:20px}
-
-    section{padding:80px 0}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-    .card-box{background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px;box-shadow:0 14px 40px rgba(8,27,69,.05)}
-    .card-box h3{font:700 22px Manrope;color:var(--navy);margin-bottom:12px}
-    .card-box p{font-size:14px;color:#596b82;line-height:1.7}
-
-    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
-    .pillar{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}
-    .pillar b{color:var(--red);font-size:13px;font-family:Manrope}
-    .pillar h4{font:700 19px Manrope;color:var(--navy);margin:10px 0 8px}
-    .pillar p{font-size:13px;color:#607185;line-height:1.6}
-
-    footer{background:var(--navy-dark);color:#bccce2;padding:58px 0 30px;border-top:4px solid var(--red)}
-    .footer-grid{display:grid;grid-template-columns:1.4fr .7fr .7fr .9fr;gap:35px}
-    .foot-logo{height:36px;filter:brightness(0) invert(1);margin-bottom:14px}
-    .foot-col h4{font:700 11px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#f0f5fc;margin-bottom:13px}
-    .foot-col a{display:block;font-size:12px;color:#8fa5c2;margin:9px 0}
-    .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-top:20px;color:#6d83a1;font-size:10px}
-
-    @media(max-width:860px){
-      .grid-2,.pillars,.footer-grid{grid-template-columns:1fr}
-      .nav-links{display:none}
-    }
-  
-    /* Navigation Dropdown & Mobile Menu Styles */
-    .nav-dropdown{position:relative;display:inline-block}
-    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
-    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:10px;min-width:220px;flex-direction:column;gap:4px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
-    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
-    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
-    .menu{display:none;border:0;background:var(--white);width:42px;height:42px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
-    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
-    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center}
-    .pill:hover{border-color:var(--navy);background:var(--paper)}
-    .pill.red{background:var(--red);color:white;border-color:var(--red);padding-inline:20px;box-shadow:0 4px 16px rgba(227,30,36,.25)}
-    .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
-
-    @media (max-width: 992px){
-      .nav-links{display:none}
-      .menu{display:flex}
-      .nav-links[data-open="1"]{
-        display:flex !important;
-        position:absolute;top:80px;left:14px;right:14px;
-        padding:22px;border-radius:20px;background:white;
-        border:1px solid var(--line);
-        box-shadow:0 24px 60px rgba(8,27,69,.18);
-        flex-direction:column;align-items:flex-start;gap:14px;
-        z-index:999;
-      }
-      .nav-links[data-open="1"] .dropdown-menu{
-        position:static;display:flex;opacity:1;transform:none;
-        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
-      }
-      .footer-grid{grid-template-columns:1fr !important}
-    }
-
-
-    /* Crisp Unified Header Layout */
+    /* Header */
+    header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
     nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;flex-shrink:0}
     .brand-logo-img{height:44px;width:auto;object-fit:contain}
     .nav-links{display:flex;gap:20px;align-items:center;flex-shrink:0}
     .nav-links a{font-size:13px;color:#334155;font-weight:600;white-space:nowrap;transition:color .2s ease}
     .nav-links a:hover{color:var(--red)}
+    .nav-dropdown{position:relative;display:inline-block}
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
+    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:10px;min-width:220px;flex-direction:column;gap:4px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
+    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
+    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
     .nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;white-space:nowrap}
     .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:9px 16px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center;white-space:nowrap}
     .pill:hover{border-color:var(--navy);background:var(--paper)}
-    .pill.red{background:var(--red);color:white;border-color:var(--red);padding:9px 20px;box-shadow:0 4px 16px rgba(227,30,36,.25);white-space:nowrap}
+    .pill.red{background:var(--red);color:white;border-color:var(--red);padding:9px 20px;box-shadow:0 4px 16px rgba(227,30,36,.25)}
     .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
-    .menu{display:none;border:0;background:var(--white);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
-    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
+    .menu{display:none;border:1px solid var(--line);background:var(--white);width:44px;height:44px;border-radius:50%;cursor:pointer;align-items:center;justify-content:center;padding:0;color:var(--navy);box-shadow:0 2px 10px rgba(8,27,69,.06);transition:all .2s ease;flex-shrink:0}
+    .menu:hover{border-color:var(--navy);background:var(--paper)}
+    .mobile-nav-cta{display:none}
 
+    /* Page Hero */
+    .page-hero{background:#081b45;color:white;padding:84px 0 64px;border-bottom:1px solid rgba(255,255,255,.1);text-align:center}
+    .page-hero .eyebrow{color:#ff6b6e}
+    .page-hero h1{font:800 clamp(36px,4.5vw,56px)/1.08 Manrope;margin-bottom:14px;letter-spacing:-.02em}
+    .page-hero p{font-size:17px;color:#c9d7ec;max-width:820px;margin:0 auto 24px;line-height:1.7}
 
-    /* Universal Mobile & Tablet Grid Adjustments */
+    /* Content Grids */
+    section{padding:80px 0}
+    .section-head{text-align:center;max-width:780px;margin:0 auto 44px}
+    .section-head h2{font:800 clamp(30px,3.6vw,44px)/1.12 Manrope;color:var(--navy);margin-top:8px}
+    .section-head p{color:#546478;font-size:15px;margin-top:10px}
+
+    .tax-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .tax-card{background:white;border:1px solid var(--line);border-radius:22px;padding:28px 24px;box-shadow:0 8px 24px rgba(8,27,69,.04);transition:all .3s ease;display:flex;flex-direction:column}
+    .tax-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(8,27,69,.1);border-color:var(--red)}
+    .tax-icon{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#081b45,#162f6b);color:white;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px}
+    .tax-icon svg{width:22px;height:22px}
+    .tax-card h4{font:800 18px Manrope;color:var(--navy);margin-bottom:8px}
+    .tax-card p{font-size:13px;color:#546478;line-height:1.65;margin:0}
+
+    /* Regime Callout */
+    .regime-box{background:linear-gradient(135deg,#081b45,#0d255a);color:white;border-radius:24px;padding:36px;margin:50px 0;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .regime-box h3{font:800 24px Manrope;margin-bottom:8px}
+    .regime-box p{color:#c9d7ec;font-size:14px;max-width:680px;margin:0;line-height:1.7}
+
+    /* Audit Practice */
+    .audit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .audit-card{background:white;border:1px solid var(--line);border-radius:22px;padding:28px 24px;box-shadow:0 8px 24px rgba(8,27,69,.04);transition:all .3s ease}
+    .audit-card:hover{transform:translateY(-4px);border-color:rgba(8,27,69,.25)}
+    .audit-card b{display:inline-block;font:800 11px Manrope;letter-spacing:.12em;color:var(--red);text-transform:uppercase;margin-bottom:8px}
+    .audit-card h4{font:800 18px Manrope;color:var(--navy);margin-bottom:8px}
+    .audit-card p{font-size:13px;color:#546478;line-height:1.65;margin:0}
+
+    /* Footer */
+    footer{background:#040e24;color:#a4bad5;padding:70px 0 35px;border-top:1px solid rgba(255,255,255,.08)}
+    .footer-grid{display:grid;grid-template-columns:1.4fr .8fr .9fr 1.1fr;gap:40px}
+    .foot-logo{height:44px;width:auto;margin-bottom:14px}
+    .foot-desc{font-size:13px;line-height:1.7;color:#8da0b8}
+    .foot-col h4{font:700 13px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#fff;margin-bottom:18px}
+    .foot-col a{display:block;color:#8da0b8;font-size:13px;margin-bottom:10px;transition:color .2s}
+    .foot-col a:hover{color:var(--red)}
+    .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:20px;color:#6d83a1;font-size:10px}
+
+    /* Responsive */
     @media (max-width: 992px){
-      .grid-2, .career-grid, .contact-grid, .service-row{grid-template-columns:1fr !important;gap:36px}
-      .pillars, .values-grid{grid-template-columns:repeat(2,1fr) !important}
-      .feat-list{grid-template-columns:1fr 1fr !important}
-      .wrap{width:calc(100% - 32px)}
+      .tax-grid,.audit-grid{grid-template-columns:repeat(2,1fr)}
+      .regime-box{flex-direction:column;align-items:flex-start}
       .nav-links{display:none}
+      .nav-actions .pill{display:none !important}
       .menu{display:flex !important}
       .nav-links[data-open="1"]{
         display:flex !important;
         position:absolute;top:78px;left:14px;right:14px;
         padding:22px;border-radius:20px;background:white;
         border:1px solid var(--line);
-        box-shadow:0 24px 60px rgba(8,27,69,.18);
-        flex-direction:column;align-items:flex-start;gap:14px;
-        z-index:999;
+        box-shadow:0 24px 60px rgba(8,27,69,.22);
+        flex-direction:column;align-items:stretch;gap:12px;
+        z-index:9999;
+        max-height:calc(100vh - 95px);
+        overflow-y:auto;
       }
+      .nav-links[data-open="1"] a{padding:10px 14px;border-radius:10px;font-size:14px;font-weight:600;color:var(--navy)}
+      .nav-links[data-open="1"] a:hover{background:var(--paper-2);color:var(--red)}
       .nav-links[data-open="1"] .dropdown-menu{
-        position:static;display:flex;opacity:1;transform:none;
-        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
+        position:static;display:flex;opacity:1;pointer-events:auto;transform:none;
+        box-shadow:none;border:1px solid var(--line);padding:10px;background:var(--paper);width:100%;border-radius:12px;
+      }
+      .nav-links[data-open="1"] .mobile-nav-cta{
+        display:flex;flex-direction:column;gap:10px;margin-top:10px;padding-top:14px;border-top:1px solid var(--line);
       }
       .footer-grid{grid-template-columns:1fr !important}
     }
-    @media (max-width: 580px){
-      .pillars, .values-grid, .feat-list{grid-template-columns:1fr !important}
-      .nav-actions .pill:first-child{display:none}
+    @media (max-width: 600px){
+      .tax-grid,.audit-grid{grid-template-columns:1fr}
       .wrap{width:calc(100% - 24px)}
     }
-
-</style>
+  </style>
 </head>
 <body>
 
@@ -161,77 +141,261 @@
         <div class="nav-dropdown">
           <a href="services.html" style="color:var(--red)">Services ▾</a>
           <div class="dropdown-menu">
+            <a href="services.html">All Services Overview</a>
             <a href="financial-planning.html">Financial Planning</a>
             <a href="financial-services.html">Financial Services</a>
-            <a href="taxation.html" style="color:var(--red);font-weight:700">Taxation</a>
-            <a href="legal-services.html">Legal Services</a>
+            <a href="taxation.html" style="color:var(--red);font-weight:700">Taxation & Audit</a>
+            <a href="legal-services.html">Legal & Succession</a>
             <a href="hr-solutions.html">HR Solutions</a>
-            <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+            <a href="elderly-care.html">Elderly Care (Samman)</a>
           </div>
         </div>
         <a href="index.html#wall-of-frames">Wall of Frames</a>
         <a href="index.html#leadership">Leadership</a>
         <a href="career.html">Career</a>
         <a href="contact.html">Contact</a>
+        <div class="mobile-nav-cta">
+          <a class="pill" href="tel:+919038620055" style="justify-content:center;text-align:center">Call +91 90386 20055</a>
+          <a class="pill red" href="contact.html" style="justify-content:center;text-align:center">Book Consultation ↗</a>
+        </div>
       </div>
       <div class="nav-actions">
         <a class="pill" href="tel:+919038620055">Call +91 90386 20055</a>
         <a class="pill red" href="contact.html">Book Consultation ↗</a>
-        <button class="menu" type="button" aria-label="Open navigation"><span></span><span></span><span></span></button>
+        <button class="menu" type="button" aria-label="Toggle navigation">
+          <svg class="menu-open-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#081b45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="menu-close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e31e24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </nav>
   </div>
 </header>
 
 <main>
+  <!-- Hero Section Matching Live Site -->
   <div class="page-hero">
     <div class="wrap">
-      <span class="eyebrow">Vertical 03 · Tax Architecture</span>
-      <h1>Direct Tax & <br><span class="serif">GST Compliance Advisory.</span></h1>
-      <p>Proactive tax planning that aligns with investment timing, business restructuring, and regulatory standards to protect your bottom line from avoidable penalties.</p>
+      <span class="eyebrow">Vertical 03 · Direct & Indirect Tax</span>
+      <h1>Taxation & Audit Services</h1>
+      <p>Statutory, internal, tax, stock and forensic audit. Bookkeeping, financial statements, payroll and ROC compliance. Income tax, GST, TDS, PF & ESI, entity formation, licences and assessment support - for individuals, NRIs, firms and companies.</p>
+      <a href="contact.html" class="pill red">File With Aarya ↗</a>
     </div>
   </div>
 
+  <!-- Our Taxation Services (From Live Site!) -->
   <section>
-    <div class="wrap grid-2">
-      <div>
-        <span class="eyebrow">Strategic Tax Discipline</span>
-        <h2 style="font:800 clamp(32px,3.8vw,46px)/1.08 Manrope;color:var(--navy);margin:12px 0 20px">Unified Corporate & Individual Tax Roadmaps</h2>
-        <p style="font-size:15px;line-height:1.75;color:#526377;margin-bottom:16px">
-          Taxes should never be an afterthought computed at the end of the fiscal year. By synchronizing your corporate bookkeeping, investment cash flows, and individual family filings, we optimize exemptions and ensure complete audit defensibility.
-        </p>
-        <p style="font-size:15px;line-height:1.75;color:#526377;margin-bottom:24px">
-          Our senior tax counsel represents clients during income tax assessments, appeals, TDS reconciliations, and complex GST input tax credit (ITC) audits.
-        </p>
-        <a href="contact.html" class="pill red" style="display:inline-block">Get a Tax Health Check ↗</a>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Tax Practice</span>
+        <h2>Our Taxation Services</h2>
+        <p>Year-round legitimate tax planning, filing compliance, and scrutiny support across individuals, corporate firms, and cross-border NRI estates.</p>
       </div>
-      <div class="card-box">
-        <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/industry-expertise-1784705555444-22e7f460.webp" alt="Tax Advisory" style="border-radius:16px;width:100%;height:220px;object-fit:cover;margin-bottom:20px">
-        <h3>Proactive GST & Direct Tax Defense</h3>
-        <p>Stay ahead of dynamic tax notices with continuous GST reconciliation, TDS compliance, and advanced tax planning tailored to your sector.</p>
+
+      <div class="tax-grid">
+        <!-- 1. Income Tax Return Filing -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+          </div>
+          <h4>Income Tax Return Filing</h4>
+          <p>Salaried, business, capital gains, foreign income, and NRI returns prepared with meticulous calculation and complete working papers retained for you.</p>
+        </div>
+
+        <!-- 2. Tax Planning -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 19 21 12 17 5 21 12 2"/>
+            </svg>
+          </div>
+          <h4>Tax Planning</h4>
+          <p>Legitimate, documented tax planning across the year rather than a scramble in March. Advance tax computation, timing reviews, and payment scheduling.</p>
+        </div>
+
+        <!-- 3. GST Compliance -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16.5 9.4 7.55 4.24a1.78 1.78 0 0 0-2.5 1.55v12.42a1.78 1.78 0 0 0 2.5 1.55L16.5 14.6a1.78 1.78 0 0 0 0-3.2z"/>
+            </svg>
+          </div>
+          <h4>GST Compliance</h4>
+          <p>Registration, monthly (GSTR-1/3B) and quarterly returns, annual return (GSTR-9/9C) reconciliation, input tax credit (ITC) audit, and refund claims.</p>
+        </div>
+
+        <!-- 4. TDS Compliance -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <line x1="12" y1="8" x2="12" y2="16"/>
+              <line x1="8" y1="12" x2="16" y2="12"/>
+            </svg>
+          </div>
+          <h4>TDS Compliance</h4>
+          <p>Monthly deduction working, government challan payment, quarterly returns (24Q/26Q), and timely Form 16 / 16A generation and issuance.</p>
+        </div>
+
+        <!-- 5. PF, ESI & Payroll -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h4>PF, ESI & Payroll</h4>
+          <p>Registration, monthly employee contributions, statutory returns, and complete employee-level compliance records maintained to audit readiness.</p>
+        </div>
+
+        <!-- 6. Entity Formation -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="2" width="16" height="20" rx="2"/>
+              <path d="M10 22v-4h4v4"/>
+            </svg>
+          </div>
+          <h4>Entity Formation</h4>
+          <p>Incorporation of Private Limited companies, Limited Liability Partnerships (LLPs), partnerships, proprietorships, trusts, and Hindu Undivided Families (HUFs).</p>
+        </div>
+
+        <!-- 7. Licences & Registrations -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h4>Licences & Registrations</h4>
+          <p>Trade licence, food licence (FSSAI), MSME / Udyam registration, professional tax (P-Tax), and Shops & Establishments Act compliance.</p>
+        </div>
+
+        <!-- 8. ROC & Business Compliance -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18M5 21V10l7-5 7 5v11"/>
+            </svg>
+          </div>
+          <h4>ROC & Corporate Compliance</h4>
+          <p>Annual company filing (AOC-4, MGT-7), director KYC (DIR-3 KYC), auditor appointments (ADT-1), and event-based MCA statutory filings.</p>
+        </div>
+
+        <!-- 9. Notices & Appeals -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <h4>Notices, Assessments & Appeals</h4>
+          <p>Response drafting, evidence collation, and representation before tax authorities for scrutiny notices, demand rectifications, and appellate matters.</p>
+        </div>
+
+        <!-- 10. Export & Import Benefits -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+            </svg>
+          </div>
+          <h4>Export & Import Benefits</h4>
+          <p>Advisory and claim facilitation for RoDTEP, RoSCTL, duty drawback, and customs incentive schemes for commercial export-import clients.</p>
+        </div>
+
+        <!-- 11. Cross-Border & NRI Tax -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h4>Cross-Border & NRI Taxation</h4>
+          <p>Double Tax Avoidance Agreement (DTAA) optimization, foreign asset reporting (Schedule FA), 15CA/CB remittances, and capital gains on Indian real estate sales.</p>
+        </div>
+
+        <!-- 12. Due Date Calendar -->
+        <div class="tax-card">
+          <div class="tax-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <h4>Never Miss a Due Date</h4>
+          <p>Monthly, quarterly, and annual obligations—TDS, GST, PF, advance tax, and ROC audit milestones—tracked and managed with proactive alerts.</p>
+        </div>
+      </div>
+
+      <!-- Regime Explainer Callout (from Live Site!) -->
+      <div class="regime-box">
+        <div>
+          <h3>Old Regime or New Regime — How to Decide?</h3>
+          <p>A plain-language comparison calibrated to your actual deductions, HRA, home loan interest, and business expenses. Refreshed each assessment year so your tax strategy is always optimized for minimum liability.</p>
+        </div>
+        <a href="contact.html" class="pill" style="background:white;color:var(--navy);white-space:nowrap">Compare My Tax Options ↗</a>
       </div>
     </div>
   </section>
 
+  <!-- What We Deliver: Audit & Assurance Practice (Exact from Live Site!) -->
   <section style="background:var(--white)">
     <div class="wrap">
-      <span class="eyebrow">Our Taxation Expertise</span>
-      <h2 style="font:800 38px Manrope;color:var(--navy);margin-top:10px">Tax Verticals We Manage</h2>
-      <div class="pillars">
-        <div class="pillar">
-          <b>TAX 01</b>
-          <h4>Corporate Income Tax</h4>
-          <p>Advance tax planning, corporate return preparation, MAT credit optimization, and structural dividend planning.</p>
+      <div class="section-head">
+        <span class="eyebrow">Assurance & Governance</span>
+        <h2>What We Deliver — Audit & Assurance</h2>
+        <p>Conducted by experienced Chartered Accountants to deliver rigorous compliance and practical operational value.</p>
+      </div>
+
+      <div class="audit-grid">
+        <div class="audit-card">
+          <b>Companies Act</b>
+          <h4>Statutory Audit</h4>
+          <p>Independent audit of financial statements under the Companies Act and Indian accounting standards, accompanied by a management letter that is actually actionable.</p>
         </div>
-        <div class="pillar">
-          <b>TAX 02</b>
-          <h4>GST Advisory & Filings</h4>
-          <p>Monthly GSTR filings, annual returns, input tax credit reconciliation, GST health check audits, and notice representation.</p>
+
+        <div class="audit-card">
+          <b>Risk & Controls</b>
+          <h4>Internal Audit</h4>
+          <p>Process, control, and risk reviews on an agreed cycle, complete with practical remediation steps, fraud prevention tests, and follow-up reviews.</p>
         </div>
-        <div class="pillar">
-          <b>TAX 03</b>
-          <h4>Scrutiny & Assessment Appeals</h4>
-          <p>Handling faceless assessments, response filings before tax authorities, appellate submissions, and penalty revocations.</p>
+
+        <div class="audit-card">
+          <b>Section 44AB</b>
+          <h4>Tax Audit</h4>
+          <p>Comprehensive audit under Section 44AB with rigorous reconciliation of books to tax returns and early flagging of disallowance risks.</p>
+        </div>
+
+        <div class="audit-card">
+          <b>Investigation</b>
+          <h4>Forensic Audit</h4>
+          <p>In-depth investigation into suspected misappropriation, revenue leakage, or reporting irregularities, documented to withstand court scrutiny.</p>
+        </div>
+
+        <div class="audit-card">
+          <b>Physical Verification</b>
+          <h4>Stock & Fixed Asset Audit</h4>
+          <p>Physical verification of inventory, warehouses, and plant assets with valuation reviews, variance analysis, and reconciliation reporting.</p>
+        </div>
+
+        <div class="audit-card">
+          <b>Full Lifecycle</b>
+          <h4>Financial Statements & Books</h4>
+          <p>Ledger maintenance, reconciliations, and month-end close—on your software or ours—with full balance sheet, P&L, and notes ready for statutory audit.</p>
         </div>
       </div>
     </div>
@@ -264,18 +428,18 @@
       <div class="foot-col">
         <h4>Services</h4>
         <a href="financial-planning.html">Financial Planning</a>
-        <a href="financial-services.html">Audit & Assurance</a>
-        <a href="taxation.html">Taxation & GST</a>
+        <a href="financial-services.html">Financial Services</a>
+        <a href="taxation.html">Taxation & Audit</a>
         <a href="legal-services.html">Legal & Succession</a>
         <a href="hr-solutions.html">HR Solutions</a>
-        <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+        <a href="elderly-care.html">Elderly Care (Samman)</a>
       </div>
 
       <div class="foot-col">
         <h4>Offices & Contact</h4>
         <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:12px">
           <strong style="color:#fff;display:block">Kolkata Head Office:</strong>
-          73C, Shyama Prasad Mukherjee Road,<br>Kolkata - 700026, West Bengal
+          73C, Shyama Prasad Mukherjee Road, beside Kalighat Post Office,<br>Kolkata - 700026, West Bengal
         </p>
         <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:14px">
           <strong style="color:#fff;display:block">Gurugram Office:</strong>
@@ -294,13 +458,32 @@
   </div>
 </footer>
 
-
 <script>
   const menu = document.querySelector('.menu');
-  menu?.addEventListener('click', () => {
-    const links = document.querySelector('.nav-links');
-    const open = links.dataset.open === '1';
-    links.dataset.open = open ? '0' : '1';
+  const links = document.querySelector('.nav-links');
+  const openIcon = menu?.querySelector('.menu-open-icon');
+  const closeIcon = menu?.querySelector('.menu-close-icon');
+
+  menu?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = links.getAttribute('data-open') === '1';
+    if(isOpen){
+      links.removeAttribute('data-open');
+      if(openIcon) openIcon.style.display = 'block';
+      if(closeIcon) closeIcon.style.display = 'none';
+    } else {
+      links.setAttribute('data-open', '1');
+      if(openIcon) openIcon.style.display = 'none';
+      if(closeIcon) closeIcon.style.display = 'block';
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if(links && links.getAttribute('data-open') === '1' && !links.contains(e.target) && !menu?.contains(e.target)){
+      links.removeAttribute('data-open');
+      if(openIcon) openIcon.style.display = 'block';
+      if(closeIcon) closeIcon.style.display = 'none';
+    }
   });
 </script>
 

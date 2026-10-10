@@ -1,151 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#081b45" />
-  <title>Audit & Financial Services — Aarya Consultants | Assurance & Controls</title>
-  <link rel="icon" href="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/favicon-1783876190136-01f3cca3.webp" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Services | Aarya Consultants — Plan It Once. Review It Forever.</title>
+  <meta name="description" content="SEBI, RBI, and IRDA licensed distributors of Mutual Funds, Stocks, Life & Health Insurance, Fixed Deposits, PMS, AIFs, and GIFT City NRI investments.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   <style>
     :root{
       --navy: #081b45;
-      --navy-dark: #040e25;
+      --navy-dark: #040e24;
       --red: #e31e24;
-      --muted: #5e6b7e;
-      --line: #dfe5ee;
+      --red-hover: #c0141a;
       --paper: #f8fbff;
+      --paper-2: #eef4fc;
+      --line: rgba(8,27,69,0.08);
       --white: #ffffff;
-      --max: 1320px;
+      --max: 1220px;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--navy);overflow-x:hidden}
+    body{font-family:'DM Sans',sans-serif;color:#1e293b;background:var(--paper);line-height:1.6}
     a{color:inherit;text-decoration:none}
-    .wrap{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
-    .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--red)}
-    .serif{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500}
+    .wrap{width:min(calc(100% - 48px),var(--max));margin-inline:auto}
+    .eyebrow{font:800 11px/1 Manrope;color:var(--red);letter-spacing:.18em;text-transform:uppercase;display:inline-block;margin-bottom:12px}
+    .serif{font-family:'Playfair Display',serif;font-style:italic}
 
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,229,238,.85)}
-    nav{height:80px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:14px}
-    .brand-logo-img{height:42px;width:auto}
-    .brand-text strong{font-family:Manrope,sans-serif;font-size:17px;color:var(--navy)}
-    .brand-text span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:700;display:block}
-    .nav-links{display:flex;gap:26px;align-items:center}
-    .nav-links a{font-size:13px;color:#415065;font-weight:600}
-    .nav-links a:hover{color:var(--red)}
-    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700}
-    .pill.red{background:var(--red);color:white;border-color:var(--red)}
-
-    .page-hero{padding:90px 0 60px;background:linear-gradient(135deg,rgba(8,27,69,.05),rgba(227,30,36,.03))}
-    .page-hero h1{font:800 clamp(40px,5vw,68px)/1.02 Manrope;letter-spacing:-.05em;margin-top:14px;color:var(--navy)}
-    .page-hero p{max-width:680px;font-size:17px;color:#506277;line-height:1.75;margin-top:20px}
-
-    section{padding:80px 0}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-    .card-box{background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px;box-shadow:0 14px 40px rgba(8,27,69,.05)}
-    .card-box h3{font:700 22px Manrope;color:var(--navy);margin-bottom:12px}
-    .card-box p{font-size:14px;color:#596b82;line-height:1.7}
-
-    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
-    .pillar{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}
-    .pillar b{color:var(--red);font-size:13px;font-family:Manrope}
-    .pillar h4{font:700 19px Manrope;color:var(--navy);margin:10px 0 8px}
-    .pillar p{font-size:13px;color:#607185;line-height:1.6}
-
-    footer{background:var(--navy-dark);color:#bccce2;padding:58px 0 30px;border-top:4px solid var(--red)}
-    .footer-grid{display:grid;grid-template-columns:1.4fr .7fr .7fr .9fr;gap:35px}
-    .foot-logo{height:36px;filter:brightness(0) invert(1);margin-bottom:14px}
-    .foot-col h4{font:700 11px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#f0f5fc;margin-bottom:13px}
-    .foot-col a{display:block;font-size:12px;color:#8fa5c2;margin:9px 0}
-    .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-top:20px;color:#6d83a1;font-size:10px}
-
-    @media(max-width:860px){
-      .grid-2,.pillars,.footer-grid{grid-template-columns:1fr}
-      .nav-links{display:none}
-    }
-  
-    /* Navigation Dropdown & Mobile Menu Styles */
-    .nav-dropdown{position:relative;display:inline-block}
-    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
-    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:10px;min-width:220px;flex-direction:column;gap:4px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
-    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
-    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
-    .menu{display:none;border:0;background:var(--white);width:42px;height:42px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
-    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
-    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center}
-    .pill:hover{border-color:var(--navy);background:var(--paper)}
-    .pill.red{background:var(--red);color:white;border-color:var(--red);padding-inline:20px;box-shadow:0 4px 16px rgba(227,30,36,.25)}
-    .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
-
-    @media (max-width: 992px){
-      .nav-links{display:none}
-      .menu{display:flex}
-      .nav-links[data-open="1"]{
-        display:flex !important;
-        position:absolute;top:80px;left:14px;right:14px;
-        padding:22px;border-radius:20px;background:white;
-        border:1px solid var(--line);
-        box-shadow:0 24px 60px rgba(8,27,69,.18);
-        flex-direction:column;align-items:flex-start;gap:14px;
-        z-index:999;
-      }
-      .nav-links[data-open="1"] .dropdown-menu{
-        position:static;display:flex;opacity:1;transform:none;
-        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
-      }
-      .footer-grid{grid-template-columns:1fr !important}
-    }
-
-
-    /* Crisp Unified Header Layout */
+    /* Header */
+    header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
     nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;flex-shrink:0}
     .brand-logo-img{height:44px;width:auto;object-fit:contain}
     .nav-links{display:flex;gap:20px;align-items:center;flex-shrink:0}
     .nav-links a{font-size:13px;color:#334155;font-weight:600;white-space:nowrap;transition:color .2s ease}
     .nav-links a:hover{color:var(--red)}
+    .nav-dropdown{position:relative;display:inline-block}
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
+    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:10px;min-width:220px;flex-direction:column;gap:4px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
+    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
+    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
     .nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;white-space:nowrap}
     .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:9px 16px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center;white-space:nowrap}
     .pill:hover{border-color:var(--navy);background:var(--paper)}
-    .pill.red{background:var(--red);color:white;border-color:var(--red);padding:9px 20px;box-shadow:0 4px 16px rgba(227,30,36,.25);white-space:nowrap}
+    .pill.red{background:var(--red);color:white;border-color:var(--red);padding:9px 20px;box-shadow:0 4px 16px rgba(227,30,36,.25)}
     .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
-    .menu{display:none;border:0;background:var(--white);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
-    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
+    .menu{display:none;border:1px solid var(--line);background:var(--white);width:44px;height:44px;border-radius:50%;cursor:pointer;align-items:center;justify-content:center;padding:0;color:var(--navy);box-shadow:0 2px 10px rgba(8,27,69,.06);transition:all .2s ease;flex-shrink:0}
+    .menu:hover{border-color:var(--navy);background:var(--paper)}
+    .mobile-nav-cta{display:none}
 
+    /* Page Hero */
+    .page-hero{background:#081b45;color:white;padding:84px 0 64px;border-bottom:1px solid rgba(255,255,255,.1);text-align:center}
+    .page-hero .eyebrow{color:#ff6b6e}
+    .page-hero h1{font:800 clamp(36px,4.5vw,56px)/1.08 Manrope;margin-bottom:14px;letter-spacing:-.02em}
+    .page-hero p{font-size:17px;color:#c9d7ec;max-width:780px;margin:0 auto 24px;line-height:1.7}
 
-    /* Universal Mobile & Tablet Grid Adjustments */
+    /* License Banner */
+    .license-banner{background:white;border:1px solid var(--line);border-radius:24px;padding:32px 36px;box-shadow:0 12px 35px rgba(8,27,69,.05);display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:-38px;position:relative;z-index:10}
+    .license-info h3{font:800 20px Manrope;color:var(--navy);margin-bottom:6px}
+    .license-info p{color:#546478;font-size:14px;margin:0;line-height:1.6}
+    .license-badges{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
+    .lic-badge{background:var(--paper-2);border:1px solid var(--line);padding:8px 16px;border-radius:999px;font:700 12px Manrope;color:var(--navy)}
+
+    /* Products Grid (12 Offerings) */
+    section{padding:80px 0}
+    .section-head{text-align:center;max-width:760px;margin:0 auto 44px}
+    .section-head h2{font:800 clamp(30px,3.6vw,44px)/1.12 Manrope;color:var(--navy);margin-top:8px}
+    .section-head p{color:#546478;font-size:15px;margin-top:10px}
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .prod-card{background:white;border:1px solid var(--line);border-radius:22px;padding:30px 26px;box-shadow:0 8px 24px rgba(8,27,69,.04);transition:all .3s ease;display:flex;flex-direction:column}
+    .prod-card:hover{transform:translateY(-5px);box-shadow:0 18px 45px rgba(8,27,69,.1);border-color:var(--red)}
+    .prod-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#081b45,#162f6b);color:white;display:inline-flex;align-items:center;justify-content:center;margin-bottom:18px}
+    .prod-icon svg{width:22px;height:22px}
+    .prod-card h4{font:800 19px Manrope;color:var(--navy);margin-bottom:10px}
+    .prod-card p{font-size:13px;color:#546478;line-height:1.7;margin:0;flex-grow:1}
+
+    /* Why Choose Us & Benefits */
+    .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+    .benefit-card{background:white;border:1px solid var(--line);border-radius:22px;padding:32px 28px;box-shadow:0 10px 30px rgba(8,27,69,.04)}
+    .benefit-icon{width:46px;height:46px;border-radius:50%;background:rgba(227,30,36,.08);color:var(--red);display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px}
+    .benefit-icon svg{width:22px;height:22px}
+    .benefit-card h4{font:800 18px Manrope;color:var(--navy);margin-bottom:10px}
+    .benefit-card p{font-size:13px;color:#546478;line-height:1.7;margin:0}
+
+    /* Footer */
+    footer{background:#040e24;color:#a4bad5;padding:70px 0 35px;border-top:1px solid rgba(255,255,255,.08)}
+    .footer-grid{display:grid;grid-template-columns:1.4fr .8fr .9fr 1.1fr;gap:40px}
+    .foot-logo{height:44px;width:auto;margin-bottom:14px}
+    .foot-desc{font-size:13px;line-height:1.7;color:#8da0b8}
+    .foot-col h4{font:700 13px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#fff;margin-bottom:18px}
+    .foot-col a{display:block;color:#8da0b8;font-size:13px;margin-bottom:10px;transition:color .2s}
+    .foot-col a:hover{color:var(--red)}
+    .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:20px;color:#6d83a1;font-size:10px}
+
+    /* Responsive */
     @media (max-width: 992px){
-      .grid-2, .career-grid, .contact-grid, .service-row{grid-template-columns:1fr !important;gap:36px}
-      .pillars, .values-grid{grid-template-columns:repeat(2,1fr) !important}
-      .feat-list{grid-template-columns:1fr 1fr !important}
-      .wrap{width:calc(100% - 32px)}
+      .license-banner{flex-direction:column;align-items:flex-start}
+      .product-grid{grid-template-columns:repeat(2,1fr)}
+      .benefit-grid{grid-template-columns:1fr}
       .nav-links{display:none}
+      .nav-actions .pill{display:none !important}
       .menu{display:flex !important}
       .nav-links[data-open="1"]{
         display:flex !important;
         position:absolute;top:78px;left:14px;right:14px;
         padding:22px;border-radius:20px;background:white;
         border:1px solid var(--line);
-        box-shadow:0 24px 60px rgba(8,27,69,.18);
-        flex-direction:column;align-items:flex-start;gap:14px;
-        z-index:999;
+        box-shadow:0 24px 60px rgba(8,27,69,.22);
+        flex-direction:column;align-items:stretch;gap:12px;
+        z-index:9999;
+        max-height:calc(100vh - 95px);
+        overflow-y:auto;
       }
+      .nav-links[data-open="1"] a{padding:10px 14px;border-radius:10px;font-size:14px;font-weight:600;color:var(--navy)}
+      .nav-links[data-open="1"] a:hover{background:var(--paper-2);color:var(--red)}
       .nav-links[data-open="1"] .dropdown-menu{
-        position:static;display:flex;opacity:1;transform:none;
-        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
+        position:static;display:flex;opacity:1;pointer-events:auto;transform:none;
+        box-shadow:none;border:1px solid var(--line);padding:10px;background:var(--paper);width:100%;border-radius:12px;
+      }
+      .nav-links[data-open="1"] .mobile-nav-cta{
+        display:flex;flex-direction:column;gap:10px;margin-top:10px;padding-top:14px;border-top:1px solid var(--line);
       }
       .footer-grid{grid-template-columns:1fr !important}
     }
-    @media (max-width: 580px){
-      .pillars, .values-grid, .feat-list{grid-template-columns:1fr !important}
-      .nav-actions .pill:first-child{display:none}
+    @media (max-width: 600px){
+      .product-grid{grid-template-columns:1fr}
       .wrap{width:calc(100% - 24px)}
     }
-
-</style>
+  </style>
 </head>
 <body>
 
@@ -161,77 +143,270 @@
         <div class="nav-dropdown">
           <a href="services.html" style="color:var(--red)">Services ▾</a>
           <div class="dropdown-menu">
+            <a href="services.html">All Services Overview</a>
             <a href="financial-planning.html">Financial Planning</a>
             <a href="financial-services.html" style="color:var(--red);font-weight:700">Financial Services</a>
-            <a href="taxation.html">Taxation</a>
-            <a href="legal-services.html">Legal Services</a>
+            <a href="taxation.html">Taxation & Audit</a>
+            <a href="legal-services.html">Legal & Succession</a>
             <a href="hr-solutions.html">HR Solutions</a>
-            <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+            <a href="elderly-care.html">Elderly Care (Samman)</a>
           </div>
         </div>
         <a href="index.html#wall-of-frames">Wall of Frames</a>
         <a href="index.html#leadership">Leadership</a>
         <a href="career.html">Career</a>
         <a href="contact.html">Contact</a>
+        <div class="mobile-nav-cta">
+          <a class="pill" href="tel:+919038620055" style="justify-content:center;text-align:center">Call +91 90386 20055</a>
+          <a class="pill red" href="contact.html" style="justify-content:center;text-align:center">Book Consultation ↗</a>
+        </div>
       </div>
       <div class="nav-actions">
         <a class="pill" href="tel:+919038620055">Call +91 90386 20055</a>
         <a class="pill red" href="contact.html">Book Consultation ↗</a>
-        <button class="menu" type="button" aria-label="Open navigation"><span></span><span></span><span></span></button>
+        <button class="menu" type="button" aria-label="Toggle navigation">
+          <svg class="menu-open-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#081b45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="menu-close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e31e24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </nav>
   </div>
 </header>
 
 <main>
+  <!-- Hero Section Matching Live Site -->
   <div class="page-hero">
     <div class="wrap">
-      <span class="eyebrow">Vertical 02 · Corporate Assurance</span>
-      <h1>Audit & Assurance <br><span class="serif">Financial Services.</span></h1>
-      <p>Precision-driven statutory audit, internal controls, stock verification, and forensic reviews to instill corporate confidence among founders, boards, and lenders.</p>
+      <span class="eyebrow">Vertical 02 · Full Product Shelf</span>
+      <h1>Financial Services</h1>
+      <p>Plan It Once. Review It Forever. Goal-based financial planning and the full product shelf; chosen on merit, reviewed on schedule.</p>
+      <a href="contact.html" class="pill red">Book a Free Financial Health Check-up ↗</a>
     </div>
   </div>
 
-  <section>
-    <div class="wrap grid-2">
-      <div>
-        <span class="eyebrow">Assurance With Insight</span>
-        <h2 style="font:800 clamp(32px,3.8vw,46px)/1.08 Manrope;color:var(--navy);margin:12px 0 20px">Robust Financial Reporting & Risk Mitigation</h2>
-        <p style="font-size:15px;line-height:1.75;color:#526377;margin-bottom:16px">
-          Audit is more than a statutory box-ticking exercise. Our multidisciplinary audit teams evaluate internal accounting systems, expose cash-flow leakages, and ensure strict compliance with Indian Accounting Standards and regulatory frameworks.
-        </p>
-        <p style="font-size:15px;line-height:1.75;color:#526377;margin-bottom:24px">
-          Whether you are preparing for institutional fundraising, banking credit reviews, or statutory year-end disclosures, Aarya provides rigorous assurance.
-        </p>
-        <a href="contact.html" class="pill red" style="display:inline-block">Request Audit Consultation ↗</a>
+  <!-- Licensed Distributor Banner Matching Live Site -->
+  <div class="wrap">
+    <div class="license-banner">
+      <div class="license-info">
+        <span class="eyebrow" style="margin-bottom:6px">Authorized Distribution</span>
+        <h3>SEBI, RBI And IRDA Licensed Distributors</h3>
+        <p>We are one of the largest distributors of all kinds of Financial Products from Stocks, Mutual Funds, Fixed Deposits, Bonds, Life insurance, health insurance, and general insurance products.</p>
       </div>
-      <div class="card-box">
-        <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/strategy-consulting-1784705588687-f8052a5c.webp" alt="Strategy Consulting" style="border-radius:16px;width:100%;height:220px;object-fit:cover;margin-bottom:20px">
-        <h3>End-to-End Governance</h3>
-        <p>From statutory audits to inventory verification and forensic reconciliation, we safeguard your company's fiscal credibility before stakeholders and regulators.</p>
+      <div class="license-badges">
+        <span class="lic-badge">AMFI Registered</span>
+        <span class="lic-badge">IRDAI Licensed</span>
+        <span class="lic-badge">SEBI Intermediary</span>
+        <span class="lic-badge">RBI Registered FD Partners</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Our Offerings (All 12 Offerings from Live Site!) -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Our Complete Shelf</span>
+        <h2>Our Offerings</h2>
+        <p>Products curated across India’s leading institutions, independent of sales targets and aligned strictly to your goals.</p>
+      </div>
+
+      <div class="product-grid">
+        <!-- 1. Life Insurance -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h4>Life Insurance</h4>
+          <p>Protect your family’s financial future with life insurance solutions tailored to your needs. Aarya Consultants assesses your human life value, income, liabilities, and dependants to recommend suitable term, traditional, or unit-linked plans that provide meaningful, long-term security.</p>
+        </div>
+
+        <!-- 2. Health Insurance -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <h4>Health Insurance</h4>
+          <p>Secure your health and your family’s wellbeing with insurance plans tailored to your needs. We offer individual and family floater policies, super top-up covers, and senior citizen plans, backed by personalized guidance and dependable claim settlement support when it matters most.</p>
+        </div>
+
+        <!-- 3. General Insurance -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+          </div>
+          <h4>General Insurance</h4>
+          <p>Protect your assets, enterprise, and journeys. Comprehensive policies covering vehicle, residential, commercial office, godown fire covers, professional indemnity, export-import marine transit, and international travel health covers matched to your risk profile.</p>
+        </div>
+
+        <!-- 4. Mutual Funds & NFOs -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </div>
+          <h4>Mutual Funds & NFOs</h4>
+          <p>Build and grow your wealth with goal-oriented mutual fund and New Fund Offer (NFO) solutions. We select suitable AMFI-registered schemes through disciplined SIPs and lump-sum investments, backed by regular quarterly portfolio reviews and timely rebalancing.</p>
+        </div>
+
+        <!-- 5. Equity Broking & IPOs -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h4>Equity Broking & IPOs</h4>
+          <p>Access the equity markets with seamless investment support. We assist with Demat and trading account facilitation, IPO applications, and transaction execution, helping investors navigate market opportunities with informed guidance and disciplined risk control.</p>
+        </div>
+
+        <!-- 6. FDs, Bonds & Debentures -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h4>FDs, Bonds & Debentures</h4>
+          <p>Strengthen your portfolio with reliable fixed-income investment options. Access corporate and NBFC fixed deposits, sovereign and PSU bonds, and rated debentures to balance risk, preserve capital, and secure predictable coupon returns.</p>
+        </div>
+
+        <!-- 7. PPF, Post Office & NPS -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z"/>
+            </svg>
+          </div>
+          <h4>PPF, Post Office & NPS</h4>
+          <p>Secure long-term goals with Public Provident Fund and Post Office scheme advisory. We guide you through government-backed savings instruments designed for disciplined investing, sovereign capital security, tax-efficient deductions, and predictable maturity corpus.</p>
+        </div>
+
+        <!-- 8. Loans & Debt Advisory -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 2l-2 2m-1.5 6.5l3-3a3.5 3.5 0 1 0-5-5l-9.5 9.5a5 5 0 0 0-1.5 3.5V20h4.5a5 5 0 0 0 3.5-1.5l1.5-1.5"/>
+            </svg>
+          </div>
+          <h4>Loans & Financing</h4>
+          <p>Access competitive financing solutions. We assist with home loans, business loans, loan-against-property (LAP), and loan-against-securities (LAS) through our network of partner banks and NBFCs, helping you compare interest rates and secure streamlined funding.</p>
+        </div>
+
+        <!-- 9. Retirement and Goal Planning -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 10V2M12 18a6 6 0 0 0 6-6H6a6 6 0 0 0 6 6zM4.93 4.93l1.41 1.41M19.07 4.93l-1.41 1.41M2 18h20"/>
+            </svg>
+          </div>
+          <h4>Retirement & Goal Planning</h4>
+          <p>Plan confidently for retirement and life’s important milestones. We estimate required retirement corpus, design structured monthly drawdown strategies, and recommend balanced asset allocations including gold where appropriate for inflation resilience.</p>
+        </div>
+
+        <!-- 10. SIFs, PMS & AIFs -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+              <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+            </svg>
+          </div>
+          <h4>SIFs, PMS & AIFs</h4>
+          <p>SIF, PMS & AIF solutions built around your wealth goals. Customized Portfolio Management Services (PMS), Alternative Investment Funds (AIF Cat I, II & III), and high-potential structured debentures designed for high-net-worth investors and family offices.</p>
+        </div>
+
+        <!-- 11. Real Estate Investment -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="2" width="16" height="20" rx="2"/>
+              <line x1="9" y1="6" x2="9" y2="6.01"/>
+              <line x1="15" y1="6" x2="15" y2="6.01"/>
+              <line x1="9" y1="10" x2="9" y2="10.01"/>
+              <line x1="15" y1="10" x2="15" y2="10.01"/>
+              <path d="M10 22v-4h4v4"/>
+            </svg>
+          </div>
+          <h4>Real Estate Investment</h4>
+          <p>Real estate investment that builds lasting wealth. Strategic advisory for residential property investments, commercial real estate opportunities, REITs, long-term capital appreciation, and stable rental income structuring.</p>
+        </div>
+
+        <!-- 12. GIFT City Global Opportunities -->
+        <div class="prod-card">
+          <div class="prod-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h4>GIFT City for NRIs</h4>
+          <p>Global investment opportunities through Gujarat International Finance Tec-City (GIFT City). Access foreign currency-denominated instruments, global funds, and NRI-friendly tax frameworks with simplified cross-border compliance.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section style="background:var(--white)">
+  <!-- Client Benefits Matching Live Site -->
+  <section style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
     <div class="wrap">
-      <span class="eyebrow">Our Assurance Scope</span>
-      <h2 style="font:800 38px Manrope;color:var(--navy);margin-top:10px">Specialized Audit Services</h2>
-      <div class="pillars">
-        <div class="pillar">
-          <b>SERVICE 01</b>
-          <h4>Statutory & Tax Audit</h4>
-          <p>Comprehensive corporate audits in full compliance with the Companies Act, Income Tax Act, and industry-specific mandates.</p>
+      <div class="section-head">
+        <span class="eyebrow">Client Experience</span>
+        <h2>Client Benefits</h2>
+        <p>Why thousands of families and business leaders choose Aarya Consultants for product distribution and wealth stewardship.</p>
+      </div>
+
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 19 21 12 17 5 21 12 2"/>
+            </svg>
+          </div>
+          <h4>Personalized Financial Roadmap</h4>
+          <p>Receive a customized financial strategy designed around your income, lifestyle, goals, and risk profile—ensuring every investment product has a clear, documented purpose.</p>
         </div>
-        <div class="pillar">
-          <b>SERVICE 02</b>
-          <h4>Internal & Operational Audit</h4>
-          <p>Reviewing internal controls, identifying procurement inefficiencies, and improving financial integrity across operations.</p>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+          </div>
+          <h4>Goal-Focused Investments</h4>
+          <p>Whether buying a home, funding international education, retirement, or estate creation, every investment instrument is aligned strictly with your long-term objectives.</p>
         </div>
-        <div class="pillar">
-          <b>SERVICE 03</b>
-          <h4>Forensic & Stock Audit</h4>
-          <p>Detailed verification of physical inventories, loan collateral reviews, and forensic financial investigations.</p>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h4>Smarter Risk Management</h4>
+          <p>Identify exposures early through detailed portfolio analysis, institutional diversification strategies, and robust insurance coverage to insulate your family from uncertainty.</p>
         </div>
       </div>
     </div>
@@ -264,18 +439,18 @@
       <div class="foot-col">
         <h4>Services</h4>
         <a href="financial-planning.html">Financial Planning</a>
-        <a href="financial-services.html">Audit & Assurance</a>
-        <a href="taxation.html">Taxation & GST</a>
+        <a href="financial-services.html">Financial Services</a>
+        <a href="taxation.html">Taxation & Audit</a>
         <a href="legal-services.html">Legal & Succession</a>
         <a href="hr-solutions.html">HR Solutions</a>
-        <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+        <a href="elderly-care.html">Elderly Care (Samman)</a>
       </div>
 
       <div class="foot-col">
         <h4>Offices & Contact</h4>
         <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:12px">
           <strong style="color:#fff;display:block">Kolkata Head Office:</strong>
-          73C, Shyama Prasad Mukherjee Road,<br>Kolkata - 700026, West Bengal
+          73C, Shyama Prasad Mukherjee Road, beside Kalighat Post Office,<br>Kolkata - 700026, West Bengal
         </p>
         <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:14px">
           <strong style="color:#fff;display:block">Gurugram Office:</strong>
@@ -294,13 +469,32 @@
   </div>
 </footer>
 
-
 <script>
   const menu = document.querySelector('.menu');
-  menu?.addEventListener('click', () => {
-    const links = document.querySelector('.nav-links');
-    const open = links.dataset.open === '1';
-    links.dataset.open = open ? '0' : '1';
+  const links = document.querySelector('.nav-links');
+  const openIcon = menu?.querySelector('.menu-open-icon');
+  const closeIcon = menu?.querySelector('.menu-close-icon');
+
+  menu?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = links.getAttribute('data-open') === '1';
+    if(isOpen){
+      links.removeAttribute('data-open');
+      if(openIcon) openIcon.style.display = 'block';
+      if(closeIcon) closeIcon.style.display = 'none';
+    } else {
+      links.setAttribute('data-open', '1');
+      if(openIcon) openIcon.style.display = 'none';
+      if(closeIcon) closeIcon.style.display = 'block';
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if(links && links.getAttribute('data-open') === '1' && !links.contains(e.target) && !menu?.contains(e.target)){
+      links.removeAttribute('data-open');
+      if(openIcon) openIcon.style.display = 'block';
+      if(closeIcon) closeIcon.style.display = 'none';
+    }
   });
 </script>
 

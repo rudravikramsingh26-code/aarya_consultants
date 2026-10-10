@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#081b45" />
-  <title>Careers — Aarya Consultants | Join Our Fiduciary Team</title>
+  <title>Careers — Aarya Consultants | Build Your Future With Us</title>
   <link rel="icon" href="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/favicon-1783876190136-01f3cca3.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,9 +14,11 @@
       --navy: #081b45;
       --navy-dark: #040e25;
       --red: #e31e24;
+      --red-hover: #c41419;
       --muted: #5e6b7e;
       --line: #dfe5ee;
       --paper: #f8fbff;
+      --paper-2: #edf4fc;
       --white: #ffffff;
       --max: 1320px;
     }
@@ -28,86 +30,6 @@
     .serif{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500}
 
     header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,229,238,.85)}
-    nav{height:80px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:14px}
-    .brand-logo-img{height:42px;width:auto}
-    .brand-text strong{font-family:Manrope,sans-serif;font-size:17px;color:var(--navy)}
-    .brand-text span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:700;display:block}
-    .nav-links{display:flex;gap:26px;align-items:center}
-    .nav-links a{font-size:13px;color:#415065;font-weight:600}
-    .nav-links a:hover{color:var(--red)}
-    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700}
-    .pill.red{background:var(--red);color:white;border-color:var(--red)}
-
-    .page-hero{padding:90px 0 60px;background:linear-gradient(135deg,rgba(8,27,69,.05),rgba(227,30,36,.03))}
-    .page-hero h1{font:800 clamp(40px,5vw,68px)/1.02 Manrope;letter-spacing:-.05em;margin-top:14px;color:var(--navy)}
-    .page-hero p{max-width:680px;font-size:17px;color:#506277;line-height:1.75;margin-top:20px}
-
-    section{padding:80px 0}
-    .career-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px}
-    
-    .role-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;margin-bottom:18px;transition:.3s ease}
-    .role-card:hover{border-color:var(--red);transform:translateX(6px);box-shadow:0 12px 30px rgba(8,27,69,.06)}
-    .role-tag{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
-    .role-card h3{font:700 22px Manrope;color:var(--navy);margin:6px 0 8px}
-    .role-card p{font-size:13px;color:#607185;line-height:1.65;margin-bottom:12px}
-
-    .form-box{background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px;box-shadow:0 20px 60px rgba(8,27,69,.06)}
-    .form-box h3{font:800 28px Manrope;color:var(--navy);margin-bottom:8px}
-    .form-box p{font-size:14px;color:#607185;margin-bottom:28px}
-    .form-group{margin-bottom:20px}
-    .form-group label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:8px}
-    .form-control{width:100%;border:1px solid var(--line);background:var(--paper);padding:14px 18px;border-radius:12px;font-family:inherit;font-size:14px;color:var(--navy);outline:none;transition:border-color .2s}
-    .form-control:focus{border-color:var(--red);background:#fff}
-    .btn-submit{width:100%;background:var(--red);color:#fff;border:none;padding:16px;border-radius:12px;font-family:Manrope,sans-serif;font-weight:800;font-size:14px;cursor:pointer;transition:.25s ease;margin-top:10px}
-    .btn-submit:hover{background:#c41419;transform:translateY(-2px);box-shadow:0 8px 24px rgba(227,30,36,.25)}
-
-    footer{background:var(--navy-dark);color:#bccce2;padding:58px 0 30px;border-top:4px solid var(--red)}
-    .footer-grid{display:grid;grid-template-columns:1.4fr .7fr .7fr .9fr;gap:35px}
-    .foot-logo{height:36px;filter:brightness(0) invert(1);margin-bottom:14px}
-    .foot-col h4{font:700 11px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#f0f5fc;margin-bottom:13px}
-    .foot-col a{display:block;font-size:12px;color:#8fa5c2;margin:9px 0}
-    .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-top:20px;color:#6d83a1;font-size:10px}
-
-    @media(max-width:860px){
-      .career-grid,.footer-grid{grid-template-columns:1fr}
-      .nav-links{display:none}
-    }
-  
-    /* Navigation Dropdown & Mobile Menu Styles */
-    .nav-dropdown{position:relative;display:inline-block}
-    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
-    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:10px;min-width:220px;flex-direction:column;gap:4px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
-    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
-    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
-    .menu{display:none;border:0;background:var(--white);width:42px;height:42px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
-    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
-    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center}
-    .pill:hover{border-color:var(--navy);background:var(--paper)}
-    .pill.red{background:var(--red);color:white;border-color:var(--red);padding-inline:20px;box-shadow:0 4px 16px rgba(227,30,36,.25)}
-    .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
-
-    @media (max-width: 992px){
-      .nav-links{display:none}
-      .menu{display:flex}
-      .nav-links[data-open="1"]{
-        display:flex !important;
-        position:absolute;top:80px;left:14px;right:14px;
-        padding:22px;border-radius:20px;background:white;
-        border:1px solid var(--line);
-        box-shadow:0 24px 60px rgba(8,27,69,.18);
-        flex-direction:column;align-items:flex-start;gap:14px;
-        z-index:999;
-      }
-      .nav-links[data-open="1"] .dropdown-menu{
-        position:static;display:flex;opacity:1;transform:none;
-        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
-      }
-      .footer-grid{grid-template-columns:1fr !important}
-    }
-
-
-    /* Crisp Unified Header Layout */
     nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;flex-shrink:0}
     .brand-logo-img{height:44px;width:auto;object-fit:contain}
@@ -119,40 +41,118 @@
     .pill:hover{border-color:var(--navy);background:var(--paper)}
     .pill.red{background:var(--red);color:white;border-color:var(--red);padding:9px 20px;box-shadow:0 4px 16px rgba(227,30,36,.25);white-space:nowrap}
     .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
-    .menu{display:none;border:0;background:var(--white);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
-    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
 
+    /* SVG Hamburger Button */
+    .menu{
+      display:none;
+      border:1px solid var(--line);
+      background:var(--white);
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      cursor:pointer;
+      padding:0;
+      align-items:center;
+      justify-content:center;
+      transition:all .2s ease;
+      color:var(--navy);
+      flex-shrink:0;
+    }
+    .menu:hover{border-color:var(--navy);background:var(--paper-2)}
+    .menu svg{width:22px;height:22px;display:block}
+    .menu .icon-close{display:none}
+    .menu.is-active .icon-hamburger{display:none}
+    .menu.is-active .icon-close{display:block;color:var(--red)}
 
-    /* Universal Mobile & Tablet Grid Adjustments */
+    .nav-dropdown{position:relative;display:inline-block}
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
+    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:10px;min-width:230px;flex-direction:column;gap:4px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
+    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
+    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
+
+    /* Mobile Drawer */
     @media (max-width: 992px){
-      .grid-2, .career-grid, .contact-grid, .service-row{grid-template-columns:1fr !important;gap:36px}
-      .pillars, .values-grid{grid-template-columns:repeat(2,1fr) !important}
-      .feat-list{grid-template-columns:1fr 1fr !important}
-      .wrap{width:calc(100% - 32px)}
       .nav-links{display:none}
-      .menu{display:flex !important}
+      .menu{display:inline-flex !important}
       .nav-links[data-open="1"]{
         display:flex !important;
         position:absolute;top:78px;left:14px;right:14px;
         padding:22px;border-radius:20px;background:white;
         border:1px solid var(--line);
         box-shadow:0 24px 60px rgba(8,27,69,.18);
-        flex-direction:column;align-items:flex-start;gap:14px;
+        flex-direction:column;align-items:flex-start;gap:12px;
         z-index:999;
       }
       .nav-links[data-open="1"] .dropdown-menu{
         position:static;display:flex;opacity:1;transform:none;
-        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
+        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;border-radius:10px;
       }
-      .footer-grid{grid-template-columns:1fr !important}
+      .mobile-nav-cta{display:flex;flex-direction:column;gap:10px;width:100%;padding-top:12px;border-top:1px solid var(--line);margin-top:6px}
+      .mobile-nav-cta .pill{width:100%;justify-content:center;text-align:center}
+    }
+    @media (min-width: 993px){
+      .mobile-nav-cta{display:none}
     }
     @media (max-width: 580px){
-      .pillars, .values-grid, .feat-list{grid-template-columns:1fr !important}
       .nav-actions .pill:first-child{display:none}
       .wrap{width:calc(100% - 24px)}
     }
 
-</style>
+    /* Page Hero */
+    .page-hero{padding:90px 0 60px;background:linear-gradient(135deg,rgba(8,27,69,.06),rgba(227,30,36,.04));border-bottom:1px solid var(--line)}
+    .page-hero h1{font:800 clamp(36px,4.5vw,60px)/1.05 Manrope;letter-spacing:-.04em;margin-top:14px;color:var(--navy)}
+    .page-hero p{max-width:740px;font-size:16px;color:#506277;line-height:1.75;margin-top:20px}
+
+    section{padding:80px 0}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+
+    .perk-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:all .3s ease;box-shadow:0 4px 16px rgba(8,27,69,.04)}
+    .perk-card:hover{transform:translateY(-6px);border-color:var(--navy);box-shadow:0 18px 40px rgba(8,27,69,.1)}
+    .perk-img{width:100%;height:200px;object-fit:cover;display:block}
+    .perk-body{padding:22px}
+    .perk-body h3{font:700 18px Manrope;color:var(--navy);margin-bottom:8px}
+    .perk-body p{font-size:13px;color:#607185;line-height:1.6}
+
+    .value-card{background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:26px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;transition:all .3s ease}
+    .value-card:hover{background:#fff;border-color:var(--red);transform:translateY(-4px);box-shadow:0 12px 30px rgba(8,27,69,.06)}
+    .value-icon{width:48px;height:48px;border-radius:12px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--red)}
+    .value-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .value-card h4{font:700 16px Manrope;color:var(--navy)}
+    .value-card p{font-size:13px;color:#607185;line-height:1.55}
+
+    .role-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;margin-bottom:18px;transition:all .3s ease}
+    .role-card:hover{border-color:var(--red);transform:translateX(6px);box-shadow:0 12px 30px rgba(8,27,69,.06)}
+    .role-tag{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
+    .role-card h3{font:700 20px Manrope;color:var(--navy);margin:6px 0 8px}
+    .role-card p{font-size:13px;color:#607185;line-height:1.65;margin-bottom:12px}
+
+    .form-box{background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px;box-shadow:0 20px 60px rgba(8,27,69,.06)}
+    .form-box h3{font:800 26px Manrope;color:var(--navy);margin-bottom:8px}
+    .form-box p{font-size:14px;color:#607185;margin-bottom:26px}
+    .form-group{margin-bottom:18px}
+    .form-group label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:8px}
+    .form-control{width:100%;border:1px solid var(--line);background:var(--paper);padding:14px 18px;border-radius:12px;font-family:inherit;font-size:14px;color:var(--navy);outline:none;transition:border-color .2s}
+    .form-control:focus{border-color:var(--red);background:#fff}
+    .btn-submit{width:100%;background:var(--red);color:#fff;border:none;padding:16px;border-radius:12px;font-family:Manrope,sans-serif;font-weight:800;font-size:14px;cursor:pointer;transition:.25s ease;margin-top:10px}
+    .btn-submit:hover{background:#c41419;transform:translateY(-2px);box-shadow:0 8px 24px rgba(227,30,36,.25)}
+
+    @media (max-width: 992px){
+      .grid-2, .grid-4, .grid-5{grid-template-columns:1fr !important;gap:24px}
+    }
+
+    footer{background:var(--navy-dark);color:#bccce2;padding:58px 0 30px;border-top:4px solid var(--red)}
+    .footer-grid{display:grid;grid-template-columns:1.4fr .7fr .7fr .9fr;gap:35px}
+    .foot-logo{height:36px;filter:brightness(0) invert(1);margin-bottom:14px}
+    .foot-col h4{font:700 11px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#f0f5fc;margin-bottom:13px}
+    .foot-col a{display:block;font-size:12px;color:#8fa5c2;margin:9px 0;transition:.2s}
+    .foot-col a:hover{color:#fff}
+    .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-top:20px;color:#6d83a1;font-size:10px}
+    @media (max-width:860px){
+      .footer-grid{grid-template-columns:1fr !important}
+    }
+  </style>
 </head>
 <body>
 
@@ -173,51 +173,175 @@
             <a href="taxation.html">Taxation</a>
             <a href="legal-services.html">Legal Services</a>
             <a href="hr-solutions.html">HR Solutions</a>
-            <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+            <a href="elderly-care.html">Elderly Care (Samman)</a>
           </div>
         </div>
         <a href="index.html#wall-of-frames">Wall of Frames</a>
         <a href="index.html#leadership">Leadership</a>
         <a href="career.html" style="color:var(--red)">Career</a>
         <a href="contact.html">Contact</a>
+        <div class="mobile-nav-cta">
+          <a class="pill" href="tel:+919038620055">Call +91 90386 20055</a>
+          <a class="pill red" href="contact.html">Book Consultation ↗</a>
+        </div>
       </div>
       <div class="nav-actions">
         <a class="pill" href="tel:+919038620055">Call +91 90386 20055</a>
         <a class="pill red" href="contact.html">Book Consultation ↗</a>
-        <button class="menu" type="button" aria-label="Open navigation"><span></span><span></span><span></span></button>
+        <button class="menu" type="button" aria-label="Toggle navigation menu">
+          <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
       </div>
     </nav>
   </div>
 </header>
 
 <main>
+  <!-- Hero Banner -->
   <div class="page-hero">
     <div class="wrap">
       <span class="eyebrow">Careers at Aarya Consultants</span>
-      <h1>Build Your Career with <br><span class="serif">a Multi-Disciplinary Fiduciary.</span></h1>
-      <p>Join a team of 42+ Chartered Accountants, NISM financial planners, advocates, and business analysts shaping the financial futures of 2,000+ families and founders across India.</p>
+      <h1>We Don't Just Build Businesses. <br><span class="serif">We Build Futures.</span></h1>
+      <p>Join a multi-disciplinary practice spanning wealth advisory, taxation, statutory audit, corporate law, and people solutions. We mentor professionals to think like fiduciaries, not commission brokers.</p>
     </div>
   </div>
 
+  <!-- Life at Aarya Section -->
   <section>
-    <div class="wrap career-grid">
+    <div class="wrap">
+      <div class="grid-2">
+        <div style="border-radius:24px;overflow:hidden;box-shadow:0 24px 60px rgba(8,27,69,.12);border:1px solid var(--line)">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/conf-1784705539951-84ab987f.webp" alt="Life at Aarya Conference" style="width:100%;height:auto;display:block">
+        </div>
+        <div>
+          <span class="eyebrow">Our Culture & Ethos</span>
+          <h2 style="font:800 clamp(30px,3.5vw,46px) Manrope;color:var(--navy);margin:10px 0 18px">Life at Aarya</h2>
+          <p style="font-size:15px;color:#506277;line-height:1.8;margin-bottom:18px">A practice built on mentorship. Our senior partners have trained in the United States and across international financial markets, and that knowledge is passed down deliberately in weekly portfolio reviews, real-time client advisory sessions, and deep-dive technical huddles.</p>
+          <p style="font-size:15px;color:#506277;line-height:1.8">At our annual conclave, the year's impact is recognized in front of the entire firm. We foster an environment of high accountability and radical transparency—where intellectual curiosity is rewarded and professional growth has no ceiling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perks of Working With Us -->
+  <section style="background:var(--paper-2);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div style="text-align:center;max-width:700px;margin:0 auto 48px">
+        <span class="eyebrow">Why Join Aarya</span>
+        <h2 style="font:800 clamp(30px,3.5vw,44px) Manrope;color:var(--navy);margin-top:8px">Perks of Working With Us</h2>
+        <p style="font-size:15px;color:#5a6d84;line-height:1.65;margin-top:10px">We invest in our people so they can deliver exceptional fiduciary service to the families and institutions who trust us.</p>
+      </div>
+
+      <div class="grid-4">
+        <div class="perk-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/market-insight-1784705567719-6dbc984a.webp" alt="Career Growth" class="perk-img">
+          <div class="perk-body">
+            <h3>Career Growth</h3>
+            <p>Mentorship, structured training, and skill-building workshops whether you are experienced or just starting your fiduciary career.</p>
+          </div>
+        </div>
+
+        <div class="perk-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/chatgpt-1790598241901-f60cc797.webp" alt="Collaborative Team" class="perk-img">
+          <div class="perk-body">
+            <h3>Collaborative Team</h3>
+            <p>Open communication and idea-sharing across departments, working alongside people who value teamwork, integrity, and client trust.</p>
+          </div>
+        </div>
+
+        <div class="perk-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/whatsapp-image-2026-07-22-at-15-23-07-1784714187522-7abf81be.webp" alt="Diversity and Inclusion" class="perk-img">
+          <div class="perk-body">
+            <h3>Diversity & Inclusion</h3>
+            <p>An all-inclusive gender neutral workplace where every voice is heard and respected. A zero-tolerance, POSH-compliant safe space.</p>
+          </div>
+        </div>
+
+        <div class="perk-card">
+          <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/working1-1784571581773-93e8d6f3.webp" alt="Work-Life Balance" class="perk-img">
+          <div class="perk-body">
+            <h3>Work-Life Balance</h3>
+            <p>Thoughtful policies and programmes designed to support employee wellbeing, both professionally and personally.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value & Rewards Cards -->
+  <section>
+    <div class="wrap">
+      <div style="text-align:center;max-width:700px;margin:0 auto 40px">
+        <span class="eyebrow">Employee Value Proposition</span>
+        <h2 style="font:800 clamp(28px,3vw,40px) Manrope;color:var(--navy);margin-top:8px">Compensation, Health & Recognition</h2>
+      </div>
+
+      <div class="grid-5">
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h4>Remuneration</h4>
+          <p>Competitive compensation packages benchmarked against leading national advisory firms.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          </div>
+          <h4>Health Benefits</h4>
+          <p>Comprehensive health insurance for our colleagues and their dependent family members.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+          </div>
+          <h4>Growth</h4>
+          <p>Skill-based learning tracks, NISM/CA certifications sponsorship, and leadership grooming.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          </div>
+          <h4>Rewards & Gala</h4>
+          <p>Transparent annual appraisals, merit awards, and offbeat celebratory gala nights for team bonding.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          </div>
+          <h4>Team Retreats</h4>
+          <p>Annual offsite retreats in nature for our team members and their loved ones to recharge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Positions & Application Form -->
+  <section style="background:var(--paper-2);border-top:1px solid var(--line)">
+    <div class="wrap grid-2" style="align-items:start">
       
+      <!-- Open Roles -->
       <div>
         <span class="eyebrow">Current Opportunities</span>
         <h2 style="font:800 36px Manrope;color:var(--navy);margin:10px 0 24px">Explore Open Positions</h2>
         
         <div class="role-card">
-          <span class="role-tag">Wealth & Advisory · Kolkata / NCR</span>
+          <span class="role-tag">Wealth & Advisory · Kolkata HO / NCR</span>
           <h3>Associate Financial Planner</h3>
           <p>Lead goal mapping, client portfolio reviews, and SIP architectures for HNI families in partnership with NISM Level 10A mentors.</p>
-          <span style="font-size:12px;color:#718299;font-weight:700">Full Time · 2+ Years Experience</span>
+          <span style="font-size:12px;color:#718299;font-weight:700">Full Time · 2+ Years Wealth Experience</span>
         </div>
 
         <div class="role-card">
           <span class="role-tag">Audit & Assurance · Kolkata HO</span>
           <h3>Audit Senior (Semi-Qualified / CA)</h3>
           <p>Execute statutory audits, internal review checks, tax audits, and forensic stock verifications for corporate enterprises.</p>
-          <span style="font-size:12px;color:#718299;font-weight:700">Full Time · Article Completed / CA Inter / CA</span>
+          <span style="font-size:12px;color:#718299;font-weight:700">Full Time · Articleship Completed / CA Inter / CA</span>
         </div>
 
         <div class="role-card">
@@ -235,21 +359,22 @@
         </div>
       </div>
 
+      <!-- Application Form -->
       <div class="form-box">
         <h3>Submit Your Application</h3>
-        <p>Send your profile directly to our recruitment committee.</p>
-        <form onsubmit="event.preventDefault(); alert('Thank you for applying to Aarya Consultants. Our HR recruitment desk will review your profile and reach out!');">
+        <p>Upload your CV and enter your details to connect directly with our talent acquisition desk.</p>
+        <form onsubmit="event.preventDefault(); alert('Thank you for applying to Aarya Consultants. Our talent acquisition committee will review your profile and contact you within 48 hours!');">
           <div class="form-group">
-            <label>Full Name</label>
+            <label>Full Name *</label>
             <input type="text" class="form-control" placeholder="Your Name" required>
           </div>
           <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" class="form-control" placeholder="+91 98765 43210" required>
+            <label>Email Address *</label>
+            <input type="email" class="form-control" placeholder="your@email.com" required>
           </div>
           <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" class="form-control" placeholder="your@email.com" required>
+            <label>Mobile Number *</label>
+            <input type="tel" class="form-control" placeholder="+91 98765 43210" required>
           </div>
           <div class="form-group">
             <label>Role Applied For</label>
@@ -259,16 +384,21 @@
               <option>Tax Executive (GST / Direct Tax)</option>
               <option>Legal Associate (Trust & Succession)</option>
               <option>HR & Business Support Executive</option>
+              <option>Senior Care Coordinator (Samman Initiative)</option>
               <option>General Application / Other</option>
             </select>
           </div>
           <div class="form-group">
-            <label>LinkedIn Profile / Portfolio Link</label>
+            <label>Upload Your CV / Resume (PDF / DOC) *</label>
+            <input type="file" class="form-control" style="padding:10px" accept=".pdf,.doc,.docx" required>
+          </div>
+          <div class="form-group">
+            <label>LinkedIn Profile / Portfolio Link (Optional)</label>
             <input type="url" class="form-control" placeholder="https://linkedin.com/in/yourprofile">
           </div>
           <div class="form-group">
             <label>Brief Cover Note</label>
-            <textarea class="form-control" rows="3" placeholder="Tell us about your background and certifications..."></textarea>
+            <textarea class="form-control" rows="3" placeholder="Tell us about your background, certifications, and what drives you..."></textarea>
           </div>
           <button type="submit" class="btn-submit">Submit Application ↗</button>
         </form>
@@ -304,18 +434,18 @@
       <div class="foot-col">
         <h4>Services</h4>
         <a href="financial-planning.html">Financial Planning</a>
-        <a href="financial-services.html">Audit & Assurance</a>
+        <a href="financial-services.html">Financial Services</a>
         <a href="taxation.html">Taxation & GST</a>
         <a href="legal-services.html">Legal & Succession</a>
         <a href="hr-solutions.html">HR Solutions</a>
-        <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+        <a href="elderly-care.html">Elderly Care (Samman) ↗</a>
       </div>
 
       <div class="foot-col">
         <h4>Offices & Contact</h4>
         <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:12px">
           <strong style="color:#fff;display:block">Kolkata Head Office:</strong>
-          73C, Shyama Prasad Mukherjee Road,<br>Kolkata - 700026, West Bengal
+          73C, Shyama Prasad Mukherjee Road, beside Kalighat Post Office,<br>Kolkata - 700026, West Bengal
         </p>
         <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:14px">
           <strong style="color:#fff;display:block">Gurugram Office:</strong>
@@ -323,7 +453,7 @@
         </p>
         <a href="tel:+919038620055">+91 90386 20055</a>
         <a href="mailto:connect@aaryaconsultants.com">connect@aaryaconsultants.com</a>
-        <a href="mailto:gurgaon@aaryaconsultants.com">gurgaon@aaryaconsultants.com</a>
+        <a href="https://wa.me/919836655005" target="_blank" rel="noopener">WhatsApp: +91 9836655005</a>
       </div>
     </div>
 
@@ -334,13 +464,20 @@
   </div>
 </footer>
 
-
 <script>
-  const menu = document.querySelector('.menu');
-  menu?.addEventListener('click', () => {
-    const links = document.querySelector('.nav-links');
-    const open = links.dataset.open === '1';
-    links.dataset.open = open ? '0' : '1';
+  const menuBtn = document.querySelector('.menu');
+  const navLinks = document.querySelector('.nav-links');
+  menuBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navLinks.dataset.open === '1';
+    navLinks.dataset.open = isOpen ? '0' : '1';
+    menuBtn.classList.toggle('is-active', !isOpen);
+  });
+  document.addEventListener('click', (e) => {
+    if (navLinks?.dataset.open === '1' && !navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+      navLinks.dataset.open = '0';
+      menuBtn?.classList.remove('is-active');
+    }
   });
 </script>
 

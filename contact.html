@@ -14,9 +14,11 @@
       --navy: #081b45;
       --navy-dark: #040e25;
       --red: #e31e24;
+      --red-hover: #c41419;
       --muted: #5e6b7e;
       --line: #dfe5ee;
       --paper: #f8fbff;
+      --paper-2: #edf4fc;
       --white: #ffffff;
       --max: 1320px;
     }
@@ -28,86 +30,6 @@
     .serif{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500}
 
     header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,229,238,.85)}
-    nav{height:80px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:14px}
-    .brand-logo-img{height:42px;width:auto}
-    .brand-text strong{font-family:Manrope,sans-serif;font-size:17px;color:var(--navy)}
-    .brand-text span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:700;display:block}
-    .nav-links{display:flex;gap:26px;align-items:center}
-    .nav-links a{font-size:13px;color:#415065;font-weight:600}
-    .nav-links a:hover{color:var(--red)}
-    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700}
-    .pill.red{background:var(--red);color:white;border-color:var(--red)}
-
-    .page-hero{padding:90px 0 60px;background:linear-gradient(135deg,rgba(8,27,69,.05),rgba(227,30,36,.03))}
-    .page-hero h1{font:800 clamp(40px,5vw,68px)/1.02 Manrope;letter-spacing:-.05em;margin-top:14px;color:var(--navy)}
-    .page-hero p{max-width:680px;font-size:17px;color:#506277;line-height:1.75;margin-top:20px}
-
-    section{padding:80px 0}
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
-    
-    .contact-info{display:flex;flex-direction:column;gap:30px}
-    .info-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;align-items:flex-start;gap:18px}
-    .info-icon{width:44px;height:44px;border-radius:12px;background:var(--paper);border:1px solid var(--line);display:grid;place-items:center;font-size:18px;color:var(--red);flex-shrink:0}
-    .info-card h4{font:700 17px Manrope;color:var(--navy);margin-bottom:6px}
-    .info-card p{font-size:14px;color:#596b82;line-height:1.6}
-
-    .form-box{background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px;box-shadow:0 20px 60px rgba(8,27,69,.06)}
-    .form-box h3{font:800 28px Manrope;color:var(--navy);margin-bottom:8px}
-    .form-box p{font-size:14px;color:#607185;margin-bottom:28px}
-    .form-group{margin-bottom:20px}
-    .form-group label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:8px}
-    .form-control{width:100%;border:1px solid var(--line);background:var(--paper);padding:14px 18px;border-radius:12px;font-family:inherit;font-size:14px;color:var(--navy);outline:none;transition:border-color .2s}
-    .form-control:focus{border-color:var(--red);background:#fff}
-    .btn-submit{width:100%;background:var(--red);color:#fff;border:none;padding:16px;border-radius:12px;font-family:Manrope,sans-serif;font-weight:800;font-size:14px;cursor:pointer;transition:.25s ease;margin-top:10px}
-    .btn-submit:hover{background:#c41419;transform:translateY(-2px);box-shadow:0 8px 24px rgba(227,30,36,.25)}
-
-    footer{background:var(--navy-dark);color:#bccce2;padding:58px 0 30px;border-top:4px solid var(--red)}
-    .footer-grid{display:grid;grid-template-columns:1.4fr .7fr .7fr .9fr;gap:35px}
-    .foot-logo{height:36px;filter:brightness(0) invert(1);margin-bottom:14px}
-    .foot-col h4{font:700 11px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#f0f5fc;margin-bottom:13px}
-    .foot-col a{display:block;font-size:12px;color:#8fa5c2;margin:9px 0}
-    .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-top:20px;color:#6d83a1;font-size:10px}
-
-    @media(max-width:860px){
-      .contact-grid,.footer-grid{grid-template-columns:1fr}
-      .nav-links{display:none}
-    }
-  
-    /* Navigation Dropdown & Mobile Menu Styles */
-    .nav-dropdown{position:relative;display:inline-block}
-    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
-    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:10px;min-width:220px;flex-direction:column;gap:4px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
-    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
-    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
-    .menu{display:none;border:0;background:var(--white);width:42px;height:42px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
-    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
-    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center}
-    .pill:hover{border-color:var(--navy);background:var(--paper)}
-    .pill.red{background:var(--red);color:white;border-color:var(--red);padding-inline:20px;box-shadow:0 4px 16px rgba(227,30,36,.25)}
-    .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
-
-    @media (max-width: 992px){
-      .nav-links{display:none}
-      .menu{display:flex}
-      .nav-links[data-open="1"]{
-        display:flex !important;
-        position:absolute;top:80px;left:14px;right:14px;
-        padding:22px;border-radius:20px;background:white;
-        border:1px solid var(--line);
-        box-shadow:0 24px 60px rgba(8,27,69,.18);
-        flex-direction:column;align-items:flex-start;gap:14px;
-        z-index:999;
-      }
-      .nav-links[data-open="1"] .dropdown-menu{
-        position:static;display:flex;opacity:1;transform:none;
-        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
-      }
-      .footer-grid{grid-template-columns:1fr !important}
-    }
-
-
-    /* Crisp Unified Header Layout */
     nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;flex-shrink:0}
     .brand-logo-img{height:44px;width:auto;object-fit:contain}
@@ -119,40 +41,121 @@
     .pill:hover{border-color:var(--navy);background:var(--paper)}
     .pill.red{background:var(--red);color:white;border-color:var(--red);padding:9px 20px;box-shadow:0 4px 16px rgba(227,30,36,.25);white-space:nowrap}
     .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
-    .menu{display:none;border:0;background:var(--white);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
-    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
 
+    /* SVG Hamburger Button */
+    .menu{
+      display:none;
+      border:1px solid var(--line);
+      background:var(--white);
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      cursor:pointer;
+      padding:0;
+      align-items:center;
+      justify-content:center;
+      transition:all .2s ease;
+      color:var(--navy);
+      flex-shrink:0;
+    }
+    .menu:hover{border-color:var(--navy);background:var(--paper-2)}
+    .menu svg{width:22px;height:22px;display:block}
+    .menu .icon-close{display:none}
+    .menu.is-active .icon-hamburger{display:none}
+    .menu.is-active .icon-close{display:block;color:var(--red)}
 
-    /* Universal Mobile & Tablet Grid Adjustments */
+    .nav-dropdown{position:relative;display:inline-block}
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
+    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:10px;min-width:230px;flex-direction:column;gap:4px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
+    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
+    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
+
+    /* Mobile Drawer */
     @media (max-width: 992px){
-      .grid-2, .career-grid, .contact-grid, .service-row{grid-template-columns:1fr !important;gap:36px}
-      .pillars, .values-grid{grid-template-columns:repeat(2,1fr) !important}
-      .feat-list{grid-template-columns:1fr 1fr !important}
-      .wrap{width:calc(100% - 32px)}
       .nav-links{display:none}
-      .menu{display:flex !important}
+      .menu{display:inline-flex !important}
       .nav-links[data-open="1"]{
         display:flex !important;
         position:absolute;top:78px;left:14px;right:14px;
         padding:22px;border-radius:20px;background:white;
         border:1px solid var(--line);
         box-shadow:0 24px 60px rgba(8,27,69,.18);
-        flex-direction:column;align-items:flex-start;gap:14px;
+        flex-direction:column;align-items:flex-start;gap:12px;
         z-index:999;
       }
       .nav-links[data-open="1"] .dropdown-menu{
         position:static;display:flex;opacity:1;transform:none;
-        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
+        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;border-radius:10px;
       }
-      .footer-grid{grid-template-columns:1fr !important}
+      .mobile-nav-cta{display:flex;flex-direction:column;gap:10px;width:100%;padding-top:12px;border-top:1px solid var(--line);margin-top:6px}
+      .mobile-nav-cta .pill{width:100%;justify-content:center;text-align:center}
+    }
+    @media (min-width: 993px){
+      .mobile-nav-cta{display:none}
     }
     @media (max-width: 580px){
-      .pillars, .values-grid, .feat-list{grid-template-columns:1fr !important}
       .nav-actions .pill:first-child{display:none}
       .wrap{width:calc(100% - 24px)}
     }
 
-</style>
+    /* Page Hero */
+    .page-hero{padding:90px 0 60px;background:linear-gradient(135deg,rgba(8,27,69,.06),rgba(227,30,36,.04));border-bottom:1px solid var(--line)}
+    .page-hero h1{font:800 clamp(36px,4.5vw,60px)/1.05 Manrope;letter-spacing:-.04em;margin-top:14px;color:var(--navy)}
+    .page-hero p{max-width:720px;font-size:16px;color:#506277;line-height:1.75;margin-top:20px}
+
+    section{padding:80px 0}
+    .contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:start}
+
+    .channel-list{display:flex;flex-direction:column;gap:20px}
+    .channel-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;align-items:flex-start;gap:18px;transition:all .25s ease}
+    .channel-card:hover{transform:translateY(-3px);border-color:var(--navy);box-shadow:0 12px 28px rgba(8,27,69,.06)}
+    
+    .channel-icon{
+      width:48px;height:48px;border-radius:14px;
+      background:linear-gradient(135deg,#081b45,#162f6b);
+      color:#fff;display:grid;place-items:center;flex-shrink:0;box-shadow:0 8px 18px rgba(8,27,69,.12);
+    }
+    .channel-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .channel-card h4{font:700 16px Manrope;color:var(--navy);margin-bottom:4px}
+    .channel-card p{font-size:14px;color:#5f7086;line-height:1.6}
+    .channel-card a{color:var(--navy);font-weight:700;transition:.2s}
+    .channel-card a:hover{color:var(--red)}
+
+    .form-box{background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px;box-shadow:0 20px 60px rgba(8,27,69,.06)}
+    .form-box h3{font:800 26px Manrope;color:var(--navy);margin-bottom:8px}
+    .form-box p{font-size:14px;color:#607185;margin-bottom:26px}
+    
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .form-group{margin-bottom:18px}
+    .form-group label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:8px}
+    .form-control{width:100%;border:1px solid var(--line);background:var(--paper);padding:14px 18px;border-radius:12px;font-family:inherit;font-size:14px;color:var(--navy);outline:none;transition:border-color .2s}
+    .form-control:focus{border-color:var(--red);background:#fff}
+    .btn-submit{width:100%;background:var(--red);color:#fff;border:none;padding:16px;border-radius:12px;font-family:Manrope,sans-serif;font-weight:800;font-size:14px;cursor:pointer;transition:.25s ease;margin-top:10px}
+    .btn-submit:hover{background:#c41419;transform:translateY(-2px);box-shadow:0 8px 24px rgba(227,30,36,.25)}
+
+    .map-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+    .map-card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 12px 36px rgba(8,27,69,.06)}
+    .map-header{padding:20px 24px;border-bottom:1px solid var(--line);background:var(--paper-2);display:flex;align-items:center;justify-content:space-between}
+    .map-header h4{font:700 16px Manrope;color:var(--navy)}
+    .map-header span{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
+    .map-card iframe{width:100%;height:340px;border:0;display:block}
+
+    @media (max-width: 992px){
+      .contact-grid, .map-grid{grid-template-columns:1fr !important;gap:32px}
+      .form-row{grid-template-columns:1fr !important}
+    }
+
+    footer{background:var(--navy-dark);color:#bccce2;padding:58px 0 30px;border-top:4px solid var(--red)}
+    .footer-grid{display:grid;grid-template-columns:1.4fr .7fr .7fr .9fr;gap:35px}
+    .foot-logo{height:36px;filter:brightness(0) invert(1);margin-bottom:14px}
+    .foot-col h4{font:700 11px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#f0f5fc;margin-bottom:13px}
+    .foot-col a{display:block;font-size:12px;color:#8fa5c2;margin:9px 0;transition:.2s}
+    .foot-col a:hover{color:#fff}
+    .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-top:20px;color:#6d83a1;font-size:10px}
+    @media (max-width:860px){
+      .footer-grid{grid-template-columns:1fr !important}
+    }
+  </style>
 </head>
 <body>
 
@@ -173,104 +176,209 @@
             <a href="taxation.html">Taxation</a>
             <a href="legal-services.html">Legal Services</a>
             <a href="hr-solutions.html">HR Solutions</a>
-            <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+            <a href="elderly-care.html">Elderly Care (Samman)</a>
           </div>
         </div>
         <a href="index.html#wall-of-frames">Wall of Frames</a>
         <a href="index.html#leadership">Leadership</a>
         <a href="career.html">Career</a>
         <a href="contact.html" style="color:var(--red)">Contact</a>
+        <div class="mobile-nav-cta">
+          <a class="pill" href="tel:+919038620055">Call +91 90386 20055</a>
+          <a class="pill red" href="contact.html">Book Consultation ↗</a>
+        </div>
       </div>
       <div class="nav-actions">
         <a class="pill" href="tel:+919038620055">Call +91 90386 20055</a>
         <a class="pill red" href="contact.html">Book Consultation ↗</a>
-        <button class="menu" type="button" aria-label="Open navigation"><span></span><span></span><span></span></button>
+        <button class="menu" type="button" aria-label="Toggle navigation menu">
+          <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
       </div>
     </nav>
   </div>
 </header>
 
 <main>
+  <!-- Hero Section -->
   <div class="page-hero">
     <div class="wrap">
-      <span class="eyebrow">Start the Conversation</span>
-      <h1>Bring Us the Decision. <br><span class="serif">We'll Bring the Context.</span></h1>
-      <p>Whether you need a free financial health check-up, strategic tax advice, audit assurance, or generational trust structuring, connect with our fiduciaries today.</p>
+      <span class="eyebrow">Direct Fiduciary Access</span>
+      <h1>Let's Talk. <br><span class="serif">Tell Us What You Need.</span></h1>
+      <p>We route you to the right senior partner, not a support queue. Connect with our Chartered Accountants, financial planners, and legal consultants in Kolkata and Gurugram.</p>
+      <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
+        <a href="tel:+919038620055" class="pill red" style="font-size:14px;padding:12px 24px">Call Directly: +91 90386 20055</a>
+        <a href="https://wa.me/919836655005" target="_blank" rel="noopener" class="pill" style="font-size:14px;padding:12px 24px">WhatsApp Desk: +91 9836655005 ↗</a>
+      </div>
     </div>
   </div>
 
+  <!-- Contact Grid Section -->
   <section>
     <div class="wrap contact-grid">
       
-      <div class="contact-info">
-        <div class="info-card">
-          <div class="info-icon">📍</div>
-          <div>
-            <h4>Head Office (Kolkata)</h4>
-            <p>73C, Shyama Prasad Mukherjee Road,<br>Kolkata, West Bengal 700026</p>
+      <!-- Channels & Addresses -->
+      <div>
+        <span class="eyebrow">Communication Desks</span>
+        <h2 style="font:800 clamp(28px,3vw,38px) Manrope;color:var(--navy);margin:10px 0 24px">Get in Touch With Our Team</h2>
+        
+        <div class="channel-list">
+          <!-- Telephone Desk -->
+          <div class="channel-card">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <div>
+              <h4>Telephone Enquiries</h4>
+              <p><a href="tel:+919038620055">+91 90386 20055</a> (Direct Advisory Desk)</p>
+              <p style="margin-top:2px"><a href="tel:+919836655005">+91 98366 55005</a> (Senior Helpline)</p>
+            </div>
           </div>
-        </div>
 
-        <div class="info-card">
-          <div class="info-icon">🏢</div>
-          <div>
-            <h4>Regional Presence</h4>
-            <p>Gurugram Office (NCR) & Pan-India Associate Network</p>
+          <!-- WhatsApp Desk -->
+          <div class="channel-card">
+            <div class="channel-icon" style="background:linear-gradient(135deg,#075e54,#128c7e)">
+              <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </div>
+            <div>
+              <h4>WhatsApp Instant Support</h4>
+              <p><a href="https://wa.me/919836655005" target="_blank" rel="noopener">+91 9836655005</a></p>
+              <p style="font-size:12px;color:#718299;margin-top:2px">Available Mon–Sat, 9:30 AM – 7:00 PM IST</p>
+            </div>
           </div>
-        </div>
 
-        <div class="info-card">
-          <div class="info-icon">📞</div>
-          <div>
-            <h4>Telephone</h4>
-            <p><a href="tel:+919038620055" style="color:var(--navy);font-weight:700">+91 90386 20055</a><br><a href="tel:+919836655005" style="color:#607185">+91 98366 55005</a></p>
+          <!-- Email Desk -->
+          <div class="channel-card">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div>
+              <h4>Direct Email Support</h4>
+              <p><a href="mailto:connect@aaryaconsultants.com">connect@aaryaconsultants.com</a></p>
+              <p style="margin-top:2px"><a href="mailto:gurgaon@aaryaconsultants.com">gurgaon@aaryaconsultants.com</a></p>
+            </div>
           </div>
-        </div>
 
-        <div class="info-card">
-          <div class="info-icon">✉️</div>
-          <div>
-            <h4>Email</h4>
-            <p><a href="mailto:info@aaryaconsultants.com" style="color:var(--navy);font-weight:700">info@aaryaconsultants.com</a></p>
+          <!-- Kolkata HO Address -->
+          <div class="channel-card">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div>
+              <h4>Kolkata (Head Office)</h4>
+              <p>73C, Shyama Prasad Mukherjee Road, beside Kalighat Post Office, Kolkata 700 026, West Bengal</p>
+            </div>
+          </div>
+
+          <!-- Gurgaon Office Address -->
+          <div class="channel-card">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="22.01"></line><line x1="15" y1="22" x2="15" y2="22.01"></line><line x1="9" y1="18" x2="9" y2="18.01"></line><line x1="15" y1="18" x2="15" y2="18.01"></line><line x1="9" y1="14" x2="9" y2="14.01"></line><line x1="15" y1="14" x2="15" y2="14.01"></line><line x1="9" y1="10" x2="9" y2="10.01"></line><line x1="15" y1="10" x2="15" y2="10.01"></line><line x1="9" y1="6" x2="9" y2="6.01"></line><line x1="15" y1="6" x2="15" y2="6.01"></line></svg>
+            </div>
+            <div>
+              <h4>Gurgaon Regional Office (NCR)</h4>
+              <p>Regus, Welldone Tech Park, Badshahpur Sohna Rd, Sector 49, Gurugram, Haryana 122018</p>
+            </div>
           </div>
         </div>
       </div>
 
+      <!-- Live Consultation Form -->
       <div class="form-box">
-        <h3>Book Free Consultation</h3>
-        <p>Fill out the form below and an advisory specialist will reach out within 24 hours.</p>
-        <form onsubmit="event.preventDefault(); alert('Thank you for reaching out to Aarya Consultants. Our advisory team will contact you shortly!');">
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" class="form-control" placeholder="Your Name" required>
+        <span class="eyebrow">Priority Response</span>
+        <h3>Send Us a Message</h3>
+        <p>Fill out the parameters of your requirement and a dedicated specialist will respond within 24 business hours.</p>
+        
+        <form onsubmit="event.preventDefault(); alert('Thank you for reaching out to Aarya Consultants. An advisory partner has received your request and will connect with you shortly.');">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" class="form-control" placeholder="First Name" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" class="form-control" placeholder="Last Name" required>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" class="form-control" placeholder="+91 98765 43210" required>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" class="form-control" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label>Mobile Number *</label>
+              <input type="tel" class="form-control" placeholder="+91 98765 43210" required>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" class="form-control" placeholder="your@email.com" required>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>I Need Help With *</label>
+              <select class="form-control" required>
+                <option value="" selected>Select practice area...</option>
+                <option value="Financial Planning">Financial Planning & Wealth Management</option>
+                <option value="Accounts & Audit">Accounts & Statutory Audit</option>
+                <option value="Taxation">Taxation & GST Advisory</option>
+                <option value="Legal & Estate Planning">Legal & Estate Planning / Trusts</option>
+                <option value="HR Solutions">HR Solutions & Statutory Payroll</option>
+                <option value="Elderly Care">Elderly Care (Samman Initiative)</option>
+                <option value="Careers">Careers & Recruitment</option>
+                <option value="Other">Other Bespoke Requirement</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>City *</label>
+              <input type="text" class="form-control" placeholder="Kolkata / Delhi / Mumbai / NRI..." required>
+            </div>
           </div>
+
           <div class="form-group">
-            <label>Area of Interest</label>
-            <select class="form-control">
-              <option>Financial Planning & Wealth Management</option>
-              <option>Statutory Audit & Assurance</option>
-              <option>Taxation & GST Advisory</option>
-              <option>Legal & Succession / Family Trust</option>
-              <option>HR Solutions & Payroll</option>
-              <option>Elderly Care (Samman)</option>
-            </select>
+            <label>Message / Brief Requirement</label>
+            <textarea class="form-control" rows="3" placeholder="Tell us about the decision or situation you are navigating..."></textarea>
           </div>
+
           <div class="form-group">
-            <label>Your Message / Brief Requirement</label>
-            <textarea class="form-control" rows="3" placeholder="Tell us about the decision you are navigating..."></textarea>
+            <label>Preferred Contact Time (Optional)</label>
+            <input type="text" class="form-control" placeholder="e.g. Morning 10 AM, Evening after 6 PM">
           </div>
+
           <button type="submit" class="btn-submit">Submit Consultation Request ↗</button>
         </form>
       </div>
 
+    </div>
+  </section>
+
+  <!-- Interactive Google Maps Section -->
+  <section style="background:var(--paper-2);border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div style="text-align:center;max-width:720px;margin:0 auto 30px">
+        <span class="eyebrow">Find Us Near You</span>
+        <h2 style="font:800 clamp(30px,3.5vw,42px) Manrope;color:var(--navy);margin-top:8px">Visit Our Regional Offices</h2>
+        <p style="font-size:15px;color:#5a6d84;line-height:1.65;margin-top:10px">Explore our office locations on the map and connect with our team for in-person fiduciary guidance and institutional reviews.</p>
+      </div>
+
+      <div class="map-grid">
+        <!-- Kolkata HO Map -->
+        <div class="map-card">
+          <div class="map-header">
+            <h4>Kolkata (Head Office)</h4>
+            <span>Kalighat HO</span>
+          </div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.5250311840487!2d88.34438851131848!3d22.52199693473687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027734201aa4b1%3A0x1a05c3729afc0c71!2s73C%2C%20Shyama%20Prasad%20Mukherjee%20Rd%2C%20Manoharpukur%2C%20Kalighat%2C%20Kolkata%2C%20West%20Bengal%20700026!5e0!3m2!1sen!2sin!4v1789115440101!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Aarya Consultants Kolkata Head Office"></iframe>
+        </div>
+
+        <!-- Gurgaon Office Map -->
+        <div class="map-card">
+          <div class="map-header">
+            <h4>Gurgaon Office (NCR)</h4>
+            <span>Welldone Tech Park</span>
+          </div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.021735593026!2d77.0332945967895!3d28.418601000000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d23ae8a5b0119%3A0x2ee988ac36e3fe70!2sRegus%20Welldone!5e0!3m2!1sen!2sin!4v1789115766949!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Aarya Consultants Gurugram Office"></iframe>
+        </div>
+      </div>
     </div>
   </section>
 </main>
@@ -301,18 +409,18 @@
       <div class="foot-col">
         <h4>Services</h4>
         <a href="financial-planning.html">Financial Planning</a>
-        <a href="financial-services.html">Audit & Assurance</a>
+        <a href="financial-services.html">Financial Services</a>
         <a href="taxation.html">Taxation & GST</a>
         <a href="legal-services.html">Legal & Succession</a>
         <a href="hr-solutions.html">HR Solutions</a>
-        <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+        <a href="elderly-care.html">Elderly Care (Samman) ↗</a>
       </div>
 
       <div class="foot-col">
         <h4>Offices & Contact</h4>
         <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:12px">
           <strong style="color:#fff;display:block">Kolkata Head Office:</strong>
-          73C, Shyama Prasad Mukherjee Road,<br>Kolkata - 700026, West Bengal
+          73C, Shyama Prasad Mukherjee Road, beside Kalighat Post Office,<br>Kolkata - 700026, West Bengal
         </p>
         <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:14px">
           <strong style="color:#fff;display:block">Gurugram Office:</strong>
@@ -320,7 +428,7 @@
         </p>
         <a href="tel:+919038620055">+91 90386 20055</a>
         <a href="mailto:connect@aaryaconsultants.com">connect@aaryaconsultants.com</a>
-        <a href="mailto:gurgaon@aaryaconsultants.com">gurgaon@aaryaconsultants.com</a>
+        <a href="https://wa.me/919836655005" target="_blank" rel="noopener">WhatsApp: +91 9836655005</a>
       </div>
     </div>
 
@@ -331,13 +439,20 @@
   </div>
 </footer>
 
-
 <script>
-  const menu = document.querySelector('.menu');
-  menu?.addEventListener('click', () => {
-    const links = document.querySelector('.nav-links');
-    const open = links.dataset.open === '1';
-    links.dataset.open = open ? '0' : '1';
+  const menuBtn = document.querySelector('.menu');
+  const navLinks = document.querySelector('.nav-links');
+  menuBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navLinks.dataset.open === '1';
+    navLinks.dataset.open = isOpen ? '0' : '1';
+    menuBtn.classList.toggle('is-active', !isOpen);
+  });
+  document.addEventListener('click', (e) => {
+    if (navLinks?.dataset.open === '1' && !navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+      navLinks.dataset.open = '0';
+      menuBtn?.classList.remove('is-active');
+    }
   });
 </script>
 

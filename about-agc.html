@@ -51,9 +51,9 @@
     .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:9px 16px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center;white-space:nowrap}
     .pill:hover{border-color:var(--navy);background:var(--paper)}
     .pill.red{background:var(--red);color:white;border-color:var(--red);padding:9px 20px;box-shadow:0 4px 16px rgba(227,30,36,.25)}
-    .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
-    .menu{display:none;border:0;background:var(--white);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
-    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
+    .menu{display:none;border:1px solid var(--line);background:var(--white);width:44px;height:44px;border-radius:50%;cursor:pointer;align-items:center;justify-content:center;padding:0;color:var(--navy);box-shadow:0 2px 10px rgba(8,27,69,.06);transition:all .2s ease;flex-shrink:0}
+    .menu:hover{border-color:var(--navy);background:var(--paper)}
+    .mobile-nav-cta{display:none}
 
     /* Hero Banner with Team Photo */
     .about-hero{position:relative;min-height:460px;display:flex;align-items:flex-end;padding:80px 0 54px;background:#061433;overflow:hidden}
@@ -87,7 +87,8 @@
     .drives-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
     .drive-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px 28px;box-shadow:0 12px 35px rgba(8,27,69,.05);transition:transform .3s ease}
     .drive-card:hover{transform:translateY(-4px);border-color:rgba(8,27,69,.2)}
-    .drive-icon{font-size:32px;margin-bottom:16px;display:inline-block}
+    .drive-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg, #081b45 0%, #162f6b 100%);color:#fff;display:inline-flex;align-items:center;justify-content:center;margin-bottom:18px;box-shadow:0 6px 18px rgba(8,27,69,.16)}
+    .drive-icon svg{width:26px;height:26px;stroke:#fff}
     .drive-card h3{font:800 22px Manrope;color:var(--navy);margin-bottom:10px}
     .drive-card p{font-size:14px;color:#546478;line-height:1.75;margin:0}
 
@@ -147,19 +148,31 @@
     /* Mobile Responsive */
     @media (max-width: 992px){
       .nav-links{display:none}
-      .menu{display:flex}
+      .nav-actions .pill{display:none !important}
+      .menu{display:flex !important}
       .nav-links[data-open="1"]{
         display:flex !important;
         position:absolute;top:78px;left:14px;right:14px;
         padding:22px;border-radius:20px;background:white;
         border:1px solid var(--line);
-        box-shadow:0 24px 60px rgba(8,27,69,.18);
-        flex-direction:column;align-items:flex-start;gap:14px;
-        z-index:999;
+        box-shadow:0 24px 60px rgba(8,27,69,.22);
+        flex-direction:column;align-items:stretch;gap:12px;
+        z-index:9999;
+        max-height:calc(100vh - 95px);
+        overflow-y:auto;
+      }
+      .nav-links[data-open="1"] a{
+        padding:10px 14px;border-radius:10px;font-size:14px;font-weight:600;color:var(--navy);
+      }
+      .nav-links[data-open="1"] a:hover{
+        background:var(--paper-2);color:var(--red);
       }
       .nav-links[data-open="1"] .dropdown-menu{
-        position:static;display:flex;opacity:1;transform:none;
-        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
+        position:static;display:flex;opacity:1;pointer-events:auto;transform:none;
+        box-shadow:none;border:1px solid var(--line);padding:10px;background:var(--paper);width:100%;border-radius:12px;
+      }
+      .nav-links[data-open="1"] .mobile-nav-cta{
+        display:flex;flex-direction:column;gap:10px;margin-top:10px;padding-top:14px;border-top:1px solid var(--line);
       }
       .grid-2,.leaders-dual-grid,.frames-box,.cta-banner{grid-template-columns:1fr}
       .timeline-grid,.team-grid-pro,.regulated-grid{grid-template-columns:repeat(2,1fr)}
@@ -168,7 +181,7 @@
     }
     @media (max-width: 580px){
       .timeline-grid,.team-grid-pro,.regulated-grid{grid-template-columns:1fr}
-      .nav-actions .pill:first-child{display:none}
+      .wrap{width:calc(100% - 24px)}
     }
   </style>
 </head>
@@ -186,12 +199,13 @@
         <div class="nav-dropdown">
           <a href="services.html">Services ▾</a>
           <div class="dropdown-menu">
+            <a href="services.html">All Services Overview</a>
             <a href="financial-planning.html">Financial Planning</a>
             <a href="financial-services.html">Financial Services</a>
-            <a href="taxation.html">Taxation</a>
-            <a href="legal-services.html">Legal Services</a>
+            <a href="taxation.html">Taxation & Audit</a>
+            <a href="legal-services.html">Legal & Succession</a>
             <a href="hr-solutions.html">HR Solutions</a>
-            <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+            <a href="elderly-care.html">Elderly Care (Samman)</a>
           </div>
         </div>
         <a href="index.html#wall-of-frames">Wall of Frames</a>
@@ -199,11 +213,25 @@
         <a href="#team">Team</a>
         <a href="career.html">Career</a>
         <a href="contact.html">Contact</a>
+        <div class="mobile-nav-cta">
+          <a class="pill" href="tel:+919038620055" style="justify-content:center;text-align:center">Call +91 90386 20055</a>
+          <a class="pill red" href="contact.html" style="justify-content:center;text-align:center">Book Consultation ↗</a>
+        </div>
       </div>
       <div class="nav-actions">
         <a class="pill" href="tel:+919038620055">Call +91 90386 20055</a>
         <a class="pill red" href="contact.html">Book Consultation ↗</a>
-        <button class="menu" type="button" aria-label="Open navigation"><span></span><span></span><span></span></button>
+        <button class="menu" type="button" aria-label="Toggle navigation">
+          <svg class="menu-open-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#081b45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="menu-close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e31e24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </nav>
   </div>
@@ -293,17 +321,33 @@
 
       <div class="drives-grid">
         <div class="drive-card">
-          <span class="drive-icon">🎯</span>
+          <div class="drive-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+          </div>
           <h3>Our Mission</h3>
           <p>To eliminate disjointed financial decisions by coordinating investment, taxation, auditing, and succession under one fiduciary standard.</p>
         </div>
         <div class="drive-card">
-          <span class="drive-icon">👁️</span>
+          <div class="drive-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
           <h3>Our Vision</h3>
           <p>To be India's most dependable multi-generational advisory consortium, where client families grow with total clarity and governance.</p>
         </div>
         <div class="drive-card">
-          <span class="drive-icon">🛡️</span>
+          <div class="drive-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
           <h3>Our Core Values</h3>
           <p>Fiduciary duty without bias, client-first transparency, empirical reasoning, and consistent ongoing review cadences.</p>
         </div>
@@ -591,10 +635,30 @@
 
 <script>
   const menu = document.querySelector('.menu');
-  menu?.addEventListener('click', () => {
-    const links = document.querySelector('.nav-links');
-    const open = links.dataset.open === '1';
-    links.dataset.open = open ? '0' : '1';
+  const links = document.querySelector('.nav-links');
+  const openIcon = menu?.querySelector('.menu-open-icon');
+  const closeIcon = menu?.querySelector('.menu-close-icon');
+
+  menu?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = links.getAttribute('data-open') === '1';
+    if(isOpen){
+      links.removeAttribute('data-open');
+      if(openIcon) openIcon.style.display = 'block';
+      if(closeIcon) closeIcon.style.display = 'none';
+    } else {
+      links.setAttribute('data-open', '1');
+      if(openIcon) openIcon.style.display = 'none';
+      if(closeIcon) closeIcon.style.display = 'block';
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if(links && links.getAttribute('data-open') === '1' && !links.contains(e.target) && !menu?.contains(e.target)){
+      links.removeAttribute('data-open');
+      if(openIcon) openIcon.style.display = 'block';
+      if(closeIcon) closeIcon.style.display = 'none';
+    }
   });
 </script>
 

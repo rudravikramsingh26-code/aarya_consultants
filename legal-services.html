@@ -1,151 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#081b45" />
-  <title>Legal & Succession Services — Aarya Consultants | Legacy Protection</title>
-  <link rel="icon" href="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/favicon-1783876190136-01f3cca3.webp" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal Services & Estate Planning | Aarya Consultants — What You Built Should Reach Who You Built It For.</title>
+  <meta name="description" content="Estate planning, succession planning, will building, family trusts, society formation and legal advisory handled discreetly by Aarya Consultants.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   <style>
     :root{
       --navy: #081b45;
-      --navy-dark: #040e25;
+      --navy-dark: #040e24;
       --red: #e31e24;
-      --muted: #5e6b7e;
-      --line: #dfe5ee;
+      --red-hover: #c0141a;
       --paper: #f8fbff;
+      --paper-2: #eef4fc;
+      --line: rgba(8,27,69,0.08);
       --white: #ffffff;
-      --max: 1320px;
+      --max: 1220px;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--navy);overflow-x:hidden}
+    body{font-family:'DM Sans',sans-serif;color:#1e293b;background:var(--paper);line-height:1.6}
     a{color:inherit;text-decoration:none}
-    .wrap{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
-    .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--red)}
-    .serif{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500}
+    .wrap{width:min(calc(100% - 48px),var(--max));margin-inline:auto}
+    .eyebrow{font:800 11px/1 Manrope;color:var(--red);letter-spacing:.18em;text-transform:uppercase;display:inline-block;margin-bottom:12px}
+    .serif{font-family:'Playfair Display',serif;font-style:italic}
 
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,229,238,.85)}
-    nav{height:80px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:14px}
-    .brand-logo-img{height:42px;width:auto}
-    .brand-text strong{font-family:Manrope,sans-serif;font-size:17px;color:var(--navy)}
-    .brand-text span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:700;display:block}
-    .nav-links{display:flex;gap:26px;align-items:center}
-    .nav-links a{font-size:13px;color:#415065;font-weight:600}
-    .nav-links a:hover{color:var(--red)}
-    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700}
-    .pill.red{background:var(--red);color:white;border-color:var(--red)}
-
-    .page-hero{padding:90px 0 60px;background:linear-gradient(135deg,rgba(8,27,69,.05),rgba(227,30,36,.03))}
-    .page-hero h1{font:800 clamp(40px,5vw,68px)/1.02 Manrope;letter-spacing:-.05em;margin-top:14px;color:var(--navy)}
-    .page-hero p{max-width:680px;font-size:17px;color:#506277;line-height:1.75;margin-top:20px}
-
-    section{padding:80px 0}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-    .card-box{background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px;box-shadow:0 14px 40px rgba(8,27,69,.05)}
-    .card-box h3{font:700 22px Manrope;color:var(--navy);margin-bottom:12px}
-    .card-box p{font-size:14px;color:#596b82;line-height:1.7}
-
-    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
-    .pillar{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}
-    .pillar b{color:var(--red);font-size:13px;font-family:Manrope}
-    .pillar h4{font:700 19px Manrope;color:var(--navy);margin:10px 0 8px}
-    .pillar p{font-size:13px;color:#607185;line-height:1.6}
-
-    footer{background:var(--navy-dark);color:#bccce2;padding:58px 0 30px;border-top:4px solid var(--red)}
-    .footer-grid{display:grid;grid-template-columns:1.4fr .7fr .7fr .9fr;gap:35px}
-    .foot-logo{height:36px;filter:brightness(0) invert(1);margin-bottom:14px}
-    .foot-col h4{font:700 11px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#f0f5fc;margin-bottom:13px}
-    .foot-col a{display:block;font-size:12px;color:#8fa5c2;margin:9px 0}
-    .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);margin-top:38px;padding-top:20px;color:#6d83a1;font-size:10px}
-
-    @media(max-width:860px){
-      .grid-2,.pillars,.footer-grid{grid-template-columns:1fr}
-      .nav-links{display:none}
-    }
-  
-    /* Navigation Dropdown & Mobile Menu Styles */
-    .nav-dropdown{position:relative;display:inline-block}
-    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
-    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:10px;min-width:220px;flex-direction:column;gap:4px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
-    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
-    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
-    .menu{display:none;border:0;background:var(--white);width:42px;height:42px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
-    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
-    .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:11px 18px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center}
-    .pill:hover{border-color:var(--navy);background:var(--paper)}
-    .pill.red{background:var(--red);color:white;border-color:var(--red);padding-inline:20px;box-shadow:0 4px 16px rgba(227,30,36,.25)}
-    .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
-
-    @media (max-width: 992px){
-      .nav-links{display:none}
-      .menu{display:flex}
-      .nav-links[data-open="1"]{
-        display:flex !important;
-        position:absolute;top:80px;left:14px;right:14px;
-        padding:22px;border-radius:20px;background:white;
-        border:1px solid var(--line);
-        box-shadow:0 24px 60px rgba(8,27,69,.18);
-        flex-direction:column;align-items:flex-start;gap:14px;
-        z-index:999;
-      }
-      .nav-links[data-open="1"] .dropdown-menu{
-        position:static;display:flex;opacity:1;transform:none;
-        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
-      }
-      .footer-grid{grid-template-columns:1fr !important}
-    }
-
-
-    /* Crisp Unified Header Layout */
+    /* Header */
+    header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
     nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;flex-shrink:0}
     .brand-logo-img{height:44px;width:auto;object-fit:contain}
     .nav-links{display:flex;gap:20px;align-items:center;flex-shrink:0}
     .nav-links a{font-size:13px;color:#334155;font-weight:600;white-space:nowrap;transition:color .2s ease}
     .nav-links a:hover{color:var(--red)}
+    .nav-dropdown{position:relative;display:inline-block}
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
+    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:10px;min-width:220px;flex-direction:column;gap:4px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
+    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
+    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
     .nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;white-space:nowrap}
     .pill{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:9px 16px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s ease;display:inline-flex;align-items:center;white-space:nowrap}
     .pill:hover{border-color:var(--navy);background:var(--paper)}
-    .pill.red{background:var(--red);color:white;border-color:var(--red);padding:9px 20px;box-shadow:0 4px 16px rgba(227,30,36,.25);white-space:nowrap}
+    .pill.red{background:var(--red);color:white;border-color:var(--red);padding:9px 20px;box-shadow:0 4px 16px rgba(227,30,36,.25)}
     .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
-    .menu{display:none;border:0;background:var(--white);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
-    .menu span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px}
+    .menu{display:none;border:1px solid var(--line);background:var(--white);width:44px;height:44px;border-radius:50%;cursor:pointer;align-items:center;justify-content:center;padding:0;color:var(--navy);box-shadow:0 2px 10px rgba(8,27,69,.06);transition:all .2s ease;flex-shrink:0}
+    .menu:hover{border-color:var(--navy);background:var(--paper)}
+    .mobile-nav-cta{display:none}
 
+    /* Page Hero */
+    .page-hero{background:#081b45;color:white;padding:84px 0 64px;border-bottom:1px solid rgba(255,255,255,.1);text-align:center}
+    .page-hero .eyebrow{color:#ff6b6e}
+    .page-hero h1{font:800 clamp(36px,4.5vw,56px)/1.08 Manrope;margin-bottom:14px;letter-spacing:-.02em}
+    .page-hero p{font-size:17px;color:#c9d7ec;max-width:800px;margin:0 auto 24px;line-height:1.7}
 
-    /* Universal Mobile & Tablet Grid Adjustments */
+    /* Content Sections */
+    section{padding:80px 0}
+    .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+    .section-head{text-align:center;max-width:780px;margin:0 auto 44px}
+    .section-head h2{font:800 clamp(30px,3.6vw,44px)/1.12 Manrope;color:var(--navy);margin-top:8px}
+    .section-head p{color:#546478;font-size:15px;margin-top:10px}
+
+    /* Practices Grid (6 areas) */
+    .practices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .practice-card{background:white;border:1px solid var(--line);border-radius:22px;padding:32px 26px;box-shadow:0 8px 24px rgba(8,27,69,.04);transition:all .3s ease;display:flex;flex-direction:column}
+    .practice-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(8,27,69,.1);border-color:var(--red)}
+    .practice-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#081b45,#162f6b);color:white;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px}
+    .practice-icon svg{width:22px;height:22px}
+    .practice-card h4{font:800 19px Manrope;color:var(--navy);margin-bottom:10px}
+    .practice-card p{font-size:13px;color:#546478;line-height:1.7;margin-bottom:14px}
+    .practice-card ul{list-style:none;padding:0;margin:0;font-size:12px;color:var(--navy);display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:14px}
+    .practice-card li{display:flex;align-items:center;gap:6px}
+    .practice-card li svg{width:14px;height:14px;color:var(--red);flex-shrink:0}
+
+    /* Situations Resolved (Case Studies from Live Site!) */
+    .situations-section{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .situations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+    .situation-card{background:white;border:1px solid var(--line);border-radius:22px;padding:32px 26px;box-shadow:0 8px 25px rgba(8,27,69,.04);border-left:4px solid var(--red)}
+    .situation-tag{font:800 11px Manrope;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:block}
+    .situation-card h4{font:800 18px Manrope;color:var(--navy);margin-bottom:10px}
+    .situation-card p{font-size:13px;color:#546478;line-height:1.7;margin:0}
+
+    /* Quote Banner */
+    .quote-box{background:#081b45;color:white;border-radius:24px;padding:40px;margin-top:40px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .quote-box h3{font:800 24px Manrope;margin-bottom:8px}
+    .quote-box p{color:#c9d7ec;font-size:14px;max-width:700px;margin:0;line-height:1.7}
+
+    /* Footer */
+    footer{background:#040e24;color:#a4bad5;padding:70px 0 35px;border-top:1px solid rgba(255,255,255,.08)}
+    .footer-grid{display:grid;grid-template-columns:1.4fr .8fr .9fr 1.1fr;gap:40px}
+    .foot-logo{height:44px;width:auto;margin-bottom:14px}
+    .foot-desc{font-size:13px;line-height:1.7;color:#8da0b8}
+    .foot-col h4{font:700 13px Manrope;text-transform:uppercase;letter-spacing:.12em;color:#fff;margin-bottom:18px}
+    .foot-col a{display:block;color:#8da0b8;font-size:13px;margin-bottom:10px;transition:color .2s}
+    .foot-col a:hover{color:var(--red)}
+    .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:20px;color:#6d83a1;font-size:10px}
+
+    /* Responsive */
     @media (max-width: 992px){
-      .grid-2, .career-grid, .contact-grid, .service-row{grid-template-columns:1fr !important;gap:36px}
-      .pillars, .values-grid{grid-template-columns:repeat(2,1fr) !important}
-      .feat-list{grid-template-columns:1fr 1fr !important}
-      .wrap{width:calc(100% - 32px)}
+      .grid-2{grid-template-columns:1fr;gap:36px}
+      .practices-grid,.situations-grid{grid-template-columns:repeat(2,1fr)}
+      .quote-box{flex-direction:column;align-items:flex-start}
       .nav-links{display:none}
+      .nav-actions .pill{display:none !important}
       .menu{display:flex !important}
       .nav-links[data-open="1"]{
         display:flex !important;
         position:absolute;top:78px;left:14px;right:14px;
         padding:22px;border-radius:20px;background:white;
         border:1px solid var(--line);
-        box-shadow:0 24px 60px rgba(8,27,69,.18);
-        flex-direction:column;align-items:flex-start;gap:14px;
-        z-index:999;
+        box-shadow:0 24px 60px rgba(8,27,69,.22);
+        flex-direction:column;align-items:stretch;gap:12px;
+        z-index:9999;
+        max-height:calc(100vh - 95px);
+        overflow-y:auto;
       }
+      .nav-links[data-open="1"] a{padding:10px 14px;border-radius:10px;font-size:14px;font-weight:600;color:var(--navy)}
+      .nav-links[data-open="1"] a:hover{background:var(--paper-2);color:var(--red)}
       .nav-links[data-open="1"] .dropdown-menu{
-        position:static;display:flex;opacity:1;transform:none;
-        box-shadow:none;border:none;padding-left:14px;background:var(--paper-2);width:100%;
+        position:static;display:flex;opacity:1;pointer-events:auto;transform:none;
+        box-shadow:none;border:1px solid var(--line);padding:10px;background:var(--paper);width:100%;border-radius:12px;
+      }
+      .nav-links[data-open="1"] .mobile-nav-cta{
+        display:flex;flex-direction:column;gap:10px;margin-top:10px;padding-top:14px;border-top:1px solid var(--line);
       }
       .footer-grid{grid-template-columns:1fr !important}
     }
-    @media (max-width: 580px){
-      .pillars, .values-grid, .feat-list{grid-template-columns:1fr !important}
-      .nav-actions .pill:first-child{display:none}
+    @media (max-width: 600px){
+      .practices-grid,.situations-grid{grid-template-columns:1fr}
       .wrap{width:calc(100% - 24px)}
     }
-
-</style>
+  </style>
 </head>
 <body>
 
@@ -161,77 +147,227 @@
         <div class="nav-dropdown">
           <a href="services.html" style="color:var(--red)">Services ▾</a>
           <div class="dropdown-menu">
+            <a href="services.html">All Services Overview</a>
             <a href="financial-planning.html">Financial Planning</a>
             <a href="financial-services.html">Financial Services</a>
-            <a href="taxation.html">Taxation</a>
-            <a href="legal-services.html" style="color:var(--red);font-weight:700">Legal Services</a>
+            <a href="taxation.html">Taxation & Audit</a>
+            <a href="legal-services.html" style="color:var(--red);font-weight:700">Legal & Succession</a>
             <a href="hr-solutions.html">HR Solutions</a>
-            <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+            <a href="elderly-care.html">Elderly Care (Samman)</a>
           </div>
         </div>
         <a href="index.html#wall-of-frames">Wall of Frames</a>
         <a href="index.html#leadership">Leadership</a>
         <a href="career.html">Career</a>
         <a href="contact.html">Contact</a>
+        <div class="mobile-nav-cta">
+          <a class="pill" href="tel:+919038620055" style="justify-content:center;text-align:center">Call +91 90386 20055</a>
+          <a class="pill red" href="contact.html" style="justify-content:center;text-align:center">Book Consultation ↗</a>
+        </div>
       </div>
       <div class="nav-actions">
         <a class="pill" href="tel:+919038620055">Call +91 90386 20055</a>
         <a class="pill red" href="contact.html">Book Consultation ↗</a>
-        <button class="menu" type="button" aria-label="Open navigation"><span></span><span></span><span></span></button>
+        <button class="menu" type="button" aria-label="Toggle navigation">
+          <svg class="menu-open-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#081b45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="menu-close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e31e24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </nav>
   </div>
 </header>
 
 <main>
+  <!-- Hero Section Matching Live Site -->
   <div class="page-hero">
     <div class="wrap">
-      <span class="eyebrow">Vertical 04 · Governance & Legacy</span>
-      <h1>Legal Structuring & <br><span class="serif">Generational Succession.</span></h1>
-      <p>Building ironclad family trust deeds, wills, partnership charters, and succession roadmaps so hard-earned family wealth transitions seamlessly without internal dispute.</p>
+      <span class="eyebrow">Vertical 04 · Governance & Generational Legacy</span>
+      <h1>What You Built Should Reach <br><span class="serif">Who You Built It For.</span></h1>
+      <p>Estate planning, succession planning, will building, family trusts, society formation and legal advisory — handled discreetly, end to end.</p>
+      <a href="contact.html" class="pill red">Book a Confidential Consultation ↗</a>
     </div>
   </div>
 
+  <!-- Foundational Story Matching Live Site -->
   <section>
     <div class="wrap grid-2">
       <div>
-        <span class="eyebrow">Preserving Generations</span>
-        <h2 style="font:800 clamp(32px,3.8vw,46px)/1.08 Manrope;color:var(--navy);margin:12px 0 20px">Estate Architecture for Families & Founders</h2>
-        <p style="font-size:15px;line-height:1.75;color:#526377;margin-bottom:16px">
-          Without clear legal structuring, family enterprises frequently face probate delays, tax shocks, or conflicting succession claims. Aarya's Chartered Inheritance and Succession specialists construct comprehensive fiduciary solutions tailored to your intent.
+        <span class="eyebrow">Discreet Fiduciary Standard</span>
+        <h2 style="font:800 clamp(32px,3.8vw,46px)/1.08 Manrope;color:var(--navy);margin:12px 0 20px">
+          Planning Wealth Without Planning Its Transfer Is Only <span class="serif" style="color:var(--red)">Half the Job.</span>
+        </h2>
+        <p style="font-size:15px;line-height:1.8;color:#526377;margin-bottom:16px">
+          Most disputes within families are not about money. They are about ambiguity: an unwritten intention, an unregistered property, a nominee who was never meant to be the owner, a business with no succession line.
         </p>
-        <p style="font-size:15px;line-height:1.75;color:#526377;margin-bottom:24px">
-          We draft Private Family Trusts, design cross-border inheritance charters, execute living wills, and draft stakeholder agreements to safeguard both business continuity and family harmony.
+        <p style="font-size:15px;line-height:1.8;color:#526377;margin-bottom:24px">
+          Aarya Estate Planners and Legal Services was created because our financial clients kept arriving at the same question: <em>what happens to all of this afterwards?</em> Our attorneys, lawyers, and advocates work alongside the same team that manages your investments and your books, so the plan on paper matches the assets in reality. Every engagement is strictly confidential. Documents are handled by named professionals, not passed around a team.
         </p>
-        <a href="contact.html" class="pill red" style="display:inline-block">Schedule Succession Consultation ↗</a>
+        <a href="contact.html" class="pill red">Connect With Legal Team ↗</a>
       </div>
-      <div class="card-box">
-        <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/whatsapp-image-2026-08-05-at-18-44-33-1785935760358-8844488f.webp" alt="Legal & Succession" style="border-radius:16px;width:100%;height:220px;object-fit:cover;margin-bottom:20px">
-        <h3>Private Family Trusts & Will Building</h3>
-        <p>Ring-fence personal and commercial assets against creditors and unforeseen liabilities with bespoke private trusts managed by certified legal trustees.</p>
+      <div style="border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 45px rgba(8,27,69,.08)">
+        <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/whatsapp-image-2026-08-05-at-18-44-33-1785935760358-8844488f.webp" alt="Confidential Legal Consultation" style="width:100%;height:380px;object-fit:cover" loading="lazy">
       </div>
     </div>
   </section>
 
+  <!-- How We Help: 6 Legal & Estate Disciplines (Matching Live Site!) -->
   <section style="background:var(--white)">
     <div class="wrap">
-      <span class="eyebrow">Our Governance Verticals</span>
-      <h2 style="font:800 38px Manrope;color:var(--navy);margin-top:10px">Succession & Legal Capabilities</h2>
-      <div class="pillars">
-        <div class="pillar">
-          <b>GOVERNANCE 01</b>
-          <h4>Family Trust Formation</h4>
-          <p>Structuring revocable and irrevocable trusts, defining beneficiary distribution covenants, and establishing trustee governance rules.</p>
+      <div class="section-head">
+        <span class="eyebrow">Practice Areas</span>
+        <h2>How We Help</h2>
+        <p>Comprehensive estate structuring, cross-generation business transfer, and statutory registration under one roof.</p>
+      </div>
+
+      <div class="practices-grid">
+        <!-- 1. Estate Planning -->
+        <div class="practice-card">
+          <div class="practice-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+          </div>
+          <h4>Estate Planning</h4>
+          <p>A complete inventory of what you own, how each asset is titled, and how it should pass on. We align nominations, ownership, and tax implications so they never contradict each other.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Asset & liability register</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Title & nomination audit</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Stamp duty & transfer tax roadmap</li>
+          </ul>
         </div>
-        <div class="pillar">
-          <b>GOVERNANCE 02</b>
-          <h4>Will Drafting & Probate Support</h4>
-          <p>Drafting unambiguous, legally vetted wills, asset scheduling, witness coordination, and full probate execution guidance.</p>
+
+        <!-- 2. Succession Planning -->
+        <div class="practice-card">
+          <div class="practice-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            </svg>
+          </div>
+          <h4>Succession Planning</h4>
+          <p>Continuity for the family business and personal wealth across generations. For a business, succession is a management problem before it is legal: who runs it, who owns it, and who is compensated.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Business leadership transition</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Next-gen onboarding & roles</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Avoiding probate delay & disputes</li>
+          </ul>
         </div>
-        <div class="pillar">
-          <b>GOVERNANCE 03</b>
-          <h4>Corporate Legal Structuring</h4>
-          <p>Partnership deed restructuring, shareholder pacts, dispute resolution frameworks, and property registration verification.</p>
+
+        <!-- 3. Will Building -->
+        <div class="practice-card">
+          <div class="practice-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"/>
+              <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <h4>Will Building (5 Steps)</h4>
+          <p>A will is the simplest and most powerful instrument—and the one most often written badly. We draft, execute, witness, and safely store wills properly, and remind you to review every 3 years.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Asset listing & beneficiaries</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Residuary clauses & executor</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Witnessing & safe custody</li>
+          </ul>
+        </div>
+
+        <!-- 4. Family Trust -->
+        <div class="practice-card">
+          <div class="practice-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h4>Family Trust</h4>
+          <p>Separates ownership from benefit. Private structures for protection, control, and orderly distribution of assets: ideal for special-needs dependents, minor children, and business ring-fencing.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Irrevocable & revocable deeds</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Trustee appointment & briefing</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ongoing trust compliance</li>
+          </ul>
+        </div>
+
+        <!-- 5. Society & Trust Formation -->
+        <div class="practice-card">
+          <div class="practice-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18M5 21V10l7-5 7 5v11"/>
+            </svg>
+          </div>
+          <h4>Society & Trust Formation</h4>
+          <p>Registration and governance for societies, charitable trusts, associations, and Section 8 companies. We handle deed drafting, PAN, TAN, 12A, 80G, FCRA, and statutory NPO audits.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Society & trust deed registration</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 12A, 80G & FCRA certifications</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> NPO statutory audit & compliance</li>
+          </ul>
+        </div>
+
+        <!-- 6. Legal & Property Services -->
+        <div class="practice-card">
+          <div class="practice-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="2" width="16" height="20" rx="2"/>
+              <path d="M10 22v-4h4v4"/>
+            </svg>
+          </div>
+          <h4>Legal & Property Services</h4>
+          <p>Property title search, sale deed drafting, registration, land mutation, consumer forum litigation, commercial contract vetting, and general civil legal advisory.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Property registration & mutation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Consumer court & civil matters</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Commercial contract negotiation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Chief Mentor Callout (from Live Site!) -->
+      <div class="quote-box">
+        <div>
+          <span class="eyebrow" style="color:#ff6b6e">Chief Mentor's Insight</span>
+          <h3>"Fifteen Minutes Now, or Fifteen Years in Court."</h3>
+          <p>Our Chief Mentor Sanjay K. Gupta on the three most common and preventable mistakes families make with inheritance: assuming nominees are owners, leaving unwritten promises, and postponing deed registration.</p>
+        </div>
+        <a href="contact.html" class="pill" style="background:white;color:var(--navy);white-space:nowrap">Schedule Consultation ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Situations We Have Resolved (Case Studies from Live Site!) -->
+  <section class="situations-section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Proven Precedents</span>
+        <h2>Situations We Have Resolved</h2>
+        <p>Real scenarios from our two decades of fiduciary estate and legal practice in India.</p>
+      </div>
+
+      <div class="situations-grid">
+        <div class="situation-card">
+          <span class="situation-tag">Case 01 · Nomination vs Heirship</span>
+          <h4>The Unnamed Nominee</h4>
+          <p>A family assumed the nominee on a fixed deposit and mutual fund holding was the permanent legal owner. Correcting the nomination, executing gift instruments, and drafting a clear will prevented a bitter legal dispute between three siblings.</p>
+        </div>
+
+        <div class="situation-card">
+          <span class="situation-tag">Case 02 · Family Enterprise</span>
+          <h4>The Business With No Line</h4>
+          <p>A founder in his sixties with two children in different professions. Creating a private family trust plus a documented family settlement agreement kept the core commercial enterprise intact while both heirs were fairly and amicably compensated.</p>
+        </div>
+
+        <div class="situation-card">
+          <span class="situation-tag">Case 03 · Joint Property Titling</span>
+          <h4>The Property Nobody Could Sell</h4>
+          <p>An inherited residential property held jointly across four heirs with no formal mutation or partition deed. Our legal team completed title cleanup, succession paperwork, and registrar mutation in under four months, allowing clean liquidity.</p>
         </div>
       </div>
     </div>
@@ -264,18 +400,18 @@
       <div class="foot-col">
         <h4>Services</h4>
         <a href="financial-planning.html">Financial Planning</a>
-        <a href="financial-services.html">Audit & Assurance</a>
-        <a href="taxation.html">Taxation & GST</a>
+        <a href="financial-services.html">Financial Services</a>
+        <a href="taxation.html">Taxation & Audit</a>
         <a href="legal-services.html">Legal & Succession</a>
         <a href="hr-solutions.html">HR Solutions</a>
-        <a href="https://sammanoldercare.com/" target="_blank" rel="noopener">Elderly Care (Samman) ↗</a>
+        <a href="elderly-care.html">Elderly Care (Samman)</a>
       </div>
 
       <div class="foot-col">
         <h4>Offices & Contact</h4>
         <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:12px">
           <strong style="color:#fff;display:block">Kolkata Head Office:</strong>
-          73C, Shyama Prasad Mukherjee Road,<br>Kolkata - 700026, West Bengal
+          73C, Shyama Prasad Mukherjee Road, beside Kalighat Post Office,<br>Kolkata - 700026, West Bengal
         </p>
         <p style="font-size:11px;color:#a4bad5;line-height:1.6;margin-bottom:14px">
           <strong style="color:#fff;display:block">Gurugram Office:</strong>
@@ -294,13 +430,32 @@
   </div>
 </footer>
 
-
 <script>
   const menu = document.querySelector('.menu');
-  menu?.addEventListener('click', () => {
-    const links = document.querySelector('.nav-links');
-    const open = links.dataset.open === '1';
-    links.dataset.open = open ? '0' : '1';
+  const links = document.querySelector('.nav-links');
+  const openIcon = menu?.querySelector('.menu-open-icon');
+  const closeIcon = menu?.querySelector('.menu-close-icon');
+
+  menu?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = links.getAttribute('data-open') === '1';
+    if(isOpen){
+      links.removeAttribute('data-open');
+      if(openIcon) openIcon.style.display = 'block';
+      if(closeIcon) closeIcon.style.display = 'none';
+    } else {
+      links.setAttribute('data-open', '1');
+      if(openIcon) openIcon.style.display = 'none';
+      if(closeIcon) closeIcon.style.display = 'block';
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if(links && links.getAttribute('data-open') === '1' && !links.contains(e.target) && !menu?.contains(e.target)){
+      links.removeAttribute('data-open');
+      if(openIcon) openIcon.style.display = 'block';
+      if(closeIcon) closeIcon.style.display = 'none';
+    }
   });
 </script>
 
