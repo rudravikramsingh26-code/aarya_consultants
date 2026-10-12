@@ -41,6 +41,38 @@
     sb.innerHTML = '<a href="tel:+' + PHONE + '" aria-label="Call us">' + phSvg + 'Call</a><a href="https://wa.me/' + PHONE + '" target="_blank" rel="noopener">' + waSvg + 'WhatsApp</a><a class="book" href="' + bookHref + '">Book Consultation</a>';
     document.body.appendChild(sb);
 
+    /* Live Desk Status Beacon in Announcement Bar */
+    var annRight = $('.announcement .right');
+    if (annRight) {
+      var badge = document.createElement('span');
+      badge.className = 'desk-badge';
+      badge.innerHTML = '<span class="desk-beacon"></span> Fiduciary Desk Active';
+      annRight.insertBefore(badge, annRight.firstChild);
+    }
+
+    /* Quick "Ask an Advisor" Intent Drawer */
+    var drawerTrigger = document.createElement('button');
+    drawerTrigger.type = 'button';
+    drawerTrigger.className = 'advisor-modal-trigger';
+    drawerTrigger.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Direct Partner Desk';
+    document.body.appendChild(drawerTrigger);
+
+    var drawer = document.createElement('div');
+    drawer.className = 'advisor-drawer';
+    drawer.innerHTML = '<div class="advisor-drawer-head"><h4>Talk to a Senior Partner</h4><button type="button" class="advisor-drawer-close">&times;</button></div><p style="font-size:12px;color:#546478;margin-bottom:12px">Select your priority for instant routing:</p><div class="advisor-intent-list"><button type="button" class="advisor-intent-btn" data-intent="Review my Investment Portfolio"><span>Mutual Funds & Wealth</span> ↗</button><button type="button" class="advisor-intent-btn" data-intent="Tax Audit & GST Notice Query"><span>Taxation & Audit</span> ↗</button><button type="button" class="advisor-intent-btn" data-intent="Family Trust & Succession Planning"><span>Will & Succession</span> ↗</button><button type="button" class="advisor-intent-btn" data-intent="NRI Remittance & India Wealth Advisory"><span>NRI Advisory</span> ↗</button></div>';
+    document.body.appendChild(drawer);
+
+    drawerTrigger.addEventListener('click', function(){ drawer.classList.toggle('open'); });
+    $('.advisor-drawer-close', drawer).addEventListener('click', function(){ drawer.classList.remove('open'); });
+    $$('.advisor-intent-btn', drawer).forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var it = btn.getAttribute('data-intent');
+        var url = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent('Hello Aarya Consultants, I would like to consult a senior partner regarding: ' + it);
+        window.open(url, '_blank', 'noopener');
+        drawer.classList.remove('open');
+      });
+    });
+
     /* Page exit transition (exit only, never fades in from blank) */
     window.addEventListener('pageshow', function () { document.body.classList.remove('is-leaving'); });
     if (!reduced) {
@@ -75,6 +107,19 @@
           var r = c.getBoundingClientRect();
           c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
           c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+      });
+
+      /* Magnetic Pull on Primary Action Buttons */
+      $$('.cta.red, .pill.red, .btn-submit').forEach(function(btn){
+        btn.addEventListener('mousemove', function(e){
+          var r = btn.getBoundingClientRect();
+          var x = (e.clientX - (r.left + r.width / 2)) * 0.28;
+          var y = (e.clientY - (r.top + r.height / 2)) * 0.28;
+          btn.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+        });
+        btn.addEventListener('mouseleave', function(){
+          btn.style.transform = '';
         });
       });
     }
@@ -153,13 +198,35 @@
         }
       }
 
-      /* Hero parallax */
+      /* Hero parallax & 3D Interactive Mouse Tilt */
       var hero = $('.hero');
-      if (hero) {
-        var dash = $('.dashboard');
-        if (dash && window.innerWidth > 900) {
-          gsap.to('.hero-art', { yPercent: -8, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
-        }
+      var dash = $('.dashboard');
+      var heroArt = $('.hero-art');
+      if (hero && dash && heroArt && window.innerWidth > 900) {
+        gsap.to(heroArt, { yPercent: -8, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
+        
+        var rx = gsap.quickTo(dash, "rotationX", {duration: 0.5, ease: "power2.out"});
+        var ry = gsap.quickTo(dash, "rotationY", {duration: 0.5, ease: "power2.out"});
+        var fc1 = $('.fc1', heroArt), fc2 = $('.fc2', heroArt), fc3 = $('.fc3', heroArt);
+        var f1x = fc1 ? gsap.quickTo(fc1, "x", {duration: 0.6, ease: "power2.out"}) : null;
+        var f1y = fc1 ? gsap.quickTo(fc1, "y", {duration: 0.6, ease: "power2.out"}) : null;
+        var f2x = fc2 ? gsap.quickTo(fc2, "x", {duration: 0.7, ease: "power2.out"}) : null;
+        var f2y = fc2 ? gsap.quickTo(fc2, "y", {duration: 0.7, ease: "power2.out"}) : null;
+
+        heroArt.addEventListener('mousemove', function(e){
+          var rect = heroArt.getBoundingClientRect();
+          var px = (e.clientX - rect.left) / rect.width - 0.5;
+          var py = (e.clientY - rect.top) / rect.height - 0.5;
+          rx(-py * 16);
+          ry(px * 18);
+          if (f1x) { f1x(px * 24); f1y(py * 24); }
+          if (f2x) { f2x(-px * 28); f2y(-py * 28); }
+        });
+        heroArt.addEventListener('mouseleave', function(){
+          rx(0); ry(0);
+          if (f1x) { f1x(0); f1y(0); }
+          if (f2x) { f2x(0); f2y(0); }
+        });
       }
 
       /* Dashboard chart draw + value tick */
