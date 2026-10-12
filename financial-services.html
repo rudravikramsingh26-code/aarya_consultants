@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Financial Services | Aarya Consultants — Plan It Once. Review It Forever.</title>
   <meta name="description" content="SEBI, RBI, and IRDA licensed distributors of Mutual Funds, Stocks, Life & Health Insurance, Fixed Deposits, PMS, AIFs, and GIFT City NRI investments.">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
@@ -83,6 +84,43 @@
     .benefit-card h4{font:800 18px Manrope;color:var(--navy);margin-bottom:10px}
     .benefit-card p{font-size:13px;color:#546478;line-height:1.7;margin:0}
 
+    /* Offerings Feature Rows */
+    .offerings-container{display:flex;flex-direction:column;gap:48px;margin-top:20px}
+    .feature-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;background:white;padding:44px;border-radius:28px;border:1px solid var(--line);box-shadow:0 12px 35px rgba(8,27,69,.04);transition:transform .3s ease,box-shadow .3s ease}
+    .feature-row:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(8,27,69,.08)}
+    .feature-row.reverse{grid-template-columns:1fr 1fr}
+    .feature-row.reverse .feature-media{order:2}
+    .feature-row.reverse .feature-content{order:1}
+    .feature-media{border-radius:20px;overflow:hidden;height:340px;border:1px solid var(--line);background:var(--paper-2);position:relative}
+    .feature-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+    .feature-row:hover .feature-media img{transform:scale(1.04)}
+    .feature-content h3{font:800 clamp(24px,2.5vw,32px) Manrope;color:var(--navy);margin:8px 0 14px;letter-spacing:-.02em}
+    .feature-content p{color:#546478;font-size:15px;line-height:1.75;margin-bottom:22px}
+    .feature-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+    .feature-badge{background:var(--paper-2);border:1px solid var(--line);padding:7px 14px;border-radius:999px;font:700 12px Manrope;color:var(--navy);display:inline-flex;align-items:center;gap:7px}
+    .feature-badge svg{width:14px;height:14px;color:var(--red);flex-shrink:0}
+
+    /* Partner Logo Marquee Strip */
+    .partner-marquee-strip{background:white;border:1px solid var(--line);border-radius:24px;padding:32px 24px;box-shadow:0 8px 30px rgba(8,27,69,.03);overflow:hidden;margin:8px 0}
+    .partner-marquee-header{text-align:center;margin-bottom:20px}
+    .partner-marquee-header span{font:800 11px/1 Manrope;color:var(--red);letter-spacing:.18em;text-transform:uppercase}
+    .partner-marquee-header h4{font:800 18px Manrope;color:var(--navy);margin-top:6px}
+    .marquee-track-container{overflow:hidden;width:100%;display:flex}
+    .marquee-track{display:flex;align-items:center;gap:44px;width:max-content;animation:marquee 28s linear infinite}
+    .marquee-item{height:48px;display:flex;align-items:center;justify-content:center;padding:0 12px;filter:grayscale(1) contrast(0.7) opacity(0.85);transition:filter .3s ease,opacity .3s ease;flex-shrink:0}
+    .marquee-item:hover{filter:none;opacity:1}
+    .marquee-item img{height:36px;width:auto;max-width:140px;object-fit:contain;display:block}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+
+    /* CTA Banner */
+    .cta-banner-section{padding:30px 0 90px}
+    .cta-card{background:linear-gradient(135deg,#081b45 0%,#040e24 100%);color:white;border-radius:28px;padding:60px 48px;position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(8,27,69,.18);border:1px solid rgba(255,255,255,.1)}
+    .cta-card:before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;right:-100px;top:-180px;background:radial-gradient(circle,rgba(227,30,36,.28),transparent 70%);pointer-events:none}
+    .cta-card-content{position:relative;z-index:2;max-width:760px}
+    .cta-card h2{font:800 clamp(30px,3.8vw,46px)/1.15 Manrope;color:white;margin:10px 0 16px;letter-spacing:-.02em}
+    .cta-card p{font-size:16px;color:#c9d7ec;line-height:1.75;margin-bottom:28px;max-width:640px}
+    .cta-card-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+
     /* Footer */
     footer{background:#040e24;color:#a4bad5;padding:70px 0 35px;border-top:1px solid rgba(255,255,255,.08)}
     .footer-grid{display:grid;grid-template-columns:1.4fr .8fr .9fr 1.1fr;gap:40px}
@@ -98,6 +136,11 @@
       .license-banner{flex-direction:column;align-items:flex-start}
       .product-grid{grid-template-columns:repeat(2,1fr)}
       .benefit-grid{grid-template-columns:1fr}
+      .feature-row, .feature-row.reverse{grid-template-columns:1fr;gap:30px;padding:30px 24px}
+      .feature-row.reverse .feature-media{order:0}
+      .feature-row.reverse .feature-content{order:0}
+      .feature-media{height:240px}
+      .cta-card{padding:40px 24px}
       .nav-links{display:none}
       .nav-actions .pill{display:none !important}
       .menu{display:flex !important}
@@ -144,7 +187,7 @@
   <div class="wrap">
     <nav>
       <a href="index.html" class="brand" aria-label="Aarya Consultants home">
-        <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/arya-consultants-jpg-1790597676188-7d47f6c2.webp" alt="Aarya Consultants Logo" class="brand-logo-img">
+        <img src="images/arya-consultants-jpg-1790597676188-7d47f6c2.webp" alt="Aarya Consultants Logo" class="brand-logo-img" onerror="this.style.opacity='0';this.style.display='none';">
       </a>
       <div class="nav-links">
         <a href="index.html">Home</a>
@@ -190,23 +233,23 @@
 </header>
 
 <main>
-  <!-- Hero Section Matching Live Site -->
+  <!-- 1. Hero Section -->
   <div class="page-hero">
     <div class="wrap">
-      <span class="eyebrow">Vertical 02 · Full Product Shelf</span>
-      <h1>Financial Services</h1>
-      <p>Plan It Once. Review It Forever. Goal-based financial planning and the full product shelf; chosen on merit, reviewed on schedule.</p>
+      <span class="eyebrow">Plan It Once. Review It Forever.</span>
+      <h1>Goal-based financial planning and the full product shelf — chosen on merit, reviewed on schedule.</h1>
+      <p>Independent distribution and certified advisory across life insurance, health cover, mutual funds, fixed income, PMS, and global GIFT City structures.</p>
       <a href="contact.html" class="pill red">Book a Free Financial Health Check-up ↗</a>
     </div>
   </div>
 
-  <!-- Licensed Distributor Banner Matching Live Site -->
+  <!-- 2. SEBI/RBI/IRDA Banner -->
   <div class="wrap">
     <div class="license-banner">
       <div class="license-info">
         <span class="eyebrow" style="margin-bottom:6px">Authorized Distribution</span>
         <h3>SEBI, RBI And IRDA Licensed Distributors</h3>
-        <p>We are one of the largest distributors of all kinds of Financial Products from Stocks, Mutual Funds, Fixed Deposits, Bonds, Life insurance, health insurance, and general insurance products.</p>
+        <p>We are one of the largest distributors of all kinds of Financial Products from Stocks, Mutual Funds, Fixed Deposits, Bonds, Life insurance, health insurance and general insurance products.</p>
       </div>
       <div class="license-badges">
         <span class="lic-badge">AMFI Registered</span>
@@ -217,13 +260,180 @@
     </div>
   </div>
 
-  <!-- Our Offerings (All 12 Offerings from Live Site!) -->
+  <!-- 3. Our Offerings Section -->
   <section>
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Our Complete Shelf</span>
+        <span class="eyebrow">Comprehensive Solutions</span>
         <h2>Our Offerings</h2>
-        <p>Products curated across India’s leading institutions, independent of sales targets and aligned strictly to your goals.</p>
+        <p>Products curated across India's leading institutions, independent of sales targets and aligned strictly to your goals.</p>
+      </div>
+
+      <div class="offerings-container">
+        <!-- 4. Life Insurance section (image left, text right) -->
+        <div class="feature-row" id="life-insurance">
+          <div class="feature-media">
+            <img src="images/jakub-zerdzicki-gqn9gnmkvqg-unsplash--1--1785864329724-1e42f975.webp" alt="Life Insurance" loading="lazy" onerror="this.style.opacity='0';this.style.display='none';">
+          </div>
+          <div class="feature-content">
+            <span class="eyebrow">Protection & Legacy</span>
+            <h3>Life Insurance</h3>
+            <p>Protect your family's financial future with life insurance solutions tailored to your needs. Aarya Consultants assesses your human life value, income, liabilities, and dependants to recommend suitable term, traditional, or unit-linked plans that provide meaningful, long-term financial security.</p>
+            <div class="feature-badges">
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Human Life Value Assessment
+              </span>
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Term & Traditional Plans
+              </span>
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Claim Settlement Support
+              </span>
+            </div>
+            <a href="contact.html" class="pill red">Consult Our Insurance Specialists ↗</a>
+          </div>
+        </div>
+
+        <!-- 5. Partner/Logo Marquee strip -->
+        <div class="partner-marquee-strip">
+          <div class="partner-marquee-header">
+            <span>Institutional Partners</span>
+            <h4>Partnered with India's Leading Financial Institutions</h4>
+          </div>
+          <div class="marquee-track-container" aria-hidden="true">
+            <div class="marquee-track">
+              <!-- Set 1 -->
+              <div class="marquee-item"><img loading="lazy" src="images/pngwing-com--8--1785866014638-d715e87c.webp" alt="LIC" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/hdfc-life-logo-1789372649139-7203060b.webp" alt="HDFC Life" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/pngwing-com--1--1785865279199-2d410f93.webp" alt="ICICI Prudential" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/sbi-1785866169747-2b9f23c5.webp" alt="SBI" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/images--1--1789371441049-c329c223.webp" alt="Tata AIA" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/kodak-1789372720608-499a4d14.webp" alt="Kotak" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/aditya-1789373017348-18b2b3d3.webp" alt="Aditya Birla" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/bharti-aia-1789373112635-e8df33e7.webp" alt="Bharti AIA" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/bajaj-life-insurance-logo-web-new3901-1759729654-1790686532135-648235c6.webp" alt="Bajaj" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/images-1785865403879-ada3d33e.webp" alt="Care & Health" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <!-- Set 2 (Duplicated twice for seamless continuous ticker) -->
+              <div class="marquee-item"><img loading="lazy" src="images/pngwing-com--8--1785866014638-d715e87c.webp" alt="LIC" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/hdfc-life-logo-1789372649139-7203060b.webp" alt="HDFC Life" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/pngwing-com--1--1785865279199-2d410f93.webp" alt="ICICI Prudential" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/sbi-1785866169747-2b9f23c5.webp" alt="SBI" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/images--1--1789371441049-c329c223.webp" alt="Tata AIA" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/kodak-1789372720608-499a4d14.webp" alt="Kotak" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/aditya-1789373017348-18b2b3d3.webp" alt="Aditya Birla" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/bharti-aia-1789373112635-e8df33e7.webp" alt="Bharti AIA" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/bajaj-life-insurance-logo-web-new3901-1759729654-1790686532135-648235c6.webp" alt="Bajaj" onerror="this.style.opacity='0';this.style.display='none';"></div>
+              <div class="marquee-item"><img loading="lazy" src="images/images-1785865403879-ada3d33e.webp" alt="Care & Health" onerror="this.style.opacity='0';this.style.display='none';"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Health Insurance section (text left, image right) -->
+        <div class="feature-row reverse" id="health-insurance">
+          <div class="feature-content">
+            <span class="eyebrow">Medical & Critical Illness</span>
+            <h3>Health Insurance</h3>
+            <p>Your health policy should match your household composition, chronic-condition exposure and premium budget — not the highest-commission product on offer. We run a coverage-gap analysis, compare floater and individual structures, and review portability options before we recommend anything.</p>
+            <div class="feature-badges">
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Coverage-Gap Analysis
+              </span>
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Floater & Individual Plans
+              </span>
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Portability & Super Top-Up
+              </span>
+            </div>
+            <a href="contact.html" class="pill red">Review Your Health Cover ↗</a>
+          </div>
+          <div class="feature-media">
+            <img src="images/advice-first-1786082851805-d8dc89aa.webp" alt="Health Insurance" loading="lazy" onerror="this.style.opacity='0';this.style.display='none';">
+          </div>
+        </div>
+
+        <!-- 7. Mutual Funds section (image left, text right) -->
+        <div class="feature-row" id="mutual-funds">
+          <div class="feature-media">
+            <img src="images/assurance-1786083595981-e84fa118.webp" alt="Mutual Funds & Systematic Investment" loading="lazy" onerror="this.style.opacity='0';this.style.display='none';">
+          </div>
+          <div class="feature-content">
+            <span class="eyebrow">Disciplined Investing</span>
+            <h3>Mutual Funds & Systematic Investment</h3>
+            <p>We manage SIPs, STPs and lump-sum deployments across equity, debt, hybrid and alternatives. Each selection is benchmarked, cost-weighted and tax-efficiency-tested. We are registered distributors with access to the full universe of schemes across all AMCs.</p>
+            <div class="feature-badges">
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Full AMC Universe Access
+              </span>
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> SIP & STP Portfolio Architecture
+              </span>
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Quarterly Rebalancing Reviews
+              </span>
+            </div>
+            <a href="contact.html" class="pill red">Start or Optimize Your SIPs ↗</a>
+          </div>
+        </div>
+
+        <!-- 8. Fixed Deposits & Bonds section (text left, image right) -->
+        <div class="feature-row reverse" id="fixed-deposits-bonds">
+          <div class="feature-content">
+            <span class="eyebrow">Predictable Returns</span>
+            <h3>Fixed Deposits, Bonds & NCDs</h3>
+            <p>For clients seeking predictable returns, we identify high-quality corporate FDs, GOI bonds, tax-free bonds and NCDs with credit ratings, lock-in periods and premature withdrawal terms documented for each. We do not recommend based on spread alone.</p>
+            <div class="feature-badges">
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Rated Corporate & NBFC FDs
+              </span>
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Sovereign & Tax-Free Bonds
+              </span>
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Transparent Withdrawal Terms
+              </span>
+            </div>
+            <a href="contact.html" class="pill red">Explore Fixed Income Options ↗</a>
+          </div>
+          <div class="feature-media">
+            <img src="images/trust---integrity-1784705589661-b372085c.webp" alt="Fixed Deposits and Bonds" loading="lazy" onerror="this.style.opacity='0';this.style.display='none';">
+          </div>
+        </div>
+
+        <!-- 9. PMS & AIF section (image left, text right) -->
+        <div class="feature-row" id="pms-aif">
+          <div class="feature-media">
+            <img src="images/strategy-consulting-1784705588687-f8052a5c.webp" alt="PMS and AIF Offshore" loading="lazy" onerror="this.style.opacity='0';this.style.display='none';">
+          </div>
+          <div class="feature-content">
+            <span class="eyebrow">HNI & UHNI Wealth Architecture</span>
+            <h3>PMS, AIF & Offshore</h3>
+            <p>For HNI and UHNI clients, we offer access to Portfolio Management Services, Alternative Investment Funds, and GIFT City-based structures for NRI and foreign capital. All products are evaluated on track record, drawdown history and cost before presentation.</p>
+            <div class="feature-badges">
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Discretionary & Non-Discretionary PMS
+              </span>
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Category II & III AIF Funds
+              </span>
+              <span class="feature-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> GIFT City NRI Gateways
+              </span>
+            </div>
+            <a href="contact.html" class="pill red">Schedule Private Client Meeting ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete Distribution Shelf (All 12 Offerings) -->
+  <section style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Our Complete Shelf</span>
+        <h2>Full Product Universe</h2>
+        <p>Comprehensive execution across every major Indian asset class and risk management vertical.</p>
       </div>
 
       <div class="product-grid">
@@ -235,7 +445,7 @@
             </svg>
           </div>
           <h4>Life Insurance</h4>
-          <p>Protect your family’s financial future with life insurance solutions tailored to your needs. Aarya Consultants assesses your human life value, income, liabilities, and dependants to recommend suitable term, traditional, or unit-linked plans that provide meaningful, long-term security.</p>
+          <p>Protect your family's financial future with life insurance solutions tailored to your needs. Aarya Consultants assesses your human life value, income, liabilities, and dependants to recommend suitable term, traditional, or unit-linked plans that provide meaningful, long-term security.</p>
         </div>
 
         <!-- 2. Health Insurance -->
@@ -246,7 +456,7 @@
             </svg>
           </div>
           <h4>Health Insurance</h4>
-          <p>Secure your health and your family’s wellbeing with insurance plans tailored to your needs. We offer individual and family floater policies, super top-up covers, and senior citizen plans, backed by personalized guidance and dependable claim settlement support when it matters most.</p>
+          <p>Secure your health and your family's wellbeing with insurance plans tailored to your needs. We offer individual and family floater policies, super top-up covers, and senior citizen plans, backed by personalized guidance and dependable claim settlement support when it matters most.</p>
         </div>
 
         <!-- 3. General Insurance -->
@@ -328,7 +538,7 @@
             </svg>
           </div>
           <h4>Retirement & Goal Planning</h4>
-          <p>Plan confidently for retirement and life’s important milestones. We estimate required retirement corpus, design structured monthly drawdown strategies, and recommend balanced asset allocations including gold where appropriate for inflation resilience.</p>
+          <p>Plan confidently for retirement and life's important milestones. We estimate required retirement corpus, design structured monthly drawdown strategies, and recommend balanced asset allocations including gold where appropriate for inflation resilience.</p>
         </div>
 
         <!-- 10. SIFs, PMS & AIFs -->
@@ -375,8 +585,8 @@
     </div>
   </section>
 
-  <!-- Client Benefits Matching Live Site -->
-  <section style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <!-- Client Benefits Section -->
+  <section>
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Client Experience</span>
@@ -420,13 +630,30 @@
       </div>
     </div>
   </section>
+
+  <!-- 10. CTA Banner -->
+  <section class="cta-banner-section">
+    <div class="wrap">
+      <div class="cta-card">
+        <div class="cta-card-content">
+          <span class="eyebrow" style="color:var(--red)">Take the First Step</span>
+          <h2>Not sure where to start? Book a call with our team.</h2>
+          <p>Our fiduciaries and certified wealth advisors will analyze your current portfolio, identify gaps, and design a customized financial roadmap—with zero obligation.</p>
+          <div class="cta-card-actions">
+            <a href="contact.html" class="pill red" style="padding:12px 26px;font-size:14px">Book a Free Financial Health Check-up ↗</a>
+            <a href="tel:+919038620055" class="pill" style="padding:12px 22px;font-size:14px;background:rgba(255,255,255,.1);color:white;border-color:rgba(255,255,255,.25)">Call +91 90386 20055</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <img src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/arya-consultants-transparent-white-1790588771793-4be8e1be.webp" alt="Aarya Consultants" class="foot-logo" onerror="this.style.display='none'" />
+        <img src="images/arya-consultants-transparent-white-1790588771793-4be8e1be.webp" alt="Aarya Consultants" class="foot-logo" onerror="this.style.display='none'" />
         <div class="brand-text" style="color:white;margin-bottom:6px">
           <strong style="font-size:16px;letter-spacing:.04em;color:white">AARYA CONSULTANTS</strong>
           <span style="font-size:9px;color:var(--red);letter-spacing:.16em;font-weight:700">Fiduciaries for a lifetime & beyond</span>
@@ -509,9 +736,9 @@
 
 
 <!-- GSAP & ScrollTrigger Animation Engine -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="animations.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="animations.js"></script>
 
 </body>
 </html>
