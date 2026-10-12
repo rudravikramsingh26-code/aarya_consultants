@@ -166,6 +166,7 @@
       perspective: 1200px;
     }
 </style>
+  <link rel="stylesheet" href="enhancements.css">
 </head>
 <body>
 
@@ -173,7 +174,7 @@
   <div class="wrap">
     <nav>
       <a href="index.html" class="brand" aria-label="Aarya Consultants home">
-        <img src="images/arya-consultants-jpg-1790597676188-7d47f6c2.webp" alt="Aarya Consultants Logo" class="brand-logo-img" onerror="this.style.opacity='0';this.style.display='none';">
+        <img decoding="async" src="images/arya-consultants-jpg-1790597676188-7d47f6c2.webp" alt="Aarya Consultants Logo" class="brand-logo-img" onerror="this.style.opacity='0';this.style.display='none';">
       </a>
       <div class="nav-links">
         <a href="index.html">Home</a>
@@ -187,6 +188,7 @@
             <a href="legal-services.html">Legal Services</a>
             <a href="hr-solutions.html">HR Solutions</a>
             <a href="elderly-care.html">Elderly Care (Samman)</a>
+                      <a href="tools.html">Calculators & Tools</a>
           </div>
         </div>
         <a href="index.html#wall-of-frames">Wall of Frames</a>
@@ -300,33 +302,33 @@
         <h3>Send Us a Message</h3>
         <p>Fill out the parameters of your requirement and a dedicated specialist will respond within 24 business hours.</p>
         
-        <form onsubmit="event.preventDefault(); alert('Thank you for reaching out to Aarya Consultants. An advisory partner has received your request and will connect with you shortly.');">
+        <form data-lead="contact">
           <div class="form-row">
             <div class="form-group">
               <label>First Name *</label>
-              <input type="text" class="form-control" placeholder="First Name" required>
+              <input type="text" class="form-control" placeholder="First Name" data-label="First Name" required>
             </div>
             <div class="form-group">
               <label>Last Name *</label>
-              <input type="text" class="form-control" placeholder="Last Name" required>
+              <input type="text" class="form-control" placeholder="Last Name" data-label="Last Name" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label>Email Address *</label>
-              <input type="email" class="form-control" placeholder="your@email.com" required>
+              <input type="email" class="form-control" placeholder="your@email.com" data-label="Email" required>
             </div>
             <div class="form-group">
               <label>Mobile Number *</label>
-              <input type="tel" class="form-control" placeholder="+91 98765 43210" required>
+              <input type="tel" class="form-control" placeholder="+91 98765 43210" data-label="Mobile" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label>I Need Help With *</label>
-              <select class="form-control" required>
+              <select class="form-control" data-label="Practice Area" required>
                 <option value="" selected>Select practice area...</option>
                 <option value="Financial Planning">Financial Planning & Wealth Management</option>
                 <option value="Accounts & Audit">Accounts & Statutory Audit</option>
@@ -340,21 +342,22 @@
             </div>
             <div class="form-group">
               <label>City *</label>
-              <input type="text" class="form-control" placeholder="Kolkata / Delhi / Mumbai / NRI..." required>
+              <input type="text" class="form-control" placeholder="Kolkata / Delhi / Mumbai / NRI..." data-label="City" required>
             </div>
           </div>
 
           <div class="form-group">
             <label>Message / Brief Requirement</label>
-            <textarea class="form-control" rows="3" placeholder="Tell us about the decision or situation you are navigating..."></textarea>
+            <textarea class="form-control" rows="3" placeholder="Tell us about the decision or situation you are navigating..." data-label="Message"></textarea>
           </div>
 
           <div class="form-group">
             <label>Preferred Contact Time (Optional)</label>
-            <input type="text" class="form-control" placeholder="e.g. Morning 10 AM, Evening after 6 PM">
+            <input type="text" class="form-control" placeholder="e.g. Morning 10 AM, Evening after 6 PM" data-label="Preferred Time">
           </div>
 
           <button type="submit" class="btn-submit">Submit Consultation Request ↗</button>
+          <div class="form-status"></div>
         </form>
       </div>
 
@@ -397,7 +400,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <img src="images/arya-consultants-transparent-white-1790588771793-4be8e1be.webp" alt="Aarya Consultants" class="foot-logo" onerror="this.style.display='none'" />
+        <img decoding="async" src="images/arya-consultants-transparent-white-1790588771793-4be8e1be.webp" alt="Aarya Consultants" class="foot-logo" onerror="this.style.display='none'" />
         <div class="brand-text" style="color:white;margin-bottom:6px">
           <strong style="font-size:16px;letter-spacing:.04em;color:white">AARYA CONSULTANTS</strong>
           <span style="font-size:9px;color:var(--red);letter-spacing:.16em;font-weight:700">Fiduciaries for a lifetime & beyond</span>
@@ -410,6 +413,7 @@
         <a href="index.html">Home</a>
         <a href="about-agc.html">About Us</a>
         <a href="services.html">Services Overview</a>
+        <a href="tools.html">Calculators & Tools</a>
         <a href="index.html#wall-of-frames">Wall of Frames</a>
         <a href="index.html#leadership">Leadership</a>
         <a href="career.html">Careers</a>
@@ -471,6 +475,7 @@
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script defer src="animations.js"></script>
+<script defer src="enhancements.js"></script>
 
 </body>
 </html>

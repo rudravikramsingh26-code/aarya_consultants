@@ -259,6 +259,7 @@
       .cursor-glow{display:none}
     }
   </style>
+  <link rel="stylesheet" href="enhancements.css">
 </head>
 <body>
 <div class="cursor-glow" id="cursorGlow"></div>
@@ -401,7 +402,7 @@
     <div class="wrap">
       <div class="section-head" data-reveal><div><div class="eyebrow">Leadership</div><h2>Experience with an<br><span class="serif">entrepreneurial lens.</span></h2></div><p>The existing Aarya Group team combines experienced financial professionals with a focus on technology and new-business strategy.</p></div>
       <div class="leader-grid">
-        <article class="leader" data-reveal><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1000&q=86" alt="Professional portrait placeholder"><div class="leader-copy"><div><div class="leader-role">Founder & Chairman · Chief Mentor</div><h3>Sanjay K Gupta</h3><p>NISM Level 10A Investment Advisor with 25+ years across financial planning, wealth portfolio management and succession planning.</p></div><div class="credential">Certified Financial Consultant · LUTCF · Financial Services Specialist · Chartered Inheritance & Succession Planner · MDRT Court of the Table qualifier</div></div></article>
+        <article class="leader" data-reveal><img decoding="async" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1000&q=86" alt="Professional portrait placeholder"><div class="leader-copy"><div><div class="leader-role">Founder & Chairman · Chief Mentor</div><h3>Sanjay K Gupta</h3><p>NISM Level 10A Investment Advisor with 25+ years across financial planning, wealth portfolio management and succession planning.</p></div><div class="credential">Certified Financial Consultant · LUTCF · Financial Services Specialist · Chartered Inheritance & Succession Planner · MDRT Court of the Table qualifier</div></div></article>
         <article class="leader-mini" data-reveal><div><div class="leader-role">Innovation & new business strategy</div><div class="big">Tech +<br>human<br>judgement.</div></div><div><p>Aarya Gupta leads technology and AI adoption across service delivery, while driving market research and new-venture strategy.</p><div class="chip-row" style="margin-top:17px"><span class="chip">AI adoption</span><span class="chip">Research</span><span class="chip">New ventures</span><span class="chip">Quality systems</span></div></div></article>
       </div>
     </div>
@@ -493,5 +494,6 @@
   const nav=document.querySelector('header');
   let last=0; window.addEventListener('scroll',()=>{ const y=window.scrollY; nav.style.boxShadow=y>18?'0 12px 35px rgba(7,18,15,.06)':'none'; last=y; },{passive:true});
 </script>
+<script defer src="enhancements.js"></script>
 </body>
 </html>

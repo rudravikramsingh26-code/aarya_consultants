@@ -66,7 +66,7 @@
     const floats    = qa('.floating-card', heroSection);
 
     if (eyebrow)   tl.from(eyebrow,  { y: 20, opacity: 0, duration: 0.55 });
-    if (heading)   tl.from(heading,  { y: 36, opacity: 0, duration: 0.80 }, '-=0.38');
+    // heading reveal handled by enhancements.js (word-split)
     if (subPara)   tl.from(subPara,  { y: 22, opacity: 0, duration: 0.70 }, '-=0.52');
     if (ctaBtns.length) {
       tl.from(ctaBtns, {
