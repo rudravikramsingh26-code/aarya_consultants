@@ -158,11 +158,63 @@
     @keyframes marquee{to{transform:translateX(-50%)}}
 
     /* client logos strip */
-    .client-strip{padding:34px 0;background:#fff;border-bottom:1px solid var(--line);overflow:hidden}
-    .client-track{display:flex;gap:48px;align-items:center;width:max-content;animation:marquee 36s linear infinite}
-    .client-item{height:46px;display:flex;align-items:center;filter:grayscale(1) contrast(0.65) opacity(0.75);transition:.3s ease}
-    .client-item:hover{filter:none;opacity:1}
-    .client-item img{height:38px;width:auto;object-fit:contain}
+    .client-strip{
+      padding:44px 0 38px;
+      background:var(--paper);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+      position:relative;
+    }
+    .client-strip::before,
+    .client-strip::after{
+      content:"";
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:140px;
+      z-index:3;
+      pointer-events:none;
+    }
+    .client-strip::before{
+      left:0;
+      background:linear-gradient(to right, var(--paper), transparent);
+    }
+    .client-strip::after{
+      right:0;
+      background:linear-gradient(to left, var(--paper), transparent);
+    }
+    .client-track{
+      display:flex;
+      gap:54px;
+      align-items:center;
+      width:max-content;
+      animation:marquee 42s linear infinite;
+    }
+    .client-track:hover{animation-play-state:paused}
+    .client-item{
+      height:48px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      opacity:0.85;
+      transition:opacity .3s ease, transform .3s ease;
+    }
+    .client-item:hover{
+      opacity:1;
+      transform:translateY(-2px);
+    }
+    .client-item img{
+      height:36px;
+      max-height:36px;
+      width:auto;
+      max-width:130px;
+      object-fit:contain;
+      display:block;
+      background:transparent !important;
+      box-shadow:none !important;
+      border:none !important;
+    }
 
     /* sections */
     section{padding:105px 0}
@@ -581,10 +633,13 @@
     <span>Financial Planning</span><b>•</b><span>Wealth Management</span><b>•</b><span>Statutory & Tax Audit</span><b>•</b><span>GST & Direct Tax</span><b>•</b><span>Family Trust & Succession</span><b>•</b><span>HR Solutions</span><b>•</b><span>Samman Older Care</span><b>•</b>
   </div></div>
 
-  <!-- Real Client Logos Marquee from Cartface S3 -->
+  <!-- Real Client Logos Marquee in Brand Navy -->
   <div class="client-strip">
-    <div class="wrap" style="margin-bottom:14px"><span class="eyebrow">Trusted by Leading Enterprises & Institutions</span></div>
+    <div class="wrap" style="text-align:center;margin-bottom:20px">
+      <span class="eyebrow" style="margin-bottom:0;letter-spacing:.18em">Trusted by Leading Enterprises & Institutions</span>
+    </div>
     <div class="client-track" aria-hidden="true">
+      <!-- Set 1 (1 to 16) -->
       <div class="client-item"><img loading="lazy" src="images/1-1784739890916-b12606e9.webp" alt="Client Logo 1" onerror="this.style.opacity='0';this.style.display='none';"></div>
       <div class="client-item"><img loading="lazy" src="images/2-1784739892646-b5d8bdd2.webp" alt="Client Logo 2" onerror="this.style.opacity='0';this.style.display='none';"></div>
       <div class="client-item"><img loading="lazy" src="images/3-1784739894703-cbfd470a.webp" alt="Client Logo 3" onerror="this.style.opacity='0';this.style.display='none';"></div>
@@ -595,14 +650,29 @@
       <div class="client-item"><img loading="lazy" src="images/8-1784739904316-7dcb782c.webp" alt="Client Logo 8" onerror="this.style.opacity='0';this.style.display='none';"></div>
       <div class="client-item"><img loading="lazy" src="images/9-1784739905512-ff7f20a0.webp" alt="Client Logo 9" onerror="this.style.opacity='0';this.style.display='none';"></div>
       <div class="client-item"><img loading="lazy" src="images/10-1784739906661-dd61b4d5.webp" alt="Client Logo 10" onerror="this.style.opacity='0';this.style.display='none';"></div>
-      <!-- Duplicate for infinite marquee loop -->
       <div class="client-item"><img loading="lazy" src="images/11-1784739908050-7ce151d5.webp" alt="Client Logo 11" onerror="this.style.opacity='0';this.style.display='none';"></div>
       <div class="client-item"><img loading="lazy" src="images/12-1784739909984-c3eb37ec.webp" alt="Client Logo 12" onerror="this.style.opacity='0';this.style.display='none';"></div>
       <div class="client-item"><img loading="lazy" src="images/13-1784739912092-563f5346.webp" alt="Client Logo 13" onerror="this.style.opacity='0';this.style.display='none';"></div>
       <div class="client-item"><img loading="lazy" src="images/14-1784739913916-e441da4d.webp" alt="Client Logo 14" onerror="this.style.opacity='0';this.style.display='none';"></div>
       <div class="client-item"><img loading="lazy" src="images/15-1784739915795-dc28df12.webp" alt="Client Logo 15" onerror="this.style.opacity='0';this.style.display='none';"></div>
       <div class="client-item"><img loading="lazy" src="images/16-1784739917545-cbda608a.webp" alt="Client Logo 16" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <!-- Set 2 (1 to 16 duplicated for seamless infinite marquee) -->
       <div class="client-item"><img loading="lazy" src="images/1-1784739890916-b12606e9.webp" alt="Client Logo 1" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/2-1784739892646-b5d8bdd2.webp" alt="Client Logo 2" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/3-1784739894703-cbfd470a.webp" alt="Client Logo 3" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/4-1784739896521-df6a718d.webp" alt="Client Logo 4" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/5-1784739898535-191f82e3.webp" alt="Client Logo 5" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/6-1784739900033-2a1d7de3.webp" alt="Client Logo 6" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/7-1784739902556-a0e93bad.webp" alt="Client Logo 7" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/8-1784739904316-7dcb782c.webp" alt="Client Logo 8" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/9-1784739905512-ff7f20a0.webp" alt="Client Logo 9" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/10-1784739906661-dd61b4d5.webp" alt="Client Logo 10" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/11-1784739908050-7ce151d5.webp" alt="Client Logo 11" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/12-1784739909984-c3eb37ec.webp" alt="Client Logo 12" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/13-1784739912092-563f5346.webp" alt="Client Logo 13" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/14-1784739913916-e441da4d.webp" alt="Client Logo 14" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/15-1784739915795-dc28df12.webp" alt="Client Logo 15" onerror="this.style.opacity='0';this.style.display='none';"></div>
+      <div class="client-item"><img loading="lazy" src="images/16-1784739917545-cbda608a.webp" alt="Client Logo 16" onerror="this.style.opacity='0';this.style.display='none';"></div>
     </div>
   </div>
 
