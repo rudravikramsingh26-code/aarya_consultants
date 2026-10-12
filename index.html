@@ -76,17 +76,15 @@
 
     
     /* Hero background video (local, compressed, poster-backed) */
-    .hero-video-bg{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;background:#dfe8f5 url('images/hero-poster-desktop.webp') center/cover no-repeat}
+    .hero-video-bg{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
     .hero-video-bg video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block}
     .hero-video-bg .mobile-video{display:none}
     .hero-video-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(100deg,rgba(248,251,255,.78) 0%,rgba(248,251,255,.45) 42%,rgba(248,251,255,.05) 75%,rgba(8,27,69,.04) 100%)}
     @media (max-width:768px){
-      .hero-video-bg{background-image:url('images/hero-poster-mobile.webp')}
       .hero-video-bg .desktop-video{display:none !important}
       .hero-video-bg .mobile-video{display:block !important}
       .hero-video-overlay{background:linear-gradient(180deg,rgba(248,251,255,.75) 0%,rgba(248,251,255,.45) 45%,rgba(248,251,255,.12) 100%)}
     }
-    @media (prefers-reduced-motion:reduce){.hero-video-bg video{display:none !important}}
     .hero{
       padding:64px 0 44px;
       min-height:calc(100vh - 116px);
@@ -1442,8 +1440,6 @@
 
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) return;
   var isMobile = window.matchMedia('(max-width:768px)').matches;
   var v = document.querySelector(isMobile ? '.hero-video-bg .mobile-video' : '.hero-video-bg .desktop-video');
   if (!v) return;
@@ -1451,12 +1447,12 @@
   v.defaultMuted = true;
   v.setAttribute('muted', '');
   v.setAttribute('playsinline', '');
+  v.setAttribute('autoplay', '');
   function playVid(){
     var p = v.play();
     if (p && p.catch) {
       p.catch(function(){
-        // Auto-play was prevented, retry on user interaction
-        ['touchstart', 'click', 'scroll'].forEach(function(ev){
+        ['touchstart', 'click', 'scroll', 'mousemove'].forEach(function(ev){
           window.addEventListener(ev, function runOnce(){
             v.play();
             window.removeEventListener(ev, runOnce);
