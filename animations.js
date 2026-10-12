@@ -81,13 +81,22 @@
         clearProps: 'transform'       // lets CSS :hover / tilt work
       }, '-=0.60');
     }
-    if (floats.length) {
+    if (floats.length && window.innerWidth > 768) {
       tl.from(floats, {
         y: 28, scale: 0.82, opacity: 0,
         stagger: 0.13, duration: 0.75,
         ease: 'back.out(1.5)',
-        clearProps: 'transform'
+        clearProps: 'all'
       }, '-=0.50');
+    }
+
+    const mobilePills = qa('.mobile-card-pill', heroSection);
+    if (mobilePills.length && window.innerWidth <= 768) {
+      tl.from(mobilePills, {
+        y: 18, opacity: 0,
+        stagger: 0.10, duration: 0.55,
+        clearProps: 'all'
+      }, '-=0.40');
     }
 
     /* Ambient float on hero badges — gentle yoyo loops */

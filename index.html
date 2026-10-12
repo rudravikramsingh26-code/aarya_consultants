@@ -75,26 +75,85 @@
     .pill.red:hover{background:var(--red-hover);border-color:var(--red-hover);transform:translateY(-1px)}
 
     
-    /* Hero video background */
-    .hero-video-bg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;z-index:0;pointer-events:none}
-    .hero-video-bg video{width:100%;height:100%;object-fit:cover;opacity:.28;filter:saturate(1.2)}
-    .hero-video-bg .mobile-video{display:none}
-    .hero-video-bg .desktop-video{display:block}
-    @media (max-width:768px){
-      .hero-video-bg .desktop-video{display:none}
-      .hero-video-bg .mobile-video{display:block}
+    /* Hero luxury clean background */
+    .hero-video-bg{display:none !important}
+    .hero{
+      padding:64px 0 44px;
+      min-height:calc(100vh - 116px);
+      display:grid;
+      align-items:center;
+      position:relative;
+      background:
+        radial-gradient(ellipse at 88% 28%, rgba(8,27,69,0.06), transparent 55%),
+        radial-gradient(ellipse at 12% 80%, rgba(227,30,36,0.04), transparent 50%),
+        #f8fbff;
+      border-bottom:1px solid var(--line);
     }
-    .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(248,251,255,.95) 0%,rgba(248,251,255,.82) 50%,rgba(248,251,255,.4) 100%)}
+    .hero [data-reveal]{
+      opacity:1 !important;
+      transform:none !important;
+    }
 
-    /* Nav Dropdown */
-    .nav-dropdown{position:relative;display:inline-block}
-    .nav-dropdown:hover .dropdown-menu{display:flex;opacity:1;pointer-events:auto;transform:translateY(0)}
-    .dropdown-menu{display:none;position:absolute;top:100%;left:-15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(8,27,69,.12);padding:12px;min-width:210px;flex-direction:column;gap:6px;z-index:100;opacity:0;transform:translateY(8px);transition:.25s ease}
-    .dropdown-menu a{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;color:var(--navy);transition:.2s}
-    .dropdown-menu a:hover{background:var(--paper-2);color:var(--red)}
-
-    /* hero */
-    .hero{padding:58px 0 34px;min-height:calc(100vh - 116px);display:grid;align-items:center;position:relative;background:radial-gradient(ellipse at 80% 20%,rgba(237,243,250,.8),transparent 60%)}
+    /* Mobile Floating Cards Row */
+    .hero-floating-pills{display:none}
+    @media (max-width:768px){
+      .hero{padding:42px 0 32px;min-height:auto}
+      .hero-floating-pills{
+        display:grid !important;
+        grid-template-columns:1fr;
+        gap:12px;
+        margin-top:26px;
+        position:relative;
+        z-index:4;
+      }
+      .mobile-card-pill{
+        background:#ffffff;
+        border:1px solid var(--line);
+        border-radius:18px;
+        padding:15px 18px;
+        display:flex;
+        align-items:center;
+        gap:14px;
+        box-shadow:0 8px 24px rgba(8,27,69,.06);
+        transition:transform .2s ease;
+      }
+      .mobile-card-pill .icon{
+        width:40px;
+        height:40px;
+        border-radius:12px;
+        background:rgba(227,30,36,.08);
+        color:var(--red);
+        display:grid;
+        place-items:center;
+        font-size:16px;
+        font-weight:bold;
+        flex-shrink:0;
+      }
+      .mobile-card-pill strong{
+        font:800 16px Manrope;
+        color:var(--navy);
+        display:block;
+        line-height:1.2;
+      }
+      .mobile-card-pill small{
+        font-size:12px;
+        color:#64748b;
+        font-weight:500;
+        margin-top:2px;
+        display:block;
+      }
+      .hero-art{min-height:auto !important;padding:20px 0 0 !important}
+      .hero-art .floating-card{
+        display:none !important;
+      }
+      .hero-art .dashboard{
+        transform:none !important;
+        width:100% !important;
+        margin:16px auto 0 !important;
+        box-shadow:0 18px 45px rgba(8,27,69,.18) !important;
+      }
+      .hero-art .glow, .hero-art .orbit{display:none !important}
+    }
     .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:50px;align-items:center}
     .hero h1{font:800 clamp(48px,5.8vw,88px)/.94 Manrope,sans-serif;letter-spacing:-.065em;max-width:740px;color:var(--navy)}
     .hero h1 .soft{color:#6b7c93;font-weight:500}
@@ -561,16 +620,6 @@
 <main>
   <!-- Hero Section -->
   <section class="hero" id="top">
-    <!-- Authentic Responsive Live Video Background from Cartface S3 -->
-    <div class="hero-video-bg">
-      <video class="desktop-video" autoplay muted loop playsinline preload="metadata">
-        <source src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/hero-video/arya-consultants-web-site-without-text-1600x640-21-1784704547717-29677375.mp4" type="video/mp4">
-      </video>
-      <video class="mobile-video" autoplay muted loop playsinline preload="metadata">
-        <source src="https://cartfaceprod-uploads.s3.ap-south-1.amazonaws.com/upload-data/tenants/6a2402abca463ff2f7f45fc7/media/hero-video/aarya-web-site-1080x1920-revised-1789973609443-bada4908.mp4" type="video/mp4">
-      </video>
-      <div class="hero-video-overlay"></div>
-    </div>
     <div class="wrap hero-grid">
       <div data-reveal>
         <div class="eyebrow">Fiduciaries for a lifetime & beyond ...</div>
@@ -583,6 +632,31 @@
         <div class="mini-proof">
           <div class="avatars"><span class="avatar-1"></span><span class="avatar-2"></span><span class="avatar-3"></span></div>
           <span>From your first SIP to your family trust deed — Let's Grow Together.</span>
+        </div>
+
+        <!-- Mobile Floating Trust Cards (Instant, beautiful mobile presentation) -->
+        <div class="hero-floating-pills">
+          <div class="mobile-card-pill">
+            <div class="icon">↗</div>
+            <div>
+              <strong>25+ yrs</strong>
+              <small>Wealth & advisory fiduciary trust</small>
+            </div>
+          </div>
+          <div class="mobile-card-pill">
+            <div class="icon">◎</div>
+            <div>
+              <strong>2,000+</strong>
+              <small>Families & HNIs successfully served</small>
+            </div>
+          </div>
+          <div class="mobile-card-pill">
+            <div class="icon">◌</div>
+            <div>
+              <strong>42+</strong>
+              <small>Specialist associates & partners</small>
+            </div>
+          </div>
         </div>
       </div>
 
