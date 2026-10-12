@@ -154,10 +154,8 @@
       }
 
       /* Hero parallax */
-      var vbg = $('.hero-video-bg'), hero = $('.hero');
-      if (vbg && hero) {
-        vbg.style.top = '-14%'; vbg.style.bottom = '-14%'; vbg.style.height = 'auto';
-        gsap.fromTo(vbg, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
+      var hero = $('.hero');
+      if (hero) {
         var dash = $('.dashboard');
         if (dash && window.innerWidth > 900) {
           gsap.to('.hero-art', { yPercent: -8, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
