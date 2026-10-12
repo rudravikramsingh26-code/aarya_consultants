@@ -228,7 +228,7 @@
 
     /* client logos strip */
     .client-strip{
-      padding:44px 0 38px;
+      padding:50px 0 44px;
       background:var(--paper);
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
@@ -241,43 +241,50 @@
       position:absolute;
       top:0;
       bottom:0;
-      width:140px;
+      width:180px;
       z-index:3;
       pointer-events:none;
     }
     .client-strip::before{
       left:0;
-      background:linear-gradient(to right, var(--paper), transparent);
+      background:linear-gradient(to right, var(--paper) 20%, transparent 100%);
     }
     .client-strip::after{
       right:0;
-      background:linear-gradient(to left, var(--paper), transparent);
+      background:linear-gradient(to left, var(--paper) 20%, transparent 100%);
     }
     .client-track{
       display:flex;
-      gap:54px;
+      gap:64px;
       align-items:center;
       width:max-content;
-      animation:marquee 42s linear infinite;
+      animation:marquee 36s linear infinite;
+      margin-top:8px;
     }
     .client-track:hover{animation-play-state:paused}
     .client-item{
-      height:48px;
+      height:52px;
       display:flex;
       align-items:center;
       justify-content:center;
-      opacity:0.85;
-      transition:opacity .3s ease, transform .3s ease;
+      padding:0;
+      opacity:0.80;
+      filter:grayscale(100%) contrast(1.15);
+      transition:opacity .3s ease, filter .3s ease, transform .3s ease;
+      background:transparent !important;
+      border:none !important;
+      box-shadow:none !important;
     }
     .client-item:hover{
       opacity:1;
-      transform:translateY(-2px);
+      filter:grayscale(0%) contrast(1.2);
+      transform:scale(1.05);
     }
     .client-item img{
-      height:36px;
-      max-height:36px;
+      height:38px;
+      max-height:38px;
       width:auto;
-      max-width:130px;
+      max-width:140px;
       object-fit:contain;
       display:block;
       background:transparent !important;

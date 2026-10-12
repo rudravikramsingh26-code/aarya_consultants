@@ -89,19 +89,7 @@
       footer.parentNode.insertBefore(wv, footer);
     }
 
-    /* Reverse second marquee row */
-    var strip = $('.client-strip');
-    if (strip) {
-      var track = $('.client-track', strip);
-      if (track && !$('.client-track.rev', strip)) {
-        var rev = track.cloneNode(true);
-        rev.classList.add('rev');
-        rev.setAttribute('aria-hidden', 'true');
-        var items = $$('.client-item', rev);
-        items.reverse().forEach(function (it) { rev.appendChild(it); });
-        track.parentNode.insertBefore(rev, track.nextSibling);
-      }
-    }
+    /* Marquee pause on hover handled by CSS */
 
     /* Count-up helper */
     function countUp(el, to, dec, prefix, suffix, dur) {
