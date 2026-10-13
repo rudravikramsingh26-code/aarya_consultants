@@ -74,19 +74,45 @@
     .service-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
     .service-row:hover .service-img img{transform:scale(1.04)}
 
-    /* How Engagement Runs (5 Steps) */
-    .runs-section{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .section-head{text-align:center;max-width:760px;margin:0 auto 44px}
-    .section-head h2{font:800 clamp(30px,3.6vw,44px)/1.12 Manrope;color:var(--navy);margin-top:8px}
-    .section-head p{color:#546478;font-size:15px;margin-top:10px}
-    .steps-row,.runs-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:36px}
-    .run-card{background:white;border:1px solid var(--line);border-radius:22px;padding:28px 22px;position:relative;box-shadow:0 6px 20px rgba(8,27,69,.03);transition:all .3s ease}
+    /* How Engagement Runs (5 Steps Slider) */
+    .runs-section{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+    .runs-head-wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+    .runs-head-wrap .section-head{text-align:left;max-width:680px;margin:0}
+    .runs-nav{display:flex;gap:10px;align-items:center}
+    .runs-nav-btn{width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--line);color:var(--navy);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;box-shadow:0 4px 12px rgba(8,27,69,.06)}
+    .runs-nav-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .runs-nav-btn svg{width:18px;height:18px}
+    .runs-grid{
+      display:flex;
+      gap:20px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding:10px 4px 18px;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      margin-top:10px;
+    }
+    .runs-grid::-webkit-scrollbar{display:none}
+    .run-card{
+      flex:0 0 310px;
+      scroll-snap-align:start;
+      background:white;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:28px 22px;
+      position:relative;
+      box-shadow:0 6px 20px rgba(8,27,69,.03);
+      transition:all .3s ease;
+    }
     .run-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(8,27,69,.09);border-color:var(--red)}
     .run-step{font:800 13px Manrope;color:var(--red);letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:12px}
     .run-icon{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#081b45,#162f6b);color:white;display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px}
     .run-icon svg{width:20px;height:20px}
     .run-card h4{font:800 18px Manrope;color:var(--navy);margin-bottom:8px}
     .run-card p{font-size:13px;color:#546478;line-height:1.65;margin:0}
+    .runs-dots{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:20px}
+    .runs-dot{width:10px;height:10px;border-radius:50%;background:rgba(8,27,69,.18);border:none;padding:0;cursor:pointer;transition:all .25s ease}
+    .runs-dot.active{width:26px;border-radius:999px;background:var(--red)}
 
     /* Who We Serve */
     .serve-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px}
@@ -118,7 +144,23 @@
     /* Responsive */
     @media (max-width: 992px){
       .service-row{grid-template-columns:1fr;gap:30px;padding:30px}
-      .runs-grid{grid-template-columns:repeat(2,1fr)}
+      .runs-nav{display:flex}
+      .runs-dots{display:flex}
+      .runs-grid{
+        display:flex !important;
+        overflow-x:auto !important;
+        scroll-snap-type:x mandatory !important;
+        padding-bottom:12px !important;
+        -webkit-overflow-scrolling:touch !important;
+        scrollbar-width:none !important;
+        gap:16px !important;
+        margin-top:24px !important;
+      }
+      .runs-grid::-webkit-scrollbar{display:none}
+      .runs-grid .run-card{
+        flex:0 0 min(310px,82%) !important;
+        scroll-snap-align:center !important;
+      }
       .serve-grid{grid-template-columns:repeat(2,1fr)}
       .nav-links{display:none}
       .nav-actions .pill{display:none !important}
@@ -146,7 +188,6 @@
       .footer-grid{grid-template-columns:1fr !important}
     }
     @media (max-width: 580px){
-      .runs-grid{grid-template-columns:1fr}
       .serve-grid{grid-template-columns:1fr}
       .feat-list{grid-template-columns:1fr}
       .wrap{width:calc(100% - 24px)}
@@ -357,13 +398,23 @@
   <!-- How an Engagement Runs (Exact from Live Site!) -->
   <section class="runs-section">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Standardized Methodology</span>
-        <h2>How an Engagement Runs</h2>
-        <p>A structured, five-stage review and execution discipline that guarantees consistency and fiduciary protection across every practice.</p>
+      <div class="runs-head-wrap">
+        <div class="section-head">
+          <span class="eyebrow">Standardized Methodology</span>
+          <h2>How an Engagement Runs</h2>
+          <p>A structured, five-stage review and execution discipline that guarantees consistency and fiduciary protection across every practice.</p>
+        </div>
+        <div class="runs-nav">
+          <button type="button" class="runs-nav-btn" id="runsPrev" aria-label="Previous step">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="runs-nav-btn" id="runsNext" aria-label="Next step">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
       </div>
 
-      <div class="runs-grid">
+      <div class="runs-grid" id="runsGrid">
         <!-- 01 Discovery -->
         <div class="run-card">
           <div class="run-step">01</div>
@@ -428,6 +479,14 @@
           <h4>Review</h4>
           <p>Scheduled monitoring: quarterly for investment portfolios and annually for compliance and estate.</p>
         </div>
+      </div>
+
+      <div class="runs-dots" id="runsDots">
+        <button type="button" class="runs-dot active" aria-label="Go to step 1" data-index="0"></button>
+        <button type="button" class="runs-dot" aria-label="Go to step 2" data-index="1"></button>
+        <button type="button" class="runs-dot" aria-label="Go to step 3" data-index="2"></button>
+        <button type="button" class="runs-dot" aria-label="Go to step 4" data-index="3"></button>
+        <button type="button" class="runs-dot" aria-label="Go to step 5" data-index="4"></button>
       </div>
     </div>
   </section>
@@ -570,6 +629,57 @@
       if(closeIcon) closeIcon.style.display = 'none';
     }
   });
+
+  // How an Engagement Runs Slider
+  const runsGrid = document.getElementById('runsGrid');
+  const runsPrev = document.getElementById('runsPrev');
+  const runsNext = document.getElementById('runsNext');
+  const runsDots = document.querySelectorAll('.runs-dot');
+
+  if (runsGrid && runsPrev && runsNext) {
+    const getScrollStep = () => {
+      const card = runsGrid.querySelector('.run-card');
+      return card ? card.offsetWidth + 20 : 330;
+    };
+
+    runsPrev.addEventListener('click', () => {
+      runsGrid.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+    });
+
+    runsNext.addEventListener('click', () => {
+      runsGrid.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+    });
+
+    runsDots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        const cards = runsGrid.querySelectorAll('.run-card');
+        if (cards[idx]) {
+          cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+        }
+      });
+    });
+
+    let scrollTimer;
+    runsGrid.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        const scrollLeft = runsGrid.scrollLeft;
+        const cards = runsGrid.querySelectorAll('.run-card');
+        let activeIdx = 0;
+        let minDiff = Infinity;
+        cards.forEach((c, idx) => {
+          const diff = Math.abs((c.offsetLeft - runsGrid.offsetLeft) - scrollLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            activeIdx = idx;
+          }
+        });
+        runsDots.forEach((d, idx) => {
+          d.classList.toggle('active', idx === activeIdx);
+        });
+      }, 50);
+    }, { passive: true });
+  }
 </script>
 
 
