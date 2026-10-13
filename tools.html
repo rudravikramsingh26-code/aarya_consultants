@@ -157,6 +157,7 @@
     <div class="tool-tabs" role="tablist">
       <button class="tool-tab active" data-tab="sip" role="tab" aria-selected="true">SIP & Wealth Calculator</button>
       <button class="tool-tab" data-tab="tax" role="tab" aria-selected="false">Tax Regime Comparer</button>
+      <button class="tool-tab" data-tab="alloc" role="tab" aria-selected="false">Smart Asset Allocation Tool</button>
       <button class="tool-tab" data-tab="quiz" role="tab" aria-selected="false">Financial Health Check</button>
     </div>
 
@@ -234,7 +235,58 @@
       </div>
     </div>
 
-    <!-- TOOL 3: FINANCIAL HEALTH CHECK -->
+    <!-- TOOL 3: SMART ASSET ALLOCATION TOOL -->
+    <div class="tool-panel" id="panel-alloc" role="tabpanel">
+      <div class="tool-card">
+        <div class="tool-inputs">
+          <h3>Your Profile & Parameters</h3>
+          <div class="t-field">
+            <label>Current Age: <output id="allocAgeVal">35 Years</output></label>
+            <input type="range" id="allocAge" min="20" max="75" step="1" value="35">
+          </div>
+          <div class="t-field">
+            <label>Investment Time Horizon</label>
+            <select id="allocHorizon">
+              <option value="short">Short Term (1 - 3 Years)</option>
+              <option value="medium" selected>Medium Term (3 - 7 Years)</option>
+              <option value="long">Long Term (7+ Years / Wealth Creation)</option>
+              <option value="retirement">Retirement & Pension Drawing</option>
+            </select>
+          </div>
+          <div class="t-field">
+            <label>Risk Tolerance Appetite</label>
+            <div class="t-seg" id="allocRisk">
+              <button type="button" data-risk="conservative">Conservative</button>
+              <button type="button" class="active" data-risk="moderate">Balanced</button>
+              <button type="button" data-risk="aggressive">Aggressive</button>
+            </div>
+          </div>
+        </div>
+        <div class="tool-result">
+          <h3>Recommended Asset Mix</h3>
+          <span class="winner" id="allocMixTitle">Balanced Wealth Growth Model</span>
+          <div class="res-row"><span>Equity & Mutual Funds</span><strong id="allocEq" style="color:#081b45">55%</strong></div>
+          <div class="res-row"><span>Fixed Income, FDs & Debt</span><strong id="allocDebt">30%</strong></div>
+          <div class="res-row"><span>Gold & Sovereign Bonds</span><strong id="allocGold" style="color:#d4a359">10%</strong></div>
+          <div class="res-row"><span>Liquid Emergency Contingency</span><strong id="allocLiq" style="color:#10b981">5%</strong></div>
+          <div class="res-bar" style="display:flex;height:14px;border-radius:8px;overflow:hidden;background:#eee">
+            <span id="barEq" style="width:55%;background:#081b45"></span>
+            <span id="barDebt" style="width:30%;background:#e31e24"></span>
+            <span id="barGold" style="width:10%;background:#d4a359"></span>
+            <span id="barLiq" style="width:5%;background:#10b981"></span>
+          </div>
+          <div class="res-legend" style="font-size:11px;margin-top:6px">
+            <span>● Equity</span>
+            <span style="color:#e31e24">● Debt</span>
+            <span style="color:#d4a359">● Gold</span>
+            <span style="color:#10b981">● Liquid</span>
+          </div>
+          <p class="note" id="allocRationale" style="margin-top:14px">Optimized model aimed at beating long-term inflation while smoothing short-term drawdown volatility.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL 4: FINANCIAL HEALTH CHECK -->
     <div class="tool-panel" id="panel-quiz" role="tabpanel">
       <div class="quiz-box" id="quizBox">
         <div class="quiz-progress"><span id="quizProg"></span></div>
@@ -457,6 +509,86 @@
   }
   [taxIncome, tax80C, tax80D, taxHra].forEach(i => i.addEventListener('input', calcTax));
   calcTax();
+
+  // SMART ASSET ALLOCATION CALCULATOR
+  let currentRisk = 'moderate';
+  const allocAge = document.getElementById('allocAge');
+  const allocAgeVal = document.getElementById('allocAgeVal');
+  const allocHorizon = document.getElementById('allocHorizon');
+  const allocMixTitle = document.getElementById('allocMixTitle');
+  const allocEq = document.getElementById('allocEq');
+  const allocDebt = document.getElementById('allocDebt');
+  const allocGold = document.getElementById('allocGold');
+  const allocLiq = document.getElementById('allocLiq');
+  const barEq = document.getElementById('barEq');
+  const barDebt = document.getElementById('barDebt');
+  const barGold = document.getElementById('barGold');
+  const barLiq = document.getElementById('barLiq');
+  const allocRationale = document.getElementById('allocRationale');
+
+  document.querySelectorAll('#allocRisk button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('#allocRisk button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      currentRisk = b.dataset.risk;
+      calcAlloc();
+    });
+  });
+
+  function calcAlloc() {
+    const age = parseInt(allocAge.value, 10);
+    allocAgeVal.textContent = age + ' Years';
+    const horizon = allocHorizon.value;
+
+    let eq = 55, debt = 30, gold = 10, liq = 5;
+    let title = 'Balanced Wealth Growth Model';
+    let rationale = 'Optimized model aimed at beating inflation while smoothing portfolio drawdown.';
+
+    if (horizon === 'short' || currentRisk === 'conservative') {
+      eq = Math.max(15, 40 - Math.floor((age - 20) * 0.4));
+      debt = 55;
+      gold = 15;
+      liq = 100 - (eq + debt + gold);
+      title = 'Capital Preservation & Income Shield';
+      rationale = 'Focused on fixed-income predictability, capital stability, and liquidity with minimal equity volatility.';
+    } else if (horizon === 'retirement' || age > 58) {
+      eq = Math.max(25, 60 - Math.floor((age - 40) * 0.8));
+      debt = 50;
+      gold = 15;
+      liq = 100 - (eq + debt + gold);
+      title = 'Post-Retirement Drawdown Strategy';
+      rationale = 'Structured for reliable regular monthly income payouts while protecting against late-life inflation.';
+    } else if (currentRisk === 'aggressive' || horizon === 'long') {
+      eq = Math.min(80, Math.max(50, 100 - age + 15));
+      debt = Math.max(10, 100 - eq - 12);
+      gold = 8;
+      liq = 100 - (eq + debt + gold);
+      title = 'Long-Term Compounding Growth Portfolio';
+      rationale = 'High-growth bias maximizing equity market compounding across a multi-year investment runway.';
+    } else {
+      eq = Math.max(35, Math.min(65, 100 - age));
+      debt = Math.max(20, 100 - eq - 15);
+      gold = 10;
+      liq = 100 - (eq + debt + gold);
+      title = 'Balanced Wealth Allocation Model';
+      rationale = 'Equitable balance of multi-cap equity schemes and rated debt bonds with a gold hedge.';
+    }
+
+    allocMixTitle.textContent = title;
+    allocEq.textContent = eq + '%';
+    allocDebt.textContent = debt + '%';
+    allocGold.textContent = gold + '%';
+    allocLiq.textContent = liq + '%';
+
+    barEq.style.width = eq + '%';
+    barDebt.style.width = debt + '%';
+    barGold.style.width = gold + '%';
+    barLiq.style.width = liq + '%';
+    allocRationale.textContent = rationale;
+  }
+  allocAge.addEventListener('input', calcAlloc);
+  allocHorizon.addEventListener('change', calcAlloc);
+  calcAlloc();
 
   // FINANCIAL HEALTH CHECK QUIZ
   const questions = [
