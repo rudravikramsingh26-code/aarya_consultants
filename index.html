@@ -79,87 +79,38 @@
     .hero-video-bg{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
     .hero-video-bg video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block}
     .hero-video-bg .mobile-video{display:none}
-    .hero-video-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(100deg,rgba(248,251,255,.78) 0%,rgba(248,251,255,.45) 42%,rgba(248,251,255,.05) 75%,rgba(8,27,69,.04) 100%)}
+    .hero-video-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(248,251,255,.88) 0%,rgba(248,251,255,.62) 38%,rgba(248,251,255,.12) 72%,rgba(8,27,69,.02) 100%)}
     @media (max-width:768px){
       .hero-video-bg .desktop-video{display:none !important}
       .hero-video-bg .mobile-video{display:block !important}
-      .hero-video-overlay{background:linear-gradient(180deg,rgba(248,251,255,.75) 0%,rgba(248,251,255,.45) 45%,rgba(248,251,255,.12) 100%)}
+      .hero-video-overlay{background:linear-gradient(180deg,rgba(248,251,255,.86) 0%,rgba(248,251,255,.55) 55%,rgba(248,251,255,.18) 100%)}
     }
     .hero{
-      padding:64px 0 44px;
+      padding:90px 0 74px;
       min-height:calc(100vh - 116px);
-      display:grid;
+      display:flex;
       align-items:center;
       position:relative;
       background:transparent;
       border-bottom:1px solid var(--line);
     }
+    .hero-wrap{
+      width:min(calc(100% - 48px),var(--max));
+      margin:0 auto;
+      position:relative;
+      z-index:3;
+    }
+    .hero-content{
+      max-width:680px;
+    }
     .hero [data-reveal]{
       opacity:1 !important;
       transform:none !important;
     }
-
-    /* Mobile Floating Cards Row */
-    .hero-floating-pills{display:none}
     @media (max-width:768px){
-      .hero{padding:42px 0 32px;min-height:auto}
-      .hero-floating-pills{
-        display:grid !important;
-        grid-template-columns:1fr;
-        gap:12px;
-        margin-top:26px;
-        position:relative;
-        z-index:4;
-      }
-      .mobile-card-pill{
-        background:#ffffff;
-        border:1px solid var(--line);
-        border-radius:18px;
-        padding:15px 18px;
-        display:flex;
-        align-items:center;
-        gap:14px;
-        box-shadow:0 8px 24px rgba(8,27,69,.06);
-        transition:transform .2s ease;
-      }
-      .mobile-card-pill .icon{
-        width:40px;
-        height:40px;
-        border-radius:12px;
-        background:rgba(227,30,36,.08);
-        color:var(--red);
-        display:grid;
-        place-items:center;
-        font-size:16px;
-        font-weight:bold;
-        flex-shrink:0;
-      }
-      .mobile-card-pill strong{
-        font:800 16px Manrope;
-        color:var(--navy);
-        display:block;
-        line-height:1.2;
-      }
-      .mobile-card-pill small{
-        font-size:12px;
-        color:#64748b;
-        font-weight:500;
-        margin-top:2px;
-        display:block;
-      }
-      .hero-art{min-height:auto !important;padding:20px 0 0 !important}
-      .hero-art .floating-card{
-        display:none !important;
-      }
-      .hero-art .dashboard{
-        transform:none !important;
-        width:100% !important;
-        margin:16px auto 0 !important;
-        box-shadow:0 18px 45px rgba(8,27,69,.18) !important;
-      }
-      .hero-art .glow, .hero-art .orbit{display:none !important}
+      .hero{padding:54px 0 42px;min-height:auto}
+      .hero-content{max-width:100%}
     }
-    .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:50px;align-items:center}
     .hero h1{font:800 clamp(48px,5.8vw,88px)/.94 Manrope,sans-serif;letter-spacing:-.065em;max-width:740px;color:var(--navy)}
     .hero h1 .soft{color:#6b7c93;font-weight:500}
     .hero h1 .serif{font-size:1.05em;letter-spacing:-.05em;color:var(--red)}
@@ -179,14 +130,157 @@
     .avatar-2{background-image:url('images/whatsapp-image-2026-08-03-at-18-32-41-1785762566558-6afe63ce.webp')}
     .avatar-3{background-image:url('images/-mg-7677-1789028921001-dce34308.webp')}
 
-    /* dashboard visual - corporate navy aesthetic */
-    .hero-art{position:relative;min-height:620px;display:flex;align-items:center;justify-content:center}
-    .glow{position:absolute;width:520px;height:520px;background:radial-gradient(circle,rgba(8,27,69,.18),rgba(227,30,36,.08) 45%,transparent 70%);filter:blur(8px)}
-    .orbit{position:absolute;inset:8% 2%;border:1px dashed rgba(8,27,69,.16);border-radius:50%;transform:rotate(-14deg)}
-    .orbit.o2{inset:20% 10%;transform:rotate(22deg);border-color:rgba(227,30,36,.2)}
-    
-    .dashboard{position:relative;width:min(530px,92%);background:var(--navy-dark);color:#f0f4fa;border-radius:28px;padding:22px;box-shadow:0 40px 100px rgba(8,27,69,.32);transform:rotate(-2.8deg);border:1px solid rgba(255,255,255,.14);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
-    .hero-art:hover .dashboard{transform:rotate(0deg) translateY(-8px)}
+    /* Dedicated Hero Overview Showcase Section (Relocated Cards & Dashboard) */
+    .hero-overview{
+      padding:80px 0 90px;
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-overview-header{
+      max-width:760px;
+      margin-bottom:48px;
+    }
+    .hero-overview-header h2{
+      font:800 clamp(32px,3.8vw,46px)/1.12 Manrope,sans-serif;
+      letter-spacing:-.04em;
+      color:var(--navy);
+      margin-top:10px;
+    }
+    .hero-overview-header p{
+      margin-top:14px;
+      color:#546478;
+      font-size:16px;
+      line-height:1.7;
+    }
+    .overview-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:46px;
+      align-items:center;
+    }
+    .overview-cards-stack{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .overview-trust-card{
+      background:#ffffff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:24px 26px;
+      display:flex;
+      align-items:flex-start;
+      gap:20px;
+      box-shadow:0 8px 30px rgba(8,27,69,.04);
+      transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+    }
+    .overview-trust-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 16px 40px rgba(8,27,69,.08);
+      border-color:rgba(227,30,36,.3);
+    }
+    .overview-trust-card .icon-box{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:rgba(227,30,36,.08);
+      color:var(--red);
+      display:grid;
+      place-items:center;
+      font-size:18px;
+      font-weight:800;
+      flex-shrink:0;
+    }
+    .overview-trust-card .card-body{
+      flex:1;
+    }
+    .overview-stat-row{
+      display:flex;
+      align-items:baseline;
+      gap:6px;
+    }
+    .overview-stat-row .counter{
+      font:800 36px/1 Manrope,sans-serif;
+      letter-spacing:-.05em;
+      color:var(--navy);
+    }
+    .overview-stat-row .unit{
+      font:700 16px Manrope,sans-serif;
+      color:var(--red);
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+    .overview-stat-title{
+      font:700 17px Manrope,sans-serif;
+      color:var(--navy);
+      margin-top:4px;
+      margin-bottom:6px;
+    }
+    .overview-stat-desc{
+      font-size:13px;
+      color:#546478;
+      line-height:1.65;
+    }
+    .overview-stat-tag{
+      display:inline-block;
+      margin-top:10px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:var(--paper-2);
+      color:var(--navy);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.03em;
+      border:1px solid var(--line);
+    }
+
+    /* Executive Dashboard Visual */
+    .overview-dashboard-wrapper{
+      position:relative;
+      min-height:540px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .overview-dashboard-wrapper .glow{
+      position:absolute;
+      width:480px;
+      height:480px;
+      background:radial-gradient(circle,rgba(8,27,69,.12),rgba(227,30,36,.06) 45%,transparent 70%);
+      filter:blur(12px);
+      pointer-events:none;
+    }
+    .overview-dashboard-wrapper .orbit{
+      position:absolute;
+      inset:4% 2%;
+      border:1px dashed rgba(8,27,69,.12);
+      border-radius:50%;
+      transform:rotate(-14deg);
+      pointer-events:none;
+    }
+    .overview-dashboard-wrapper .orbit.o2{
+      inset:16% 8%;
+      transform:rotate(20deg);
+      border-color:rgba(227,30,36,.18);
+    }
+    .dashboard{
+      position:relative;
+      width:min(530px,94%);
+      background:var(--navy-dark);
+      color:#f0f4fa;
+      border-radius:28px;
+      padding:24px;
+      box-shadow:0 35px 80px rgba(8,27,69,.26);
+      transform:rotate(-2deg);
+      border:1px solid rgba(255,255,255,.14);
+      transition:transform .6s cubic-bezier(.2,.8,.2,1);
+      z-index:2;
+    }
+    .overview-dashboard-wrapper:hover .dashboard{
+      transform:rotate(0deg) translateY(-6px);
+    }
     .dash-top{display:flex;justify-content:space-between;align-items:center;color:#9bb2d4;font-size:11px;padding:4px 4px 16px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:14px}
     .dash-balance{border-radius:21px;padding:20px;background:linear-gradient(145deg,#0c2356,#061537);border:1px solid rgba(255,255,255,.1)}
     .dash-label{font-size:11px;color:#9bb2d4;display:flex;justify-content:space-between}
@@ -198,21 +292,21 @@
     .dash-card{background:#0a1c42;border:1px solid rgba(255,255,255,.08);padding:14px;border-radius:17px}
     .dash-card .num{font:700 22px Manrope;margin-top:6px;color:#ffffff}
     .dash-card small{font-size:10px;color:#9bb2d4}
-    
-    .floating-card{position:absolute;background:white;color:var(--navy);border:1px solid rgba(8,27,69,.12);box-shadow:0 18px 45px rgba(8,27,69,.16);border-radius:18px;padding:14px 16px;display:flex;align-items:center;gap:11px;animation:float 6s ease-in-out infinite;z-index:3}
-    .floating-card .icon{width:36px;height:36px;background:var(--paper-2);border-radius:12px;display:grid;place-items:center;font-size:14px;color:var(--red);font-weight:bold}
-    .floating-card strong{font:700 16px Manrope;color:var(--navy)}
-    .floating-card small{display:block;font-size:10px;color:#6b7c93;margin-top:2px}
-    .fc1{left:3%;top:14%;animation-delay:-1.2s}.fc2{right:-2%;bottom:18%;animation-delay:-2.7s}.fc3{left:8%;bottom:6%;animation-delay:-4.1s}
-    @keyframes float{50%{transform:translateY(-13px)}}
 
-    /* credibility */
-    .credibility{padding:26px 0 50px}
-    .cred-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .cred-item{padding:25px 22px;position:relative}
-    .cred-item:not(:last-child):after{content:"";position:absolute;right:0;top:18px;bottom:18px;width:1px;background:var(--line)}
-    .cred-num{font:800 clamp(30px,3vw,46px)/1 Manrope;letter-spacing:-.06em;color:var(--navy)}
-    .cred-label{color:#677890;font-size:11px;margin-top:7px;text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+    @media (max-width:992px){
+      .overview-grid{grid-template-columns:1fr;gap:40px}
+      .overview-dashboard-wrapper{min-height:auto;padding:20px 0}
+      .dashboard{transform:none !important;width:100%;max-width:520px;margin:10px auto 0}
+      .overview-dashboard-wrapper .glow, .overview-dashboard-wrapper .orbit{display:none}
+    }
+    @media (max-width:640px){
+      .hero-overview{padding:54px 0 64px}
+      .overview-trust-card{padding:18px 20px;gap:16px}
+      .overview-trust-card .icon-box{width:42px;height:42px;font-size:16px}
+      .overview-stat-row .counter{font-size:30px}
+      .dash-value{font-size:30px}
+      .chart{height:145px}
+    }
 
     /* ticker with red divider accents */
     .ticker{overflow:hidden;background:var(--navy);color:#e2ecfb;border-block:1px solid rgba(255,255,255,.08);padding:14px 0}
@@ -455,9 +549,8 @@
     .delay-1{transition-delay:.08s}.delay-2{transition-delay:.16s}.delay-3{transition-delay:.24s}.delay-4{transition-delay:.32s}
 
     @media (max-width:1000px){
-      .hero-grid,.model-grid,.coverage-grid{grid-template-columns:1fr}
-      .hero{padding-top:42px}.hero-art{min-height:500px}.sticky-title{position:static}.leader-grid{grid-template-columns:1fr}.leader-mini{min-height:280px}
-      .cred-grid{grid-template-columns:repeat(2,1fr)}.cred-item:nth-child(2):after{display:none}
+      .model-grid,.coverage-grid{grid-template-columns:1fr}
+      .hero{padding-top:54px}.sticky-title{position:static}.leader-grid{grid-template-columns:1fr}.leader-mini{min-height:280px}
       .service.s1,.service.s2,.service.s3,.service.s4,.service.s5{grid-column:span 6}.service.s6{grid-column:span 12}
       .intel-grid{grid-template-columns:1fr}.intel-panel.large{min-height:360px}
       .footer-grid{grid-template-columns:1.2fr .8fr .8fr}
@@ -465,7 +558,7 @@
     @media (max-width:740px){
       .wrap{width:min(calc(100% - 28px),var(--max))}.announcement .wrap{font-size:10px}.announcement .right{display:none}
       nav{height:68px}.nav-links,.nav-actions .pill{display:none}.menu{display:block}
-      .hero{min-height:auto;padding:48px 0 30px}.hero-grid{gap:20px}.hero h1{font-size:clamp(46px,13vw,72px)}.hero-copy{font-size:14px}.mini-proof{margin-top:25px}.hero-art{min-height:410px}.dashboard{width:95%;padding:14px}.dash-value{font-size:30px}.chart{height:145px}.floating-card{padding:10px 11px}.fc1{left:-2%;top:9%}.fc2{right:-2%;bottom:22%}.fc3{left:2%;bottom:4%}
+      .hero{min-height:auto;padding:50px 0 34px}.hero h1{font-size:clamp(42px,12vw,68px)}.hero-copy{font-size:14px}.mini-proof{margin-top:24px}
       section{padding:75px 0}.section-head{display:block;margin-bottom:34px}.section-head p{margin-top:14px}
       .cred-grid{grid-template-columns:1fr 1fr}.cred-item{padding:18px 14px}.cred-item:after{display:none}.cred-num{font-size:30px}
       .service-grid{grid-template-columns:1fr}.service.s1,.service.s2,.service.s3,.service.s4,.service.s5,.service.s6{grid-column:span 1;min-height:230px}.service.s6{display:block}.service h3{margin-top:40px;font-size:24px}
@@ -531,7 +624,6 @@
       .leader-flagship{grid-template-columns:1fr !important}
       .leader-flagship-img{height:320px}
       .why-grid{grid-template-columns:1fr !important;gap:36px}
-      .hero-grid{grid-template-columns:1fr !important}
       .presence-hero-grid{grid-template-columns:1fr !important}
       .eight-cities-grid{grid-template-columns:repeat(2,1fr) !important}
       .nav-links{display:none}
@@ -565,8 +657,6 @@
     }
     @media (max-width: 580px){
       .eight-cities-grid{grid-template-columns:1fr !important}
-      .cred-grid{grid-template-columns:1fr 1fr !important}
-      .floating-card{display:none !important}
       .wrap{width:calc(100% - 24px)}
     }
 
@@ -646,91 +736,108 @@
 </header>
 
 <main>
-  <!-- Hero Section -->
+  <!-- Hero Section (Uncluttered Video Canvas) -->
   <section class="hero" id="top">
     <div class="hero-video-bg" aria-hidden="true">
       <video class="desktop-video" src="videos/hero-desktop-web.mp4" poster="images/hero-poster-desktop.webp" autoplay muted loop playsinline preload="auto"></video>
       <video class="mobile-video" src="videos/hero-mobile-web.mp4" poster="images/hero-poster-mobile.webp" autoplay muted loop playsinline preload="auto"></video>
       <div class="hero-video-overlay"></div>
     </div>
-    <div class="wrap hero-grid">
-      <div data-reveal>
+    <div class="wrap hero-wrap">
+      <div class="hero-content" data-reveal>
         <div class="eyebrow">Fiduciaries for a lifetime & beyond ...</div>
         <h1>One Advisor.<br><span class="soft">Every financial decision</span><br><span class="serif">of your life.</span></h1>
         <p class="hero-copy">Most families deal with four different professionals—one for investments, one for tax, one for accounts, and one for legal matters. None of them talk to each other. Aarya was built to end that.</p>
         <div class="hero-actions">
           <a href="#contact" class="cta red">Book a Free Consultation <span>↗</span></a>
-          <a href="#capabilities" class="cta">Explore Services <span>↓</span></a>
+          <a href="#overview" class="cta">Explore Overview <span>↓</span></a>
         </div>
         <div class="mini-proof">
           <div class="avatars"><span class="avatar-1"></span><span class="avatar-2"></span><span class="avatar-3"></span></div>
           <span>From your first SIP to your family trust deed — Let's Grow Together.</span>
         </div>
-
-        <!-- Mobile Floating Trust Cards (Instant, beautiful mobile presentation) -->
-        <div class="hero-floating-pills">
-          <div class="mobile-card-pill">
-            <div class="icon">↗</div>
-            <div>
-              <strong>25+ yrs</strong>
-              <small>Wealth & advisory fiduciary trust</small>
-            </div>
-          </div>
-          <div class="mobile-card-pill">
-            <div class="icon">◎</div>
-            <div>
-              <strong>2,000+</strong>
-              <small>Families & HNIs successfully served</small>
-            </div>
-          </div>
-          <div class="mobile-card-pill">
-            <div class="icon">◌</div>
-            <div>
-              <strong>42+</strong>
-              <small>Specialist associates & partners</small>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dashboard Interactive Art -->
-      <div class="hero-art" data-reveal data-reveal-delay="1">
-        <div class="glow"></div>
-        <div class="orbit"></div><div class="orbit o2"></div>
-        <div class="floating-card fc1"><div class="icon">↗</div><div><strong>25+ yrs</strong><small>wealth & advisory trust</small></div></div>
-        <div class="floating-card fc2"><div class="icon">◎</div><div><strong>2,000+</strong><small>families & HNIs served</small></div></div>
-        <div class="floating-card fc3"><div class="icon">◌</div><div><strong>42+</strong><small>associates & specialists</small></div></div>
-
-        <div class="dashboard" id="tiltCard">
-          <div class="dash-top"><span>AARYA / CONSOLIDATED VIEW</span><span>Fiduciary Standard · INR</span></div>
-          <div class="dash-balance">
-            <div class="dash-label"><span>Holistic Client Wealth Track</span><span>+8.2%</span></div>
-            <div class="dash-value">₹ 14.85 Cr</div>
-            <div class="up">↑ Unified SIP, Equity, Trust & Tax Alignment</div>
-            <div class="chart">
-              <svg viewBox="0 0 500 180" preserveAspectRatio="none" aria-hidden="true">
-                <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#e31e24" stop-opacity=".32"/><stop offset="1" stop-color="#e31e24" stop-opacity="0"/></linearGradient></defs>
-                <path d="M0 156 C35 147 43 130 68 138 C94 147 112 114 137 121 C166 131 179 85 209 104 C237 121 258 92 284 96 C318 102 327 52 360 68 C391 84 414 46 447 58 C467 65 482 30 500 18 L500 180 L0 180 Z" fill="url(#area)"/>
-                <path d="M0 156 C35 147 43 130 68 138 C94 147 112 114 137 121 C166 131 179 85 209 104 C237 121 258 92 284 96 C318 102 327 52 360 68 C391 84 414 46 447 58 C467 65 482 30 500 18" fill="none" stroke="#e31e24" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-            </div>
-          </div>
-          <div class="dash-bottom">
-            <div class="dash-card"><small>Cross-Domain Alignment</small><div class="num">100%</div><small>Tax, Legal, Wealth & Audit</small></div>
-            <div class="dash-card"><small>Fiduciary Integrity</small><div class="num">NISM 10A</div><small>Objective & product-agnostic</small></div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Credibility Stats -->
-  <section class="credibility" id="about">
-    <div class="wrap cred-grid">
-      <div class="cred-item" data-reveal><div class="cred-num counter" data-target="25">0</div><div class="cred-label">Years of Trust & Experience</div></div>
-      <div class="cred-item" data-reveal><div class="cred-num counter" data-target="2000">0</div><div class="cred-label">Families & Entrepreneurs Served</div></div>
-      <div class="cred-item" data-reveal><div class="cred-num counter" data-target="42">0</div><div class="cred-label">Specialist Associates</div></div>
-      <div class="cred-item" data-reveal><div class="cred-num">6+</div><div class="cred-label">Integrated Business Verticals</div></div>
+  <!-- Dedicated Fiduciary Overview & Trust Metric Showcase (Relocated from Hero) -->
+  <section class="hero-overview" id="overview">
+    <div class="wrap">
+      <div class="hero-overview-header" data-reveal>
+        <div class="eyebrow">Fiduciary Standard · Since 1999</div>
+        <h2>One Unified View. Total Financial Clarity.</h2>
+        <p>Instead of juggling disconnected advisors for tax, legal, investments, and audit, Aarya coordinates all pillars under a single conflict-free fiduciary framework.</p>
+      </div>
+
+      <div class="overview-grid">
+        <!-- 3 Trust Metric Cards -->
+        <div class="overview-cards-stack" data-reveal>
+          <div class="overview-trust-card">
+            <div class="icon-box">↗</div>
+            <div class="card-body">
+              <div class="overview-stat-row">
+                <span class="counter" data-target="25">0</span>
+                <span class="unit">Years</span>
+              </div>
+              <div class="overview-stat-title">Legacy of Fiduciary Trust</div>
+              <p class="overview-stat-desc">Guiding families, founders, and professionals through multiple economic cycles with unbiased advice and zero product commission bias.</p>
+              <div class="overview-stat-tag">SEBI Registered · IRDA Licensed</div>
+            </div>
+          </div>
+
+          <div class="overview-trust-card">
+            <div class="icon-box">◎</div>
+            <div class="card-body">
+              <div class="overview-stat-row">
+                <span class="counter" data-target="2000">0</span>
+                <span class="unit">Families</span>
+              </div>
+              <div class="overview-stat-title">Families & HNIs Successfully Served</div>
+              <p class="overview-stat-desc">Multi-generational relationships spanning wealth management, estate planning, NRI asset repatriation, and family offices.</p>
+              <div class="overview-stat-tag">98.4% Retention Rate</div>
+            </div>
+          </div>
+
+          <div class="overview-trust-card">
+            <div class="icon-box">◌</div>
+            <div class="card-body">
+              <div class="overview-stat-row">
+                <span class="counter" data-target="42">0</span>
+                <span class="unit">Specialists</span>
+              </div>
+              <div class="overview-stat-title">Specialist Associates & Partners</div>
+              <p class="overview-stat-desc">A unified in-house bench of Chartered Accountants, CFPs, tax advocates, corporate attorneys, and senior wealth analysts.</p>
+              <div class="overview-stat-tag">6 Integrated Verticals</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Consolidated Wealth Dashboard -->
+        <div class="overview-dashboard-wrapper" data-reveal data-reveal-delay="1">
+          <div class="glow"></div>
+          <div class="orbit"></div><div class="orbit o2"></div>
+
+          <div class="dashboard" id="tiltCard">
+            <div class="dash-top"><span>AARYA / CONSOLIDATED VIEW</span><span>Fiduciary Standard · INR</span></div>
+            <div class="dash-balance">
+              <div class="dash-label"><span>Holistic Client Wealth Track</span><span>+8.2%</span></div>
+              <div class="dash-value">₹ 14.85 Cr</div>
+              <div class="up">↑ Unified SIP, Equity, Trust & Tax Alignment</div>
+              <div class="chart">
+                <svg viewBox="0 0 500 180" preserveAspectRatio="none" aria-hidden="true">
+                  <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#e31e24" stop-opacity=".32"/><stop offset="1" stop-color="#e31e24" stop-opacity="0"/></linearGradient></defs>
+                  <path d="M0 156 C35 147 43 130 68 138 C94 147 112 114 137 121 C166 131 179 85 209 104 C237 121 258 92 284 96 C318 102 327 52 360 68 C391 84 414 46 447 58 C467 65 482 30 500 18 L500 180 L0 180 Z" fill="url(#area)"/>
+                  <path d="M0 156 C35 147 43 130 68 138 C94 147 112 114 137 121 C166 131 179 85 209 104 C237 121 258 92 284 96 C318 102 327 52 360 68 C391 84 414 46 447 58 C467 65 482 30 500 18" fill="none" stroke="#e31e24" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="dash-bottom">
+              <div class="dash-card"><small>Cross-Domain Alignment</small><div class="num">100%</div><small>Tax, Legal, Wealth & Audit</small></div>
+              <div class="dash-card"><small>Fiduciary Integrity</small><div class="num">NISM 10A</div><small>Objective & product-agnostic</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1401,7 +1508,7 @@
       };
       requestAnimationFrame(tick); countObs.unobserve(el);
     })
-  },{threshold:.7}); counters.forEach(c=>countObs.observe(c));
+  },{threshold:.25}); counters.forEach(c=>countObs.observe(c));
 
   // Glow cursor follower adapted for corporate navy/red
   const glow=document.getElementById('cursorGlow');
