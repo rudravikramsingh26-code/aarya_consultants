@@ -130,18 +130,21 @@
       const stTl = gsap.timeline({
         scrollTrigger: {
           trigger: sec,
-          start: 'top 84%',
-          toggleActions: 'play none none none'
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
         }
       });
 
-      if (eye)  stTl.from(eye,  { opacity: 0, y: 16, duration: 0.50 });
-      if (h2)   stTl.from(h2,   { opacity: 0, y: 28, duration: 0.75 }, eye ? '-=0.28' : '0');
-      if (desc && desc !== h2) stTl.from(desc, { opacity: 0, y: 18, duration: 0.65 }, '-=0.42');
+      if (eye)  stTl.from(eye,  { opacity: 0, y: 16, duration: 0.50, clearProps: 'all' });
+      if (h2)   stTl.from(h2,   { opacity: 0, y: 24, duration: 0.65, clearProps: 'all' }, eye ? '-=0.25' : '0');
+      if (desc && desc !== h2) stTl.from(desc, { opacity: 0, y: 16, duration: 0.55, clearProps: 'all' }, '-=0.35');
     });
 
     /* ─────────────────────────────────────────────────────────
      * 5. STAGGERED GRID / CARD REVEALS
+     *    Active ONLY on desktop screens (>992px) to prevent
+     *    invisible/stuck opacity on mobile viewports.
      * ───────────────────────────────────────────────────────── */
     const GRID_SELECTORS = [
       '.grid-2',
@@ -161,48 +164,54 @@
       '.footer-grid',
     ];
 
-    GRID_SELECTORS.forEach(sel => {
-      qa(sel).forEach(container => {
-        /* Skip grids already inside the page hero */
-        if (container.closest('.page-hero, .hero')) return;
+    if (window.innerWidth > 992) {
+      GRID_SELECTORS.forEach(sel => {
+        qa(sel).forEach(container => {
+          /* Skip grids already inside the page hero */
+          if (container.closest('.page-hero, .hero')) return;
 
-        const kids = [...container.children];
-        if (!kids.length) return;
+          const kids = [...container.children];
+          if (!kids.length) return;
 
-        gsap.from(kids, {
-          scrollTrigger: {
-            trigger: container,
-            start:   'top 87%',
-            toggleActions: 'play none none none'
-          },
-          opacity:  0,
-          y:        38,
-          duration: 0.72,
-          stagger:  0.075,
-          ease:     'power2.out',
-          clearProps: 'transform'   // preserves CSS :hover effects
+          gsap.from(kids, {
+            scrollTrigger: {
+              trigger: container,
+              start:   'top 88%',
+              toggleActions: 'play none none none',
+              once: true
+            },
+            opacity:  0,
+            y:        32,
+            duration: 0.65,
+            stagger:  0.07,
+            ease:     'power2.out',
+            clearProps: 'all'   // restores full native styles upon completion
+          });
         });
       });
-    });
+    }
 
     /* ─────────────────────────────────────────────────────────
      * 6. ROLE CARDS (career page — stagger from left)
      * ───────────────────────────────────────────────────────── */
-    qa('.role-card').forEach((card, i) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start:   'top 88%',
-          toggleActions: 'play none none none'
-        },
-        opacity:  0,
-        x:        -30,
-        duration: 0.65,
-        delay:    i * 0.06,
-        ease:     'power2.out',
-        clearProps: 'transform'
+    if (window.innerWidth > 992) {
+      qa('.role-card').forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start:   'top 88%',
+            toggleActions: 'play none none none',
+            once: true
+          },
+          opacity:  0,
+          x:        -30,
+          duration: 0.65,
+          delay:    i * 0.06,
+          ease:     'power2.out',
+          clearProps: 'all'
+        });
       });
-    });
+    }
 
     /* ─────────────────────────────────────────────────────────
      * 7. PERK CARDS (career page — image scale-up)
@@ -356,24 +365,30 @@
      * 14. FOOTER ENTRANCE
      * ───────────────────────────────────────────────────────── */
     const footer = q('footer');
-    if (footer) {
+    if (footer && window.innerWidth > 992) {
       const footGrid = q('.footer-grid', footer);
       if (footGrid) {
         gsap.from([...footGrid.children], {
           scrollTrigger: {
             trigger: footer,
             start:   'top 90%',
-            toggleActions: 'play none none none'
+            toggleActions: 'play none none none',
+            once: true
           },
           opacity:  0,
           y:        28,
           stagger:  0.08,
           duration: 0.65,
           ease:     'power2.out',
-          clearProps: 'transform'
+          clearProps: 'all'
         });
       }
     }
+
+    /* Refresh ScrollTrigger trigger coordinates when images/fonts finish loading */
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
+    });
 
   } /* end ScrollTrigger block */
 

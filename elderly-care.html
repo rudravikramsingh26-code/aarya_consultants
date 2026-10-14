@@ -179,9 +179,32 @@
     .cta-banner h2{font:800 36px/1.15 Manrope;color:#fff;max-width:620px}
     .cta-banner p{font-size:15px;color:#cbd9ec;max-width:580px;margin-top:12px;line-height:1.6}
 
+    .challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .team-extra-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px;align-items:stretch}
+    .horizontal-card{flex-direction:row;align-items:center}
+    .horizontal-card .team-img-wrap{height:100%;min-height:220px;width:180px;flex-shrink:0}
+    .team-banner-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;display:flex;align-items:center;gap:20px;box-shadow:0 10px 30px rgba(8,27,69,.05)}
+    .team-banner-img{width:160px;height:140px;border-radius:18px;overflow:hidden;flex-shrink:0}
+    .team-banner-img img{width:100%;height:100%;object-fit:cover}
+
     @media (max-width: 992px){
-      .hero-split, .grid-2, .grid-3, .grid-4, .stat-strip{grid-template-columns:1fr !important;gap:24px}
+      .hero-split, .grid-2, .grid-3, .grid-4{grid-template-columns:1fr !important;gap:24px}
+      .stat-strip{grid-template-columns:repeat(2,1fr) !important;gap:14px}
+      .challenge-grid{grid-template-columns:1fr !important;gap:16px}
+      .team-extra-grid{grid-template-columns:1fr !important;gap:20px}
+      .horizontal-card{flex-direction:column !important;align-items:stretch !important}
+      .horizontal-card .team-img-wrap{width:100% !important;height:260px !important}
+      .team-banner-card{flex-direction:column !important;align-items:flex-start !important;padding:22px !important}
+      .team-banner-img{width:100% !important;height:180px !important}
       .cta-banner{padding:36px 28px}
+
+      /* Bulletproof mobile visibility safeguard */
+      .pillar-card, .team-care-card, .challenge-card, .tier-card, .quote-card,
+      .grid-2 > *, .grid-3 > *, .grid-4 > *, .challenge-grid > *, .team-extra-grid > * {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+      }
     }
 
     footer{background:var(--navy-dark);color:#bccce2;padding:58px 0 30px;border-top:4px solid var(--red)}
@@ -305,7 +328,7 @@
           </div>
         </div>
 
-        <div class="grid-2" style="gap:18px">
+        <div class="challenge-grid">
           <div class="challenge-card">
             <div class="challenge-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
@@ -488,15 +511,15 @@
       </div>
 
       <!-- Additional Team Members / Karishma Gupta & Care Team Banner -->
-      <div class="grid-2" style="margin-top:28px;align-items:stretch">
+      <div class="team-extra-grid">
         
         <!-- Karishma Gupta Card -->
-        <div class="team-care-card" style="flex-direction:row;align-items:center">
-          <div class="team-img-wrap" style="height:100%;min-height:220px;width:180px;flex-shrink:0">
+        <div class="team-care-card horizontal-card">
+          <div class="team-img-wrap">
             <img decoding="async" src="images/karsisma-1788851012972-5be06fb2.webp" alt="Karishma Gupta - Financial & Pension Safeguards" onerror="this.style.opacity='0';this.style.display='none';">
             <span class="team-badge">Pension & Legal Lead</span>
           </div>
-          <div class="team-care-body" style="padding:24px">
+          <div class="team-care-body">
             <h3>Karishma Gupta</h3>
             <span class="team-role">Pension, Banking & Medical Insurance Claims</span>
             <p>Ensures seniors' banking documentation, pension disbursements, medical insurance claims, and living trust protections are safeguarded without bureaucratic stress.</p>
@@ -504,11 +527,11 @@
         </div>
 
         <!-- Collective Care Team Banner -->
-        <div style="background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;display:flex;align-items:center;gap:20px;box-shadow:0 10px 30px rgba(8,27,69,.05)">
-          <div style="width:160px;height:140px;border-radius:18px;overflow:hidden;flex-shrink:0">
-            <img decoding="async" src="images/since-2011-jpg-1784715272083-0962f15f.webp" alt="Aarya & Samman Dedicated Support Team" style="width:100%;height:100%;object-fit:cover" onerror="this.style.opacity='0';this.style.display='none';">
+        <div class="team-banner-card">
+          <div class="team-banner-img">
+            <img decoding="async" src="images/since-2011-jpg-1784715272083-0962f15f.webp" alt="Aarya & Samman Dedicated Support Team" onerror="this.style.opacity='0';this.style.display='none';">
           </div>
-          <div>
+          <div class="team-banner-body">
             <h4 style="font:800 18px Manrope;color:var(--navy);margin-bottom:6px">42+ Dedicated Associates & Caregivers</h4>
             <p style="font-size:13px;color:#5e6f85;line-height:1.6;margin-bottom:12px">Every companion and nurse is background-verified, police-cleared, and trained in geriatric empathy, CPR, and dementia protocols.</p>
             <a href="tel:+919038620055" class="pill red" style="font-size:11px;padding:6px 14px">Speak with a Coordinator ↗</a>

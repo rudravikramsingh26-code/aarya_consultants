@@ -131,3 +131,15 @@ body{padding-bottom:70px}
 .advisor-intent-btn span{font-size:11px;color:#e31e24;font-weight:700}
 .advisor-intent-btn:hover span{color:#fff}
 
+/* Mobile Content Visibility Safeguard: Prevents stuck opacity:0 / empty gaps across all pages on mobile */
+@media (max-width: 992px){
+  .grid-2 > *, .grid-3 > *, .grid-4 > *, .grid-5 > *,
+  .why-grid > *, .pillars > *, .hubs-grid > *, .career-grid > *,
+  .pillar-card, .team-care-card, .challenge-card, .tier-card, .quote-card,
+  .role-card, .perk-card, .channel-card, .card,
+  .overview-trust-card, .overview-grid > *, .challenge-grid > *, .team-extra-grid > * {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
