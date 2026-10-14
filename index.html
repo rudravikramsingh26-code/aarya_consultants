@@ -1457,17 +1457,73 @@
     nav.style.boxShadow=y>18?'0 12px 35px rgba(8,27,69,.08)':'none'; 
   },{passive:true});
 
-  // Wall of Frames Slider Navigation
+  // Wall of Frames Automatic Slider Navigation
   const awardTrack = document.querySelector('.award-carousel');
   const prevBtn = document.getElementById('awardPrev');
   const nextBtn = document.getElementById('awardNext');
-  if (awardTrack && prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => {
-      awardTrack.scrollBy({ left: -340, behavior: 'smooth' });
-    });
-    nextBtn.addEventListener('click', () => {
-      awardTrack.scrollBy({ left: 340, behavior: 'smooth' });
-    });
+  if (awardTrack) {
+    const cardStep = 340;
+    const slideNext = () => {
+      const maxScroll = awardTrack.scrollWidth - awardTrack.clientWidth;
+      if (awardTrack.scrollLeft >= maxScroll - 15) {
+        awardTrack.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        awardTrack.scrollBy({ left: cardStep, behavior: 'smooth' });
+      }
+    };
+    const slidePrev = () => {
+      if (awardTrack.scrollLeft <= 15) {
+        awardTrack.scrollTo({ left: awardTrack.scrollWidth, behavior: 'smooth' });
+      } else {
+        awardTrack.scrollBy({ left: -cardStep, behavior: 'smooth' });
+      }
+    };
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        slidePrev();
+        resetAuto();
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        slideNext();
+        resetAuto();
+      });
+    }
+
+    let autoTimer = null;
+    let isPaused = false;
+
+    const startAuto = () => {
+      stopAuto();
+      autoTimer = setInterval(() => {
+        if (!isPaused) {
+          slideNext();
+        }
+      }, 3200);
+    };
+
+    const stopAuto = () => {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    };
+
+    const resetAuto = () => {
+      stopAuto();
+      startAuto();
+    };
+
+    awardTrack.addEventListener('mouseenter', () => { isPaused = true; });
+    awardTrack.addEventListener('mouseleave', () => { isPaused = false; });
+    awardTrack.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
+    awardTrack.addEventListener('touchend', () => {
+      setTimeout(() => { isPaused = false; }, 2000);
+    }, { passive: true });
+
+    startAuto();
   }
 </script>
 

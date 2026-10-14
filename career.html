@@ -106,6 +106,7 @@
 
     section{padding:80px 0}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
     .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
     .grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
 
@@ -123,13 +124,20 @@
     .value-card h4{font:700 16px Manrope;color:var(--navy)}
     .value-card p{font-size:13px;color:#607185;line-height:1.55}
 
-    .role-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;margin-bottom:18px;transition:all .3s ease}
-    .role-card:hover{border-color:var(--red);transform:translateX(6px);box-shadow:0 12px 30px rgba(8,27,69,.06)}
+    /* Role Cards */
+    .role-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;margin-bottom:20px;transition:all .3s ease;box-shadow:0 4px 16px rgba(8,27,69,.03)}
+    .role-card:hover{border-color:var(--red);transform:translateX(6px);box-shadow:0 14px 34px rgba(8,27,69,.08)}
+    .role-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
     .role-tag{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
-    .role-card h3{font:700 20px Manrope;color:var(--navy);margin:6px 0 8px}
-    .role-card p{font-size:13px;color:#607185;line-height:1.65;margin-bottom:12px}
+    .role-badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--paper-2);color:var(--navy)}
+    .role-card h3{font:800 21px Manrope;color:var(--navy);margin:4px 0 10px}
+    .role-card p{font-size:13.5px;color:#55667c;line-height:1.65;margin-bottom:14px}
+    .role-specs{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;font-weight:700;color:#718299;border-top:1px solid var(--line);padding-top:12px}
+    .role-specs span{display:flex;align-items:center;gap:6px}
+    .role-apply-btn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;font-weight:800;color:var(--red);cursor:pointer;border:none;background:none;padding:0;transition:color .2s}
+    .role-apply-btn:hover{color:var(--red-hover)}
 
-    .form-box{background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px;box-shadow:0 20px 60px rgba(8,27,69,.06)}
+    .form-box{background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px;box-shadow:0 20px 60px rgba(8,27,69,.06);position:sticky;top:100px}
     .form-box h3{font:800 26px Manrope;color:var(--navy);margin-bottom:8px}
     .form-box p{font-size:14px;color:#607185;margin-bottom:26px}
     .form-group{margin-bottom:18px}
@@ -139,8 +147,50 @@
     .btn-submit{width:100%;background:var(--red);color:#fff;border:none;padding:16px;border-radius:12px;font-family:Manrope,sans-serif;font-weight:800;font-size:14px;cursor:pointer;transition:.25s ease;margin-top:10px}
     .btn-submit:hover{background:#c41419;transform:translateY(-2px);box-shadow:0 8px 24px rgba(227,30,36,.25)}
 
+    /* Step / Hiring Journey */
+    .journey-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px}
+    .journey-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px 22px;position:relative;box-shadow:0 6px 20px rgba(8,27,69,.03);transition:all .3s ease}
+    .journey-card:hover{transform:translateY(-4px);border-color:var(--red);box-shadow:0 16px 36px rgba(8,27,69,.09)}
+    .journey-step{font:800 13px Manrope;color:var(--red);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+    .journey-card h4{font:800 18px Manrope;color:var(--navy);margin-bottom:8px}
+    .journey-card p{font-size:13px;color:#5a6d84;line-height:1.65;margin:0}
+
+    /* Student & Articleship Hub */
+    .intern-banner{background:linear-gradient(135deg,#081b45,#122a63);border-radius:28px;padding:48px;color:#fff;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    .intern-banner h3{font:800 clamp(28px,3vw,38px) Manrope;color:#fff;margin:10px 0 16px}
+    .intern-banner p{font-size:15px;color:#cbd9ec;line-height:1.75;margin-bottom:20px}
+    .intern-checklist{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+    .intern-checklist li{display:flex;align-items:center;gap:10px;font-size:14px;color:#e1ebf8}
+    .intern-checklist li svg{width:18px;height:18px;color:var(--red);flex-shrink:0}
+    .intern-img-box{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.15);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+    .intern-img-box img{width:100%;height:320px;object-fit:cover;display:block}
+
+    /* Voices of Aarya (Employee Spotlights with Real Pictures) */
+    .spotlight-card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(8,27,69,.05);display:flex;flex-direction:column;transition:all .3s ease}
+    .spotlight-card:hover{transform:translateY(-6px);border-color:var(--navy);box-shadow:0 20px 45px rgba(8,27,69,.1)}
+    .spotlight-img{height:250px;width:100%;object-fit:cover;object-position:top center;display:block}
+    .spotlight-body{padding:26px;display:flex;flex-direction:column;flex:1}
+    .spotlight-quote{font:500 15px/1.65 'Playfair Display',serif;color:var(--navy);margin-bottom:16px;flex:1}
+    .spotlight-author strong{font:800 16px Manrope;color:var(--navy);display:block}
+    .spotlight-author span{font-size:12px;font-weight:700;color:var(--red);letter-spacing:.06em;text-transform:uppercase}
+
+    /* FAQ Accordion */
+    .faq-wrap{max-width:880px;margin:0 auto}
+    .faq-item{background:#fff;border:1px solid var(--line);border-radius:18px;margin-bottom:14px;overflow:hidden;transition:all .25s ease}
+    .faq-item.active{border-color:var(--navy);box-shadow:0 8px 25px rgba(8,27,69,.06)}
+    .faq-btn{width:100%;padding:22px 24px;background:none;border:none;text-align:left;font:800 16px Manrope;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer}
+    .faq-btn svg{width:20px;height:20px;color:var(--red);transition:transform .3s ease;flex-shrink:0}
+    .faq-item.active .faq-btn svg{transform:rotate(180deg)}
+    .faq-body{padding:0 24px 22px;display:none;font-size:14px;color:#5a6d84;line-height:1.75;border-top:1px solid var(--paper-2)}
+    .faq-item.active .faq-body{display:block}
+
+    .section-head{text-align:center;max-width:740px;margin:0 auto 46px}
+    .section-head h2{font:800 clamp(30px,3.5vw,46px) Manrope;color:var(--navy);margin-top:8px}
+    .section-head p{font-size:15px;color:#5a6d84;line-height:1.7;margin-top:10px}
+
     @media (max-width: 992px){
-      .grid-2, .grid-4, .grid-5{grid-template-columns:1fr !important;gap:24px}
+      .grid-2, .grid-4, .grid-5, .journey-grid, .intern-banner{grid-template-columns:1fr !important;gap:24px}
+      .form-box{position:static}
     }
 
     footer{background:var(--navy-dark);color:#bccce2;padding:58px 0 30px;border-top:4px solid var(--red)}
@@ -153,16 +203,7 @@
     @media (max-width:860px){
       .footer-grid{grid-template-columns:1fr !important}
     }
-  
-    /* GSAP magnetic tilt support */
-    .card, .why-card, .perk-card, .value-card, .info-card, .reg-card, .leader-card, .channel-card {
-      will-change: transform;
-      transform-style: preserve-3d;
-    }
-    .grid-2, .grid-3, .grid-4, .grid-5, .why-grid, .pillars, .hubs-grid {
-      perspective: 1200px;
-    }
-</style>
+  </style>
   <link rel="stylesheet" href="enhancements.css">
 </head>
 <body>
@@ -179,13 +220,14 @@
         <div class="nav-dropdown">
           <a href="services.html">Services ▾</a>
           <div class="dropdown-menu">
+            <a href="services.html">All Services Overview</a>
             <a href="financial-planning.html">Financial Planning</a>
             <a href="financial-services.html">Financial Services</a>
-            <a href="taxation.html">Taxation</a>
-            <a href="legal-services.html">Legal Services</a>
+            <a href="taxation.html">Taxation & Audit</a>
+            <a href="legal-services.html">Legal & Succession</a>
             <a href="hr-solutions.html">HR Solutions</a>
             <a href="elderly-care.html">Elderly Care (Samman)</a>
-                      <a href="tools.html">Calculators & Tools</a>
+            <a href="tools.html">Calculators & Tools</a>
           </div>
         </div>
         <a href="index.html#leadership">Leadership</a>
@@ -229,7 +271,11 @@
           <span class="eyebrow">Our Culture & Ethos</span>
           <h2 style="font:800 clamp(30px,3.5vw,46px) Manrope;color:var(--navy);margin:10px 0 18px">Life at Aarya</h2>
           <p style="font-size:15px;color:#506277;line-height:1.8;margin-bottom:18px">A practice built on mentorship. Our senior partners have trained in the United States and across international financial markets, and that knowledge is passed down deliberately in weekly portfolio reviews, real-time client advisory sessions, and deep-dive technical huddles.</p>
-          <p style="font-size:15px;color:#506277;line-height:1.8">At our annual conclave, the year's impact is recognized in front of the entire firm. We foster an environment of high accountability and radical transparency—where intellectual curiosity is rewarded and professional growth has no ceiling.</p>
+          <p style="font-size:15px;color:#506277;line-height:1.8;margin-bottom:24px">At our annual conclave, the year's impact is recognized in front of the entire firm. We foster an environment of high accountability and radical transparency—where intellectual curiosity is rewarded and professional growth has no ceiling.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="#positions" class="pill red">View Open Positions ↓</a>
+            <a href="#articleship" class="pill">CA Articleship & Internships</a>
+          </div>
         </div>
       </div>
     </div>
@@ -238,10 +284,10 @@
   <!-- Perks of Working With Us -->
   <section style="background:var(--paper-2);border-block:1px solid var(--line)">
     <div class="wrap">
-      <div style="text-align:center;max-width:700px;margin:0 auto 48px">
+      <div class="section-head">
         <span class="eyebrow">Why Join Aarya</span>
-        <h2 style="font:800 clamp(30px,3.5vw,44px) Manrope;color:var(--navy);margin-top:8px">Perks of Working With Us</h2>
-        <p style="font-size:15px;color:#5a6d84;line-height:1.65;margin-top:10px">We invest in our people so they can deliver exceptional fiduciary service to the families and institutions who trust us.</p>
+        <h2>Perks of Working With Us</h2>
+        <p>We invest in our people so they can deliver exceptional fiduciary service to the families and institutions who trust us.</p>
       </div>
 
       <div class="grid-4">
@@ -283,9 +329,10 @@
   <!-- Value & Rewards Cards -->
   <section>
     <div class="wrap">
-      <div style="text-align:center;max-width:700px;margin:0 auto 40px">
+      <div class="section-head">
         <span class="eyebrow">Employee Value Proposition</span>
-        <h2 style="font:800 clamp(28px,3vw,40px) Manrope;color:var(--navy);margin-top:8px">Compensation, Health & Recognition</h2>
+        <h2>Compensation, Health & Recognition</h2>
+        <p>Rewarding merit, dedication, and fiduciary integrity with comprehensive rewards.</p>
       </div>
 
       <div class="grid-5">
@@ -333,40 +380,92 @@
   </section>
 
   <!-- Open Positions & Application Form -->
-  <section style="background:var(--paper-2);border-top:1px solid var(--line)">
+  <section id="positions" style="background:var(--paper-2);border-top:1px solid var(--line)">
     <div class="wrap grid-2" style="align-items:start">
       
-      <!-- Open Roles -->
+      <!-- Open Roles with Rich Descriptions -->
       <div>
         <span class="eyebrow">Current Opportunities</span>
         <h2 style="font:800 36px Manrope;color:var(--navy);margin:10px 0 24px">Explore Open Positions</h2>
         
-        <div class="role-card">
-          <span class="role-tag">Wealth & Advisory · Kolkata HO / NCR</span>
+        <!-- Role 1 -->
+        <div class="role-card" id="role-1">
+          <div class="role-header">
+            <span class="role-tag">Wealth & Advisory</span>
+            <span class="role-badge">Kolkata HO / Gurugram</span>
+          </div>
           <h3>Associate Financial Planner</h3>
-          <p>Lead goal mapping, client portfolio reviews, and SIP architectures for HNI families in partnership with NISM Level 10A mentors.</p>
-          <span style="font-size:12px;color:#718299;font-weight:700">Full Time · 2+ Years Wealth Experience</span>
+          <p>Lead multi-asset goal mapping, risk-profiled SIP architectures, and ongoing review calls for HNI families. Collaborate directly with NISM Level 10A partners to structure estate and debt instruments.</p>
+          <div class="role-specs">
+            <span><strong>Experience:</strong> 2–5 Years Wealth Planning</span>
+            <span><strong>Education:</strong> CFP / MBA / Commerce</span>
+            <span><strong>Type:</strong> Full Time</span>
+          </div>
+          <button type="button" class="role-apply-btn" onclick="selectRole('Associate Financial Planner')">Apply for this Position →</button>
         </div>
 
-        <div class="role-card">
-          <span class="role-tag">Audit & Assurance · Kolkata HO</span>
-          <h3>Audit Senior (Semi-Qualified / CA)</h3>
-          <p>Execute statutory audits, internal review checks, tax audits, and forensic stock verifications for corporate enterprises.</p>
-          <span style="font-size:12px;color:#718299;font-weight:700">Full Time · Articleship Completed / CA Inter / CA</span>
+        <!-- Role 2 -->
+        <div class="role-card" id="role-2">
+          <div class="role-header">
+            <span class="role-tag">Audit & Assurance</span>
+            <span class="role-badge">Kolkata Head Office</span>
+          </div>
+          <h3>Audit Senior (CA / Semi-Qualified)</h3>
+          <p>Execute statutory audits under the Companies Act, Section 44AB tax audits, internal operational risk reviews, and forensic physical asset reconciliations for manufacturing and corporate clients.</p>
+          <div class="role-specs">
+            <span><strong>Experience:</strong> Articleship Completed / CA Inter / CA</span>
+            <span><strong>Focus:</strong> Statutory & Tax Audit</span>
+            <span><strong>Type:</strong> Full Time</span>
+          </div>
+          <button type="button" class="role-apply-btn" onclick="selectRole('Audit Senior (CA / Semi-Qualified)')">Apply for this Position →</button>
         </div>
 
-        <div class="role-card">
-          <span class="role-tag">Legal & Governance · Kolkata</span>
+        <!-- Role 3 -->
+        <div class="role-card" id="role-3">
+          <div class="role-header">
+            <span class="role-tag">Legal & Governance</span>
+            <span class="role-badge">Kolkata Head Office</span>
+          </div>
           <h3>Legal Associate — Trust & Estate</h3>
-          <p>Draft private family trust deeds, will executions, partnership documents, and property registration due diligence.</p>
-          <span style="font-size:12px;color:#718299;font-weight:700">Full Time · LLB / LLM with 2+ Years Experience</span>
+          <p>Draft private family trust deeds, will executions, succession covenants, buy-sell agreements, and conduct title search due diligence for institutional property transfers.</p>
+          <div class="role-specs">
+            <span><strong>Experience:</strong> 2+ Years Corporate/Estate Practice</span>
+            <span><strong>Education:</strong> LLB / LLM</span>
+            <span><strong>Type:</strong> Full Time</span>
+          </div>
+          <button type="button" class="role-apply-btn" onclick="selectRole('Legal Associate (Trust & Succession)')">Apply for this Position →</button>
         </div>
 
-        <div class="role-card">
-          <span class="role-tag">Taxation · Direct & Indirect Tax</span>
+        <!-- Role 4 -->
+        <div class="role-card" id="role-4">
+          <div class="role-header">
+            <span class="role-tag">Taxation & GST</span>
+            <span class="role-badge">Kolkata HO</span>
+          </div>
           <h3>Tax Executive — GST & Direct Tax</h3>
-          <p>Handle corporate and individual IT returns, monthly GST reconciliations, assessment response preparation, and TDS compliance.</p>
-          <span style="font-size:12px;color:#718299;font-weight:700">Full Time · Commerce Graduate / Inter</span>
+          <p>Compute advance taxes, prepare high-net-worth individual & corporate ITRs, reconcile monthly GSTR-1/3B filings, resolve mismatch notices, and handle scrutiny documentation.</p>
+          <div class="role-specs">
+            <span><strong>Experience:</strong> 1–3 Years Corporate Tax</span>
+            <span><strong>Education:</strong> M.Com / Inter CA / Commerce</span>
+            <span><strong>Type:</strong> Full Time</span>
+          </div>
+          <button type="button" class="role-apply-btn" onclick="selectRole('Tax Executive (GST / Direct Tax)')">Apply for this Position →</button>
+        </div>
+
+        <!-- Role 5 -->
+        <div class="role-card" id="role-5">
+          <div class="role-header">
+            <span class="role-tag">Samman Initiative</span>
+            <span class="role-badge">Kolkata & Pan-India</span>
+          </div>
+          <h3>Senior Care Coordinator (Samman Oldercare)</h3>
+          <p>Coordinate healthcare visits, caregiver allocations, and daily wellness checks for elderly parents. Maintain proactive WhatsApp and telephone updates for their children working overseas.</p>
+          <div class="role-specs">
+            <span><strong>Experience:</strong> Healthcare / Hospitality / Empathy-Driven</span>
+            <span><strong>Skills:</strong> Fluent English & Bengali, Empathy</span>
+            <span><strong>Type:</strong> Full Time</span>
+          </div>
+          <button type="button" class="role-apply-btn" onclick="selectRole('Senior Care Coordinator (Samman Initiative)')">Apply for this Position →</button>
         </div>
       </div>
 
@@ -374,7 +473,7 @@
       <div class="form-box">
         <h3>Submit Your Application</h3>
         <p>Upload your CV and enter your details to connect directly with our talent acquisition desk.</p>
-        <form onsubmit="event.preventDefault(); alert('Thank you for applying to Aarya Consultants. Our talent acquisition committee will review your profile and contact you within 48 hours!');">
+        <form id="careerForm" onsubmit="event.preventDefault(); alert('Thank you for applying to Aarya Consultants. Our talent acquisition committee will review your profile and contact you within 48 hours!'); this.reset();">
           <div class="form-group">
             <label>Full Name *</label>
             <input type="text" class="form-control" placeholder="Your Name" required>
@@ -389,13 +488,13 @@
           </div>
           <div class="form-group">
             <label>Role Applied For</label>
-            <select class="form-control">
+            <select class="form-control" id="roleSelect">
               <option>Associate Financial Planner</option>
               <option>Audit Senior (CA / Semi-Qualified)</option>
               <option>Tax Executive (GST / Direct Tax)</option>
               <option>Legal Associate (Trust & Succession)</option>
-              <option>HR & Business Support Executive</option>
               <option>Senior Care Coordinator (Samman Initiative)</option>
+              <option>CA Articleship / Student Intern</option>
               <option>General Application / Other</option>
             </select>
           </div>
@@ -415,6 +514,198 @@
         </form>
       </div>
 
+    </div>
+  </section>
+
+  <!-- 4-Stage Selection & Onboarding Journey -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Transparent Recruitment</span>
+        <h2>Our 4-Stage Selection Journey</h2>
+        <p>A structured, respectful hiring discipline that values your time and provides transparent feedback at every touchpoint.</p>
+      </div>
+
+      <div class="journey-grid">
+        <div class="journey-card">
+          <div class="journey-step">Stage 01</div>
+          <h4>Application & Screening</h4>
+          <p>Our talent acquisition desk reviews your working profile and credentials within 48 business hours.</p>
+        </div>
+
+        <div class="journey-card">
+          <div class="journey-step">Stage 02</div>
+          <h4>Technical Dialogue</h4>
+          <p>A conversational case-study or modeling discussion with a senior practice manager in your domain.</p>
+        </div>
+
+        <div class="journey-card">
+          <div class="journey-step">Stage 03</div>
+          <h4>Partner & Culture Meet</h4>
+          <p>An in-person or video session with our senior partners to discuss mutual growth and fiduciary alignment.</p>
+        </div>
+
+        <div class="journey-card">
+          <div class="journey-step">Stage 04</div>
+          <h4>Offer & Mentorship</h4>
+          <p>A competitive compensation offer accompanied by a 90-day structured mentorship curriculum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Internships & CA Articleship Hub -->
+  <section id="articleship" style="background:var(--paper-2);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="intern-banner">
+        <div>
+          <span class="eyebrow" style="color:#ff6b6e">Young Professionals & Students</span>
+          <h3>CA Articleship & Graduate Fiduciary Fellowships</h3>
+          <p>Launch your professional practice at Aarya Consultants. We provide intensive, compliant articleship training under qualified Chartered Accountants with real client exposure across statutory audits, direct tax representation, and multi-asset wealth management.</p>
+          <ul class="intern-checklist">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ICAI-registered 3-year articleship training at Kolkata Head Office</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Stipends benchmarked significantly above ICAI minimum mandatory guidelines</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Exam preparation leave policy and NISM certification sponsorship</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> High Pre-Placement Offer (PPO) conversion rate for qualified candidates</li>
+          </ul>
+          <div style="margin-top:24px">
+            <button type="button" class="pill red" onclick="selectRole('CA Articleship / Student Intern')">Apply for Articleship ↗</button>
+          </div>
+        </div>
+
+        <div class="intern-img-box">
+          <img decoding="async" src="images/whatsapp-image-2026-08-05-at-18-44-33-1785935760358-8844488f.webp" alt="Collaborative Boardroom Discussion at Aarya" onerror="this.style.opacity='0';this.style.display='none';">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voices of Aarya (Employee Spotlights with Real Pictures) -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Real Stories, Real Growth</span>
+        <h2>Voices of Aarya</h2>
+        <p>Hear from colleagues who have built meaningful fiduciary careers within our collaborative consortium.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- 1. Ruchita Gupta -->
+        <div class="spotlight-card">
+          <img decoding="async" src="images/ruchita-1788850767168-ce1ee7a4.webp" alt="Ruchita Gupta - Business Development" class="spotlight-img" onerror="this.style.opacity='0';this.style.display='none';">
+          <div class="spotlight-body">
+            <p class="spotlight-quote">"Aarya taught me that true financial advisory is about empathy, patience, and lifelong relationships rather than quick transactional commissions. The mentorship from senior leadership here is unmatched."</p>
+            <div class="spotlight-author">
+              <strong>Ruchita Gupta</strong>
+              <span>Business Development Manager · 3+ Yrs at Aarya</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Swapnil Yadav -->
+        <div class="spotlight-card">
+          <img decoding="async" src="images/swapnil-linkedin-pic-1788939055400-59b38e33.webp" alt="Swapnil Yadav - Growth & Strategy" class="spotlight-img" onerror="this.style.opacity='0';this.style.display='none';">
+          <div class="spotlight-body">
+            <p class="spotlight-quote">"The partners encourage innovative thinking and true ownership from Day 1. You are given institutional responsibilities that shape the firm's strategic expansion across NCR and Eastern India."</p>
+            <div class="spotlight-author">
+              <strong>Swapnil Yadav</strong>
+              <span>Chief of Growth & Strategy · 5+ Yrs at Aarya</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Karishma Gupta -->
+        <div class="spotlight-card">
+          <img decoding="async" src="images/karsisma-1788851012972-5be06fb2.webp" alt="Karishma Gupta - Accounts Executive" class="spotlight-img" onerror="this.style.opacity='0';this.style.display='none';">
+          <div class="spotlight-body">
+            <p class="spotlight-quote">"Working with senior fiduciaries across accounts, GST audits, and client reconciliations gave me a 360-degree foundation in corporate finance that few other practices can offer."</p>
+            <div class="spotlight-author">
+              <strong>Karishma Gupta</strong>
+              <span>Accounts Executive · 4+ Yrs at Aarya</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Candidate Frequently Asked Questions (FAQ) -->
+  <section style="background:var(--paper-2);border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Clear Answers</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about interview timelines, learning tracks, work culture, and eligibility.</p>
+      </div>
+
+      <div class="faq-wrap">
+        <div class="faq-item active">
+          <button type="button" class="faq-btn">
+            <span>What qualifications are required to join Aarya's financial planning team?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            We value intellectual integrity and curiosity above all. While formal qualifications such as CFP (Certified Financial Planner), MBA (Finance), or NISM Series X-A / X-B certifications are highly valued, we also recruit experienced commerce and economics graduates who exhibit deep ethical discipline and numerical aptitude.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-btn">
+            <span>Can CA students pursue their mandatory articleship under ICAI regulations at Aarya?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            Yes. Our chartered accounting associate partners are fully registered with the Institute of Chartered Accountants of India (ICAI). Articles obtain real-time practical exposure to statutory audits, internal financial controls, direct tax representation, and corporate ROC compliance, supported by a study leave policy.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-btn">
+            <span>Does Aarya sponsor ongoing professional certifications?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            Absolutely. We believe that an educated advisor creates a protected client. Aarya reimburses exam registration and study materials for approved NISM, CFP, and allied legal-financial certifications upon successful course completion.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-btn">
+            <span>Where are the open roles based, and do you support hybrid working?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            Our primary advisory hubs are at our Kolkata Head Office (SP Mukherjee Road, Kalighat) and our NCR presence at Gurugram (Welldone Tech Park). Depending on the nature of the role and client interface requirements, we offer flexible hybrid working arrangements for senior analysts.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-btn">
+            <span>I don't see an exact role matching my experience. Can I still apply?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            Yes! We are constantly scouting talented chartered accountants, company secretaries, estate advocates, and client success specialists. Select "General Application / Other" in the form above and upload your CV with a note on how you can contribute to our practice.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Join Us CTA Banner -->
+  <section style="padding-top:0;background:var(--paper-2)">
+    <div class="wrap">
+      <div style="background:linear-gradient(135deg,var(--navy),#0e265c);border-radius:28px;padding:50px 40px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap">
+        <div>
+          <span style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red)">Start Your Journey</span>
+          <h2 style="font:800 clamp(26px,3vw,38px) Manrope;color:#fff;margin:8px 0 10px">Ready to Build a Career of Genuine Client Trust?</h2>
+          <p style="font-size:14px;color:#cbd9ec;max-width:540px;margin:0">Have questions before applying? Reach out directly to our human resources and talent committee.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#careerForm" class="pill red" style="font-size:13px;padding:12px 24px">Submit Application ↗</a>
+          <a href="mailto:connect@aaryaconsultants.com" class="pill" style="font-size:13px;padding:12px 24px">Email Talent Desk</a>
+        </div>
+      </div>
     </div>
   </section>
 </main>
@@ -476,6 +767,7 @@
 </footer>
 
 <script>
+  // Mobile Drawer Toggle
   const menuBtn = document.querySelector('.menu');
   const navLinks = document.querySelector('.nav-links');
   menuBtn?.addEventListener('click', (e) => {
@@ -490,8 +782,32 @@
       menuBtn?.classList.remove('is-active');
     }
   });
-</script>
 
+  // Select Role and scroll to form smoothly
+  function selectRole(roleName) {
+    const roleSelect = document.getElementById('roleSelect');
+    if (roleSelect) {
+      for (let i = 0; i < roleSelect.options.length; i++) {
+        if (roleSelect.options[i].text.includes(roleName) || roleName.includes(roleSelect.options[i].text)) {
+          roleSelect.selectedIndex = i;
+          break;
+        }
+      }
+    }
+    const formBox = document.querySelector('.form-box');
+    formBox?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // FAQ Accordion
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    });
+  });
+</script>
 
 <!-- GSAP & ScrollTrigger Animation Engine -->
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

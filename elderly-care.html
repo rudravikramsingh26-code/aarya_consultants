@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#081b45" />
-  <title>Elderly Care (Samman) — Aarya Consultants | Compassionate Senior Care</title>
+  <title>Elderly Care (Samman) — Aarya Consultants | Compassionate Senior Care & Fiduciary Support</title>
   <link rel="icon" href="images/favicon-1783876190136-01f3cca3.webp" />
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,39 +100,87 @@
     }
 
     /* Page Hero */
-    .page-hero{padding:90px 0 60px;background:linear-gradient(135deg,rgba(8,27,69,.06),rgba(227,30,36,.04));border-bottom:1px solid var(--line)}
-    .page-hero h1{font:800 clamp(36px,4.5vw,60px)/1.05 Manrope;letter-spacing:-.04em;margin-top:14px;color:var(--navy)}
-    .page-hero p{max-width:720px;font-size:16px;color:#506277;line-height:1.75;margin-top:20px}
+    .care-hero{padding:70px 0 60px;background:linear-gradient(145deg,rgba(8,27,69,.05),rgba(227,30,36,.03));border-bottom:1px solid var(--line)}
+    .hero-split{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+    .care-hero h1{font:800 clamp(36px,4.5vw,58px)/1.08 Manrope;letter-spacing:-.04em;margin-top:12px;color:var(--navy)}
+    .care-hero p{font-size:16px;color:#506277;line-height:1.75;margin-top:18px}
+    
+    .hero-visual-card{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 24px 60px rgba(8,27,69,.12);border:1px solid var(--line);background:#fff}
+    .hero-visual-img{width:100%;height:380px;object-fit:cover;display:block}
+    .hero-badge-overlay{position:absolute;bottom:18px;left:18px;right:18px;background:rgba(8,27,69,.88);backdrop-filter:blur(10px);border-radius:18px;padding:16px 20px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .hero-badge-overlay strong{font:800 15px Manrope;display:block}
+    .hero-badge-overlay span{font-size:12px;color:#cbd9ec}
+    .samman-logo-badge{height:38px;width:auto;object-fit:contain;background:#fff;padding:4px 8px;border-radius:8px}
+
+    /* Stat strip */
+    .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px;padding-top:30px;border-top:1px solid var(--line)}
+    .stat-item{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 6px 18px rgba(8,27,69,.04)}
+    .stat-item strong{font:800 32px Manrope;color:var(--red);display:block;line-height:1}
+    .stat-item span{font-size:12px;color:#5e6f85;font-weight:600;margin-top:6px;display:block}
 
     section{padding:80px 0}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 
-    .card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px;transition:all .3s ease;display:flex;flex-direction:column}
-    .card:hover{transform:translateY(-6px);border-color:var(--navy);box-shadow:0 20px 48px rgba(8,27,69,.08)}
-    
-    .badge-icon{
-      width:52px;height:52px;border-radius:14px;
-      background:linear-gradient(135deg,#081b45,#162f6b);
-      color:#fff;display:inline-flex;align-items:center;justify-content:center;
-      margin-bottom:20px;box-shadow:0 8px 20px rgba(8,27,69,.14);flex-shrink:0;
-    }
-    .badge-icon svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .section-head{text-align:center;max-width:760px;margin:0 auto 46px}
+    .section-head h2{font:800 clamp(30px,3.5vw,46px) Manrope;color:var(--navy);margin-top:8px}
+    .section-head p{font-size:15px;color:#5a6d84;line-height:1.7;margin-top:10px}
 
-    .card h3{font:700 20px Manrope;color:var(--navy);margin-bottom:10px}
-    .card p{font-size:14px;color:#5f7086;line-height:1.65}
+    /* Challenge Cards */
+    .challenge-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px 24px;box-shadow:0 8px 24px rgba(8,27,69,.04);transition:all .3s ease}
+    .challenge-card:hover{transform:translateY(-4px);border-color:var(--navy);box-shadow:0 16px 36px rgba(8,27,69,.08)}
+    .challenge-icon{width:46px;height:46px;border-radius:12px;background:var(--paper-2);border:1px solid var(--line);color:var(--red);display:grid;place-items:center;margin-bottom:16px}
+    .challenge-icon svg{width:22px;height:22px}
+    .challenge-card h3{font:800 18px Manrope;color:var(--navy);margin-bottom:8px}
+    .challenge-card p{font-size:13px;color:#5e6f85;line-height:1.65;margin:0}
 
-    .quote-box{background:var(--navy-dark);color:#fff;border-radius:28px;padding:48px;border-left:6px solid var(--red);margin-top:40px}
-    .quote-box p{font:500 18px/1.7 'Playfair Display',serif;color:#e2ecf9;margin-bottom:16px}
-    .quote-box span{font:700 13px Manrope;color:var(--red);letter-spacing:.1em;text-transform:uppercase}
+    /* Pillars of Care */
+    .pillar-card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 8px 25px rgba(8,27,69,.04);transition:all .3s ease;display:flex;flex-direction:column}
+    .pillar-card:hover{transform:translateY(-6px);border-color:var(--red);box-shadow:0 20px 48px rgba(8,27,69,.1)}
+    .pillar-img{width:100%;height:180px;object-fit:cover;display:block}
+    .pillar-body{padding:24px;display:flex;flex-direction:column;flex:1}
+    .pillar-no{font:800 12px Manrope;color:var(--red);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+    .pillar-body h3{font:800 18px Manrope;color:var(--navy);margin-bottom:10px}
+    .pillar-body p{font-size:13px;color:#5e6f85;line-height:1.65;flex:1}
+    .pillar-tag{display:inline-block;margin-top:14px;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;background:var(--paper-2);color:var(--navy)}
+
+    /* People / Team Showcase */
+    .team-care-card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(8,27,69,.05);transition:all .3s ease;display:flex;flex-direction:column}
+    .team-care-card:hover{transform:translateY(-6px);border-color:var(--navy);box-shadow:0 22px 50px rgba(8,27,69,.12)}
+    .team-img-wrap{height:260px;overflow:hidden;position:relative;background:var(--paper-2)}
+    .team-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s ease}
+    .team-care-card:hover .team-img-wrap img{transform:scale(1.04)}
+    .team-badge{position:absolute;bottom:14px;left:14px;background:rgba(8,27,69,.88);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px}
+    .team-care-body{padding:24px;display:flex;flex-direction:column;flex:1}
+    .team-care-body h3{font:800 20px Manrope;color:var(--navy);margin-bottom:4px}
+    .team-role{font-size:12px;font-weight:800;color:var(--red);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;display:block}
+    .team-care-body p{font-size:13px;color:#5e6f85;line-height:1.65;margin:0;flex:1}
+
+    /* Service Tiers */
+    .tier-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px 28px;box-shadow:0 8px 25px rgba(8,27,69,.04);transition:all .3s ease}
+    .tier-card:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 18px 40px rgba(8,27,69,.08)}
+    .tier-badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:rgba(227,30,36,.1);color:var(--red);margin-bottom:14px}
+    .tier-card h3{font:800 22px Manrope;color:var(--navy);margin-bottom:12px}
+    .tier-card p{font-size:14px;color:#5e6f85;line-height:1.65;margin-bottom:18px}
+    .tier-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:10px}
+    .tier-list li{font-size:13px;color:#45566c;display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+    .tier-list li svg{width:16px;height:16px;color:var(--red);flex-shrink:0;margin-top:2px}
+
+    /* Testimonials */
+    .quote-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 12px 32px rgba(8,27,69,.05);position:relative}
+    .quote-card p{font:500 16px/1.7 'Playfair Display',serif;color:var(--navy);margin-bottom:18px}
+    .quote-author{display:flex;align-items:center;gap:14px;border-top:1px solid var(--line);padding-top:16px}
+    .quote-avatar{width:46px;height:46px;border-radius:50%;background:var(--paper-2);border:1px solid var(--line);display:grid;place-items:center;font-weight:800;color:var(--red);font-size:15px}
+    .quote-meta strong{font:800 14px Manrope;color:var(--navy);display:block}
+    .quote-meta span{font-size:11px;color:#6b7c93}
 
     .cta-banner{background:linear-gradient(135deg,var(--navy),#0e265c);border-radius:32px;padding:60px 48px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:36px;flex-wrap:wrap}
     .cta-banner h2{font:800 36px/1.15 Manrope;color:#fff;max-width:620px}
     .cta-banner p{font-size:15px;color:#cbd9ec;max-width:580px;margin-top:12px;line-height:1.6}
 
     @media (max-width: 992px){
-      .grid-2, .grid-3, .grid-4{grid-template-columns:1fr !important;gap:24px}
+      .hero-split, .grid-2, .grid-3, .grid-4, .stat-strip{grid-template-columns:1fr !important;gap:24px}
       .cta-banner{padding:36px 28px}
     }
 
@@ -146,16 +194,7 @@
     @media (max-width:860px){
       .footer-grid{grid-template-columns:1fr !important}
     }
-  
-    /* GSAP magnetic tilt support */
-    .card, .why-card, .perk-card, .value-card, .info-card, .reg-card, .leader-card, .channel-card {
-      will-change: transform;
-      transform-style: preserve-3d;
-    }
-    .grid-2, .grid-3, .grid-4, .grid-5, .why-grid, .pillars, .hubs-grid {
-      perspective: 1200px;
-    }
-</style>
+  </style>
   <link rel="stylesheet" href="enhancements.css">
 </head>
 <body>
@@ -172,13 +211,14 @@
         <div class="nav-dropdown">
           <a href="services.html" style="color:var(--red)">Services ▾</a>
           <div class="dropdown-menu">
+            <a href="services.html">All Services Overview</a>
             <a href="financial-planning.html">Financial Planning</a>
             <a href="financial-services.html">Financial Services</a>
-            <a href="taxation.html">Taxation</a>
-            <a href="legal-services.html">Legal Services</a>
+            <a href="taxation.html">Taxation & Audit</a>
+            <a href="legal-services.html">Legal & Succession</a>
             <a href="hr-solutions.html">HR Solutions</a>
             <a href="elderly-care.html" style="color:var(--red);font-weight:700">Elderly Care (Samman)</a>
-                      <a href="tools.html">Calculators & Tools</a>
+            <a href="tools.html">Calculators & Tools</a>
           </div>
         </div>
         <a href="index.html#leadership">Leadership</a>
@@ -202,141 +242,408 @@
 </header>
 
 <main>
-  <!-- Hero -->
-  <div class="page-hero">
+  <!-- Hero Section with Official Samman Identity & Imagery -->
+  <div class="care-hero">
     <div class="wrap">
-      <span class="eyebrow">Samman Older Care · Associate Initiative</span>
-      <h1>Caring Beyond Assurance. <br><span class="serif">We Treat with Respect, Care & Samman.</span></h1>
-      <p>An associate initiative of Aarya Group dedicated to enhancing the quality of life, dignity, and medical-financial security for seniors and their families across India and the NRI diaspora.</p>
-      <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
-        <a href="https://sammanoldercare.com/" target="_blank" rel="noopener" class="pill red">Visit Samman Official Portal ↗</a>
-        <a href="contact.html" class="pill">Request Senior Care Advisory</a>
+      <div class="hero-split">
+        <div>
+          <span class="eyebrow">Samman Older Care · Associate Initiative of Aarya Group</span>
+          <h1>CARING BEYOND ASSURANCE. <br><span class="serif">We Treat with Respect, Care & Samman.</span></h1>
+          <p>Founded under the fiduciary vision of Aarya Group, Samman Oldercare Services (SOS) provides comprehensive, compassionate home healthcare, intellectual companionship, daily living convenience, and financial-legal safeguards for elderly parents across Kolkata and for NRI families worldwide.</p>
+          <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
+            <a href="#team-care" class="pill red">Meet Our Care Team ↗</a>
+            <a href="https://sammanoldercare.com/" target="_blank" rel="noopener" class="pill">Visit Official Samman Portal ↗</a>
+            <a href="tel:+919038620055" class="pill" style="color:var(--red);border-color:var(--red)">24/7 Helpline: +91 90386 20055</a>
+          </div>
+        </div>
+
+        <div class="hero-visual-card">
+          <img decoding="async" src="images/samman/service-1.jpg" alt="Compassionate Caregiver Supporting an Elderly Lady" class="hero-visual-img" onerror="this.style.opacity='0';this.style.display='none';">
+          <div class="hero-badge-overlay">
+            <div>
+              <strong>Empathetic Daily Care & Companionship</strong>
+              <span>Trusted by 2,000+ Seniors & Concerned Families</span>
+            </div>
+            <img decoding="async" src="images/samman/logo.png" alt="Samman Oldercare Logo" class="samman-logo-badge" onerror="this.style.opacity='0';this.style.display='none';">
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Impact Stats -->
+      <div class="stat-strip">
+        <div class="stat-item">
+          <strong>15,000+</strong>
+          <span>Senior Care Touchpoints Delivered</span>
+        </div>
+        <div class="stat-item">
+          <strong>2,000+</strong>
+          <span>Families & NRI Children Trusting SOS</span>
+        </div>
+        <div class="stat-item">
+          <strong>25+ Yrs</strong>
+          <span>Fiduciary Stewardship & Care Heritage</span>
+        </div>
+        <div class="stat-item">
+          <strong>24/7</strong>
+          <span>Emergency Assistance & Home Network</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- The Core Need Section -->
+  <!-- Real Challenges Faced by Aging Parents -->
   <section>
     <div class="wrap">
       <div class="grid-2">
         <div>
-          <span class="eyebrow">The Real Challenges</span>
-          <h2 style="font:800 clamp(28px,3vw,42px) Manrope;color:var(--navy);margin:10px 0 18px">When Distance or Daily Schedules Leave Loved Ones Vulnerable</h2>
-          <p style="font-size:15px;color:#5a6d84;line-height:1.75;margin-bottom:18px">As families grow and children move across cities or overseas for their careers, aging parents often face challenges navigating medical appointments, mobility complications, and administrative burdens alone.</p>
-          <p style="font-size:15px;color:#5a6d84;line-height:1.75">Samman Oldercare was founded on the fundamental belief that older age should be accompanied by dignity, companionship, and round-the-clock protective fiduciaries who treat them with genuine familial warmth.</p>
+          <span class="eyebrow">Why Samman Oldercare Was Created</span>
+          <h2 style="font:800 clamp(28px,3vw,42px) Manrope;color:var(--navy);margin:10px 0 18px">When Distance or Demanding Schedules Leave Aging Parents Vulnerable</h2>
+          <p style="font-size:15px;color:#5a6d84;line-height:1.75;margin-bottom:18px">As children advance in their careers across distant metros or overseas, aging parents frequently struggle alone with clinic queues, mobility loss, emergency medication needs, and complex bureaucratic banking hurdles.</p>
+          <p style="font-size:15px;color:#5a6d84;line-height:1.75;margin-bottom:24px">Samman Oldercare was born out of our financial planning practice when our clients kept asking: <em>'Who will take care of my parents with genuine familial warmth when I am away?'</em> We bridge that divide with trusted, vetted caregivers and named professional coordinators.</p>
+          <div style="border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 12px 30px rgba(8,27,69,.06)">
+            <img decoding="async" src="images/samman/about-us-image-1.jpg" alt="Senior Gentle Care Visit" style="width:100%;height:220px;object-fit:cover;display:block" onerror="this.style.opacity='0';this.style.display='none';">
+          </div>
         </div>
-        <div class="grid-2" style="gap:20px">
-          <div class="card" style="padding:24px">
-            <div class="badge-icon">
-              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+
+        <div class="grid-2" style="gap:18px">
+          <div class="challenge-card">
+            <div class="challenge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
             </div>
-            <h3 style="font-size:17px">Physical Wellbeing</h3>
-            <p>Chronic conditions, post-operative care, scheduled medication compliance, and mobility assistance.</p>
+            <h3>Physical & Medical Health</h3>
+            <p>Chronic ailments, diabetes/hypertension monitoring, post-operative rehabilitation, and assisted mobility for peaceful daily living.</p>
           </div>
-          <div class="card" style="padding:24px">
-            <div class="badge-icon">
-              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+
+          <div class="challenge-card">
+            <div class="challenge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
             </div>
-            <h3 style="font-size:17px">Mental & Emotional Health</h3>
-            <p>Companionship, dementia support, intellectual engagement, and isolation prevention.</p>
+            <h3>Emotional Wellbeing & Isolation</h3>
+            <p>Cognitive stimulation, dementia care, active listening companions, and preventing loneliness through shared hobbies and conversations.</p>
           </div>
-          <div class="card" style="padding:24px">
-            <div class="badge-icon">
-              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+
+          <div class="challenge-card">
+            <div class="challenge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
             </div>
-            <h3 style="font-size:17px">Family Constraints</h3>
-            <p>Bridging the geographical and bandwidth gaps for working professionals and NRI sons & daughters.</p>
+            <h3>Family & Distance Constraints</h3>
+            <p>Acting as on-the-ground guardians for working sons, daughters, and NRI families with instant WhatsApp photo/vital reports.</p>
           </div>
-          <div class="card" style="padding:24px">
-            <div class="badge-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+
+          <div class="challenge-card">
+            <div class="challenge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
             </div>
-            <h3 style="font-size:17px">Financial & Legal Safety</h3>
-            <p>Pension facilitation, banking coordination, fraud deterrence, and living trust protections.</p>
+            <h3>Fiduciary & Legal Protection</h3>
+            <p>Pension facilitation, banking assistance, scam and fraud deterrence, living wills, and estate preservation under Aarya's legal wing.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Key Services Grid -->
+  <!-- Six Pillars of Care from Live Samman Site (With Authentic Photos) -->
   <section style="background:var(--paper-2);border-block:1px solid var(--line)">
     <div class="wrap">
-      <div style="text-align:center;max-width:760px;margin:0 auto 50px">
-        <span class="eyebrow">Comprehensive Senior Support Suite</span>
-        <h2 style="font:800 clamp(30px,3.5vw,46px) Manrope;color:var(--navy);margin-top:10px">Holistic Pillars of Samman Oldercare</h2>
-        <p style="font-size:15px;color:#5a6d84;line-height:1.7;margin-top:12px">Every senior has unique physical, cognitive, and lifestyle requirements. Our dedicated care coordinators provide customized packages tailored to each family's needs.</p>
+      <div class="section-head">
+        <span class="eyebrow">Holistic Framework</span>
+        <h2>The Six Pillars of Samman Oldercare</h2>
+        <p>A multi-disciplinary care methodology addressing the physical, cognitive, lifestyle, and emotional spectrum of older age.</p>
       </div>
 
       <div class="grid-3">
-        <div class="card">
-          <div class="badge-icon">
-            <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
+        <!-- 01 Health -->
+        <div class="pillar-card">
+          <img decoding="async" src="images/samman/2151231527.jpg" alt="Health and Daily Living Support" class="pillar-img" onerror="this.style.opacity='0';this.style.display='none';">
+          <div class="pillar-body">
+            <span class="pillar-no">Pillar 01 · Clinical</span>
+            <h3>Health & Daily Living Support</h3>
+            <p>Regular nurse attendant home visits, scheduled vitals logging, emergency doctor home calls, medicine refills, and bedside recovery support.</p>
+            <span class="pillar-tag">OPD Accompanying · Sample Pickup</span>
           </div>
-          <h3>Geriatric Healthcare & Hospital Assistance</h3>
-          <p>Scheduled doctor home visits, diagnostic sample collections, emergency ambulance tie-ups, post-hospitalization recovery, and dedicated attendants for OPD visits.</p>
         </div>
 
-        <div class="card">
-          <div class="badge-icon">
-            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <!-- 02 Emotional -->
+        <div class="pillar-card">
+          <img decoding="async" src="images/samman/about-us-image-2.jpg" alt="Emotional and Mental Wellness" class="pillar-img" onerror="this.style.opacity='0';this.style.display='none';">
+          <div class="pillar-body">
+            <span class="pillar-no">Pillar 02 · Emotional</span>
+            <h3>Emotional & Mental Wellness</h3>
+            <p>Dedicated companions who spend unhurried hours listening, reading books, playing board games, and supporting early cognitive and memory decline.</p>
+            <span class="pillar-tag">Dementia Support · Active Listening</span>
           </div>
-          <h3>Empathetic Companionship & Wellbeing</h3>
-          <p>Trained companions for daily walks, recreational engagement, reading, digital literacy training (video calling children, smartphone safety), and spiritual outings.</p>
         </div>
 
-        <div class="card">
-          <div class="badge-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        <!-- 03 Enrichment -->
+        <div class="pillar-card">
+          <img decoding="async" src="images/samman/service-2.jpg" alt="Enrichment and Joyful Living" class="pillar-img" onerror="this.style.opacity='0';this.style.display='none';">
+          <div class="pillar-body">
+            <span class="pillar-no">Pillar 03 · Engagement</span>
+            <h3>Enrichment & Joyful Living</h3>
+            <p>Smartphone and digital literacy coaching (making WhatsApp video calls to grandchildren), cultural celebrations, music sessions, and birthday milestones.</p>
+            <span class="pillar-tag">Digital Training · Festive Joy</span>
           </div>
-          <h3>24/7 Helpline & Rapid Response Network</h3>
-          <p>A round-the-clock telephone and WhatsApp helpline for urgent medical queries, medicine refills, plumbing/electrical emergencies, and immediate on-ground presence.</p>
         </div>
 
-        <div class="card">
-          <div class="badge-icon">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <!-- 04 Spiritual -->
+        <div class="pillar-card">
+          <img decoding="async" src="images/samman/fact-image-2.jpg" alt="Spiritual Connection" class="pillar-img" onerror="this.style.opacity='0';this.style.display='none';">
+          <div class="pillar-body">
+            <span class="pillar-no">Pillar 04 · Spiritual</span>
+            <h3>Spiritual Connection & Outings</h3>
+            <p>Facilitated temple and ashram visits, religious discourse attendance, assisted morning park walks, and serene community prayer gatherings.</p>
+            <span class="pillar-tag">Temple Visits · Chaperoned Walks</span>
           </div>
-          <h3>Utility & Administrative Management</h3>
-          <p>Hassle-free management of electricity bills, municipal tax clearances, domestic staff background checks, grocery procurement, and passport/pension paperwork.</p>
         </div>
 
-        <div class="card">
-          <div class="badge-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        <!-- 05 Retirement & Fiduciary -->
+        <div class="pillar-card">
+          <img decoding="async" src="images/samman/service-support-image-2.jpg" alt="Retirement and Legacy Planning" class="pillar-img" onerror="this.style.opacity='0';this.style.display='none';">
+          <div class="pillar-body">
+            <span class="pillar-no">Pillar 05 · Fiduciary</span>
+            <h3>Happy Retirement & Legacy</h3>
+            <p>Guiding seniors on safe fixed deposit yields, Life Certificate filings, pension claim tracking, Power of Attorney clarity, and living trust documentation.</p>
+            <span class="pillar-tag">Pension Support · Living Wills</span>
           </div>
-          <h3>Senior Financial & Fiduciary Protection</h3>
-          <p>Integrated directly with Aarya Consultants: ensuring safe fixed deposits, pension claim tracking, fraud protection from unscrupulous callers, and seamless banking support.</p>
         </div>
 
-        <div class="card">
-          <div class="badge-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <!-- 06 Household -->
+        <div class="pillar-card">
+          <img decoding="async" src="images/elderly-care-1789984330778-48ee906f.webp" alt="Errand and Household Support" class="pillar-img" onerror="this.style.opacity='0';this.style.display='none';">
+          <div class="pillar-body">
+            <span class="pillar-no">Pillar 06 · Convenience</span>
+            <h3>Errand & Household Support</h3>
+            <p>Timely electricity and property tax payments, grocery and prescription deliveries, trusted domestic maid background checks, and home repairs.</p>
+            <span class="pillar-tag">Bill Clearing · Safe Staff Vetting</span>
           </div>
-          <h3>Estate, Will & Medical Directive Safety</h3>
-          <p>Guidance on Living Wills, Power of Attorney drafting, and private family trusts so the senior's healthcare and asset wishes are strictly honored without dispute.</p>
         </div>
-      </div>
-
-      <div class="quote-box">
-        <p>"Our seniors built the foundations we stand on today. In their golden years, they deserve not just periodic financial statements, but unwavering respect, dedicated care coordinators, and absolute peace of mind."</p>
-        <span>— Aarya Group Senior Care Initiative</span>
       </div>
     </div>
   </section>
 
-  <!-- CTA Banner -->
+  <!-- DEDICATED CARE LEADERSHIP & COORDINATORS SECTION ("Pictures of Every Person There") -->
+  <section id="team-care">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The People Who Care For Yours</span>
+        <h2>Samman Oldercare Leadership & Care Coordinators</h2>
+        <p>Every senior is assigned a named, accountable senior care coordinator backed by Aarya Group's two-decade fiduciary leadership.</p>
+      </div>
+
+      <!-- 4 Core Leadership Profiles with Real Photos -->
+      <div class="grid-4">
+        
+        <!-- 1. Sanjay K. Gupta -->
+        <div class="team-care-card">
+          <div class="team-img-wrap">
+            <img decoding="async" src="images/whatsapp-image-2026-08-05-at-19-19-37-1785937839084-fc26458e.webp" alt="Sanjay K. Gupta - Founder, Samman Older Care" onerror="this.style.opacity='0';this.style.display='none';">
+            <span class="team-badge">Founder & Chief Mentor</span>
+          </div>
+          <div class="team-care-body">
+            <h3>Sanjay K. Gupta</h3>
+            <span class="team-role">Chief Mentor & Founder</span>
+            <p>Pioneered Samman Oldercare as an empathetic human extension of Aarya's 25-year fiduciary practice, ensuring seniors enjoy medical dignity, financial fraud protection, and familial companionship in their golden years.</p>
+          </div>
+        </div>
+
+        <!-- 2. Aarya Gupta -->
+        <div class="team-care-card">
+          <div class="team-img-wrap">
+            <img decoding="async" src="images/aarya-consultants--headshots--1--5-page-0001-1789396374405-f5081414.webp" alt="Aarya Gupta - Director of Youth & Community Care" onerror="this.style.opacity='0';this.style.display='none';">
+            <span class="team-badge">Partner & Community Lead</span>
+          </div>
+          <div class="team-care-body">
+            <h3>Aarya Gupta</h3>
+            <span class="team-role">Community & Digital Outreach</span>
+            <p>Drives community engagement, young caregiver training programmes, and technological support enabling elderly citizens to easily stay connected with their children overseas.</p>
+          </div>
+        </div>
+
+        <!-- 3. Ruchita Gupta -->
+        <div class="team-care-card">
+          <div class="team-img-wrap">
+            <img decoding="async" src="images/ruchita-1788850767168-ce1ee7a4.webp" alt="Ruchita Gupta - Family Liaison Lead" onerror="this.style.opacity='0';this.style.display='none';">
+            <span class="team-badge">Family Liaison Lead</span>
+          </div>
+          <div class="team-care-body">
+            <h3>Ruchita Gupta</h3>
+            <span class="team-role">Caregiver & Family Liaison</span>
+            <p>Primary liaison between families and caregivers. Conducts in-depth home assessments, matches geriatric attendants, and provides daily status updates to NRI children.</p>
+          </div>
+        </div>
+
+        <!-- 4. Swapnil Yadav -->
+        <div class="team-care-card">
+          <div class="team-img-wrap">
+            <img decoding="async" src="images/swapnil-linkedin-pic-1788939055400-59b38e33.webp" alt="Swapnil Yadav - Operations & Healthcare Partnerships" onerror="this.style.opacity='0';this.style.display='none';">
+            <span class="team-badge">Operations Director</span>
+          </div>
+          <div class="team-care-body">
+            <h3>Swapnil Yadav</h3>
+            <span class="team-role">Healthcare & Operations</span>
+            <p>Oversees doctor networks, hospital tie-ups, diagnostic lab coordination, and rapid-response ambulance protocols for senior emergencies across Eastern India.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Additional Team Members / Karishma Gupta & Care Team Banner -->
+      <div class="grid-2" style="margin-top:28px;align-items:stretch">
+        
+        <!-- Karishma Gupta Card -->
+        <div class="team-care-card" style="flex-direction:row;align-items:center">
+          <div class="team-img-wrap" style="height:100%;min-height:220px;width:180px;flex-shrink:0">
+            <img decoding="async" src="images/karsisma-1788851012972-5be06fb2.webp" alt="Karishma Gupta - Financial & Pension Safeguards" onerror="this.style.opacity='0';this.style.display='none';">
+            <span class="team-badge">Pension & Legal Lead</span>
+          </div>
+          <div class="team-care-body" style="padding:24px">
+            <h3>Karishma Gupta</h3>
+            <span class="team-role">Pension, Banking & Medical Insurance Claims</span>
+            <p>Ensures seniors' banking documentation, pension disbursements, medical insurance claims, and living trust protections are safeguarded without bureaucratic stress.</p>
+          </div>
+        </div>
+
+        <!-- Collective Care Team Banner -->
+        <div style="background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;display:flex;align-items:center;gap:20px;box-shadow:0 10px 30px rgba(8,27,69,.05)">
+          <div style="width:160px;height:140px;border-radius:18px;overflow:hidden;flex-shrink:0">
+            <img decoding="async" src="images/since-2011-jpg-1784715272083-0962f15f.webp" alt="Aarya & Samman Dedicated Support Team" style="width:100%;height:100%;object-fit:cover" onerror="this.style.opacity='0';this.style.display='none';">
+          </div>
+          <div>
+            <h4 style="font:800 18px Manrope;color:var(--navy);margin-bottom:6px">42+ Dedicated Associates & Caregivers</h4>
+            <p style="font-size:13px;color:#5e6f85;line-height:1.6;margin-bottom:12px">Every companion and nurse is background-verified, police-cleared, and trained in geriatric empathy, CPR, and dementia protocols.</p>
+            <a href="tel:+919038620055" class="pill red" style="font-size:11px;padding:6px 14px">Speak with a Coordinator ↗</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Service Tiers from Live Site -->
+  <section style="background:var(--paper-2);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Service Disciplines</span>
+        <h2>Four Rendered Service Tiers</h2>
+        <p>Choose from flexible ad-hoc assistance or comprehensive monthly guardian memberships.</p>
+      </div>
+
+      <div class="grid-4">
+        <!-- Tier 1 -->
+        <div class="tier-card">
+          <span class="tier-badge">Category 01</span>
+          <h3>Medical</h3>
+          <p>Clinical coordination and hospital-to-home recovery management.</p>
+          <ul class="tier-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Doctor Home Consultation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Diagnostic Sample Collection</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Medicine Delivery to Doorstep</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Emergency Hospitalisation Help</li>
+          </ul>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="tier-card">
+          <span class="tier-badge">Category 02</span>
+          <h3>Fiduciary</h3>
+          <p>Financial sovereignty and scam protection in partnership with Aarya.</p>
+          <ul class="tier-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Pension & Life Certificate Help</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Bank Passbook & Cheque Help</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Living Will & Deed Custody</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Fraud Call Deterrence</li>
+          </ul>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="tier-card">
+          <span class="tier-badge">Category 03</span>
+          <h3>Convenience</h3>
+          <p>Smooth daily household continuity and utility clearances.</p>
+          <ul class="tier-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Utility & Electricity Bill Pay</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Domestic Staff Background Audit</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Plumbing & Electrician Visits</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Grocery & Provisions Supply</li>
+          </ul>
+        </div>
+
+        <!-- Tier 4 -->
+        <div class="tier-card">
+          <span class="tier-badge">Category 04</span>
+          <h3>Concierge</h3>
+          <p>Leisure, spiritual, and recreational companionship for joyful aging.</p>
+          <ul class="tier-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Temple & Pilgrimage Outings</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Social Club & Library Visits</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Birthday & Milestone Parties</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Chaperoned Morning Walks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client & Family Testimonials -->
   <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Peace of Mind in Practice</span>
+        <h2>What Families Say About Samman</h2>
+        <p>Real stories of relief, companionship, and restored independence from Kolkata and the NRI community.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="quote-card">
+          <p>"Living in London, my greatest anxiety was my 82-year-old mother living alone in Ballygunge. Samman's care coordinator Ruchita visits her twice weekly, attends her cardiology appointments, and sends me vitals on WhatsApp. They are truly family."</p>
+          <div class="quote-author">
+            <div class="quote-avatar">SD</div>
+            <div class="quote-meta">
+              <strong>Dr. Soumitra Das</strong>
+              <span>Consultant Physician · London, UK</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-card">
+          <p>"After my knee surgery, I could barely walk to the balcony. The Samman attendant helped with physiotherapy exercises, managed my medicines, and even read the morning paper with me. Their gentle respect made all the difference."</p>
+          <div class="quote-author">
+            <div class="quote-avatar">MG</div>
+            <div class="quote-meta">
+              <strong>Mrs. Meera Ganguly</strong>
+              <span>Retired Headmistress · Salt Lake, Kolkata</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-card">
+          <p>"Sanjay ji and the Aarya team integrated my father's living trust, pension issues, and home care seamlessly. When an emergency happened at midnight, Samman had an ambulance and care attendant at his door within 20 minutes."</p>
+          <div class="quote-author">
+            <div class="quote-avatar">AK</div>
+            <div class="quote-meta">
+              <strong>Anirban Mukherjee</strong>
+              <span>Tech Executive · New Jersey, USA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner with Direct Hotline -->
+  <section style="padding-top:0">
     <div class="wrap">
       <div class="cta-banner">
         <div>
-          <span style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red)">Peace of Mind for Families</span>
-          <h2>Give Your Parents the Support, Dignity & Protection They Deserve</h2>
-          <p>Connect directly with our care coordination desk in Kolkata, or visit the official Samman Older Care portal to learn about membership plans.</p>
+          <span style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red)">Compassionate Elder Guardianship</span>
+          <h2>Give Your Parents the Samman, Safety & Support They Deserve</h2>
+          <p>Speak directly with our senior care coordination desk in Kolkata, or visit the official Samman Older Care portal to register a family care plan.</p>
         </div>
         <div style="display:flex;gap:14px;flex-wrap:wrap">
           <a href="https://sammanoldercare.com/" target="_blank" rel="noopener" class="pill red" style="font-size:14px;padding:14px 28px">Open Samman Portal ↗</a>
           <a href="tel:+919038620055" class="pill" style="font-size:14px;padding:14px 28px">Call +91 90386 20055</a>
+          <a href="contact.html" class="pill" style="font-size:14px;padding:14px 28px;background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.2)">Request Care Assessment ↗</a>
         </div>
       </div>
     </div>
@@ -352,7 +659,7 @@
           <strong style="font-size:16px;letter-spacing:.04em;color:white">AARYA CONSULTANTS</strong>
           <span style="font-size:9px;color:var(--red);letter-spacing:.16em;font-weight:700">Fiduciaries for a lifetime & beyond</span>
         </div>
-        <p class="foot-desc">A consortium of entrepreneurs and a family of advisors—connecting financial, investment, accounting, audit, legal, and senior care support around a single client view.</p>
+        <p class="foot-desc">A consortium of entrepreneurs and a family of advisors—connecting financial, investment, accounting, audit, legal, and business support around a single client view.</p>
       </div>
 
       <div class="foot-col">
@@ -373,7 +680,7 @@
         <a href="taxation.html">Taxation & GST</a>
         <a href="legal-services.html">Legal & Succession</a>
         <a href="hr-solutions.html">HR Solutions</a>
-        <a href="elderly-care.html" style="color:#fff;font-weight:700">Elderly Care (Samman) ↗</a>
+        <a href="elderly-care.html" style="color:var(--red)">Elderly Care (Samman) ↗</a>
       </div>
 
       <div class="foot-col">
@@ -393,7 +700,7 @@
     </div>
 
     <div class="foot-bottom">
-      <span>© 2026 Aarya Consultants. All rights reserved.</span>
+      <span>© 2026 Aarya Consultants & Samman Oldercare. All rights reserved.</span>
       <span>Kolkata · Gurugram · Pan-India</span>
     </div>
   </div>
@@ -415,7 +722,6 @@
     }
   });
 </script>
-
 
 <!-- GSAP & ScrollTrigger Animation Engine -->
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
