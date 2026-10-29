@@ -160,190 +160,483 @@
       <button class="tool-tab" data-tab="quiz" role="tab" aria-selected="false">Financial Health Check</button>
         <button class="tool-tab" data-tab="analyzer" role="tab" aria-selected="false">AI Portfolio Analyzer</button>
     </div>
-       <!-- TOOL 5: AI PORTFOLIO ANALYZER -->
+           <!-- TOOL 5: AI CAS STATEMENT & PORTFOLIO SCANNER -->
     <div class="tool-panel" id="panel-analyzer" role="tabpanel">
-      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); color: #0f172a;">
-        <div style="border-bottom: 1px solid #f1f5f9; padding-bottom: 18px; margin-bottom: 22px;">
-          <div style="display: inline-block; background: #eff6ff; color: #2563eb; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 9999px; margin-bottom: 8px;">
-            Smart Diagnostics
+      <!-- In-Browser OCR Engine -->
+      <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+      <div style="background: #ffffff; border: 1px solid rgba(8, 27, 69, 0.08); border-radius: 20px; padding: 32px; box-shadow: 0 10px 30px rgba(8, 27, 69, 0.06); color: #0f172a;">
+        
+        <!-- Scanner Header -->
+        <div style="border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <div style="display: inline-block; background: #e0f2fe; color: #0284c7; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px; margin-bottom: 8px;">
+                OCR & Vision AI Powered
+              </div>
+              <h2 style="margin: 0 0 6px 0; font-family: var(--font-display, 'Manrope', sans-serif); font-size: 24px; font-weight: 800; color: #081b45;">AI CAS Statement & Portfolio Scanner</h2>
+              <p style="margin: 0; color: #546478; font-size: 14px; line-height: 1.5;">Upload a photo or screenshot of your CAMS / KFintech Consolidated Account Summary (CAS) or mutual fund statement to automatically extract your holdings and audit your portfolio health.</p>
+            </div>
+
+            <!-- Mode Selector -->
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 8px 12px; font-size: 13px;">
+              <label style="font-weight: 600; color: #334155; margin-right: 6px;">Scan Engine:</label>
+              <select id="scan-mode-select" onchange="toggleApiInput()" style="padding: 5px 8px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 12.5px; background: #fff; cursor: pointer;">
+                <option value="ocr">Free In-Browser OCR (Tesseract)</option>
+                <option value="gemini">Gemini Vision AI (Best for Phone Photos)</option>
+              </select>
+            </div>
           </div>
-          <h2 style="margin: 0 0 6px 0; font-size: 24px; font-weight: 700; color: #0f172a;">AI Mutual Fund Portfolio Analyzer</h2>
-          <p style="margin: 0; color: #64748b; font-size: 14px; line-height: 1.5;">Enter your mutual fund holdings, categories, and monthly SIP / invested values to calculate market cap exposure, diversification health, and risk parameters.</p>
+
+          <!-- Optional Gemini API Key Box -->
+          <div id="gemini-key-box" style="display: none; margin-top: 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px;">
+            <label style="font-size: 12.5px; font-weight: 700; color: #1e40af; display: block; margin-bottom: 4px;">Google Gemini API Key (Optional for AI Vision):</label>
+            <input type="password" id="gemini-api-key" placeholder="Paste your free API key from ai.google.dev" style="width: 100%; box-sizing: border-box; padding: 8px 12px; font-size: 13px; border: 1px solid #93c5fd; border-radius: 6px;">
+            <small style="color: #64748b; font-size: 11.5px; margin-top: 5px; display: block;">Gemini Vision reads skewed phone camera photos and complex multi-column statements with 99%+ accuracy.</small>
+          </div>
         </div>
 
-        <!-- Holdings Input Table -->
-        <div style="overflow-x: auto; margin-bottom: 20px;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; min-width: 580px;">
-            <thead>
-              <tr style="background: #f8fafc; color: #475569; border-bottom: 2px solid #e2e8f0;">
-                <th style="padding: 12px 10px; font-weight: 600;">Scheme Name</th>
-                <th style="padding: 12px 10px; font-weight: 600;">Category</th>
-                <th style="padding: 12px 10px; font-weight: 600;">Monthly SIP / Value (₹)</th>
-                <th style="padding: 12px 10px; font-weight: 600; text-align: center;">Action</th>
-              </tr>
-            </thead>
-            <tbody id="mf-table-body">
-              <tr style="border-bottom: 1px solid #f1f5f9;">
-                <td style="padding: 10px 8px;">
-                  <input type="text" class="mf-name" value="Parag Parikh Flexi Cap Fund" style="width: 95%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;">
-                </td>
-                <td style="padding: 10px 8px;">
-                  <select class="mf-cat" style="width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; background: #fff;">
-                    <option value="flexi">Flexi / Multi Cap</option>
-                    <option value="large">Large Cap / Index</option>
-                    <option value="mid">Mid Cap</option>
-                    <option value="small">Small Cap</option>
-                    <option value="debt">Debt / Arbitrage / Hybrid</option>
-                  </select>
-                </td>
-                <td style="padding: 10px 8px;">
-                  <input type="number" class="mf-amount" value="10000" min="100" step="500" style="width: 95%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;">
-                </td>
-                <td style="padding: 10px 8px; text-align: center;">
-                  <button type="button" onclick="removeMfRow(this)" style="background: #fee2e2; color: #dc2626; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">✕</button>
-                </td>
-              </tr>
-              <tr style="border-bottom: 1px solid #f1f5f9;">
-                <td style="padding: 10px 8px;">
-                  <input type="text" class="mf-name" value="Nippon India Small Cap Fund" style="width: 95%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;">
-                </td>
-                <td style="padding: 10px 8px;">
-                  <select class="mf-cat" style="width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; background: #fff;">
-                    <option value="small" selected>Small Cap</option>
-                    <option value="flexi">Flexi / Multi Cap</option>
-                    <option value="large">Large Cap / Index</option>
-                    <option value="mid">Mid Cap</option>
-                    <option value="debt">Debt / Arbitrage / Hybrid</option>
-                  </select>
-                </td>
-                <td style="padding: 10px 8px;">
-                  <input type="number" class="mf-amount" value="5000" min="100" step="500" style="width: 95%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;">
-                </td>
-                <td style="padding: 10px 8px; text-align: center;">
-                  <button type="button" onclick="removeMfRow(this)" style="background: #fee2e2; color: #dc2626; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">✕</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Drag and Drop / Upload Section -->
+        <div id="cas-drop-zone" style="border: 2px dashed #94a3b8; border-radius: 14px; padding: 32px 20px; text-align: center; background: #f8fafc; cursor: pointer; transition: all 0.2s ease;">
+          <svg style="width: 44px; height: 44px; margin: 0 auto 10px auto; color: #64748b; display: block;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+          <p style="margin: 0 0 4px 0; font-size: 15px; font-weight: 700; color: #1e293b;">Click to upload or drag & drop CAMS / KFintech Statement</p>
+          <p style="margin: 0; font-size: 13px; color: #64748b;">Supports PNG, JPG, or JPEG photos and screenshots</p>
+          <input type="file" id="cas-file-input" accept="image/*" style="display: none;">
         </div>
 
-        <div style="display: flex; gap: 12px; margin-bottom: 24px;">
-          <button type="button" onclick="addMfRow()" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 10px 18px; border-radius: 7px; font-weight: 500; cursor: pointer;">+ Add Fund</button>
-          <button type="button" onclick="runMfAnalysis()" style="background: #2563eb; color: #ffffff; border: none; padding: 10px 22px; border-radius: 7px; font-weight: 600; cursor: pointer;">Run Portfolio Audit</button>
+        <!-- Image Preview Box -->
+        <div id="image-preview-box" style="display: none; margin-top: 14px; text-align: center;">
+          <img id="image-preview-thumb" src="" alt="Statement Preview" style="max-height: 140px; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
         </div>
 
-        <!-- Audit Summary Cards -->
-        <div id="mf-results-area" style="display: none; border-top: 1px solid #f1f5f9; padding-top: 24px;">
-          <h3 style="margin: 0 0 16px 0; font-size: 18px; color: #0f172a;">Portfolio Audit Summary</h3>
+        <!-- Progress Status Bar -->
+        <div id="ocr-status-box" style="display: none; margin-top: 18px; padding: 14px 18px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span id="ocr-status-text" style="font-size: 13.5px; font-weight: 600; color: #166534;">Scanning statement image...</span>
+            <span id="ocr-percentage" style="font-size: 13px; font-weight: 700; color: #166534;">0%</span>
+          </div>
+          <div style="width: 100%; height: 6px; background: #dcfce7; border-radius: 4px; overflow: hidden;">
+            <div id="ocr-progress-bar" style="width: 0%; height: 100%; background: #16a34a; transition: width 0.2s;"></div>
+          </div>
+        </div>
+
+        <!-- Extracted Holdings Table -->
+        <div id="parsed-table-container" style="display: none; margin-top: 26px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <h3 style="margin: 0; font-family: var(--font-display, 'Manrope', sans-serif); font-size: 17px; font-weight: 700; color: #081b45;">Detected Mutual Fund Holdings</h3>
+              <span style="font-size: 12.5px; color: #64748b;">Review scheme names, categories, and market values before running the audit.</span>
+            </div>
+            <button type="button" onclick="addMfCustomRow()" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 7px 14px; border-radius: 7px; font-size: 13px; font-weight: 600; cursor: pointer;">+ Add Fund Manually</button>
+          </div>
+
+          <div style="overflow-x: auto; margin-bottom: 20px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; text-align: left; min-width: 620px;">
+              <thead>
+                <tr style="background: #f8fafc; color: #475569; border-bottom: 2px solid #e2e8f0;">
+                  <th style="padding: 10px;">Scheme Name</th>
+                  <th style="padding: 10px; width: 230px;">SEBI Category</th>
+                  <th style="padding: 10px; width: 150px;">Market Value (₹)</th>
+                  <th style="padding: 10px; width: 60px; text-align: center;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="parsed-table-body"></tbody>
+            </table>
+          </div>
+
+          <button type="button" onclick="executePortfolioAudit()" style="background: #e31e24; color: #ffffff; border: none; padding: 12px 28px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 15px; font-family: var(--font-display, 'Manrope', sans-serif); box-shadow: 0 4px 12px rgba(227, 30, 36, 0.25); transition: background .2s;">Run Full Portfolio Audit</button>
+        </div>
+
+        <!-- Audit Results Area -->
+        <div id="audit-results-area" style="display: none; border-top: 1px solid #e2e8f0; margin-top: 30px; padding-top: 24px;">
+          <h3 style="margin: 0 0 16px 0; font-family: var(--font-display, 'Manrope', sans-serif); font-size: 20px; font-weight: 800; color: #081b45;">Portfolio Health & Asset Allocation Diagnosis</h3>
+
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 22px;">
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;">
-              <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #64748b;">Total Value</span>
-              <div id="res-total" style="font-size: 22px; font-weight: 700; color: #0f172a; margin-top: 6px;">-</div>
+              <span style="font-size: 11.5px; color: #64748b; font-weight: 700; text-transform: uppercase;">Total Valuation</span>
+              <div id="val-total" style="font-size: 22px; font-weight: 800; color: #081b45; margin-top: 4px;">-</div>
             </div>
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;">
-              <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #64748b;">Risk Profile</span>
-              <div id="res-risk" style="font-size: 18px; font-weight: 700; color: #2563eb; margin-top: 6px;">-</div>
+              <span style="font-size: 11.5px; color: #64748b; font-weight: 700; text-transform: uppercase;">Volatility Profile</span>
+              <div id="val-risk" style="font-size: 17px; font-weight: 800; color: #0284c7; margin-top: 4px;">-</div>
             </div>
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;">
-              <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #64748b;">Health Score</span>
-              <div id="res-score" style="font-size: 22px; font-weight: 700; color: #16a34a; margin-top: 6px;">-</div>
+              <span style="font-size: 11.5px; color: #64748b; font-weight: 700; text-transform: uppercase;">Health Score</span>
+              <div id="val-score" style="font-size: 22px; font-weight: 800; color: #16a34a; margin-top: 4px;">-</div>
+            </div>
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;">
+              <span style="font-size: 11.5px; color: #64748b; font-weight: 700; text-transform: uppercase;">Total Holdings</span>
+              <div id="val-count" style="font-size: 22px; font-weight: 800; color: #475569; margin-top: 4px;">-</div>
             </div>
           </div>
 
-          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 18px; margin-bottom: 20px;">
-            <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 15px;">🔍 AI Diagnostic & Insights</h4>
-            <div id="res-insights" style="font-size: 14px; color: #14532d; line-height: 1.6;"></div>
+          <!-- Allocation Breakdown Bar -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 20px;">
+            <h4 style="margin: 0 0 10px 0; font-family: var(--font-display, 'Manrope', sans-serif); font-size: 15px; font-weight: 700; color: #081b45;">Market Cap & Asset Split</h4>
+            <div id="chart-bar" style="display: flex; height: 18px; border-radius: 8px; overflow: hidden; background: #e2e8f0; margin-bottom: 12px;"></div>
+            <div id="chart-legend" style="display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px;"></div>
+          </div>
+
+          <!-- Diagnostic Insights List -->
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+            <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 16px; font-weight: 700; font-family: var(--font-display, 'Manrope', sans-serif);">🔍 Actionable Advisory Findings</h4>
+            <div id="val-insights" style="font-size: 14px; color: #14532d; line-height: 1.6;"></div>
+          </div>
+
+          <!-- Consultation Lead Box -->
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px; font-weight: 700; color: #081b45;">Need an Expert Second Opinion on Your Portfolio?</h4>
+              <p style="margin: 0; font-size: 13px; color: #546478;">Discuss portfolio rebalancing, fund consolidation, and tax-loss harvesting with an Aarya NISM Certified Advisor.</p>
+            </div>
+            <a href="https://wa.me/919038620055?text=Hi%20Aarya%20Consultants,%20I%20scanned%20my%20mutual%20fund%20portfolio%20on%20your%20website%20and%20would%20like%20a%20professional%20review." target="_blank" rel="noopener" class="pill red" style="padding: 10px 20px; text-decoration: none; font-size: 13px;">Chat on WhatsApp ↗</a>
           </div>
         </div>
+
       </div>
 
       <script>
-      function addMfRow() {
-        const tbody = document.getElementById("mf-table-body");
+      (function() {
+        const dropZone = document.getElementById("cas-drop-zone");
+        const fileInput = document.getElementById("cas-file-input");
+
+        if (dropZone && fileInput) {
+          dropZone.addEventListener("click", () => fileInput.click());
+          dropZone.addEventListener("dragover", (e) => { e.preventDefault(); dropZone.style.borderColor = "#081b45"; });
+          dropZone.addEventListener("dragleave", () => { dropZone.style.borderColor = "#94a3b8"; });
+          dropZone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = "#94a3b8";
+            if (e.dataTransfer.files.length) handleCasImage(e.dataTransfer.files[0]);
+          });
+          fileInput.addEventListener("change", (e) => {
+            if (e.target.files.length) handleCasImage(e.target.files[0]);
+          });
+        }
+      })();
+
+      function toggleApiInput() {
+        const mode = document.getElementById("scan-mode-select").value;
+        document.getElementById("gemini-key-box").style.display = (mode === "gemini") ? "block" : "none";
+      }
+
+      function handleCasImage(file) {
+        const reader = new FileReader();
+        reader.onload = e => {
+          document.getElementById("image-preview-thumb").src = e.target.result;
+          document.getElementById("image-preview-box").style.display = "block";
+        };
+        reader.readAsDataURL(file);
+
+        const mode = document.getElementById("scan-mode-select").value;
+        const apiKey = document.getElementById("gemini-api-key").value.trim();
+
+        if (mode === "gemini") {
+          if (!apiKey) {
+            alert("Please enter your Google Gemini API Key above to use AI Vision mode, or switch to Free In-Browser OCR.");
+            return;
+          }
+          runGeminiVisionScan(file, apiKey);
+        } else {
+          runTesseractOcr(file);
+        }
+      }
+
+      function runTesseractOcr(file) {
+        const statusBox = document.getElementById("ocr-status-box");
+        const statusText = document.getElementById("ocr-status-text");
+        const progBar = document.getElementById("ocr-progress-bar");
+        const percentText = document.getElementById("ocr-percentage");
+
+        statusBox.style.display = "block";
+        statusText.innerText = "Analyzing statement and reading text...";
+
+        Tesseract.recognize(
+          file,
+          'eng',
+          {
+            logger: m => {
+              if (m.status === 'recognizing text') {
+                const p = Math.round(m.progress * 100);
+                progBar.style.width = p + "%";
+                percentText.innerText = p + "%";
+              }
+            }
+          }
+        ).then(({ data: { text } }) => {
+          statusText.innerText = "Extracting scheme folios...";
+          parseCasTextEnhanced(text);
+          statusBox.style.display = "none";
+        }).catch(err => {
+          alert("Error reading image: " + err.message);
+          statusBox.style.display = "none";
+        });
+      }
+
+      const AMC_KEYWORDS = [
+        "aditya birla", "axis", "dsp", "franklin", "hdfc", "icici prudential", "icici", 
+        "kotak", "mirae", "nippon", "parag parikh", "ppfas", "sbi", "tata", "quant", 
+        "uti", "canara robeco", "motilal oswal", "bandhan", "edelweiss", "invesco", 
+        "pgim", "sundaram", "hsbc", "groww", "zerodha", "whiteoak", "baroda bnp", 
+        "bank of india", "mahindra manulife", "navi", "union", "samco", "iti", "taurus",
+        "360 one", "quantum", "shriram", "trust", "jm financial", "lic mutual"
+      ];
+
+      function parseCasTextEnhanced(raw) {
+        const lines = raw.split("\n").map(l => l.trim()).filter(l => l.length > 0);
+        const detected = [];
+
+        for (let i = 0; i < lines.length; i++) {
+          let combinedLine = lines[i];
+          if (i + 1 < lines.length) combinedLine += " " + lines[i + 1];
+
+          const l = combinedLine.toLowerCase();
+          const matchesAmc = AMC_KEYWORDS.some(kw => l.includes(kw));
+          const hasFundTerm = l.includes("fund") || l.includes("growth") || l.includes("direct") || l.includes("plan");
+
+          if (matchesAmc || hasFundTerm) {
+            const matches = combinedLine.match(/[\d,]+\.\d{2}/g);
+            if (matches && matches.length > 0) {
+              let name = lines[i].replace(/^[0-9A-Z\/\-]+\s+/, "");
+              name = name.split(/INR|CAMS|KFINTECH|\d{2}-[A-Za-z]{3}-\d{4}/i)[0];
+              name = name.replace(/[^\w\s\(\)\-\&]/g, "").trim();
+
+              const cleanVal = parseFloat(matches[matches.length - 1].replace(/,/g, ""));
+
+              if (name.length > 6 && cleanVal > 100) {
+                if (!detected.some(d => d.name === name)) {
+                  detected.push({ name: name, value: cleanVal });
+                }
+              }
+            }
+          }
+        }
+
+        const tbody = document.getElementById("parsed-table-body");
+        tbody.innerHTML = "";
+
+        if (detected.length === 0) {
+          alert("No mutual fund folios could be automatically extracted from this photo.\n\nTip: You can manually add your funds using '+ Add Fund Manually' or switch to Gemini Vision AI mode.");
+          addMfCustomRow();
+        } else {
+          detected.forEach(d => addMfRow(d.name, d.value));
+        }
+
+        document.getElementById("parsed-table-container").style.display = "block";
+      }
+
+      async function runGeminiVisionScan(file, apiKey) {
+        const statusBox = document.getElementById("ocr-status-box");
+        const statusText = document.getElementById("ocr-status-text");
+        const progBar = document.getElementById("ocr-progress-bar");
+        const percentText = document.getElementById("ocr-percentage");
+
+        statusBox.style.display = "block";
+        statusText.innerText = "Uploading to Gemini Vision AI...";
+        progBar.style.width = "40%";
+        percentText.innerText = "40%";
+
+        try {
+          const base64Data = await fileToBase64(file);
+          statusText.innerText = "AI extracting table columns & market values...";
+          progBar.style.width = "75%";
+          percentText.innerText = "75%";
+
+          const prompt = `Extract all mutual fund holdings from this statement or policy image.
+Return ONLY a valid JSON array of objects with keys:
+"name": Scheme full name
+"value": Total current market value as a number (without commas)
+"category": Exactly one of ["large", "flexi", "mid", "small", "sectoral", "debt", "elss"]
+Example: [{"name":"Parag Parikh Flexi Cap Fund Direct Growth","value":150000,"category":"flexi"}]`;
+
+          const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              contents: [{
+                parts: [
+                  { text: prompt },
+                  { inline_data: { mime_type: file.type || "image/jpeg", data: base64Data.split(",")[1] } }
+                ]
+              }]
+            })
+          });
+
+          const data = await response.json();
+          if (data.error) throw new Error(data.error.message);
+
+          const rawReply = data.candidates[0].content.parts[0].text;
+          const cleanJson = rawReply.replace(/```json|```/g, "").trim();
+          const holdings = JSON.parse(cleanJson);
+
+          const tbody = document.getElementById("parsed-table-body");
+          tbody.innerHTML = "";
+          holdings.forEach(h => addMfRow(h.name, h.value, h.category));
+          document.getElementById("parsed-table-container").style.display = "block";
+
+        } catch (err) {
+          alert("AI Vision Scan Failed: " + err.message);
+        } finally {
+          statusBox.style.display = "none";
+        }
+      }
+
+      function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = error => reject(error);
+        });
+      }
+
+      function classifyFundSmart(name) {
+        const n = name.toLowerCase();
+        if (n.includes("elss") || n.includes("tax saver")) return "elss";
+        if (n.includes("small")) return "small";
+        if (n.includes("large & mid") || n.includes("large and mid")) return "flexi";
+        if (n.includes("mid")) return "mid";
+        if (n.includes("flexi") || n.includes("multi cap") || n.includes("focused")) return "flexi";
+        if (n.includes("tech") || n.includes("pharma") || n.includes("infra") || n.includes("psu") || n.includes("sector") || n.includes("thematic") || n.includes("energy") || n.includes("defense")) return "sectoral";
+        if (n.includes("debt") || n.includes("hybrid") || n.includes("arbitrage") || n.includes("multi-asset") || n.includes("liquid") || n.includes("gilt") || n.includes("conservative")) return "debt";
+        return "large";
+      }
+
+      function addMfRow(name = "", val = 50000, forceCat = null) {
+        const tbody = document.getElementById("parsed-table-body");
+        const cat = forceCat || classifyFundSmart(name);
         const tr = document.createElement("tr");
         tr.style.borderBottom = "1px solid #f1f5f9";
         tr.innerHTML = `
-          <td style="padding: 10px 8px;">
-            <input type="text" class="mf-name" placeholder="e.g. Mirae Asset Large Cap" style="width: 95%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;">
+          <td style="padding: 8px;">
+            <input type="text" class="scan-name" value="${name}" placeholder="Scheme Name" style="width: 95%; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13.5px;">
           </td>
-          <td style="padding: 10px 8px;">
-            <select class="mf-cat" style="width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; background: #fff;">
-              <option value="large">Large Cap / Index</option>
-              <option value="flexi">Flexi / Multi Cap</option>
-              <option value="mid">Mid Cap</option>
-              <option value="small">Small Cap</option>
-              <option value="debt">Debt / Arbitrage / Hybrid</option>
+          <td style="padding: 8px;">
+            <select class="scan-cat" style="width: 100%; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; background:#fff;">
+              <option value="large" ${cat === "large" ? "selected" : ""}>Large Cap / Nifty 50</option>
+              <option value="flexi" ${cat === "flexi" ? "selected" : ""}>Flexi / Multi / Large & Mid</option>
+              <option value="mid" ${cat === "mid" ? "selected" : ""}>Mid Cap</option>
+              <option value="small" ${cat === "small" ? "selected" : ""}>Small Cap</option>
+              <option value="sectoral" ${cat === "sectoral" ? "selected" : ""}>Sectoral / Thematic</option>
+              <option value="elss" ${cat === "elss" ? "selected" : ""}>ELSS (Tax Saver)</option>
+              <option value="debt" ${cat === "debt" ? "selected" : ""}>Debt / Hybrid / Liquid</option>
             </select>
           </td>
-          <td style="padding: 10px 8px;">
-            <input type="number" class="mf-amount" placeholder="5000" min="100" step="500" style="width: 95%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;">
+          <td style="padding: 8px;">
+            <input type="number" class="scan-amount" value="${Math.round(val)}" style="width: 95%; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13.5px;">
           </td>
-          <td style="padding: 10px 8px; text-align: center;">
-            <button type="button" onclick="removeMfRow(this)" style="background: #fee2e2; color: #dc2626; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">✕</button>
+          <td style="padding: 8px; text-align: center;">
+            <button type="button" onclick="this.closest('tr').remove()" style="background: #fee2e2; color: #dc2626; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-weight: bold;">✕</button>
           </td>
         `;
         tbody.appendChild(tr);
       }
 
-      function removeMfRow(btn) {
-        const row = btn.closest("tr");
-        if (document.querySelectorAll("#mf-table-body tr").length > 1) {
-          row.remove();
-        } else {
-          alert("At least one mutual fund entry is required.");
-        }
+      function addMfCustomRow() {
+        addMfRow("New Mutual Fund Scheme", 25000);
       }
 
-      function runMfAnalysis() {
-        const rows = document.querySelectorAll("#mf-table-body tr");
+      function executePortfolioAudit() {
+        const rows = document.querySelectorAll("#parsed-table-body tr");
         let total = 0;
-        let breakdown = { large: 0, flexi: 0, mid: 0, small: 0, debt: 0 };
-        let fundsCount = rows.length;
+        let breakdown = { large: 0, flexi: 0, mid: 0, small: 0, sectoral: 0, elss: 0, debt: 0 };
+        let amcMap = {};
+        let fundCount = 0;
 
         rows.forEach(r => {
-          const amt = parseFloat(r.querySelector(".mf-amount").value) || 0;
-          const cat = r.querySelector(".mf-cat").value;
-          total += amt;
-          breakdown[cat] = (breakdown[cat] || 0) + amt;
+          const amt = parseFloat(r.querySelector(".scan-amount").value) || 0;
+          const cat = r.querySelector(".scan-cat").value;
+          const name = r.querySelector(".scan-name").value.trim().toLowerCase();
+          
+          if (amt > 0) {
+            total += amt;
+            breakdown[cat] = (breakdown[cat] || 0) + amt;
+            fundCount++;
+
+            for (let amc of AMC_KEYWORDS) {
+              if (name.includes(amc)) {
+                amcMap[amc] = (amcMap[amc] || 0) + 1;
+                break;
+              }
+            }
+          }
         });
 
-        if (total <= 0) {
-          alert("Please enter valid amounts for your funds.");
+        if (total <= 0 || fundCount === 0) {
+          alert("Please enter at least one valid mutual fund with a monetary value greater than ₹0.");
           return;
         }
 
-        const smallCapPct = Math.round((breakdown.small / total) * 100);
-        const midCapPct = Math.round((breakdown.mid / total) * 100);
-        const largeCapPct = Math.round(((breakdown.large + breakdown.flexi * 0.6) / total) * 100);
+        const largeAmt = breakdown.large + (breakdown.flexi * 0.65) + (breakdown.elss * 0.70);
+        const midAmt = breakdown.mid + (breakdown.flexi * 0.20) + (breakdown.elss * 0.20);
+        const smallAmt = breakdown.small + (breakdown.flexi * 0.15) + (breakdown.elss * 0.10);
+        const sectoralAmt = breakdown.sectoral;
+        const debtAmt = breakdown.debt;
 
-        let score = 8.5;
+        const largePct = Math.round((largeAmt / total) * 100);
+        const midPct = Math.round((midAmt / total) * 100);
+        const smallPct = Math.round((smallAmt / total) * 100);
+        const sectoralPct = Math.round((sectoralAmt / total) * 100);
+        const debtPct = Math.max(0, 100 - (largePct + midPct + smallPct + sectoralPct));
+
+        let score = 9.5;
         let riskProfile = "Balanced Growth";
         let insights = [];
 
-        if (smallCapPct > 35) {
-          score -= 1.5;
-          riskProfile = "High Volatility (Aggressive)";
-          insights.push("⚠️ <b>Heavy Small-Cap Tilt (" + smallCapPct + "%):</b> High risk exposure during market corrections. Recommended small-cap allocation for moderate investors is typically 15–20%.");
-        } else {
-          insights.push("✅ <b>Well-controlled Small-Cap Exposure (" + smallCapPct + "%):</b> Fits long-term horizon (7+ years) without unnecessary drawdown stress.");
-        }
-
-        if (fundsCount >= 6) {
+        const duplicatedAmcs = Object.keys(amcMap).filter(k => amcMap[k] >= 3);
+        if (duplicatedAmcs.length > 0) {
           score -= 1.0;
-          insights.push("⚠️ <b>Portfolio Clutter (" + fundsCount + " funds):</b> Holding more than 4-5 mutual funds usually leads to portfolio overlap where multiple funds hold the same 20-30 stocks.");
+          insights.push("⚠️ <b>High AMC Overlap:</b> You have 3 or more funds with <b>" + duplicatedAmcs.join(", ").toUpperCase() + "</b>. Consolidating into fewer funds reduces duplicate stock holding overlap.");
+        }
+
+        if (smallPct > 35) {
+          score -= 1.5;
+          riskProfile = "Very High Volatility / Aggressive";
+          insights.push("⚠️ <b>High Small-Cap Exposure (" + smallPct + "%):</b> Elevated vulnerability to market corrections. Recommended small-cap allocation for moderate horizons is 15–20%.");
         } else {
-          insights.push("✅ <b>Lean Portfolio Structure:</b> 3 to 5 complementary funds reduce tracking effort and avoid duplicate manager fees.");
+          insights.push("✅ <b>Balanced Small-Cap Allocation (" + smallPct + "%):</b> Keeps portfolio growth compounding strong without excess drawdown stress.");
         }
 
-        if (breakdown.debt === 0) {
-          insights.push("ℹ️ <b>100% Equity Exposure:</b> Suitable for an investment horizon exceeding 7 years. Consider adding 10–15% debt or arbitrage funds if you plan to rebalance systematically.");
+        if (sectoralPct > 15) {
+          score -= 1.0;
+          insights.push("⚠️ <b>Elevated Sectoral Exposure (" + sectoralPct + "%):</b> Thematic & sectoral funds (Infra, Tech, Pharma) carry cyclical risks. Limit them to 10-15% maximum.");
         }
 
-        document.getElementById("res-total").innerText = "₹" + total.toLocaleString("en-IN");
-        document.getElementById("res-risk").innerText = riskProfile;
-        document.getElementById("res-score").innerText = score.toFixed(1) + " / 10";
-        document.getElementById("res-insights").innerHTML = "<p style='margin: 0 0 10px 0;'>" + insights.join("</p><p style='margin: 0 0 10px 0;'>") + "</p>";
-        document.getElementById("mf-results-area").style.display = "block";
+        if (debtPct >= 15) {
+          insights.push("🛡️ <b>Solid Downside Cushion (" + debtPct + "% in Debt/Hybrid):</b> Protects capital during volatility and offers rebalancing reserves.");
+        } else {
+          insights.push("ℹ️ <b>Aggressive Equity Bias (" + (100 - debtPct) + "%):</b> Tailored for horizons greater than 7 years. Ensure emergency funds are held in liquid deposits.");
+        }
+
+        if (fundCount > 8) {
+          score -= 1.0;
+          insights.push("⚠️ <b>Portfolio Clutter (" + fundCount + " Funds):</b> Spreading investments across too many funds dilutes returns without adding diversification benefits.");
+        }
+
+        document.getElementById("val-total").innerText = "₹ " + total.toLocaleString("en-IN");
+        document.getElementById("val-risk").innerText = riskProfile;
+        document.getElementById("val-score").innerText = Math.max(score, 3.5).toFixed(1) + " / 10";
+        document.getElementById("val-count").innerText = fundCount;
+
+        document.getElementById("chart-bar").innerHTML = `
+          <div style="width: ${largePct}%; background: #2563eb;" title="Large Cap (${largePct}%)"></div>
+          <div style="width: ${midPct}%; background: #06b6d4;" title="Mid Cap (${midPct}%)"></div>
+          <div style="width: ${smallPct}%; background: #f59e0b;" title="Small Cap (${smallPct}%)"></div>
+          <div style="width: ${sectoralPct}%; background: #ec4899;" title="Sectoral (${sectoralPct}%)"></div>
+          <div style="width: ${debtPct}%; background: #10b981;" title="Debt/Hybrid (${debtPct}%)"></div>
+        `;
+        document.getElementById("chart-legend").innerHTML = `
+          <span><span style="display:inline-block;width:10px;height:10px;background:#2563eb;border-radius:2px;margin-right:4px;"></span>Large Cap: ${largePct}%</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#06b6d4;border-radius:2px;margin-right:4px;"></span>Mid Cap: ${midPct}%</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#f59e0b;border-radius:2px;margin-right:4px;"></span>Small Cap: ${smallPct}%</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#ec4899;border-radius:2px;margin-right:4px;"></span>Sectoral: ${sectoralPct}%</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#10b981;border-radius:2px;margin-right:4px;"></span>Debt/Hybrid: ${debtPct}%</span>
+        `;
+
+        document.getElementById("val-insights").innerHTML = "<p style='margin: 0 0 10px 0;'>" + insights.join("</p><p style='margin: 0 0 10px 0;'>") + "</p>";
+        document.getElementById("audit-results-area").style.display = "block";
       }
       </script>
     </div>
