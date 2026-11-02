@@ -78,13 +78,15 @@
     .prod-card h4{font:800 19px Manrope;color:var(--navy);margin-bottom:10px}
     .prod-card p{font-size:13px;color:#546478;line-height:1.7;margin:0;flex-grow:1}
 
-    /* Why Choose Us & Benefits */
-    .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
-    .benefit-card{background:white;border:1px solid var(--line);border-radius:22px;padding:32px 28px;box-shadow:0 10px 30px rgba(8,27,69,.04)}
-    .benefit-icon{width:46px;height:46px;border-radius:50%;background:rgba(227,30,36,.08);color:var(--red);display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px}
-    .benefit-icon svg{width:22px;height:22px}
-    .benefit-card h4{font:800 18px Manrope;color:var(--navy);margin-bottom:10px}
-    .benefit-card p{font-size:13px;color:#546478;line-height:1.7;margin:0}
+    /* Six Reasons Families Stay With Us */
+    .reasons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+    .reason-card{background:#ffffff;border:1px solid var(--line);border-radius:22px;padding:34px 28px;box-shadow:0 10px 30px rgba(8,27,69,.04);transition:all .3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:165px;position:relative;overflow:hidden}
+    .reason-card:hover{transform:translateY(-4px);background:#f7f2ec;border-color:rgba(197,160,89,.4);box-shadow:0 18px 40px rgba(8,27,69,.08)}
+    .reason-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+    .reason-icon{color:var(--navy);display:inline-flex;align-items:center;justify-content:center}
+    .reason-icon svg{width:28px;height:28px}
+    .reason-num{font:700 15px/1 'DM Sans',sans-serif;color:#c5a059;letter-spacing:.04em}
+    .reason-title{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:500;color:var(--navy);margin:0;line-height:1.25}
 
     /* Offerings Feature Rows */
     .offerings-container{display:flex;flex-direction:column;gap:48px;margin-top:20px}
@@ -137,7 +139,7 @@
     @media (max-width: 992px){
       .license-banner{flex-direction:column;align-items:flex-start}
       .product-grid{grid-template-columns:repeat(2,1fr)}
-      .benefit-grid{grid-template-columns:1fr}
+      .reasons-grid{grid-template-columns:repeat(2,1fr);gap:20px}
       .feature-row, .feature-row.reverse{grid-template-columns:1fr;gap:30px;padding:30px 24px}
       .feature-row.reverse .feature-media{order:0}
       .feature-row.reverse .feature-content{order:0}
@@ -170,6 +172,12 @@
     }
     @media (max-width: 600px){
       .product-grid{grid-template-columns:1fr}
+      .reasons-grid{grid-template-columns:1fr;gap:0;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(8,27,69,.04);background:#ffffff}
+      .reason-card{border:none;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;padding:26px 22px;min-height:auto}
+      .reason-card:last-child{border-bottom:none}
+      .reason-card:hover, .reason-card:active{transform:none;background:#f7f2ec}
+      .reason-top{margin-bottom:20px}
+      .reason-title{font-size:20px}
       .wrap{width:calc(100% - 24px)}
     }
   
@@ -606,47 +614,98 @@
     </div>
   </section>
 
-  <!-- Client Benefits Section -->
-  <section>
+  <!-- Six Reasons Families Stay With Us Section -->
+  <section id="why-families-stay">
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Client Experience</span>
-        <h2>Client Benefits</h2>
-        <p>Why thousands of families and business leaders choose Aarya Consultants for product distribution and wealth stewardship.</p>
+        <h2>Six Reasons Families Stay With Us</h2>
+        <p>Why generations of families and business leaders choose Aarya Consultants for product distribution and wealth stewardship.</p>
       </div>
 
-      <div class="benefit-grid">
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 19 21 12 17 5 21 12 2"/>
-            </svg>
+      <div class="reasons-grid">
+        <!-- 01 Goal-Based Planning -->
+        <div class="reason-card benefit-card">
+          <div class="reason-top">
+            <div class="reason-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
+            <span class="reason-num">01</span>
           </div>
-          <h4>Personalized Financial Roadmap</h4>
-          <p>Receive a customized financial strategy designed around your income, lifestyle, goals, and risk profile—ensuring every investment product has a clear, documented purpose.</p>
+          <h3 class="reason-title">Goal-Based Planning</h3>
         </div>
 
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <circle cx="12" cy="12" r="6"/>
-              <circle cx="12" cy="12" r="2"/>
-            </svg>
+        <!-- 02 Independent Advice -->
+        <div class="reason-card benefit-card">
+          <div class="reason-top">
+            <div class="reason-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="3" x2="12" y2="21"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="3" y1="7" x2="21" y2="7"/>
+                <path d="M6 7l-3 6a3 3 0 0 0 6 0L6 7z"/>
+                <path d="M18 7l-3 6a3 3 0 0 0 6 0L18 7z"/>
+              </svg>
+            </div>
+            <span class="reason-num">02</span>
           </div>
-          <h4>Goal-Focused Investments</h4>
-          <p>Whether buying a home, funding international education, retirement, or estate creation, every investment instrument is aligned strictly with your long-term objectives.</p>
+          <h3 class="reason-title">Independent Advice</h3>
         </div>
 
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 12l2 2 4-4"/>
-            </svg>
+        <!-- 03 Portfolio Review -->
+        <div class="reason-card benefit-card">
+          <div class="reason-top">
+            <div class="reason-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9v9h9z"/>
+              </svg>
+            </div>
+            <span class="reason-num">03</span>
           </div>
-          <h4>Smarter Risk Management</h4>
-          <p>Identify exposures early through detailed portfolio analysis, institutional diversification strategies, and robust insurance coverage to insulate your family from uncertainty.</p>
+          <h3 class="reason-title">Portfolio Review</h3>
+        </div>
+
+        <!-- 04 Complete Protection -->
+        <div class="reason-card benefit-card">
+          <div class="reason-top">
+            <div class="reason-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <span class="reason-num">04</span>
+          </div>
+          <h3 class="reason-title">Complete Protection</h3>
+        </div>
+
+        <!-- 05 Regular Monitoring -->
+        <div class="reason-card benefit-card">
+          <div class="reason-top">
+            <div class="reason-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <span class="reason-num">05</span>
+          </div>
+          <h3 class="reason-title">Regular Monitoring</h3>
+        </div>
+
+        <!-- 06 Dedicated Support -->
+        <div class="reason-card benefit-card">
+          <div class="reason-top">
+            <div class="reason-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/>
+              </svg>
+            </div>
+            <span class="reason-num">06</span>
+          </div>
+          <h3 class="reason-title">Dedicated Support</h3>
         </div>
       </div>
     </div>
