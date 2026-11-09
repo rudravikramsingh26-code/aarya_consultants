@@ -216,7 +216,7 @@
             <div id="key-test-result" style="display: none; margin-top: 6px; font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 4px;"></div>
           </div>
 
-          <div id="gemini-key-toggle-link" style="margin-top: 8px; font-size: 12px;">
+          <div id="gemini-key-toggle-link" style="margin-top: 8px; font-size: 12.5px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 8px 12px; display: inline-block;"><span style="color: #166534; font-weight: 700;">💡 Tip:</span> <span style="color: #14532d;">You do NOT need any API key to use this tool! The <b>Free Instant Engine</b> is active by default. </span>
             <a href="javascript:void(0)" onclick="openGeminiKeyBox()" style="color: #2563eb; text-decoration: none; font-weight: 600;">⚙️ Optional: Have a Google Gemini API Key? Click here to connect it.</a>
           </div>
         </div>
@@ -456,6 +456,7 @@
         maxPages: 3,
         cachedPdfDoc: null,
         cachedPdfBytes: null,
+        detectedGeminiModel: null,
         mfapiCache: {}
       };
 
@@ -499,39 +500,53 @@
         resultEl.style.display = "block";
         resultEl.style.background = "#dbeafe";
         resultEl.style.color = "#1d4ed8";
-        resultEl.innerText = "Connecting to Google Gemini API...";
+        resultEl.innerText = "Connecting to Google AI Studio and discovering active models...";
 
-        // Try gemini-1.5-flash first (most widely supported), then gemini-2.0-flash
-        const modelsToTest = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-1.5-pro"];
-        let success = false;
-        let lastError = "";
+        try {
+          // Dynamic Discovery via official ListModels API
+          const listResp = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + apiKey);
+          const listData = await listResp.json();
 
-        for (const model of modelsToTest) {
-          try {
-            const resp = await fetch("https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + apiKey, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ contents: [{ parts: [{ text: "ping" }] }] })
-            });
-            const data = await resp.json();
-            if (data.error) {
-              lastError = data.error.message;
-              continue;
+          if (listData.error) {
+            let msg = listData.error.message || "Invalid API Key";
+            if (msg.includes("API key not valid") || listData.error.status === "INVALID_ARGUMENT") {
+              msg = "The API key is invalid. Please copy the complete key from https://aistudio.google.com/apikey";
+            } else if (listData.error.status === "PERMISSION_DENIED") {
+              msg = "Generative Language API is disabled for this key/project. Create a fresh key at https://aistudio.google.com/apikey";
             }
-            resultEl.style.background = "#dcfce7";
-            resultEl.style.color = "#166534";
-            resultEl.innerText = "✅ API Key Verified! Connected via " + model + ".";
-            success = true;
-            break;
-          } catch (err) {
-            lastError = err.message;
+            resultEl.style.background = "#fee2e2";
+            resultEl.style.color = "#dc2626";
+            resultEl.innerHTML = "❌ <b>" + escapeHtml(msg) + "</b><br><br>💡 <b>Note:</b> You do not need any API key to use this tool! Simply use the <b>Free Instant Engine</b>.";
+            return;
           }
-        }
 
-        if (!success) {
+          if (listData.models && listData.models.length > 0) {
+            const genModels = listData.models
+              .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes("generateContent"))
+              .map(m => m.name.replace(/^models\//, ""));
+
+            const chosen = genModels.find(m => m.includes("1.5-flash")) ||
+                           genModels.find(m => m.includes("2.0-flash")) ||
+                           genModels.find(m => m.includes("flash")) ||
+                           genModels.find(m => m.includes("1.5-pro")) ||
+                           genModels[0];
+
+            if (chosen) {
+              analyzerState.detectedGeminiModel = chosen;
+              resultEl.style.background = "#dcfce7";
+              resultEl.style.color = "#166534";
+              resultEl.innerHTML = "✅ <b>API Key Verified!</b> Connected to active model: <code>" + escapeHtml(chosen) + "</code>";
+              return;
+            }
+          }
+
+          resultEl.style.background = "#fffbeb";
+          resultEl.style.color = "#b45309";
+          resultEl.innerText = "⚠️ Key verified, but no generation models found. Please use the Free Instant Engine.";
+        } catch (err) {
           resultEl.style.background = "#fee2e2";
           resultEl.style.color = "#dc2626";
-          resultEl.innerText = "❌ Key test failed: " + lastError + " (Don't worry! You can still use the Free Instant Engine).";
+          resultEl.innerHTML = "❌ <b>Connection error:</b> " + escapeHtml(err.message) + "<br><br>💡 The Free Instant Engine works right away without any key!";
         }
       }
 
@@ -1037,8 +1052,29 @@ RULES:
         progBar.style.width = "60%";
         percentText.innerText = "60%";
 
-        // Try gemini-1.5-flash first (universally available on all keys), then 2.0 / 1.5-pro
-        const modelsToTry = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-1.5-pro"];
+        let targetModel = analyzerState.detectedGeminiModel;
+        if (!targetModel) {
+          try {
+            const listResp = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + apiKey);
+            const listData = await listResp.json();
+            if (listData.models) {
+              const genModels = listData.models
+                .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes("generateContent"))
+                .map(m => m.name.replace(/^models\//, ""));
+              targetModel = genModels.find(m => m.includes("1.5-flash")) ||
+                            genModels.find(m => m.includes("2.0-flash")) ||
+                            genModels.find(m => m.includes("flash")) ||
+                            genModels.find(m => m.includes("1.5-pro")) ||
+                            genModels[0];
+            }
+          } catch (e) {
+            console.warn("Dynamic model discovery error", e);
+          }
+        }
+        if (!targetModel) targetModel = "gemini-1.5-flash";
+        analyzerState.detectedGeminiModel = targetModel;
+
+        const modelsToTry = Array.from(new Set([targetModel, "gemini-1.5-flash", "gemini-2.0-flash", "gemini-1.5-pro"]));
         let data = null;
         let lastError = null;
 
