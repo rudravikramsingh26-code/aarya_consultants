@@ -178,7 +178,7 @@
             <div style="max-width: 780px;">
               <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
                 <span style="display: inline-block; background: #fef08a; color: #854d0e; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
-                  ⚡ Engine v3.3 (Active)
+                  ⚡ Gemini 3.8 Flash (Thinking: Medium) • v3.4
                 </span>
                 <span style="display: inline-block; background: #dbeafe; color: #1d4ed8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
                   🤖 Google Gemini AI Vision (Latest Generation)
@@ -208,7 +208,7 @@
               <button type="button" onclick="testGeminiKey()" style="background: #1d4ed8; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; white-space: nowrap; box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25);">Test & Connect</button>
             </div>
             <small style="color: #475569; font-size: 11.5px; margin-top: 6px; display: block;">
-              Get your free key at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color: #1d4ed8; font-weight: 700; text-decoration: underline;">aistudio.google.com/apikey</a> (Google AI Studio Free Tier). Automatically connects to the latest model (<code>gemini-2.5-flash</code> / <code>gemini-2.0-flash</code> / <code>gemini-1.5-flash</code>).
+              Get your free key at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color: #1d4ed8; font-weight: 700; text-decoration: underline;">aistudio.google.com/apikey</a> (Google AI Studio Free Tier). Configured for <strong>Gemini 3.8 Flash</strong> with <em>Medium Thinking Effort</em> (deep financial folio reasoning), with seamless fallback to <code>gemini-2.0-flash</code> / <code>gemini-1.5-flash</code>.
             </small>
             <div id="key-test-result" style="display: none; margin-top: 10px; font-size: 12.5px; font-weight: 600; padding: 8px 12px; border-radius: 6px;"></div>
           </div>
@@ -532,13 +532,11 @@
               .map(m => m.name.replace(/^models\//, ""));
 
             const preferenceList = [
-              "gemini-2.5-flash",
+              "gemini-3.8-flash",
+              "gemini-3.5-flash-lite",
               "gemini-2.0-flash",
-              "gemini-2.0-flash-exp",
               "gemini-1.5-flash",
-              "gemini-1.5-flash-latest",
-              "gemini-2.5-pro",
-              "gemini-1.5-pro"
+              "gemini-2.5-flash"
             ];
 
             for (const pref of preferenceList) {
@@ -561,7 +559,7 @@
 
         // Step 2: Fallback probe if ListModels was blocked by ad-blocker or proxy
         if (!connectedModel) {
-          const probeList = ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-2.5-flash"];
+          const probeList = ["gemini-3.8-flash", "gemini-2.0-flash", "gemini-1.5-flash"];
           for (const model of probeList) {
             try {
               const resp = await fetch("https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + encodeURIComponent(apiKey), {
@@ -1117,8 +1115,8 @@
           // Save key to local storage
           try { localStorage.setItem("aarya_gemini_api_key", apiKey); } catch(e) {}
 
-          // Step 1: Query ListModels to find which models are actually authorized for this key
-          statusText.innerText = "Discovering authorized Vision models...";
+          // Step 1: Query ListModels to find which models are authorized for this key
+          statusText.innerText = "Discovering authorized Gemini models...";
           progBar.style.width = "30%";
           percentText.innerText = "30%";
 
@@ -1152,12 +1150,12 @@
             console.warn("ListModels query error:", listErr);
           }
 
-          // Step 2: Determine model queue based ONLY on confirmed active Flash models (NO gemini-1.5-pro!)
+          // Step 2: Preferred model queue - GEMINI 3.8 FLASH FIRST WITH MEDIUM THINKING
           const preferredCandidates = [
+            "gemini-3.8-flash",
+            "gemini-3.5-flash-lite",
             "gemini-2.0-flash",
             "gemini-1.5-flash",
-            "gemini-2.0-flash-exp",
-            "gemini-1.5-flash-8b",
             "gemini-2.5-flash"
           ];
 
@@ -1174,8 +1172,7 @@
           }
 
           if (modelsToAttempt.length === 0) {
-            // Safe fallback defaults - exclusively flash models
-            modelsToAttempt = ["gemini-2.0-flash", "gemini-1.5-flash"];
+            modelsToAttempt = ["gemini-3.8-flash", "gemini-2.0-flash", "gemini-1.5-flash"];
           }
 
           const targetModel = modelsToAttempt[0];
@@ -1207,7 +1204,7 @@ For EACH holding, output a clean JSON object:
 CRITICAL RULES:
 - ONLY individual mutual fund holdings. Exclude subtotals, grand totals, portfolio totals, cash balances, stamp duty, STT, and SIP transaction rows.
 - Consolidate duplicates across pages.
-- Output ONLY valid JSON:
+- Output ONLY valid JSON array of objects:
 [{"name":"Scheme Name","category":"flexi","units":120.5,"nav":45.6,"value":5494.8}]`;
 
           const parts = [{ text: prompt }];
@@ -1249,13 +1246,28 @@ CRITICAL RULES:
 
           for (let mIdx = 0; mIdx < modelsToAttempt.length; mIdx++) {
             const currentModel = modelsToAttempt[mIdx];
-            statusText.innerText = "Scanning with " + currentModel + " (" + (mIdx + 1) + " of " + modelsToAttempt.length + ")...";
+            const isGemini3 = currentModel.includes("3.8") || currentModel.includes("3.5");
+            const modelLabel = isGemini3 ? currentModel + " (Thinking: Medium)" : currentModel;
+
+            statusText.innerText = "Analyzing with " + modelLabel + " (" + (mIdx + 1) + " of " + modelsToAttempt.length + ")...";
             progBar.style.width = (65 + Math.round((mIdx / modelsToAttempt.length) * 15)) + "%";
             percentText.innerText = progBar.style.width;
 
+            // Build generationConfig with Thinking Level: Medium for Gemini 3.8 Flash
+            const genConfig = {
+              temperature: 0.1,
+              maxOutputTokens: 8192
+            };
+
+            if (isGemini3) {
+              genConfig.thinkingConfig = {
+                thinkingLevel: "medium"
+              };
+            }
+
             try {
               const controller = new AbortController();
-              const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s timeout
+              const timeoutId = setTimeout(() => controller.abort(), 65000); // 65s timeout
 
               const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/" + currentModel + ":generateContent?key=" + encodeURIComponent(apiKey), {
                 method: "POST",
@@ -1266,10 +1278,7 @@ CRITICAL RULES:
                 },
                 body: JSON.stringify({
                   contents: [{ parts: parts }],
-                  generationConfig: {
-                    temperature: 0.1,
-                    maxOutputTokens: 4096
-                  }
+                  generationConfig: genConfig
                 })
               });
 
@@ -1291,7 +1300,7 @@ CRITICAL RULES:
                 break;
               }
             } catch (err) {
-              lastError = err.name === "AbortError" ? "Request timed out after 60s" : err.message;
+              lastError = err.name === "AbortError" ? "Request timed out after 65s" : err.message;
               console.warn("Fetch attempt failed for " + currentModel + ":", err);
               if (err.message && (err.message.includes("Invalid API key") || err.message.includes("disabled") || err.message.includes("Google rejected"))) {
                 throw err;
@@ -1307,7 +1316,20 @@ CRITICAL RULES:
           progBar.style.width = "82%";
           percentText.innerText = "82%";
 
-          let rawReply = data.candidates[0].content.parts[0].text || "";
+          // Extract text while safely bypassing internal thoughts from thinking models
+          let rawReply = "";
+          const candidate = data.candidates && data.candidates[0];
+          if (candidate && candidate.content && candidate.content.parts) {
+            for (const part of candidate.content.parts) {
+              if (!part.thought && part.text) {
+                rawReply += part.text;
+              }
+            }
+            if (!rawReply && candidate.content.parts[0] && candidate.content.parts[0].text) {
+              rawReply = candidate.content.parts[0].text;
+            }
+          }
+
           rawReply = rawReply.replace(/```(?:json)?/gi, "").replace(/```/g, "").trim();
 
           const startBracket = rawReply.indexOf("[");
