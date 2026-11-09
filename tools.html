@@ -178,7 +178,7 @@
             <div style="max-width: 780px;">
               <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
                 <span style="display: inline-block; background: #fef08a; color: #854d0e; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
-                  ⚡ Gemini 3.8 Flash (Thinking: Medium) • v3.4
+                  ⚡ Precision Vision Engine • v3.5 Active
                 </span>
                 <span style="display: inline-block; background: #dbeafe; color: #1d4ed8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
                   🤖 Google Gemini AI Vision (Latest Generation)
@@ -1182,30 +1182,44 @@
           progBar.style.width = "45%";
           percentText.innerText = "45%";
 
-          const prompt = `You are a certified SEBI mutual fund portfolio analyst.
-Carefully inspect these mutual fund statement pages (CAMS, KFintech, MF Central, Zerodha, Groww).
-Extract ALL DISTINCT active mutual fund scheme holdings.
+          const prompt = `You are an expert SEBI certified mutual fund portfolio analyst.
+Carefully inspect every page of this mutual fund statement (CAMS, KFintech, MF Central, Zerodha Coin, Groww).
+Extract ALL DISTINCT active mutual fund folio holdings.
 
-For EACH holding, output a clean JSON object:
-1. "name": Full clean scheme name with plan & option (e.g. "Parag Parikh Flexi Cap Fund - Direct Plan - Growth"). Do not truncate or hallucinate.
-2. "category": exactly one of: "large", "flexi", "mid", "small", "sectoral", "elss", "debt", "hybrid"
-   - "large": Large Cap, Nifty 50, Bluechip, Index Fund
-   - "flexi": Flexi Cap, Multi Cap, Large & Mid Cap, Focused, Value, Contra
-   - "mid": Mid Cap, Emerging Equities
-   - "small": Small Cap, Micro Cap
-   - "sectoral": Sectoral, Thematic (IT, Pharma, Infra, Banking, Defense, PSU, Energy, MNC)
-   - "elss": ELSS, Tax Saver
-   - "hybrid": Balanced Advantage, Multi-Asset, Arbitrage, Conservative, Equity Savings
-   - "debt": Debt, Liquid, Overnight, Corporate Bond, Gilt, Money Market
-3. "units": closing unit balance quantity as a number (e.g. 245.678). If not found, use 0.
-4. "nav": NAV price per unit as a number. If not found, use 0.
-5. "value": total current market value / valuation in Rupees as a number.
+CRITICAL RULES FOR 100% ACCURATE VALUES (DO NOT MIX UP COLUMNS):
+1. "name": The exact full scheme name as printed (e.g. "Parag Parikh Flexi Cap Fund - Direct Plan - Growth"). Keep the plan (Direct/Regular) and option (Growth/IDCW).
+2. "category": Must be one of: "large", "flexi", "mid", "small", "sectoral", "elss", "debt", "hybrid"
+   - "large": Large Cap, Nifty 50, Sensex, Bluechip, Top 100, Index Fund
+   - "flexi": Flexi Cap, Multi Cap, Focused, Value, Contra, Large & Mid Cap
+   - "mid": Mid Cap, Emerging Equities, Midcap 150
+   - "small": Small Cap, Micro Cap, Smallcap 250
+   - "sectoral": Sectoral or Thematic (IT, Tech, Pharma, Healthcare, Banking, Infra, Energy, PSU, Defense, Auto, MNC)
+   - "elss": ELSS, Tax Saver, Long Term Equity
+   - "hybrid": Balanced Advantage, Multi-Asset, Arbitrage, Equity Savings, Conservative
+   - "debt": Liquid, Overnight, Corporate Bond, Money Market, Gilt, Short Term
+3. "units": The "Closing Unit Balance" or "Balance Units" (e.g. 523.412).
+   - DO NOT use transaction units from individual purchase/SIP rows. Use the final closing balance for that folio.
+4. "nav": The latest NAV per unit printed on the statement (e.g. 85.42).
+5. "value": The EXACT "Market Value", "Current Valuation", "Valuation (INR)", or "Total Value" for that scheme (e.g. 44710.25).
+   - CRITICAL: DO NOT extract "Cost Value" / "Purchase Value" / "Total Amount Invested" (that is historical cost, NOT market value).
+   - CRITICAL: DO NOT extract individual SIP installment amounts (e.g. 1000 or 5000). Look for the total current market value / valuation column.
+   - SANITY CHECK: Market Value ≈ Units × NAV. If the statement explicitly prints "Current Valuation: 2,45,600", value MUST be 245600.
 
-CRITICAL RULES:
-- ONLY individual mutual fund holdings. Exclude subtotals, grand totals, portfolio totals, cash balances, stamp duty, STT, and SIP transaction rows.
-- Consolidate duplicates across pages.
-- Output ONLY valid JSON array of objects:
-[{"name":"Scheme Name","category":"flexi","units":120.5,"nav":45.6,"value":5494.8}]`;
+EXCLUDE:
+- Subtotals, grand totals, portfolio totals, cash balances, stamp duty, STT, and SIP transaction history rows.
+- If the same folio is repeated across pages, consolidate to 1 entry with the final closing balance.
+
+OUTPUT FORMAT:
+Return ONLY a valid JSON array of objects, with NO surrounding explanation or markdown:
+[
+  {
+    "name": "Parag Parikh Flexi Cap Fund - Direct Plan - Growth",
+    "category": "flexi",
+    "units": 245.891,
+    "nav": 82.50,
+    "value": 20286.01
+  }
+]`;
 
           const parts = [{ text: prompt }];
 
@@ -1435,6 +1449,22 @@ CRITICAL RULES:
       }
 
       async function enrichWithLiveNav(holdings) {
+        if (!holdings || holdings.length === 0) return;
+
+        // Perform initial sanity check on all holdings:
+        // If value was missing from statement but units and nav were extracted, calculate value
+        holdings.forEach(h => {
+          const u = parseFloat(h.units) || 0;
+          const n = parseFloat(h.nav) || 0;
+          let v = parseFloat(h.value) || 0;
+          if (v <= 0 && u > 0 && n > 0) {
+            h.value = Math.round(u * n * 100) / 100;
+          }
+          // Preserve authentic statement valuation
+          h.statementValue = h.value;
+        });
+
+        // Fast parallel fetch for live AMFI NAV with timeout protection
         const navPromises = holdings.map(async (h) => {
           try {
             const searchResult = await searchMfApi(h.name);
@@ -1445,24 +1475,24 @@ CRITICAL RULES:
 
             h.liveNav = navData.nav;
             h.navDate = navData.date;
-            h.amfiCategory = navData.category;
             if (navData.fullName) h.amfiName = navData.fullName;
 
-            if (h.units > 0 && navData.nav > 0) {
+            // ONLY replace value if statement value was missing/zero
+            if ((!h.value || h.value <= 0) && h.units > 0 && navData.nav > 0) {
               h.value = Math.round(h.units * navData.nav * 100) / 100;
-              h.nav = navData.nav;
-            } else if (navData.nav > 0 && (!h.nav || h.nav === 0)) {
+            }
+            // If statement didn't have NAV, populate live NAV
+            if (!h.nav || h.nav <= 0) {
               h.nav = navData.nav;
             }
           } catch (e) {
-            console.warn("NAV enrichment failed for:", h.name, e);
+            console.warn("Live NAV check skipped for:", h.name, e);
           }
         });
 
-        const batchSize = 5;
-        for (let i = 0; i < navPromises.length; i += batchSize) {
-          await Promise.allSettled(navPromises.slice(i, i + batchSize));
-        }
+        // Maximum 5-second timeout so page never freezes
+        const timeoutPromise = new Promise(resolve => setTimeout(resolve, 5000));
+        await Promise.race([Promise.allSettled(navPromises), timeoutPromise]);
       }
 
       async function fetchLiveNavForAll() {
@@ -1672,6 +1702,11 @@ CRITICAL RULES:
       // ========== PORTFOLIO AUDIT ENGINE ==========
       function executePortfolioAudit() {
         const rows = document.querySelectorAll("#parsed-table-body tr");
+        if (rows.length === 0) {
+          alert("Please upload a statement or add at least one mutual fund holding.");
+          return;
+        }
+
         let total = 0;
         let breakdown = { large: 0, flexi: 0, mid: 0, small: 0, sectoral: 0, elss: 0, hybrid: 0, debt: 0 };
         let amcMap = {};
@@ -1700,83 +1735,85 @@ CRITICAL RULES:
         });
 
         if (total <= 0 || holdingsList.length === 0) {
-          alert("Please enter at least one valid mutual fund holding with a market value greater than \u20B90.");
+          alert("Please enter at least one valid mutual fund holding with a market value greater than ₹0.");
           return;
         }
 
-        const largeAmt = breakdown.large + (breakdown.flexi * 0.65) + (breakdown.elss * 0.70);
-        const midAmt = breakdown.mid + (breakdown.flexi * 0.20) + (breakdown.elss * 0.20);
-        const smallAmt = breakdown.small + (breakdown.flexi * 0.15) + (breakdown.elss * 0.10);
-        const sectoralAmt = breakdown.sectoral;
-        const hybridAmt = breakdown.hybrid;
-        const debtAmt = breakdown.debt;
+        // Exact SEBI Category Allocation (100% True to user's holdings)
+        const catConfig = [
+          { key: "large", label: "Large Cap & Index", color: "#2563eb", amt: breakdown.large },
+          { key: "flexi", label: "Flexi & Multi Cap", color: "#4f46e5", amt: breakdown.flexi },
+          { key: "mid", label: "Mid Cap", color: "#06b6d4", amt: breakdown.mid },
+          { key: "small", label: "Small Cap", color: "#f59e0b", amt: breakdown.small },
+          { key: "sectoral", label: "Sectoral & Thematic", color: "#ec4899", amt: breakdown.sectoral },
+          { key: "elss", label: "ELSS (Tax Saver)", color: "#10b981", amt: breakdown.elss },
+          { key: "hybrid", label: "Hybrid & Balanced", color: "#8b5cf6", amt: breakdown.hybrid },
+          { key: "debt", label: "Debt & Liquid", color: "#64748b", amt: breakdown.debt }
+        ];
 
-        const largePct = Math.round((largeAmt / total) * 100);
-        const midPct = Math.round((midAmt / total) * 100);
-        const smallPct = Math.round((smallAmt / total) * 100);
-        const sectoralPct = Math.round((sectoralAmt / total) * 100);
-        const hybridPct = Math.round((hybridAmt / total) * 100);
-        const debtPct = Math.max(0, 100 - (largePct + midPct + smallPct + sectoralPct + hybridPct));
+        let barHtml = "";
+        let legendHtml = "";
 
+        catConfig.forEach(c => {
+          if (c.amt > 0) {
+            const pct = Math.round((c.amt / total) * 100);
+            barHtml += '<div style="width: ' + pct + '%; background: ' + c.color + ';" title="' + c.label + ': ₹' + Math.round(c.amt).toLocaleString("en-IN") + ' (' + pct + '%)"></div>';
+            legendHtml += '<span style="display: inline-flex; align-items: center; gap: 5px; font-weight: 600;">' +
+              '<span style="display:inline-block;width:11px;height:11px;background:' + c.color + ';border-radius:3px;"></span>' +
+              c.label + ': <b style="color:#081b45;">₹' + Math.round(c.amt).toLocaleString("en-IN") + '</b> (' + pct + '%)</span>';
+          }
+        });
+
+        document.getElementById("chart-bar").innerHTML = barHtml;
+        document.getElementById("chart-legend").innerHTML = legendHtml;
+
+        // Health Score & Diagnostic Insights
         let score = 9.5;
         let riskProfile = "Balanced Wealth Growth";
         let insights = [];
 
+        const smallPct = Math.round((breakdown.small / total) * 100);
+        const sectoralPct = Math.round((breakdown.sectoral / total) * 100);
+        const debtHybridPct = Math.round(((breakdown.debt + breakdown.hybrid) / total) * 100);
+
         const duplicatedAmcs = Object.keys(amcMap).filter(k => amcMap[k] >= 3);
         if (duplicatedAmcs.length > 0) {
           score -= 1.0;
-          insights.push("\u26A0\uFE0F <b>Heavy AMC Overlap:</b> You hold 3 or more funds with <b>" + duplicatedAmcs.map(a => a.toUpperCase()).join(", ") + "</b>. Consolidating reduces overlapping stock holdings and duplicate management expense.");
+          insights.push("⚠️ <b>Heavy AMC Overlap:</b> You hold 3 or more funds with <b>" + duplicatedAmcs.map(a => a.toUpperCase()).join(", ") + "</b>. Consolidating reduces overlapping stock holdings and duplicate management expense.");
         }
 
-        if (smallPct > 30) {
+        if (smallPct > 25) {
           score -= 1.5;
           riskProfile = "High Volatility / Aggressive Tilt";
-          insights.push("\u26A0\uFE0F <b>Elevated Small-Cap Allocation (" + smallPct + "%):</b> Small caps offer high upside but experience severe drawdowns (-30% to -50%) during broad market corrections. Recommended exposure for moderate horizons is 15\u201320%.");
-        } else {
-          insights.push("\u2705 <b>Balanced Small-Cap Exposure (" + smallPct + "%):</b> Supports strong wealth compounding without subjecting your capital to extreme volatility.");
+          insights.push("⚠️ <b>High Small-Cap Allocation (" + smallPct + "%):</b> Small caps offer high upside but experience sharper volatility during corrections. Recommended exposure for moderate horizons is 15–20%.");
+        } else if (smallPct > 0) {
+          insights.push("✅ <b>Balanced Small-Cap Exposure (" + smallPct + "%):</b> Supports strong wealth compounding within healthy risk boundaries.");
         }
 
         if (sectoralPct > 15) {
           score -= 1.0;
-          insights.push("\u26A0\uFE0F <b>Heavy Sectoral / Thematic Tilt (" + sectoralPct + "%):</b> Thematic bets follow cyclical boom-bust patterns. Limit sectoral holdings to 10\u201315% maximum.");
+          insights.push("⚠️ <b>Heavy Sectoral / Thematic Concentration (" + sectoralPct + "%):</b> Thematic bets follow cyclical boom-bust patterns. Consider limiting sector funds to 10–15% maximum.");
         } else if (sectoralPct > 0) {
-          insights.push("\u2705 <b>Measured Sector Exposure (" + sectoralPct + "%):</b> Tactical thematic satellite allocation within safe bounds.");
+          insights.push("✅ <b>Disciplined Sector Satellite Exposure (" + sectoralPct + "%):</b> Controlled thematic allocation without endangering core stability.");
         }
 
-        if ((debtPct + hybridPct) >= 15) {
-          insights.push("\uD83D\uDEE1\uFE0F <b>Solid Downside Cushion (" + (debtPct + hybridPct) + "% in Debt/Hybrid):</b> Protects capital during equity corrections and provides tactical rebalancing liquidity.");
+        if (debtHybridPct >= 15) {
+          insights.push("🛡️ <b>Solid Downside Cushion (" + debtHybridPct + "% in Debt & Hybrid):</b> Absorbs market swings and provides tactical rebalancing liquidity.");
         } else {
-          insights.push("\u2139\uFE0F <b>Aggressive Pure-Equity Bias (" + (100 - debtPct - hybridPct) + "%):</b> Ideal for runways greater than 7\u201310 years. Ensure at least 6 months of expenses are parked in liquid deposits.");
+          insights.push("ℹ️ <b>Pure Growth Equity Bias (" + (100 - debtHybridPct) + "% Equity):</b> Excellent for investment runways over 7–10 years. Maintain an emergency fund in liquid savings.");
         }
 
-        if (holdingsList.length > 8) {
+        if (holdingsList.length > 7) {
           score -= 1.0;
-          insights.push("\u26A0\uFE0F <b>Portfolio Clutter (" + holdingsList.length + " Funds):</b> Too many funds dilutes returns without adding diversification ('diworsification'). 5 to 7 funds is optimal.");
+          insights.push("⚠️ <b>Portfolio Clutter (" + holdingsList.length + " Funds):</b> Holding too many funds dilutes returns without adding meaningful diversification. A streamlined portfolio of 4 to 6 funds is optimal.");
         } else {
-          insights.push("\u2705 <b>Clean Portfolio Structure (" + holdingsList.length + " Funds):</b> Focused holding structure enables disciplined portfolio monitoring.");
+          insights.push("✅ <b>Streamlined Portfolio Structure (" + holdingsList.length + " Funds):</b> Focused holding structure enables disciplined tracking and lower hidden costs.");
         }
 
-        document.getElementById("val-total").innerText = "\u20B9 " + Math.round(total).toLocaleString("en-IN");
+        document.getElementById("val-total").innerText = "₹ " + Math.round(total).toLocaleString("en-IN");
         document.getElementById("val-risk").innerText = riskProfile;
-        document.getElementById("val-score").innerText = Math.max(score, 3.5).toFixed(1) + " / 10";
+        document.getElementById("val-score").innerText = Math.max(score, 4.0).toFixed(1) + " / 10";
         document.getElementById("val-count").innerText = holdingsList.length;
-
-        document.getElementById("chart-bar").innerHTML =
-          '<div style="width: ' + largePct + '%; background: #2563eb;" title="Large Cap (' + largePct + '%)"></div>' +
-          '<div style="width: ' + midPct + '%; background: #06b6d4;" title="Mid Cap (' + midPct + '%)"></div>' +
-          '<div style="width: ' + smallPct + '%; background: #f59e0b;" title="Small Cap (' + smallPct + '%)"></div>' +
-          '<div style="width: ' + sectoralPct + '%; background: #ec4899;" title="Sectoral (' + sectoralPct + '%)"></div>' +
-          '<div style="width: ' + hybridPct + '%; background: #8b5cf6;" title="Hybrid (' + hybridPct + '%)"></div>' +
-          '<div style="width: ' + debtPct + '%; background: #10b981;" title="Debt (' + debtPct + '%)"></div>';
-
-        document.getElementById("chart-legend").innerHTML =
-          '<span><span style="display:inline-block;width:10px;height:10px;background:#2563eb;border-radius:2px;margin-right:4px;"></span>Large Cap: ' + largePct + '%</span>' +
-          '<span><span style="display:inline-block;width:10px;height:10px;background:#06b6d4;border-radius:2px;margin-right:4px;"></span>Mid Cap: ' + midPct + '%</span>' +
-          '<span><span style="display:inline-block;width:10px;height:10px;background:#f59e0b;border-radius:2px;margin-right:4px;"></span>Small Cap: ' + smallPct + '%</span>' +
-          '<span><span style="display:inline-block;width:10px;height:10px;background:#ec4899;border-radius:2px;margin-right:4px;"></span>Sectoral: ' + sectoralPct + '%</span>' +
-          '<span><span style="display:inline-block;width:10px;height:10px;background:#8b5cf6;border-radius:2px;margin-right:4px;"></span>Hybrid: ' + hybridPct + '%</span>' +
-          '<span><span style="display:inline-block;width:10px;height:10px;background:#10b981;border-radius:2px;margin-right:4px;"></span>Debt: ' + debtPct + '%</span>';
-
         document.getElementById("val-insights").innerHTML = "<p style='margin: 0 0 10px 0;'>" + insights.join("</p><p style='margin: 0 0 10px 0;'>") + "</p>";
 
         renderFundAlternativesSection(holdingsList, total);
