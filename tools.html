@@ -178,7 +178,7 @@
             <div style="max-width: 780px;">
               <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
                 <span style="display: inline-block; background: #fef08a; color: #854d0e; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
-                  ⚡ Precision Vision Engine • v3.5 Active
+                  ⚡ Side-by-Side Valuation & Plausibility Engine • v3.6 Active
                 </span>
                 <span style="display: inline-block; background: #dbeafe; color: #1d4ed8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
                   🤖 Google Gemini AI Vision (Latest Generation)
@@ -306,26 +306,39 @@
           </div>
 
           <div style="overflow-x: auto; margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 10px;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; min-width: 860px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; min-width: 980px;">
               <thead>
                 <tr style="background: #f8fafc; color: #475569; border-bottom: 2px solid #e2e8f0;">
                   <th style="padding: 12px 10px;">Mutual Fund Scheme Name</th>
-                  <th style="padding: 12px 10px; width: 160px;">SEBI Category</th>
-                  <th style="padding: 12px 10px; width: 110px; text-align: right;">Units (Qty)</th>
-                  <th style="padding: 12px 10px; width: 130px; text-align: right;">NAV (₹) <span id="nav-date-badge" style="font-size:10px; color:#16a34a; font-weight:400;"></span></th>
-                  <th style="padding: 12px 10px; width: 140px; text-align: right;">Market Value (₹)</th>
-                  <th style="padding: 12px 10px; width: 50px; text-align: center;">✕</th>
+                  <th style="padding: 12px 10px; width: 145px;">SEBI Category</th>
+                  <th style="padding: 12px 8px; width: 90px; text-align: right;">Units</th>
+                  <th style="padding: 12px 8px; width: 100px; text-align: right;">NAV (₹) <span id="nav-date-badge" style="font-size:9.5px; color:#16a34a; font-weight:600; display:block;"></span></th>
+                  <th style="padding: 12px 10px; width: 130px; text-align: right; background: #f1f5f9; color: #1e293b; border-left: 1px solid #e2e8f0;">Invested Cost (₹)</th>
+                  <th style="padding: 12px 10px; width: 140px; text-align: right; background: #e0f2fe; color: #0369a1;">Current Value (₹)</th>
+                  <th style="padding: 12px 10px; width: 120px; text-align: right;">Gain / Profit</th>
+                  <th style="padding: 12px 8px; width: 45px; text-align: center;">✕</th>
                 </tr>
               </thead>
               <tbody id="parsed-table-body"></tbody>
             </table>
           </div>
 
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-            <div style="font-size: 14px; color: #081b45; font-weight: 700;">
-              Total Portfolio Valuation: <span id="parsed-subtotal-val" style="color: #e31e24; font-size: 16px;">₹ 0</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; background: #f8fafc; padding: 14px 18px; border-radius: 12px; border: 1px solid #e2e8f0;">
+            <div style="display: flex; gap: 24px; flex-wrap: wrap; font-size: 13.5px;">
+              <div>
+                <span style="color: #64748b; font-size: 11px; font-weight: 700; text-transform: uppercase; display: block;">Total Invested Cost:</span>
+                <span id="parsed-invested-val" style="color: #334155; font-size: 17px; font-weight: 800;">₹ 0</span>
+              </div>
+              <div>
+                <span style="color: #64748b; font-size: 11px; font-weight: 700; text-transform: uppercase; display: block;">Current Valuation:</span>
+                <span id="parsed-subtotal-val" style="color: #0284c7; font-size: 17px; font-weight: 800;">₹ 0</span>
+              </div>
+              <div>
+                <span style="color: #64748b; font-size: 11px; font-weight: 700; text-transform: uppercase; display: block;">Unrealized Gain / Profit:</span>
+                <span id="parsed-total-gain" style="color: #16a34a; font-size: 17px; font-weight: 800;">+₹ 0 (+0.0%)</span>
+              </div>
             </div>
-            <button type="button" onclick="executePortfolioAudit()" style="background: #e31e24; color: #ffffff; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 15px; font-family: var(--font-display, 'Manrope', sans-serif); box-shadow: 0 4px 14px rgba(227, 30, 36, 0.28); transition: background .2s;">
+            <button type="button" onclick="executePortfolioAudit()" style="background: #e31e24; color: #ffffff; border: none; padding: 12px 28px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 14.5px; font-family: var(--font-display, 'Manrope', sans-serif); box-shadow: 0 4px 14px rgba(227, 30, 36, 0.28); transition: background .2s;">
               Run Full Portfolio Audit & Compare Alternatives →
             </button>
           </div>
@@ -1186,8 +1199,8 @@
 Carefully inspect every page of this mutual fund statement (CAMS, KFintech, MF Central, Zerodha Coin, Groww).
 Extract ALL DISTINCT active mutual fund folio holdings.
 
-CRITICAL RULES FOR 100% ACCURATE VALUES (DO NOT MIX UP COLUMNS):
-1. "name": The exact full scheme name as printed (e.g. "Parag Parikh Flexi Cap Fund - Direct Plan - Growth"). Keep the plan (Direct/Regular) and option (Growth/IDCW).
+FOR EACH SCHEME, EXTRACT BOTH INVESTED COST AND CURRENT VALUATION SIDE-BY-SIDE:
+1. "name": The exact full scheme name as printed (e.g. "Parag Parikh Flexi Cap Fund - Direct Plan - Growth"). Keep plan (Direct/Regular) and option (Growth/IDCW).
 2. "category": Must be one of: "large", "flexi", "mid", "small", "sectoral", "elss", "debt", "hybrid"
    - "large": Large Cap, Nifty 50, Sensex, Bluechip, Top 100, Index Fund
    - "flexi": Flexi Cap, Multi Cap, Focused, Value, Contra, Large & Mid Cap
@@ -1198,25 +1211,26 @@ CRITICAL RULES FOR 100% ACCURATE VALUES (DO NOT MIX UP COLUMNS):
    - "hybrid": Balanced Advantage, Multi-Asset, Arbitrage, Equity Savings, Conservative
    - "debt": Liquid, Overnight, Corporate Bond, Money Market, Gilt, Short Term
 3. "units": The "Closing Unit Balance" or "Balance Units" (e.g. 523.412).
-   - DO NOT use transaction units from individual purchase/SIP rows. Use the final closing balance for that folio.
+   - DO NOT use transaction units from individual purchase/SIP rows.
 4. "nav": The latest NAV per unit printed on the statement (e.g. 85.42).
-5. "value": The EXACT "Market Value", "Current Valuation", "Valuation (INR)", or "Total Value" for that scheme (e.g. 44710.25).
-   - CRITICAL: DO NOT extract "Cost Value" / "Purchase Value" / "Total Amount Invested" (that is historical cost, NOT market value).
-   - CRITICAL: DO NOT extract individual SIP installment amounts (e.g. 1000 or 5000). Look for the total current market value / valuation column.
-   - SANITY CHECK: Market Value ≈ Units × NAV. If the statement explicitly prints "Current Valuation: 2,45,600", value MUST be 245600.
+5. "invested": The "Cost Value" / "Total Amount Invested" / "Purchase Cost" in Rupees as a number (e.g. 40000). If not printed, use 0.
+6. "value": The EXACT "Market Value" / "Current Valuation" / "Valuation (INR)" in Rupees as a number (e.g. 58450.25).
+   - CRITICAL: DO NOT use individual SIP installment amounts (e.g. 1000 or 5000). Look for the total current valuation column.
+   - SANITY CHECK: Market Value ≈ Units × NAV.
 
 EXCLUDE:
 - Subtotals, grand totals, portfolio totals, cash balances, stamp duty, STT, and SIP transaction history rows.
-- If the same folio is repeated across pages, consolidate to 1 entry with the final closing balance.
+- Consolidate duplicates across pages to 1 entry with final closing balance.
 
 OUTPUT FORMAT:
-Return ONLY a valid JSON array of objects, with NO surrounding explanation or markdown:
+Return ONLY a valid JSON array of objects:
 [
   {
     "name": "Parag Parikh Flexi Cap Fund - Direct Plan - Growth",
     "category": "flexi",
     "units": 245.891,
     "nav": 82.50,
+    "invested": 15000,
     "value": 20286.01
   }
 ]`;
@@ -1383,7 +1397,7 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
         }
       }
 
-      // ========== MFAPI LIVE NAV INTEGRATION ==========
+      // ========== MFAPI LIVE NAV INTEGRATION (WITH STRICT NAV PLAUSIBILITY GUARDS) ==========
       async function searchMfApi(schemeName) {
         try {
           const keywords = schemeName
@@ -1451,8 +1465,6 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
       async function enrichWithLiveNav(holdings) {
         if (!holdings || holdings.length === 0) return;
 
-        // Perform initial sanity check on all holdings:
-        // If value was missing from statement but units and nav were extracted, calculate value
         holdings.forEach(h => {
           const u = parseFloat(h.units) || 0;
           const n = parseFloat(h.nav) || 0;
@@ -1460,11 +1472,10 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
           if (v <= 0 && u > 0 && n > 0) {
             h.value = Math.round(u * n * 100) / 100;
           }
-          // Preserve authentic statement valuation
           h.statementValue = h.value;
+          if (!h.invested) h.invested = 0;
         });
 
-        // Fast parallel fetch for live AMFI NAV with timeout protection
         const navPromises = holdings.map(async (h) => {
           try {
             const searchResult = await searchMfApi(h.name);
@@ -1477,11 +1488,9 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
             h.navDate = navData.date;
             if (navData.fullName) h.amfiName = navData.fullName;
 
-            // ONLY replace value if statement value was missing/zero
             if ((!h.value || h.value <= 0) && h.units > 0 && navData.nav > 0) {
               h.value = Math.round(h.units * navData.nav * 100) / 100;
             }
-            // If statement didn't have NAV, populate live NAV
             if (!h.nav || h.nav <= 0) {
               h.nav = navData.nav;
             }
@@ -1490,11 +1499,11 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
           }
         });
 
-        // Maximum 5-second timeout so page never freezes
         const timeoutPromise = new Promise(resolve => setTimeout(resolve, 5000));
         await Promise.race([Promise.allSettled(navPromises), timeoutPromise]);
       }
 
+      // Safe Live NAV Refresh with Plausibility Protection (never overwrites with unrealistic numbers)
       async function fetchLiveNavForAll() {
         const rows = document.querySelectorAll("#parsed-table-body tr");
         if (rows.length === 0) return;
@@ -1505,11 +1514,14 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
         const percentText = document.getElementById("ocr-percentage");
 
         statusBox.style.display = "block";
-        statusText.innerText = "Fetching live NAV from AMFI...";
-        progBar.style.width = "30%";
-        percentText.innerText = "30%";
+        statusText.innerText = "Checking Live AMFI NAV for portfolio holdings...";
+        progBar.style.width = "25%";
+        percentText.innerText = "25%";
 
+        let updatedCount = 0;
+        let protectedCount = 0;
         let idx = 0;
+
         for (const row of rows) {
           idx++;
           const nameInput = row.querySelector(".scan-name");
@@ -1517,39 +1529,66 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
           const unitsInput = row.querySelector(".scan-units");
           const amountInput = row.querySelector(".scan-amount");
 
-          if (!nameInput || !navInput) continue;
+          if (!nameInput) continue;
           const fundName = nameInput.value.trim();
           if (!fundName) continue;
 
-          statusText.innerText = "Fetching NAV for: " + fundName.substring(0, 40) + "...";
-          const pct = Math.round(30 + (idx / rows.length) * 60);
-          progBar.style.width = pct + "%";
-          percentText.innerText = pct + "%";
+          statusText.innerText = "Checking AMFI NAV (" + idx + "/" + rows.length + "): " + fundName.substring(0, 35) + "...";
+          progBar.style.width = Math.round(25 + (idx / rows.length) * 70) + "%";
+          percentText.innerText = progBar.style.width;
+
+          const currentNav = parseFloat(navInput.value) || 0;
+          const units = parseFloat(unitsInput.value) || 0;
+          const currentVal = parseFloat(amountInput.value) || 0;
+          const impliedNav = (units > 0 && currentVal > 0) ? (currentVal / units) : currentNav;
 
           try {
             const searchResult = await searchMfApi(fundName);
             if (searchResult) {
               const navData = await getLatestNav(searchResult.schemeCode);
               if (navData && navData.nav > 0) {
-                navInput.value = navData.nav.toFixed(4);
-                const units = parseFloat(unitsInput.value) || 0;
-                if (units > 0) {
-                  amountInput.value = Math.round(units * navData.nav);
+                const fetchedNav = navData.nav;
+
+                // STRICT PLAUSIBILITY GUARD:
+                // If the candidate NAV is more than 50% higher or 40% lower than the statement implied NAV,
+                // it is obviously a mismatched option (e.g. IDCW vs Growth or different fund).
+                // In that case, DO NOT overwrite with an unrealistic valuation!
+                let isPlausible = true;
+                if (impliedNav > 0) {
+                  const ratio = fetchedNav / impliedNav;
+                  if (ratio > 1.5 || ratio < 0.6) {
+                    isPlausible = false;
+                  }
                 }
-                const badge = document.getElementById("nav-date-badge");
-                if (badge) badge.innerText = navData.date ? ("as of " + navData.date) : "";
+
+                if (isPlausible) {
+                  navInput.value = fetchedNav.toFixed(4);
+                  if (units > 0) {
+                    amountInput.value = Math.round(units * fetchedNav);
+                  }
+                  updateRowGain(row);
+                  updatedCount++;
+                } else {
+                  console.warn("Protected statement value for " + fundName + ": AMFI candidate NAV (" + fetchedNav + ") did not match statement baseline (" + impliedNav + ")");
+                  protectedCount++;
+                }
               }
             }
-          } catch (e) {
-            console.warn("Live NAV refresh failed for:", fundName, e);
+          } catch (err) {
+            console.warn("Live fetch error for " + fundName, err);
           }
         }
 
         updateHoldingsSummary();
         statusBox.style.display = "none";
+
+        if (protectedCount > 0) {
+          alert("✅ Live NAV refreshed for " + updatedCount + " fund(s).\n\n🛡️ " + protectedCount + " fund(s) retained your authentic statement valuation because the AMFI candidate had an incompatible NAV (e.g. IDCW vs Growth option). Your statement data was protected.");
+        } else {
+          alert("✅ Live AMFI NAV verified and updated for " + updatedCount + " fund(s).");
+        }
       }
 
-      // ========== RENDER EXTRACTED HOLDINGS ==========
       function renderExtractedHoldings(holdings) {
         const tbody = document.getElementById("parsed-table-body");
         tbody.innerHTML = "";
@@ -1561,9 +1600,13 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
           const firstWithDate = holdings.find(h => h.navDate);
           if (firstWithDate) {
             const badge = document.getElementById("nav-date-badge");
-            if (badge) badge.innerText = "as of " + firstWithDate.navDate;
+            if (badge) badge.innerText = "(as of " + firstWithDate.navDate + ")";
           }
-          holdings.forEach(h => addMfRow(h.name, h.value || 0, h.category || "large", h.units || 0, h.nav || 0));
+          holdings.forEach(h => {
+            const inv = parseFloat(h.invested) || 0;
+            const val = parseFloat(h.value) || 0;
+            addMfRow(h.name, inv, val, h.category || "large", h.units || 0, h.nav || 0);
+          });
         }
 
         updateHoldingsSummary();
@@ -1571,39 +1614,77 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
       }
 
       function classifyFundSmart(name) {
+        if (!name) return "large";
         const n = name.toLowerCase();
         if (n.includes("elss") || n.includes("tax saver") || n.includes("taxsaver") || n.includes("taxshield")) return "elss";
         if (n.includes("small cap") || n.includes("smallcap") || n.includes("micro cap")) return "small";
-        if (n.includes("mid cap") || n.includes("midcap") || n.includes("emerging equities")) return "mid";
-        if (n.includes("large & mid") || n.includes("large and mid") || n.includes("flexi") || n.includes("multi cap") || n.includes("multicap") || n.includes("focused") || n.includes("value fund") || n.includes("contra")) return "flexi";
+        if (n.includes("mid cap") || n.includes("midcap") || n.includes("emerging equities") || n.includes("mid-cap")) return "mid";
+        if (n.includes("flexi") || n.includes("multi cap") || n.includes("multicap") || n.includes("focused") || n.includes("value fund") || n.includes("contra") || n.includes("large & mid") || n.includes("large and mid")) return "flexi";
         if (n.includes("tech") || n.includes("pharma") || n.includes("healthcare") || n.includes("infra") || n.includes("psu") || n.includes("sector") || n.includes("thematic") || n.includes("energy") || n.includes("defense") || n.includes("defence") || n.includes("banking") || n.includes("manufacturing")) return "sectoral";
         if (n.includes("arbitrage") || n.includes("balanced advantage") || n.includes("multi-asset") || n.includes("multi asset") || n.includes("conservative") || n.includes("aggressive hybrid") || n.includes("equity savings")) return "hybrid";
         if (n.includes("debt") || n.includes("liquid") || n.includes("gilt") || n.includes("overnight") || n.includes("corporate bond") || n.includes("money market") || n.includes("target maturity") || n.includes("ultra short")) return "debt";
-        if (n.includes("nifty") || n.includes("sensex") || n.includes("index") || n.includes("bluechip") || n.includes("large cap") || n.includes("largecap") || n.includes("top 100") || n.includes("top 200")) return "large";
         return "large";
       }
 
-      function addMfRow(name = "", val = 50000, forceCat = null, units = 0, nav = 0) {
+      // Add Row with Invested Cost and Current Value Side-by-Side
+      function addMfRow(name = "", invested = 0, val = 0, forceCat = null, units = 0, nav = 0) {
         const tbody = document.getElementById("parsed-table-body");
         const cat = forceCat || classifyFundSmart(name);
         const tr = document.createElement("tr");
         tr.style.borderBottom = "1px solid #f1f5f9";
-        tr.innerHTML = '<td style="padding: 8px 10px;"><input type="text" class="scan-name" value="' + escapeHtml(name) + '" placeholder="Scheme Name (e.g. Parag Parikh Flexi Cap Fund)" oninput="updateHoldingsSummary()" style="width: 95%; padding: 7px 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12.5px;"></td>' +
-          '<td style="padding: 8px 10px;"><select class="scan-cat" onchange="updateHoldingsSummary()" style="width: 100%; padding: 7px 6px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12px; background:#fff; cursor: pointer;">' +
-            '<option value="large"' + (cat === "large" ? " selected" : "") + '>Large Cap</option>' +
-            '<option value="flexi"' + (cat === "flexi" ? " selected" : "") + '>Flexi / Multi</option>' +
+
+        let displayVal = parseFloat(val) || 0;
+        const u = parseFloat(units) || 0;
+        const n = parseFloat(nav) || 0;
+        if (displayVal <= 0 && u > 0 && n > 0) {
+          displayVal = Math.round(u * n);
+        }
+
+        let displayInv = parseFloat(invested) || 0;
+
+        tr.innerHTML =
+          '<td style="padding: 8px 10px;"><input type="text" class="scan-name" value="' + escapeHtml(name) + '" placeholder="e.g. Parag Parikh Flexi Cap Fund" onchange="autoUpdateCategoryOnNameChange(this)" style="width: 95%; padding: 7px 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12.5px; font-weight: 600; color: #081b45;"></td>' +
+          '<td style="padding: 8px 8px;"><select class="scan-cat" onchange="updateHoldingsSummary()" style="width: 100%; padding: 7px 4px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12px; background:#fff; cursor: pointer; font-weight: 600; color: #334155;">' +
+            '<option value="large"' + (cat === "large" ? " selected" : "") + '>Large Cap & Index</option>' +
+            '<option value="flexi"' + (cat === "flexi" ? " selected" : "") + '>Flexi & Multi Cap</option>' +
             '<option value="mid"' + (cat === "mid" ? " selected" : "") + '>Mid Cap</option>' +
             '<option value="small"' + (cat === "small" ? " selected" : "") + '>Small Cap</option>' +
-            '<option value="sectoral"' + (cat === "sectoral" ? " selected" : "") + '>Sectoral</option>' +
-            '<option value="elss"' + (cat === "elss" ? " selected" : "") + '>ELSS</option>' +
-            '<option value="hybrid"' + (cat === "hybrid" ? " selected" : "") + '>Hybrid</option>' +
-            '<option value="debt"' + (cat === "debt" ? " selected" : "") + '>Debt</option>' +
+            '<option value="sectoral"' + (cat === "sectoral" ? " selected" : "") + '>Sectoral & Thematic</option>' +
+            '<option value="elss"' + (cat === "elss" ? " selected" : "") + '>ELSS (Tax Saver)</option>' +
+            '<option value="hybrid"' + (cat === "hybrid" ? " selected" : "") + '>Hybrid & Balanced</option>' +
+            '<option value="debt"' + (cat === "debt" ? " selected" : "") + '>Debt & Liquid</option>' +
           '</select></td>' +
-          '<td style="padding: 8px 10px; text-align: right;"><input type="number" step="0.001" class="scan-units" value="' + (units > 0 ? units.toFixed(3) : "") + '" placeholder="0.000" oninput="recalcRowValue(this)" style="width: 90%; padding: 7px 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12.5px; text-align: right;"></td>' +
-          '<td style="padding: 8px 10px; text-align: right;"><input type="number" step="0.0001" class="scan-nav" value="' + (nav > 0 ? nav.toFixed(4) : "") + '" placeholder="0.0000" oninput="recalcRowValue(this)" style="width: 90%; padding: 7px 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12.5px; text-align: right;"></td>' +
-          '<td style="padding: 8px 10px; text-align: right;"><input type="number" class="scan-amount" value="' + Math.round(val) + '" oninput="updateHoldingsSummary()" style="width: 90%; padding: 7px 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12.5px; font-weight: 600; text-align: right;"></td>' +
-          '<td style="padding: 8px 10px; text-align: center;"><button type="button" onclick="this.closest(\'tr\').remove(); updateHoldingsSummary();" title="Delete" style="background: #fee2e2; color: #dc2626; border: none; padding: 5px 8px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 12px;">✕</button></td>';
+          '<td style="padding: 8px 8px; text-align: right;"><input type="number" step="0.001" class="scan-units" value="' + (u > 0 ? u.toFixed(3) : "") + '" placeholder="0.000" oninput="recalcRowValue(this)" style="width: 90%; padding: 7px 6px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12px; text-align: right;"></td>' +
+          '<td style="padding: 8px 8px; text-align: right;"><input type="number" step="0.0001" class="scan-nav" value="' + (n > 0 ? n.toFixed(4) : "") + '" placeholder="0.0000" oninput="recalcRowValue(this)" style="width: 90%; padding: 7px 6px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12px; text-align: right;"></td>' +
+          '<td style="padding: 8px 10px; text-align: right; background: #f8fafc; border-left: 1px solid #e2e8f0;"><input type="number" class="scan-invested" value="' + (displayInv > 0 ? Math.round(displayInv) : "") + '" placeholder="Invested ₹" oninput="onInvestedChange(this)" style="width: 90%; padding: 7px 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12.5px; font-weight: 600; text-align: right; color: #1e293b;"></td>' +
+          '<td style="padding: 8px 10px; text-align: right; background: #f0f9ff;"><input type="number" class="scan-amount" value="' + Math.round(displayVal) + '" oninput="onAmountChange(this)" style="width: 90%; padding: 7px 8px; border: 1.5px solid #7dd3fc; border-radius: 6px; font-size: 13px; font-weight: 700; text-align: right; color: #0369a1; background: #ffffff;"></td>' +
+          '<td style="padding: 8px 10px; text-align: right;" class="scan-gain"></td>' +
+          '<td style="padding: 8px 6px; text-align: center;"><button type="button" onclick="this.closest(\'tr\').remove(); updateHoldingsSummary();" title="Delete" style="background: #fee2e2; color: #dc2626; border: none; padding: 5px 8px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 12px;">✕</button></td>';
+
         tbody.appendChild(tr);
+        updateRowGain(tr);
+        updateHoldingsSummary();
+      }
+
+      function autoUpdateCategoryOnNameChange(inputEl) {
+        const row = inputEl.closest("tr");
+        if (!row) return;
+        const catSelect = row.querySelector(".scan-cat");
+        if (catSelect) {
+          catSelect.value = classifyFundSmart(inputEl.value);
+        }
+        updateHoldingsSummary();
+      }
+
+      function onInvestedChange(inputEl) {
+        const row = inputEl.closest("tr");
+        if (row) updateRowGain(row);
+        updateHoldingsSummary();
+      }
+
+      function onAmountChange(inputEl) {
+        const row = inputEl.closest("tr");
+        if (row) updateRowGain(row);
         updateHoldingsSummary();
       }
 
@@ -1614,92 +1695,72 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
         if (units > 0 && nav > 0) {
           row.querySelector(".scan-amount").value = Math.round(units * nav);
         }
+        updateRowGain(row);
         updateHoldingsSummary();
       }
 
+      function updateRowGain(row) {
+        const invested = parseFloat(row.querySelector(".scan-invested").value) || 0;
+        const current = parseFloat(row.querySelector(".scan-amount").value) || 0;
+        const gainCell = row.querySelector(".scan-gain");
+        if (!gainCell) return;
+
+        if (invested > 0 && current > 0) {
+          const diff = Math.round(current - invested);
+          const pct = ((diff / invested) * 100).toFixed(1);
+          const isPos = diff >= 0;
+          gainCell.innerHTML = '<span style="color:' + (isPos ? '#16a34a' : '#dc2626') + '; font-weight:700; font-size:12px;">' +
+            (isPos ? '+' : '') + '₹' + Math.abs(diff).toLocaleString("en-IN") +
+            '<span style="display:block; font-size:10.5px; font-weight:600;">' + (isPos ? '+' : '') + pct + '%</span></span>';
+        } else {
+          gainCell.innerHTML = '<span style="color:#94a3b8; font-size:11.5px;">-</span>';
+        }
+      }
+
       function addMfCustomRow() {
-        addMfRow("", 25000, null, 0, 0);
+        addMfRow("", 25000, 32000, "large", 0, 0);
       }
 
       function updateHoldingsSummary() {
         const rows = document.querySelectorAll("#parsed-table-body tr");
-        let total = 0;
+        let totalCurrent = 0;
+        let totalInvested = 0;
+
         rows.forEach(r => {
-          const amt = parseFloat(r.querySelector(".scan-amount").value) || 0;
-          total += amt;
+          const cur = parseFloat(r.querySelector(".scan-amount").value) || 0;
+          const inv = parseFloat(r.querySelector(".scan-invested").value) || 0;
+          totalCurrent += cur;
+          totalInvested += inv;
         });
+
         document.getElementById("parsed-holdings-count").innerText = rows.length;
-        document.getElementById("parsed-subtotal-val").innerText = "\u20B9 " + Math.round(total).toLocaleString("en-IN");
+        document.getElementById("parsed-subtotal-val").innerText = "₹ " + Math.round(totalCurrent).toLocaleString("en-IN");
+        
+        const invEl = document.getElementById("parsed-invested-val");
+        if (invEl) {
+          invEl.innerText = totalInvested > 0 ? ("₹ " + Math.round(totalInvested).toLocaleString("en-IN")) : "-";
+        }
+
+        const gainEl = document.getElementById("parsed-total-gain");
+        if (gainEl) {
+          if (totalInvested > 0 && totalCurrent > 0) {
+            const gainAmt = Math.round(totalCurrent - totalInvested);
+            const gainPct = ((gainAmt / totalInvested) * 100).toFixed(1);
+            const isPos = gainAmt >= 0;
+            gainEl.innerText = (isPos ? '+' : '') + "₹ " + Math.abs(gainAmt).toLocaleString("en-IN") + " (" + (isPos ? '+' : '') + gainPct + "%)";
+            gainEl.style.color = isPos ? "#16a34a" : "#dc2626";
+          } else {
+            gainEl.innerText = "-";
+            gainEl.style.color = "#64748b";
+          }
+        }
       }
 
       function escapeHtml(str) {
         return (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
       }
 
-      // ========== ALTERNATIVES CATALOG ==========
-      const ALTERNATIVES_CATALOG = {
-        large: {
-          index: { name: "UTI Nifty 50 Index Fund (Direct - Growth)", sub: "0.18% TER \u2022 Zero Active Manager Bias", type: "Low-Cost Index Alternative", desc: "Tracks India's top 50 bluechips with lowest tracking error. Saves ~0.70% annually in active management fees." },
-          active: { name: "Parag Parikh Flexi Cap Fund (Direct - Growth)", sub: "Proven Alpha \u2022 Indian + Global Bluechips", type: "High-Alpha Active Alternative", desc: "Disciplined value investing framework with proven market-beating 5-year rolling returns and cash protection." },
-          defensive: { name: "ICICI Prudential Bluechip Fund (Direct - Growth)", sub: "Superior Sortino \u2022 Bear Market Defense", type: "Downside-Protected Alternative", desc: "Focuses on high cash-flow large caps, restricting drawdowns during sharp equity market corrections." },
-          multi: { name: "ICICI Prudential Balanced Advantage Fund (Direct)", sub: "Dynamic Equity + Debt \u2022 Equity LTCG Tax", type: "Multi-Asset / Tax-Smart Alternative", desc: "Dynamically manages equity exposure between 30% and 80%, providing equity tax status with smoothed volatility." }
-        },
-        flexi: {
-          index: { name: "Zerodha Nifty LargeMidcap 250 Index Fund (Direct)", sub: "0.25% TER \u2022 50% Large + 50% Mid", type: "Low-Cost Index Alternative", desc: "Rule-based 50/50 split across top 250 Indian companies without fund manager style drift." },
-          active: { name: "HDFC Flexi Cap Fund (Direct - Growth)", sub: "High Active Share \u2022 20+ Year Track Record", type: "High-Alpha Active Alternative", desc: "High conviction multi-cap rotation across sectors; historically top quartile 5-year CAGR." },
-          defensive: { name: "Kotak Equity Opportunities Fund (Direct - Growth)", sub: "Controlled Volatility \u2022 Large & Mid Focus", type: "Downside-Protected Alternative", desc: "Prioritizes steady compounders with healthy balance sheets over volatile momentum bets." },
-          multi: { name: "ICICI Prudential Multi-Asset Fund (Direct - Growth)", sub: "Equity + Gold + Debt \u2022 All-Weather Rebalancing", type: "Multi-Asset / Tax-Smart Alternative", desc: "Automatic hedge against inflation and equity pullbacks with favorable equity capital gains tax." }
-        },
-        mid: {
-          index: { name: "Motilal Oswal Nifty Midcap 150 Index Fund (Direct)", sub: "0.28% TER \u2022 Pure Midcap 150 Basket", type: "Low-Cost Index Alternative", desc: "Transparent, low-cost access to India's fastest-growing mid-market corporate leaders." },
-          active: { name: "Motilal Oswal Midcap Fund (Direct - Growth)", sub: "Top Quartile 5Y Rolling Alpha", type: "High-Alpha Active Alternative", desc: "High-conviction concentrated portfolio of mid-cap category leaders with high return on equity (ROE)." },
-          defensive: { name: "Canara Robeco Emerging Equities Fund (Direct)", sub: "Large & Mid Cap Blend \u2022 Lower Drawdown", type: "Downside-Protected Alternative", desc: "Large cap anchor cushions the sharper volatility typical of mid-cap market cycles." },
-          multi: { name: "HDFC Mid-Cap Opportunities Fund (Direct - Growth)", sub: "Institutional Scale \u2022 Broad 60+ Stock Diversification", type: "Multi-Asset / Strategic Alternative", desc: "Deep diversification eliminates single-stock blowup risk across mid-market equities." }
-        },
-        small: {
-          index: { name: "Bandhan Nifty Smallcap 250 Index Fund (Direct)", sub: "0.32% TER \u2022 Pure Smallcap Index", type: "Low-Cost Index Alternative", desc: "Eliminates key-personnel manager risk while participating fully in broad small-cap rallies." },
-          active: { name: "Nippon India Small Cap Fund (Direct - Growth)", sub: "India's Leading Small Cap Alpha Fund", type: "High-Alpha Active Alternative", desc: "Unmatched multi-cycle track record, wide diversification, and rigorous liquidity management." },
-          defensive: { name: "Tata Small Cap Fund (Direct - Growth)", sub: "Conservative Small Cap \u2022 Valuation Discipline", type: "Downside-Protected Alternative", desc: "Maintains valuation discipline and higher cash buffers when small caps reach euphoric valuations." },
-          multi: { name: "Kotak Multi Asset Allocation Fund (Direct)", sub: "Dynamic Equity + Gold Buffer", type: "Multi-Asset / Strategic Alternative", desc: "Balances aggressive small-cap volatility with sovereign debt and physical gold stability." }
-        },
-        sectoral: {
-          index: { name: "Nippon India Nifty IT / Bank Index Fund (Direct)", sub: "Rule-Based Sector Exposure", type: "Low-Cost Index Alternative", desc: "Eliminates stock selection bias within cyclical sectors via direct index tracking." },
-          active: { name: "ICICI Prudential Technology / Pharma Fund (Direct)", sub: "Specialized High-Conviction Mandate", type: "High-Alpha Active Alternative", desc: "Active sector specialists who dynamically adjust sub-theme allocations across economic cycles." },
-          defensive: { name: "SBI Contra Fund (Direct - Growth)", sub: "Contrarian Value Rotation", type: "Downside-Protected Alternative", desc: "Rotates contrarian bets across beaten-down sectors rather than staying locked in a single theme." },
-          multi: { name: "Parag Parikh Flexi Cap Fund (Direct - Growth)", sub: "Diversified All-Weather Alternative", type: "Multi-Asset / Strategic Alternative", desc: "Replaces high cyclical sector risk with a well-balanced portfolio across multiple uncorrelated sectors." }
-        },
-        elss: {
-          index: { name: "Navi ELSS Tax Saver Nifty 50 Index Fund (Direct)", sub: "Lowest ELSS TER (0.12%) \u2022 Sec 80C", type: "Low-Cost Index Alternative", desc: "Section 80C tax exemption with rock-bottom fees and zero active stock selection risk." },
-          active: { name: "Mirae Asset ELSS Tax Saver Fund (Direct - Growth)", sub: "Consistently Proven 5Y Alpha", type: "High-Alpha Active Alternative", desc: "Combines 3-year mandatory lock-in compounding with large and mid-cap alpha creation." },
-          defensive: { name: "Bandhan ELSS Tax Saver Fund (Direct - Growth)", sub: "Cash-Flow Focused Quality Portfolio", type: "Downside-Protected Alternative", desc: "Focuses on high return-on-capital businesses, restricting downside losses during market downturns." },
-          multi: { name: "Parag Parikh Flexi Cap Fund (Direct - Growth)", sub: "Unrestricted Flexi Mandate (Post-80C)", type: "Post-Lockin Alternative", desc: "If your 1.5L 80C limit is already met, deploy here without any mandatory 3-year lock-in restriction." }
-        },
-        hybrid: {
-          index: { name: "Edelweiss Bharat Bond ETF / Target Maturity (Direct)", sub: "AAA Sovereign / PSU Backing", type: "Low-Cost Index Alternative", desc: "Predictable target maturity yields backed by top-rated public sector enterprises." },
-          active: { name: "ICICI Prudential Balanced Advantage Fund (Direct)", sub: "Dynamic 30-80% Equity \u2022 Auto Rebalance", type: "High-Alpha Active Alternative", desc: "India's most popular hybrid with automatic equity-debt rebalancing based on valuation signals." },
-          defensive: { name: "ICICI Prudential Arbitrage Fund (Direct - Growth)", sub: "Equity Tax Status (12.5% LTCG) \u2022 Debt Safety", type: "Downside-Protected Alternative", desc: "Completely hedged equity arbitrage yielding fixed-income returns with advantageous equity taxation." },
-          multi: { name: "ICICI Prudential Multi-Asset Fund (Direct - Growth)", sub: "Inflation Hedge \u2022 Gold + Fixed Income", type: "Multi-Asset / Strategic Alternative", desc: "Combines debt stability with gold purchasing power protection and moderate equity growth." }
-        },
-        debt: {
-          index: { name: "Edelweiss Bharat Bond ETF / Target Maturity (Direct)", sub: "AAA Sovereign / PSU Backing", type: "Low-Cost Index Alternative", desc: "Predictable target maturity yields backed by top-rated public sector enterprises." },
-          active: { name: "Aditya Birla Sun Life Corporate Bond Fund (Direct)", sub: "100% High-Grade Paper \u2022 Low Duration Risk", type: "High-Alpha Active Alternative", desc: "Strict credit quality standards providing steady accrual returns without taking credit risk." },
-          defensive: { name: "ICICI Prudential Arbitrage Fund (Direct - Growth)", sub: "Equity Tax Status (12.5% LTCG) \u2022 Debt Safety", type: "Downside-Protected Alternative", desc: "Completely hedged equity arbitrage yielding fixed-income returns with advantageous equity taxation." },
-          multi: { name: "ICICI Prudential Multi-Asset Fund (Direct - Growth)", sub: "Inflation Hedge \u2022 Gold + Fixed Income", type: "Multi-Asset / Strategic Alternative", desc: "Combines debt stability with gold purchasing power protection and moderate equity growth." }
-        }
-      };
-
-      // ========== AMC REGISTRY ==========
-      const AMC_REGISTRY = [
-        "hdfc", "icici prudential", "icici", "sbi", "nippon india", "nippon", "reliance",
-        "kotak mahindra", "kotak", "axis", "parag parikh", "ppfas", "mirae asset", "mirae",
-        "uti", "quant", "motilal oswal", "tata", "canara robeco", "bandhan", "idfc", "dsp",
-        "franklin templeton", "franklin", "aditya birla sun life", "aditya birla", "absl",
-        "edelweiss", "invesco", "hsbc", "sundaram", "whiteoak", "mahindra manulife",
-        "baroda bnp paribas", "pgim india", "navi", "zerodha", "groww", "360 one", "samco",
-        "union", "lic", "taurus", "trust", "quantum", "jm financial", "shriram", "bajaj finserv"
-      ];
-
-      // ========== PORTFOLIO AUDIT ENGINE ==========
+      // ========== PORTFOLIO AUDIT WITH SIDE-BY-SIDE METRICS ==========
       function executePortfolioAudit() {
         const rows = document.querySelectorAll("#parsed-table-body tr");
         if (rows.length === 0) {
@@ -1707,22 +1768,25 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
           return;
         }
 
-        let total = 0;
+        let totalVal = 0;
+        let totalInv = 0;
         let breakdown = { large: 0, flexi: 0, mid: 0, small: 0, sectoral: 0, elss: 0, hybrid: 0, debt: 0 };
         let amcMap = {};
         const holdingsList = [];
 
         rows.forEach(r => {
-          const amt = parseFloat(r.querySelector(".scan-amount").value) || 0;
+          const cur = parseFloat(r.querySelector(".scan-amount").value) || 0;
+          const inv = parseFloat(r.querySelector(".scan-invested").value) || 0;
           const cat = r.querySelector(".scan-cat").value;
           const name = r.querySelector(".scan-name").value.trim();
           const units = parseFloat(r.querySelector(".scan-units").value) || 0;
           const nav = parseFloat(r.querySelector(".scan-nav").value) || 0;
 
-          if (amt > 0 && name) {
-            total += amt;
-            breakdown[cat] = (breakdown[cat] || 0) + amt;
-            holdingsList.push({ name: name, value: amt, category: cat, units: units, nav: nav });
+          if (cur > 0 && name) {
+            totalVal += cur;
+            totalInv += inv;
+            breakdown[cat] = (breakdown[cat] || 0) + cur;
+            holdingsList.push({ name: name, value: cur, invested: inv, category: cat, units: units, nav: nav });
 
             const nameLower = name.toLowerCase();
             for (let amc of AMC_REGISTRY) {
@@ -1734,12 +1798,33 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
           }
         });
 
-        if (total <= 0 || holdingsList.length === 0) {
+        if (totalVal <= 0 || holdingsList.length === 0) {
           alert("Please enter at least one valid mutual fund holding with a market value greater than ₹0.");
           return;
         }
 
-        // Exact SEBI Category Allocation (100% True to user's holdings)
+        // Side-by-side Top Metrics in Audit Card
+        document.getElementById("val-total").innerText = "₹ " + Math.round(totalVal).toLocaleString("en-IN");
+        
+        const invCard = document.getElementById("val-invested");
+        if (invCard) {
+          invCard.innerText = totalInv > 0 ? ("₹ " + Math.round(totalInv).toLocaleString("en-IN")) : "-";
+        }
+
+        const gainCard = document.getElementById("val-gain");
+        if (gainCard) {
+          if (totalInv > 0) {
+            const gain = Math.round(totalVal - totalInv);
+            const gainPct = ((gain / totalInv) * 100).toFixed(1);
+            const isPos = gain >= 0;
+            gainCard.innerText = (isPos ? '+' : '') + "₹ " + Math.abs(gain).toLocaleString("en-IN") + " (" + (isPos ? '+' : '') + gainPct + "%)";
+            gainCard.style.color = isPos ? "#16a34a" : "#dc2626";
+          } else {
+            gainCard.innerText = "-";
+          }
+        }
+
+        // Exact SEBI Category Allocation
         const catConfig = [
           { key: "large", label: "Large Cap & Index", color: "#2563eb", amt: breakdown.large },
           { key: "flexi", label: "Flexi & Multi Cap", color: "#4f46e5", amt: breakdown.flexi },
@@ -1756,7 +1841,7 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
 
         catConfig.forEach(c => {
           if (c.amt > 0) {
-            const pct = Math.round((c.amt / total) * 100);
+            const pct = Math.round((c.amt / totalVal) * 100);
             barHtml += '<div style="width: ' + pct + '%; background: ' + c.color + ';" title="' + c.label + ': ₹' + Math.round(c.amt).toLocaleString("en-IN") + ' (' + pct + '%)"></div>';
             legendHtml += '<span style="display: inline-flex; align-items: center; gap: 5px; font-weight: 600;">' +
               '<span style="display:inline-block;width:11px;height:11px;background:' + c.color + ';border-radius:3px;"></span>' +
@@ -1767,19 +1852,19 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
         document.getElementById("chart-bar").innerHTML = barHtml;
         document.getElementById("chart-legend").innerHTML = legendHtml;
 
-        // Health Score & Diagnostic Insights
+        // Health Score & Diagnostics
         let score = 9.5;
         let riskProfile = "Balanced Wealth Growth";
         let insights = [];
 
-        const smallPct = Math.round((breakdown.small / total) * 100);
-        const sectoralPct = Math.round((breakdown.sectoral / total) * 100);
-        const debtHybridPct = Math.round(((breakdown.debt + breakdown.hybrid) / total) * 100);
+        const smallPct = Math.round((breakdown.small / totalVal) * 100);
+        const sectoralPct = Math.round((breakdown.sectoral / totalVal) * 100);
+        const debtHybridPct = Math.round(((breakdown.debt + breakdown.hybrid) / totalVal) * 100);
 
         const duplicatedAmcs = Object.keys(amcMap).filter(k => amcMap[k] >= 3);
         if (duplicatedAmcs.length > 0) {
           score -= 1.0;
-          insights.push("⚠️ <b>Heavy AMC Overlap:</b> You hold 3 or more funds with <b>" + duplicatedAmcs.map(a => a.toUpperCase()).join(", ") + "</b>. Consolidating reduces overlapping stock holdings and duplicate management expense.");
+          insights.push("⚠️ <b>Heavy AMC Overlap:</b> You hold 3 or more funds with <b>" + duplicatedAmcs.map(a => a.toUpperCase()).join(", ") + "</b>. Consolidating reduces duplicate management expense.");
         }
 
         if (smallPct > 25) {
@@ -1792,7 +1877,7 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
 
         if (sectoralPct > 15) {
           score -= 1.0;
-          insights.push("⚠️ <b>Heavy Sectoral / Thematic Concentration (" + sectoralPct + "%):</b> Thematic bets follow cyclical boom-bust patterns. Consider limiting sector funds to 10–15% maximum.");
+          insights.push("⚠️ <b>Heavy Sectoral Concentration (" + sectoralPct + "%):</b> Thematic bets follow cyclical boom-bust patterns. Limit sector funds to 10–15% maximum.");
         } else if (sectoralPct > 0) {
           insights.push("✅ <b>Disciplined Sector Satellite Exposure (" + sectoralPct + "%):</b> Controlled thematic allocation without endangering core stability.");
         }
@@ -1810,13 +1895,12 @@ Return ONLY a valid JSON array of objects, with NO surrounding explanation or ma
           insights.push("✅ <b>Streamlined Portfolio Structure (" + holdingsList.length + " Funds):</b> Focused holding structure enables disciplined tracking and lower hidden costs.");
         }
 
-        document.getElementById("val-total").innerText = "₹ " + Math.round(total).toLocaleString("en-IN");
         document.getElementById("val-risk").innerText = riskProfile;
         document.getElementById("val-score").innerText = Math.max(score, 4.0).toFixed(1) + " / 10";
         document.getElementById("val-count").innerText = holdingsList.length;
         document.getElementById("val-insights").innerHTML = "<p style='margin: 0 0 10px 0;'>" + insights.join("</p><p style='margin: 0 0 10px 0;'>") + "</p>";
 
-        renderFundAlternativesSection(holdingsList, total);
+        renderFundAlternativesSection(holdingsList, totalVal);
 
         document.getElementById("audit-results-area").style.display = "block";
         document.getElementById("audit-results-area").scrollIntoView({ behavior: 'smooth' });
