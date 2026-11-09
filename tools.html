@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Financial Calculators & Decision Tools | Aarya Consultants</title>
   <meta name="description" content="Interactive wealth calculators, income tax regime comparer (FY 2025-26), and a 2-minute Financial Health Checkup quiz from Aarya Consultants.">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
@@ -174,6 +177,9 @@
           <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
             <div style="max-width: 780px;">
               <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                <span style="display: inline-block; background: #fef08a; color: #854d0e; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
+                  ⚡ Engine v3.2 (Active)
+                </span>
                 <span style="display: inline-block; background: #dbeafe; color: #1d4ed8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
                   🤖 Google Gemini AI Vision (Latest Generation)
                 </span>
@@ -493,54 +499,72 @@
         resultEl.style.display = "block";
         resultEl.style.background = "#dbeafe";
         resultEl.style.color = "#1d4ed8";
-        resultEl.innerHTML = "⏳ Connecting to Google AI Studio & verifying latest Vision models...";
-
-        const candidateModels = [
-          "gemini-2.5-flash",
-          "gemini-2.0-flash",
-          "gemini-2.0-flash-exp",
-          "gemini-1.5-flash",
-          "gemini-1.5-flash-latest",
-          "gemini-1.5-pro",
-          "gemini-1.5-pro-latest"
-        ];
+        resultEl.innerHTML = "⏳ Connecting to Google AI Studio & discovering supported Vision models...";
 
         let connectedModel = null;
         let lastErrorMsg = "";
 
         // Step 1: Query ListModels API to discover active models for this key
         try {
-          const listResp = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + apiKey, {
+          const listResp = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + encodeURIComponent(apiKey), {
             headers: { "x-goog-api-key": apiKey }
           });
           const listData = await listResp.json();
+
+          if (listData.error) {
+            // STOP immediately on API error - do NOT probe further models to avoid confusing error messages
+            const errMsg = listData.error.message || listData.error.status || "Unknown error";
+            resultEl.style.background = "#fee2e2";
+            resultEl.style.color = "#dc2626";
+            if (errMsg.toLowerCase().includes("api key not valid") || listData.error.status === "INVALID_ARGUMENT") {
+              resultEl.innerHTML = "❌ <b>Invalid API Key:</b> Google rejected this key. Please make sure you copied the entire key starting with <code>AIzaSy...</code> from <a href='https://aistudio.google.com/apikey' target='_blank' style='color:#b91c1c;font-weight:700;'>aistudio.google.com/apikey</a>.";
+            } else if (errMsg.toLowerCase().includes("permission") || errMsg.toLowerCase().includes("disabled") || listData.error.status === "PERMISSION_DENIED") {
+              resultEl.innerHTML = "❌ <b>Generative Language API Disabled:</b> This key's project does not have the Gemini API enabled. Please visit <a href='https://aistudio.google.com/apikey' target='_blank' style='color:#b91c1c;font-weight:700;'>aistudio.google.com/apikey</a> and create a fresh key in a new project.";
+            } else {
+              resultEl.innerHTML = "❌ <b>Google AI Error:</b> " + escapeHtml(errMsg) + " <br><small>Get a new key at <a href='https://aistudio.google.com/apikey' target='_blank' style='color:#b91c1c;font-weight:700;'>aistudio.google.com/apikey</a>.</small>";
+            }
+            return;
+          }
 
           if (listData.models && Array.isArray(listData.models)) {
             const activeModels = listData.models
               .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes("generateContent"))
               .map(m => m.name.replace(/^models\//, ""));
 
-            for (const cand of candidateModels) {
-              if (activeModels.includes(cand)) {
-                connectedModel = cand;
+            const preferenceList = [
+              "gemini-2.5-flash",
+              "gemini-2.0-flash",
+              "gemini-2.0-flash-exp",
+              "gemini-1.5-flash",
+              "gemini-1.5-flash-latest",
+              "gemini-2.5-pro",
+              "gemini-1.5-pro"
+            ];
+
+            for (const pref of preferenceList) {
+              if (activeModels.includes(pref)) {
+                connectedModel = pref;
                 break;
               }
             }
+
             if (!connectedModel && activeModels.length > 0) {
-              connectedModel = activeModels[0];
+              connectedModel = activeModels.find(m => m.includes("flash")) ||
+                               activeModels.find(m => m.startsWith("gemini-")) ||
+                               activeModels[0];
             }
-          } else if (listData.error) {
-            lastErrorMsg = listData.error.message || listData.error.status;
           }
         } catch (e) {
           console.warn("ListModels discovery error:", e);
+          lastErrorMsg = e.message;
         }
 
-        // Step 2: If ListModels was restricted or didn't respond, test candidates directly with generateContent
+        // Step 2: Fallback probe if ListModels was blocked by ad-blocker or proxy
         if (!connectedModel) {
-          for (const model of candidateModels) {
+          const probeList = ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-2.5-flash"];
+          for (const model of probeList) {
             try {
-              const resp = await fetch("https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + apiKey, {
+              const resp = await fetch("https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + encodeURIComponent(apiKey), {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -553,7 +577,10 @@
                 connectedModel = model;
                 break;
               } else if (resJson.error) {
-                lastErrorMsg = resJson.error.message;
+                lastErrorMsg = resJson.error.message || ("Error " + resJson.error.code);
+                if (resJson.error.status === "INVALID_ARGUMENT" || resJson.error.status === "PERMISSION_DENIED") {
+                  break;
+                }
               }
             } catch (err) {
               lastErrorMsg = err.message;
@@ -569,11 +596,10 @@
         } else {
           resultEl.style.background = "#fee2e2";
           resultEl.style.color = "#dc2626";
-          resultEl.innerHTML = "❌ <b>Key Connection Failed:</b> " + escapeHtml(lastErrorMsg) + "<br><small style='color:#7f1d1d;'>Please ensure your key is active at <a href='https://aistudio.google.com/apikey' target='_blank' style='color:#b91c1c;font-weight:700;'>aistudio.google.com/apikey</a>.</small>";
+          resultEl.innerHTML = "❌ <b>Key Connection Failed:</b> " + escapeHtml(lastErrorMsg || "Could not reach Gemini service.") + "<br><small style='color:#7f1d1d;'>Please ensure your key is active at <a href='https://aistudio.google.com/apikey' target='_blank' style='color:#b91c1c;font-weight:700;'>aistudio.google.com/apikey</a>.</small>";
         }
       }
 
-      
       // Optimize image resolution & quality to keep payload fast and within Gemini API limits
       async function optimizeDataUrlForVision(dataUrl) {
         return new Promise((resolve) => {
