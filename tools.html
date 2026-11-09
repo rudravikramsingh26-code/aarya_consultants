@@ -169,55 +169,42 @@
 
       <div style="background: #ffffff; border: 1px solid rgba(8, 27, 69, 0.08); border-radius: 20px; padding: 32px; box-shadow: 0 10px 30px rgba(8, 27, 69, 0.06); color: #0f172a;">
         
-        <!-- Scanner Header -->
-        <div style="border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; margin-bottom: 24px;">
+        <!-- Scanner Header (Dedicated Google Gemini Vision AI Engine) -->
+        <div style="border-bottom: 1px solid #f1f5f9; padding-bottom: 22px; margin-bottom: 24px;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
-            <div style="max-width: 720px;">
+            <div style="max-width: 780px;">
               <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
-                <span style="display: inline-block; background: #e0f2fe; color: #0284c7; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
-                  ⚡ Free Instant Scanner • No Setup Required
-                </span>
                 <span style="display: inline-block; background: #dbeafe; color: #1d4ed8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
-                  🤖 Google Gemini AI Enhanced
+                  🤖 Google Gemini AI Vision (Latest Generation)
+                </span>
+                <span style="display: inline-block; background: #e0f2fe; color: #0284c7; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
+                  ⚡ Up to 3 Pages Supported
                 </span>
                 <span style="display: inline-block; background: #dcfce7; color: #15803d; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 9999px;">
                   📈 Live AMFI NAV
                 </span>
               </div>
-              <h2 style="margin: 0 0 6px 0; font-family: var(--font-display, 'Manrope', sans-serif); font-size: 24px; font-weight: 800; color: #081b45;">AI CAS Statement & Portfolio Analyzer</h2>
+              <h2 style="margin: 0 0 6px 0; font-family: var(--font-display, 'Manrope', sans-serif); font-size: 24px; font-weight: 800; color: #081b45;">Gemini Vision AI Portfolio Analyzer</h2>
               <p style="margin: 0; color: #546478; font-size: 14px; line-height: 1.55;">
-                Upload your CAMS or KFintech Consolidated Account Statement (<strong>PDF up to 3 pages</strong> or <strong>up to 3 photos/screenshots</strong>). The analyzer extracts genuine mutual fund schemes, filters out subtotals and noise, pulls <strong>current NAV from AMFI</strong>, calculates <strong>unit quantities & market valuations</strong>, and provides <strong>curated alternatives across 4 investment styles</strong>.
+                Upload your CAMS or KFintech CAS Statement (<strong>PDF up to 3 pages</strong> or <strong>up to 3 photos/screenshots</strong>). Powered directly by <strong>Google Gemini Vision AI</strong> to extract each scheme's exact <strong>name, SEBI type, unit quantity, NAV, and market value</strong>, cross-referenced with <strong>Live AMFI NAV</strong>.
               </p>
             </div>
-
-            <!-- Engine Selector -->
-            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 10px 14px; min-width: 250px;">
-              <label for="scan-engine-select" style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 6px;">Processing Engine:</label>
-              <select id="scan-engine-select" onchange="toggleEngineMode()" style="width: 100%; padding: 7px 10px; border-radius: 6px; border: 1px solid #94a3b8; font-size: 12.5px; background: #fff; cursor: pointer; font-weight: 600; color: #081b45;">
-                <option value="instant" selected>⚡ Instant Engine (Free • No Key Needed)</option>
-                <option value="gemini">🤖 Google Gemini AI Vision (Deep Vision)</option>
-              </select>
-            </div>
           </div>
 
-          <!-- Optional Gemini API Key Box (Shown when Gemini is selected or via toggle) -->
-          <div id="gemini-key-box" style="display: none; margin-top: 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <label for="gemini-api-key" style="font-size: 12.5px; font-weight: 700; color: #1e40af; margin: 0;">Google Gemini API Key (Optional for AI Vision):</label>
-              <button type="button" onclick="closeGeminiKeyBox()" style="background: none; border: none; font-size: 12px; color: #64748b; cursor: pointer;">✕ Close</button>
+          <!-- Gemini Vision API Key Configuration Box (Always Prominent & Auto-Saved) -->
+          <div id="gemini-key-box" style="margin-top: 18px; background: linear-gradient(135deg, #f0f7ff 0%, #e6f0fd 100%); border: 1px solid #bfdbfe; border-radius: 12px; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 6px;">
+              <label for="gemini-api-key" style="font-size: 13px; font-weight: 800; color: #1e40af;">🔑 Google Gemini API Key:</label>
+              <span style="font-size: 11.5px; color: #2563eb; font-weight: 600;">🔒 Auto-saved securely in your local browser</span>
             </div>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-              <input type="password" id="gemini-api-key" placeholder="Paste key (starts with AIzaSy...) or leave blank for Free Instant Engine" style="flex: 1; min-width: 260px; padding: 8px 12px; font-size: 13px; border: 1px solid #93c5fd; border-radius: 6px;">
-              <button type="button" onclick="testGeminiKey()" style="background: #1d4ed8; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; font-size: 12px; cursor: pointer; white-space: nowrap;">Test Key</button>
+              <input type="password" id="gemini-api-key" placeholder="Paste your Gemini API key (starts with AIzaSy...)" style="flex: 1; min-width: 280px; padding: 10px 14px; font-size: 13px; border: 1.5px solid #93c5fd; border-radius: 8px; font-family: monospace; background: #fff;">
+              <button type="button" onclick="testGeminiKey()" style="background: #1d4ed8; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; white-space: nowrap; box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25);">Test & Connect</button>
             </div>
-            <small style="color: #64748b; font-size: 11.5px; margin-top: 5px; display: block;">
-              Get a free API key at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color: #2563eb; font-weight: 600;">Google AI Studio</a>. Uses <code>gemini-1.5-flash</code>. If left blank or if Gemini is unavailable, the analyzer automatically uses the Free Instant Engine.
+            <small style="color: #475569; font-size: 11.5px; margin-top: 6px; display: block;">
+              Get your free key at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color: #1d4ed8; font-weight: 700; text-decoration: underline;">aistudio.google.com/apikey</a> (Google AI Studio Free Tier). Automatically connects to the latest model (<code>gemini-2.5-flash</code> / <code>gemini-2.0-flash</code> / <code>gemini-1.5-flash</code>).
             </small>
-            <div id="key-test-result" style="display: none; margin-top: 6px; font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 4px;"></div>
-          </div>
-
-          <div id="gemini-key-toggle-link" style="margin-top: 8px; font-size: 12.5px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 8px 12px; display: inline-block;"><span style="color: #166534; font-weight: 700;">💡 Tip:</span> <span style="color: #14532d;">You do NOT need any API key to use this tool! The <b>Free Instant Engine</b> is active by default. </span>
-            <a href="javascript:void(0)" onclick="openGeminiKeyBox()" style="color: #2563eb; text-decoration: none; font-weight: 600;">⚙️ Optional: Have a Google Gemini API Key? Click here to connect it.</a>
+            <div id="key-test-result" style="display: none; margin-top: 10px; font-size: 12.5px; font-weight: 600; padding: 8px 12px; border-radius: 6px;"></div>
           </div>
         </div>
 
@@ -279,7 +266,7 @@
           
           <div style="margin-top: 16px; text-align: center;">
             <button type="button" id="btn-process-pages" onclick="processAllLoadedPages()" style="background: #081b45; color: #ffffff; border: none; padding: 12px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; box-shadow: 0 4px 14px rgba(8, 27, 69, 0.22); transition: all 0.2s;">
-              🚀 Analyze Portfolio Holdings
+              🚀 Analyze Portfolio with Gemini Vision AI
             </button>
           </div>
         </div>
@@ -488,65 +475,101 @@
       }
 
       async function testGeminiKey() {
-        const apiKey = document.getElementById("gemini-api-key").value.trim();
+        const apiKeyInput = document.getElementById("gemini-api-key");
+        const apiKey = (apiKeyInput.value || "").trim().replace(/^["']|["']$/g, "");
         const resultEl = document.getElementById("key-test-result");
+
         if (!apiKey) {
           resultEl.style.display = "block";
           resultEl.style.background = "#fee2e2";
           resultEl.style.color = "#dc2626";
-          resultEl.innerText = "Please paste your API key first.";
+          resultEl.innerHTML = "⚠️ Please paste your Google Gemini API key first (starts with <code>AIzaSy...</code>).";
           return;
         }
+
+        // Save key to browser local storage so user never has to re-type it
+        try { localStorage.setItem("aarya_gemini_api_key", apiKey); } catch(e) {}
+
         resultEl.style.display = "block";
         resultEl.style.background = "#dbeafe";
         resultEl.style.color = "#1d4ed8";
-        resultEl.innerText = "Connecting to Google AI Studio and discovering active models...";
+        resultEl.innerHTML = "⏳ Connecting to Google AI Studio & verifying latest Vision models...";
 
+        const candidateModels = [
+          "gemini-2.5-flash",
+          "gemini-2.0-flash",
+          "gemini-2.0-flash-exp",
+          "gemini-1.5-flash",
+          "gemini-1.5-flash-latest",
+          "gemini-1.5-pro",
+          "gemini-1.5-pro-latest"
+        ];
+
+        let connectedModel = null;
+        let lastErrorMsg = "";
+
+        // Step 1: Query ListModels API to discover active models for this key
         try {
-          // Dynamic Discovery via official ListModels API
-          const listResp = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + apiKey);
+          const listResp = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + apiKey, {
+            headers: { "x-goog-api-key": apiKey }
+          });
           const listData = await listResp.json();
 
-          if (listData.error) {
-            let msg = listData.error.message || "Invalid API Key";
-            if (msg.includes("API key not valid") || listData.error.status === "INVALID_ARGUMENT") {
-              msg = "The API key is invalid. Please copy the complete key from https://aistudio.google.com/apikey";
-            } else if (listData.error.status === "PERMISSION_DENIED") {
-              msg = "Generative Language API is disabled for this key/project. Create a fresh key at https://aistudio.google.com/apikey";
-            }
-            resultEl.style.background = "#fee2e2";
-            resultEl.style.color = "#dc2626";
-            resultEl.innerHTML = "❌ <b>" + escapeHtml(msg) + "</b><br><br>💡 <b>Note:</b> You do not need any API key to use this tool! Simply use the <b>Free Instant Engine</b>.";
-            return;
-          }
-
-          if (listData.models && listData.models.length > 0) {
-            const genModels = listData.models
+          if (listData.models && Array.isArray(listData.models)) {
+            const activeModels = listData.models
               .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes("generateContent"))
               .map(m => m.name.replace(/^models\//, ""));
 
-            const chosen = genModels.find(m => m.includes("1.5-flash")) ||
-                           genModels.find(m => m.includes("2.0-flash")) ||
-                           genModels.find(m => m.includes("flash")) ||
-                           genModels.find(m => m.includes("1.5-pro")) ||
-                           genModels[0];
+            for (const cand of candidateModels) {
+              if (activeModels.includes(cand)) {
+                connectedModel = cand;
+                break;
+              }
+            }
+            if (!connectedModel && activeModels.length > 0) {
+              connectedModel = activeModels[0];
+            }
+          } else if (listData.error) {
+            lastErrorMsg = listData.error.message || listData.error.status;
+          }
+        } catch (e) {
+          console.warn("ListModels discovery error:", e);
+        }
 
-            if (chosen) {
-              analyzerState.detectedGeminiModel = chosen;
-              resultEl.style.background = "#dcfce7";
-              resultEl.style.color = "#166534";
-              resultEl.innerHTML = "✅ <b>API Key Verified!</b> Connected to active model: <code>" + escapeHtml(chosen) + "</code>";
-              return;
+        // Step 2: If ListModels was restricted or didn't respond, test candidates directly with generateContent
+        if (!connectedModel) {
+          for (const model of candidateModels) {
+            try {
+              const resp = await fetch("https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + apiKey, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "x-goog-api-key": apiKey
+                },
+                body: JSON.stringify({ contents: [{ parts: [{ text: "ping" }] }] })
+              });
+              const resJson = await resp.json();
+              if (resJson.candidates && resJson.candidates.length > 0) {
+                connectedModel = model;
+                break;
+              } else if (resJson.error) {
+                lastErrorMsg = resJson.error.message;
+              }
+            } catch (err) {
+              lastErrorMsg = err.message;
             }
           }
+        }
 
-          resultEl.style.background = "#fffbeb";
-          resultEl.style.color = "#b45309";
-          resultEl.innerText = "⚠️ Key verified, but no generation models found. Please use the Free Instant Engine.";
-        } catch (err) {
+        if (connectedModel) {
+          analyzerState.detectedGeminiModel = connectedModel;
+          resultEl.style.background = "#dcfce7";
+          resultEl.style.color = "#166534";
+          resultEl.innerHTML = "✅ <b>Gemini Vision Connected!</b> Active Model: <code>" + escapeHtml(connectedModel) + "</code>. Ready for statement analysis.";
+        } else {
           resultEl.style.background = "#fee2e2";
           resultEl.style.color = "#dc2626";
-          resultEl.innerHTML = "❌ <b>Connection error:</b> " + escapeHtml(err.message) + "<br><br>💡 The Free Instant Engine works right away without any key!";
+          resultEl.innerHTML = "❌ <b>Key Connection Failed:</b> " + escapeHtml(lastErrorMsg) + "<br><small style='color:#7f1d1d;'>Please ensure your key is active at <a href='https://aistudio.google.com/apikey' target='_blank' style='color:#b91c1c;font-weight:700;'>aistudio.google.com/apikey</a>.</small>";
         }
       }
 
@@ -768,25 +791,25 @@
           return;
         }
 
-        const engineMode = document.getElementById("scan-engine-select").value;
-        const apiKey = document.getElementById("gemini-api-key").value.trim();
+        const apiKeyInput = document.getElementById("gemini-api-key");
+        const apiKey = (apiKeyInput ? apiKeyInput.value : "").trim().replace(/^["']|["']$/g, "");
 
-        // If Gemini is explicitly chosen OR an API key is filled in, attempt Gemini with safe fallback
-        if ((engineMode === "gemini" || apiKey) && apiKey) {
-          try {
-            await runGeminiExtraction(apiKey);
-            return;
-          } catch (err) {
-            console.warn("Gemini AI attempt failed, falling back to Instant Precision Engine:", err);
-            // Non-blocking graceful fallback
-            const statusText = document.getElementById("ocr-status-text");
-            if (statusText) statusText.innerText = "Gemini returned (" + err.message + "). Switching to Free Instant Engine...";
-            await new Promise(r => setTimeout(r, 600));
+        if (!apiKey) {
+          alert("Please enter your Google Gemini API key above to analyze statements with Gemini Vision AI.\n\nYou can get a free key at ai.google.dev / aistudio.google.com/apikey.");
+          if (apiKeyInput) {
+            apiKeyInput.focus();
+            apiKeyInput.scrollIntoView({ behavior: "smooth", block: "center" });
           }
+          return;
         }
 
-        // Default & Universal Path: Free Instant Precision Engine (Works for 100% of visitors!)
-        await runPrecisionInBrowserExtraction();
+        // Run Gemini Vision AI
+        try {
+          await runGeminiExtraction(apiKey);
+        } catch (err) {
+          console.warn("Gemini Vision AI error:", err);
+          alert("Gemini Vision AI encountered an error: " + err.message + "\n\nPlease verify your API key using 'Test & Connect'.");
+        }
       }
 
       // ========== PRECISION IN-BROWSER EXTRACTION ==========
@@ -1005,25 +1028,70 @@
         const percentText = document.getElementById("ocr-percentage");
 
         statusBox.style.display = "block";
-        statusText.innerText = "Connecting to Google Gemini AI Vision...";
-        progBar.style.width = "30%";
-        percentText.innerText = "30%";
+        statusText.innerText = "Initializing Gemini Vision AI...";
+        progBar.style.width = "20%";
+        percentText.innerText = "20%";
 
-        const prompt = `You are a certified SEBI Indian mutual fund portfolio analyst.
-Analyze these attached mutual fund statement pages (CAMS / KFintech / MF Central / Zerodha / Groww).
+        // Determine best active model
+        let targetModel = analyzerState.detectedGeminiModel;
+        const candidateModels = [
+          "gemini-2.5-flash",
+          "gemini-2.0-flash",
+          "gemini-2.0-flash-exp",
+          "gemini-1.5-flash",
+          "gemini-1.5-flash-latest",
+          "gemini-1.5-pro"
+        ];
+
+        if (!targetModel) {
+          try {
+            const listResp = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + apiKey, {
+              headers: { "x-goog-api-key": apiKey }
+            });
+            const listData = await listResp.json();
+            if (listData.models && Array.isArray(listData.models)) {
+              const activeModels = listData.models
+                .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes("generateContent"))
+                .map(m => m.name.replace(/^models\//, ""));
+              for (const cand of candidateModels) {
+                if (activeModels.includes(cand)) { targetModel = cand; break; }
+              }
+            }
+          } catch (e) {
+            console.warn("Dynamic model lookup error:", e);
+          }
+        }
+
+        if (!targetModel) targetModel = "gemini-2.0-flash";
+        analyzerState.detectedGeminiModel = targetModel;
+
+        statusText.innerText = "Sending " + analyzerState.pages.length + " page(s) to " + targetModel + "...";
+        progBar.style.width = "40%";
+        percentText.innerText = "40%";
+
+        const prompt = `You are a certified Indian SEBI mutual fund portfolio analyst.
+Analyze these attached mutual fund statement pages (from CAMS, KFintech, MF Central, Zerodha, or Groww).
 Extract ALL DISTINCT active mutual fund scheme holdings.
 
-For EACH holding, output JSON with:
-1. "name" - Full clean scheme name with plan & option (e.g. "Parag Parikh Flexi Cap Fund - Direct Plan - Growth"). Do not invent names.
+For EACH holding, output a clean JSON object with:
+1. "name" - Full clean scheme name with plan & option (e.g. "Parag Parikh Flexi Cap Fund - Direct Plan - Growth"). Do not invent or hallucinate names.
 2. "category" - exactly one of: "large", "flexi", "mid", "small", "sectoral", "elss", "debt", "hybrid"
-3. "units" - unit balance quantity as a number (e.g. 245.678). If not found, use 0.
-4. "nav" - NAV price per unit as a number. If not found, use 0.
+   - "large": Large Cap, Nifty 50, Bluechip, Index Fund (Nifty/Sensex)
+   - "flexi": Flexi Cap, Multi Cap, Large & Mid Cap, Focused, Value, Contra
+   - "mid": Mid Cap, Emerging Equities
+   - "small": Small Cap, Micro Cap
+   - "sectoral": Sectoral, Thematic (IT, Pharma, Infra, Banking, Defense, PSU, Energy, MNC)
+   - "elss": ELSS, Tax Saver
+   - "hybrid": Balanced Advantage, Dynamic Asset, Multi-Asset, Arbitrage, Equity Savings
+   - "debt": Debt, Liquid, Overnight, Money Market, Corporate Bond, Gilt
+3. "units" - closing unit balance quantity as a number (e.g. 245.678). If not listed, set 0.
+4. "nav" - NAV unit price in Rupees as a number (e.g. 78.45). If not listed, set 0.
 5. "value" - current market valuation in Rupees as a number.
 
-RULES:
-- ONLY individual mutual fund holdings. No subtotals, grand totals, cash balances, or transaction lines.
-- Consolidate duplicates across pages.
-- Return ONLY a valid JSON array:
+STRICT ACCURACY RULES:
+- ONLY individual mutual fund holdings. Exclude subtotals, grand totals, portfolio totals, cash balances, stamp duty, STT, and SIP transaction rows.
+- Consolidate schemes that appear across pages.
+- Output ONLY valid JSON:
 [{"name":"Fund Name","category":"flexi","units":120.5,"nav":45.6,"value":5494.8}]`;
 
         const parts = [{ text: prompt }];
@@ -1038,6 +1106,7 @@ RULES:
           });
         }
 
+        // Also add extracted digital text if available for maximum accuracy
         let digitalText = "";
         for (const p of analyzerState.pages) {
           if (p.text && p.text.length > 80) {
@@ -1048,41 +1117,22 @@ RULES:
           parts.push({ text: "\nStatement text extracted from PDF:\n" + digitalText });
         }
 
-        statusText.innerText = "Gemini AI extracting schemes, units, NAV & valuations...";
-        progBar.style.width = "60%";
-        percentText.innerText = "60%";
+        statusText.innerText = "Gemini Vision AI parsing fund folios, units, and valuations...";
+        progBar.style.width = "65%";
+        percentText.innerText = "65%";
 
-        let targetModel = analyzerState.detectedGeminiModel;
-        if (!targetModel) {
-          try {
-            const listResp = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + apiKey);
-            const listData = await listResp.json();
-            if (listData.models) {
-              const genModels = listData.models
-                .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes("generateContent"))
-                .map(m => m.name.replace(/^models\//, ""));
-              targetModel = genModels.find(m => m.includes("1.5-flash")) ||
-                            genModels.find(m => m.includes("2.0-flash")) ||
-                            genModels.find(m => m.includes("flash")) ||
-                            genModels.find(m => m.includes("1.5-pro")) ||
-                            genModels[0];
-            }
-          } catch (e) {
-            console.warn("Dynamic model discovery error", e);
-          }
-        }
-        if (!targetModel) targetModel = "gemini-1.5-flash";
-        analyzerState.detectedGeminiModel = targetModel;
-
-        const modelsToTry = Array.from(new Set([targetModel, "gemini-1.5-flash", "gemini-2.0-flash", "gemini-1.5-pro"]));
+        const modelsToAttempt = Array.from(new Set([targetModel, "gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-pro"]));
         let data = null;
         let lastError = null;
 
-        for (const model of modelsToTry) {
+        for (const model of modelsToAttempt) {
           try {
             const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + apiKey, {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
+              headers: {
+                "Content-Type": "application/json",
+                "x-goog-api-key": apiKey
+              },
               body: JSON.stringify({
                 contents: [{ parts: parts }],
                 generationConfig: { temperature: 0.1, maxOutputTokens: 4096 }
@@ -1096,6 +1146,7 @@ RULES:
             }
             if (resJson.candidates && resJson.candidates[0]) {
               data = resJson;
+              analyzerState.detectedGeminiModel = model;
               break;
             }
           } catch (err) {
@@ -1107,24 +1158,25 @@ RULES:
           throw new Error(lastError || "Could not reach Gemini AI models.");
         }
 
-        statusText.innerText = "Parsing AI response...";
-        progBar.style.width = "80%";
-        percentText.innerText = "80%";
+        statusText.innerText = "AI extraction successful! Formatting holdings...";
+        progBar.style.width = "85%";
+        percentText.innerText = "85%";
 
         const rawReply = data.candidates[0].content.parts[0].text;
         const cleanJson = rawReply.replace(/```json|```/g, "").trim();
         const holdings = JSON.parse(cleanJson);
 
         if (!Array.isArray(holdings) || holdings.length === 0) {
-          throw new Error("No holdings detected in Gemini response.");
+          throw new Error("No holdings detected in statement image.");
         }
 
-        statusText.innerText = "Fetching live AMFI NAV prices...";
-        progBar.style.width = "90%";
-        percentText.innerText = "90%";
+        statusText.innerText = "Fetching live AMFI NAV prices for " + holdings.length + " funds...";
+        progBar.style.width = "92%";
+        percentText.innerText = "92%";
 
         await enrichWithLiveNav(holdings);
         renderExtractedHoldings(holdings);
+        statusBox.style.display = "none";
       }
 
       // ========== MFAPI LIVE NAV INTEGRATION ==========
