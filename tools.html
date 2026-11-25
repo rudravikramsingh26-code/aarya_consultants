@@ -165,7 +165,7 @@
     </div>
     <!-- TOOL 5: AI CAS STATEMENT & PORTFOLIO SCANNER (GEMINI API POWERED) -->
     <!-- TOOL 5: AI CAS STATEMENT & PORTFOLIO SCANNER (DUAL-ENGINE: FREE INSTANT + GEMINI AI) -->
-        <div class="tool-panel" id="panel-analyzer" role="tabpanel">
+            <div class="tool-panel" id="panel-analyzer" role="tabpanel">
       <!-- PDF.js Engine & In-Browser Tesseract OCR Engine -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
@@ -530,12 +530,17 @@
         return { models: geminiRank(names) };
       }
       function geminiRank(names) {
-        const bad = /(embedding|tts|image|imagen|live|audio|aqa|robotics|computer-use|native|learnlm|gemma|-exp|preview-\d{2}-\d{2})/i;
+        const bad = /(embedding|tts|image|imagen|live|audio|aqa|robotics|computer-use|native|learnlm|gemma|-exp|argon|internal|preview)/i;
+        const preferred = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-2.5-pro", "gemini-1.5-pro"];
         const score = n => {
           if (!/^gemini-/.test(n) || bad.test(n)) return -1;
+          let s = 0;
+          const prefIdx = preferred.indexOf(n);
+          if (prefIdx !== -1) s += (preferred.length - prefIdx) * 1000;
           const v = parseFloat((n.match(/gemini-(\d+(?:\.\d+)?)/) || [0, 0])[1]) || 0;
           const tier = /flash-lite/.test(n) ? 1 : /flash/.test(n) ? 3 : /pro/.test(n) ? 2 : 0;
-          return v * 100 + tier * 10 + (/preview/.test(n) ? 0 : 5) + (/latest/.test(n) ? 1 : 0);
+          s += v * 100 + tier * 10 + (/latest/.test(n) ? 1 : 0);
+          return s;
         };
         return names.map(n => [n, score(n)]).filter(x => x[1] >= 0).sort((a, b) => b[1] - a[1]).map(x => x[0]);
       }
@@ -562,13 +567,20 @@
         }
         if (!L.models.length) return show("#fee2e2", "#dc2626", "❌ Key is valid, but no usable Gemini models are available for it.");
         let lastErr = "";
-        for (const model of L.models.slice(0, 4)) {
+        let quotaWarning = "";
+        for (const model of L.models.slice(0, 6)) {
           try {
             const p = await geminiPing(apiKey, model);
             if (p.ok) { analyzerState.detectedGeminiModel = model; analyzerState.geminiModels = L.models; return show("#dcfce7", "#166534", "✅ <b>Gemini Connected!</b> Model: <code>" + escapeHtml(model) + "</code>. Ready for statement analysis."); }
             lastErr = (p.err && p.err.message) || ("HTTP " + p.status);
-            if (p.status === 429) { analyzerState.detectedGeminiModel = model; analyzerState.geminiModels = L.models; return show("#fef3c7", "#92400e", "⚠️ <b>Key is valid</b>, but Google reports a quota/rate limit right now. Wait a minute and retry, or check your usage limits.<br><small>" + escapeHtml(lastErr) + "</small>"); }
+            if (p.status === 429 || (p.err && /quota|rate limit/i.test(p.err.message))) {
+              quotaWarning = lastErr;
+              continue;
+            }
           } catch (e) { lastErr = e.message; }
+        }
+        if (quotaWarning) {
+          return show("#fef3c7", "#92400e", "⚠️ <b>Key is valid</b>, but Google reports a quota/rate limit on tested models.<br><small>" + escapeHtml(quotaWarning) + "</small>");
         }
         show("#fee2e2", "#dc2626", "❌ <b>Key accepted, but test requests failed:</b> " + escapeHtml(lastErr));
       }
