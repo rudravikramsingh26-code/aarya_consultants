@@ -165,7 +165,7 @@
     </div>
     <!-- TOOL 5: AI CAS STATEMENT & PORTFOLIO SCANNER (GEMINI API POWERED) -->
     <!-- TOOL 5: AI CAS STATEMENT & PORTFOLIO SCANNER (DUAL-ENGINE: FREE INSTANT + GEMINI AI) -->
-    <div class="tool-panel" id="panel-analyzer" role="tabpanel">
+        <div class="tool-panel" id="panel-analyzer" role="tabpanel">
       <!-- PDF.js Engine & In-Browser Tesseract OCR Engine -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
@@ -361,10 +361,12 @@
 
           <!-- Top Metric Cards -->
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-bottom: 22px;">
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;"><span style="font-size:11px;color:#64748b;font-weight:700;text-transform:uppercase;">Total Invested (Principal)</span><div id="val-invested" style="font-size:20px;font-weight:800;color:#334155;margin-top:4px;">-</div></div>
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
-              <span style="font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase;">Total Valuation</span>
+              <span style="font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase;">Current Market Value</span>
               <div id="val-total" style="font-size: 22px; font-weight: 800; color: #081b45; margin-top: 4px;">-</div>
             </div>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;"><span style="font-size:11px;color:#64748b;font-weight:700;text-transform:uppercase;">Total Gain / Loss</span><div id="val-gain" style="font-size:20px;font-weight:800;color:#16a34a;margin-top:4px;">-</div></div>
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
               <span style="font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase;">Volatility Profile</span>
               <div id="val-risk" style="font-size: 16px; font-weight: 800; color: #0284c7; margin-top: 4px;">-</div>
@@ -386,6 +388,7 @@
             <div id="chart-legend" style="display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px;"></div>
           </div>
 
+          <div id="action-plan"></div>
           <!-- AI Diagnostic Insights -->
           <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
             <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 16px; font-weight: 700; font-family: var(--font-display, 'Manrope', sans-serif);">🔍 Advisory Findings & Health Diagnostics</h4>
@@ -428,6 +431,22 @@
 
       <!-- SCANNER JAVASCRIPT LOGIC -->
       <script>
+      const AMC_REGISTRY = ["sbi","hdfc","icici prudential","icici","axis","kotak","nippon india","nippon","aditya birla sun life","aditya birla","absl","uti","mirae asset","mirae","parag parikh","ppfas","dsp","franklin templeton","franklin","tata","invesco","motilal oswal","quant","edelweiss","canara robeco","hsbc","sundaram","idfc","bandhan","baroda bnp paribas","baroda","pgim","whiteoak","navi","groww","lic","mahindra manulife","bank of india","quantum","jm financial","iti","samco","helios","360 one","trust","union","taurus"].map(x=>x.toLowerCase());
+      const ALTERNATIVES_CATALOG = (function(){
+        const a=(name,sub,desc)=>({name,sub,desc});
+        const NOTE=" Illustrative example only; compare expense ratio, rolling returns and AUM on AMFI/Value Research before switching.";
+        return {
+          large:{index:a("UTI Nifty 50 Index Fund","Large Cap Index","Very low cost, tracks the Nifty 50."+NOTE),active:a("ICICI Prudential Bluechip Fund","Large Cap Active","Established large-cap strategy."+NOTE),defensive:a("ICICI Prudential Balanced Advantage Fund","Dynamic Asset Allocation","Adjusts equity exposure to valuations."+NOTE),multi:a("ICICI Prudential Multi-Asset Fund","Multi-Asset","Equity, debt and gold in one fund."+NOTE)},
+          flexi:{index:a("Motilal Oswal Nifty 500 Index Fund","Broad Market Index","Large, mid and small caps at index cost."+NOTE),active:a("Parag Parikh Flexi Cap Fund","Flexi Cap","Diversified flexi-cap with some overseas exposure."+NOTE),defensive:a("HDFC Balanced Advantage Fund","Dynamic Asset Allocation","Lower drawdowns than pure equity."+NOTE),multi:a("Quant Multi Asset Allocation Fund","Multi-Asset","Spreads risk across asset classes."+NOTE)},
+          mid:{index:a("Motilal Oswal Nifty Midcap 150 Index Fund","Mid Cap Index","Low-cost mid-cap exposure."+NOTE),active:a("HDFC Mid-Cap Opportunities Fund","Mid Cap Active","Long-running mid-cap strategy."+NOTE),defensive:a("Flexi cap or large cap fund","Lower Volatility","Mid caps can fall hard; shift part to flexi/large cap."+NOTE),multi:a("Multi-asset fund","Diversifier","Reduces dependence on equity cycles."+NOTE)},
+          small:{index:a("Nifty Smallcap 250 Index Fund (e.g. Motilal Oswal)","Small Cap Index","Systematic small-cap exposure."+NOTE),active:a("Nippon India Small Cap Fund","Small Cap Active","Large, long-running small-cap fund."+NOTE),defensive:a("Flexi cap / large cap fund","Downside Shield","Cuts drawdown risk if small caps exceed ~15-20%."+NOTE),multi:a("Balanced Advantage / Multi-asset fund","Risk Control","Moves part of the risk into stable assets."+NOTE)},
+          sectoral:{index:a("Nifty 500 Index Fund","Diversified Replacement","Removes single-sector risk."+NOTE),active:a("Parag Parikh Flexi Cap Fund","Diversified Active","Broad exposure instead of one theme."+NOTE),defensive:a("Balanced Advantage Fund","Defensive","Smoother ride than a sector bet."+NOTE),multi:a("Multi-asset fund","Diversifier","Not tied to one sector's cycle."+NOTE)},
+          elss:{index:a("Nifty 50 / Nifty 500 index ELSS (if available)","Tax Saver Passive","Check lock-in and cost."+NOTE),active:a("Mirae Asset ELSS Tax Saver Fund","ELSS Active","3-year lock-in, 80C (old regime only)."+NOTE),defensive:a("PPF / EPF","Tax-Saving Debt","Safer 80C option."+NOTE),multi:a("NPS (extra 80CCD(1B))","Tax-Smart","Extra deduction in old tax regime."+NOTE)},
+          hybrid:{index:a("Nifty 50 Index + liquid fund mix","DIY Hybrid","Lower cost, you control the split."+NOTE),active:a("ICICI Prudential Equity & Debt Fund","Aggressive Hybrid","Equity-led hybrid."+NOTE),defensive:a("HDFC Balanced Advantage Fund","Dynamic Asset Allocation","Valuation-driven allocation."+NOTE),multi:a("ICICI Prudential Multi-Asset Fund","Multi-Asset","Adds gold and debt."+NOTE)},
+          debt:{index:a("Nifty SDL / Target Maturity index fund","Debt Index","Low cost, predictable maturity."+NOTE),active:a("HDFC Corporate Bond Fund","Corporate Bond","Accrual-focused; check credit quality."+NOTE),defensive:a("Liquid / Overnight fund","Emergency Fund","Highest safety within MFs."+NOTE),multi:a("Arbitrage fund","Equity-taxed Parking","Short-term parking; check tax."+NOTE)}
+        };
+      })();
+
       (function() {
         if (window.pdfjsLib) {
           pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
@@ -455,6 +474,12 @@
             }
           });
         }
+
+        try {
+          const savedKey = (localStorage.getItem("aarya_gemini_api_key") || "").trim().replace(/^["']|["']$/g, "");
+          const apiKeyInput = document.getElementById("gemini-api-key");
+          if (savedKey && apiKeyInput && !apiKeyInput.value) apiKeyInput.value = savedKey;
+        } catch (e) {}
       })();
 
       const analyzerState = {
@@ -493,122 +518,59 @@
         if (link) link.style.display = "block";
       }
 
+
+      const GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta";
+      async function geminiListModels(apiKey) {
+        let r;
+        try { r = await fetch(GEMINI_BASE + "/models?pageSize=1000", { headers: { "x-goog-api-key": apiKey } }); }
+        catch (e) { return { network: true, msg: e.message }; }
+        let j = {}; try { j = await r.json(); } catch (e) {}
+        if (j.error) return { error: j.error, status: r.status };
+        const names = (j.models || []).filter(m => (m.supportedGenerationMethods || []).includes("generateContent")).map(m => m.name.replace(/^models\//, ""));
+        return { models: geminiRank(names) };
+      }
+      function geminiRank(names) {
+        const bad = /(embedding|tts|image|imagen|live|audio|aqa|robotics|computer-use|native|learnlm|gemma|-exp|preview-\d{2}-\d{2})/i;
+        const score = n => {
+          if (!/^gemini-/.test(n) || bad.test(n)) return -1;
+          const v = parseFloat((n.match(/gemini-(\d+(?:\.\d+)?)/) || [0, 0])[1]) || 0;
+          const tier = /flash-lite/.test(n) ? 1 : /flash/.test(n) ? 3 : /pro/.test(n) ? 2 : 0;
+          return v * 100 + tier * 10 + (/preview/.test(n) ? 0 : 5) + (/latest/.test(n) ? 1 : 0);
+        };
+        return names.map(n => [n, score(n)]).filter(x => x[1] >= 0).sort((a, b) => b[1] - a[1]).map(x => x[0]);
+      }
+      async function geminiPing(apiKey, model) {
+        const r = await fetch(GEMINI_BASE + "/models/" + model + ":generateContent", { method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey }, body: JSON.stringify({ contents: [{ parts: [{ text: "Reply with OK" }] }], generationConfig: { maxOutputTokens: 64 } }) });
+        const j = await r.json().catch(() => ({}));
+        return { ok: !!(j.candidates && j.candidates.length), err: j.error, status: r.status };
+      }
       async function testGeminiKey() {
-        const apiKeyInput = document.getElementById("gemini-api-key");
-        const apiKey = (apiKeyInput.value || "").trim().replace(/^["']|["']$/g, "");
-        const resultEl = document.getElementById("key-test-result");
-
-        if (!apiKey) {
-          resultEl.style.display = "block";
-          resultEl.style.background = "#fee2e2";
-          resultEl.style.color = "#dc2626";
-          resultEl.innerHTML = "⚠️ Please paste your Google Gemini API key first (starts with <code>AIzaSy...</code>).";
-          return;
+        const apiKey = (document.getElementById("gemini-api-key").value || "").trim().replace(/^["']|["']$/g, "").replace(/\s+/g, "");
+        const el = document.getElementById("key-test-result");
+        const show = (bg, col, html) => { el.style.display = "block"; el.style.background = bg; el.style.color = col; el.innerHTML = html; };
+        if (!apiKey) return show("#fee2e2", "#dc2626", "⚠️ Please paste your Gemini API key first (starts with <code>AIza</code>).");
+        try { localStorage.setItem("aarya_gemini_api_key", apiKey); } catch (e) {}
+        show("#dbeafe", "#1d4ed8", "⏳ Connecting to Google AI Studio...");
+        const L = await geminiListModels(apiKey);
+        if (L.network) return show("#fee2e2", "#dc2626", "❌ <b>Cannot reach Google:</b> " + escapeHtml(L.msg) + "<br><small>This is a network problem, not your key. Check internet, turn off ad-blocker/VPN for this page, and open the page from your normal website (https), not a restricted preview.</small>");
+        if (L.error) {
+          const m = (L.error.message || "") + " " + (L.error.status || "");
+          if (/api key not valid|API_KEY_INVALID/i.test(m)) return show("#fee2e2", "#dc2626", "❌ <b>Google says this key is invalid.</b> Copy the full key again from <a href='https://aistudio.google.com/apikey' target='_blank'>AI Studio</a> (no spaces).");
+          if (/referer|referrer|ip address|restriction/i.test(m)) return show("#fee2e2", "#dc2626", "❌ <b>Key is restricted:</b> its HTTP-referrer/IP restriction blocks this website. In Google Cloud Console, allow this site's domain or remove the restriction.<br><small>" + escapeHtml(L.error.message || "") + "</small>");
+          if (/permission|disabled|not enabled/i.test(m)) return show("#fee2e2", "#dc2626", "❌ <b>Gemini API not enabled</b> for this key's project. Create a new key at <a href='https://aistudio.google.com/apikey' target='_blank'>AI Studio</a>.<br><small>" + escapeHtml(L.error.message || "") + "</small>");
+          return show("#fee2e2", "#dc2626", "❌ <b>Google error " + (L.status || "") + ":</b> " + escapeHtml(L.error.message || "Unknown"));
         }
-
-        // Save key to browser local storage so user never has to re-type it
-        try { localStorage.setItem("aarya_gemini_api_key", apiKey); } catch(e) {}
-
-        resultEl.style.display = "block";
-        resultEl.style.background = "#dbeafe";
-        resultEl.style.color = "#1d4ed8";
-        resultEl.innerHTML = "⏳ Connecting to Google AI Studio & discovering supported Vision models...";
-
-        let connectedModel = null;
-        let lastErrorMsg = "";
-
-        // Step 1: Query ListModels API to discover active models for this key
-        try {
-          const listResp = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + encodeURIComponent(apiKey), {
-            headers: { "x-goog-api-key": apiKey }
-          });
-          const listData = await listResp.json();
-
-          if (listData.error) {
-            // STOP immediately on API error - do NOT probe further models to avoid confusing error messages
-            const errMsg = listData.error.message || listData.error.status || "Unknown error";
-            resultEl.style.background = "#fee2e2";
-            resultEl.style.color = "#dc2626";
-            if (errMsg.toLowerCase().includes("api key not valid") || listData.error.status === "INVALID_ARGUMENT") {
-              resultEl.innerHTML = "❌ <b>Invalid API Key:</b> Google rejected this key. Please make sure you copied the entire key starting with <code>AIzaSy...</code> from <a href='https://aistudio.google.com/apikey' target='_blank' style='color:#b91c1c;font-weight:700;'>aistudio.google.com/apikey</a>.";
-            } else if (errMsg.toLowerCase().includes("permission") || errMsg.toLowerCase().includes("disabled") || listData.error.status === "PERMISSION_DENIED") {
-              resultEl.innerHTML = "❌ <b>Generative Language API Disabled:</b> This key's project does not have the Gemini API enabled. Please visit <a href='https://aistudio.google.com/apikey' target='_blank' style='color:#b91c1c;font-weight:700;'>aistudio.google.com/apikey</a> and create a fresh key in a new project.";
-            } else {
-              resultEl.innerHTML = "❌ <b>Google AI Error:</b> " + escapeHtml(errMsg) + " <br><small>Get a new key at <a href='https://aistudio.google.com/apikey' target='_blank' style='color:#b91c1c;font-weight:700;'>aistudio.google.com/apikey</a>.</small>";
-            }
-            return;
-          }
-
-          if (listData.models && Array.isArray(listData.models)) {
-            const activeModels = listData.models
-              .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes("generateContent"))
-              .map(m => m.name.replace(/^models\//, ""));
-
-            const preferenceList = [
-              "gemini-3.8-flash",
-              "gemini-3.5-flash-lite",
-              "gemini-2.0-flash",
-              "gemini-1.5-flash",
-              "gemini-2.5-flash"
-            ];
-
-            for (const pref of preferenceList) {
-              if (activeModels.includes(pref)) {
-                connectedModel = pref;
-                break;
-              }
-            }
-
-            if (!connectedModel && activeModels.length > 0) {
-              connectedModel = activeModels.find(m => m.includes("flash")) ||
-                               activeModels.find(m => m.startsWith("gemini-")) ||
-                               activeModels[0];
-            }
-          }
-        } catch (e) {
-          console.warn("ListModels discovery error:", e);
-          lastErrorMsg = e.message;
+        if (!L.models.length) return show("#fee2e2", "#dc2626", "❌ Key is valid, but no usable Gemini models are available for it.");
+        let lastErr = "";
+        for (const model of L.models.slice(0, 4)) {
+          try {
+            const p = await geminiPing(apiKey, model);
+            if (p.ok) { analyzerState.detectedGeminiModel = model; analyzerState.geminiModels = L.models; return show("#dcfce7", "#166534", "✅ <b>Gemini Connected!</b> Model: <code>" + escapeHtml(model) + "</code>. Ready for statement analysis."); }
+            lastErr = (p.err && p.err.message) || ("HTTP " + p.status);
+            if (p.status === 429) { analyzerState.detectedGeminiModel = model; analyzerState.geminiModels = L.models; return show("#fef3c7", "#92400e", "⚠️ <b>Key is valid</b>, but Google reports a quota/rate limit right now. Wait a minute and retry, or check your usage limits.<br><small>" + escapeHtml(lastErr) + "</small>"); }
+          } catch (e) { lastErr = e.message; }
         }
-
-        // Step 2: Fallback probe if ListModels was blocked by ad-blocker or proxy
-        if (!connectedModel) {
-          const probeList = ["gemini-3.8-flash", "gemini-2.0-flash", "gemini-1.5-flash"];
-          for (const model of probeList) {
-            try {
-              const resp = await fetch("https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + encodeURIComponent(apiKey), {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  "x-goog-api-key": apiKey
-                },
-                body: JSON.stringify({ contents: [{ parts: [{ text: "ping" }] }] })
-              });
-              const resJson = await resp.json();
-              if (resJson.candidates && resJson.candidates.length > 0) {
-                connectedModel = model;
-                break;
-              } else if (resJson.error) {
-                lastErrorMsg = resJson.error.message || ("Error " + resJson.error.code);
-                if (resJson.error.status === "INVALID_ARGUMENT" || resJson.error.status === "PERMISSION_DENIED") {
-                  break;
-                }
-              }
-            } catch (err) {
-              lastErrorMsg = err.message;
-            }
-          }
-        }
-
-        if (connectedModel) {
-          analyzerState.detectedGeminiModel = connectedModel;
-          resultEl.style.background = "#dcfce7";
-          resultEl.style.color = "#166534";
-          resultEl.innerHTML = "✅ <b>Gemini Vision Connected!</b> Active Model: <code>" + escapeHtml(connectedModel) + "</code>. Ready for statement analysis.";
-        } else {
-          resultEl.style.background = "#fee2e2";
-          resultEl.style.color = "#dc2626";
-          resultEl.innerHTML = "❌ <b>Key Connection Failed:</b> " + escapeHtml(lastErrorMsg || "Could not reach Gemini service.") + "<br><small style='color:#7f1d1d;'>Please ensure your key is active at <a href='https://aistudio.google.com/apikey' target='_blank' style='color:#b91c1c;font-weight:700;'>aistudio.google.com/apikey</a>.</small>";
-        }
+        show("#fee2e2", "#dc2626", "❌ <b>Key accepted, but test requests failed:</b> " + escapeHtml(lastErr));
       }
 
       // Optimize image resolution & quality to keep payload fast and within Gemini API limits
@@ -850,7 +812,7 @@
         analyzerState.pages.forEach((p, idx) => {
           const card = document.createElement("div");
           card.style.cssText = "background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 12px; text-align: center; position: relative;";
-          card.innerHTML = '<div style="position: absolute; top: 8px; left: 8px; background: #081b45; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px;">Page ' + (idx + 1) + '</div><button type="button" onclick="removeUploadedPage(' + idx + ')" title="Remove page" style="position: absolute; top: 8px; right: 8px; background: #fee2e2; color: #dc2626; border: none; width: 22px; height: 22px; border-radius: 50%; font-size: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button><img src="' + p.dataUrl + '" alt="Page ' + (idx + 1) + '" style="max-height: 120px; width: auto; max-width: 100%; border-radius: 6px; border: 1px solid #e2e8f0; margin-top: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);"><div style="margin-top: 8px; font-size: 12px; font-weight: 600; color: #334155; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="' + p.name + '">' + p.name + '</div>';
+          card.innerHTML = '<div style="position: absolute; top: 8px; left: 8px; background: #081b45; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px;">Page ' + (idx + 1) + '</div><button type="button" onclick="removeUploadedPage(' + idx + ')" title="Remove page" style="position: absolute; top: 8px; right: 8px; background: #fee2e2; color: #dc2626; border: none; width: 22px; height: 22px; border-radius: 50%; font-size: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button><img src="' + p.dataUrl + '" alt="Page ' + (idx + 1) + '" style="max-height: 120px; width: auto; max-width: 100%; border-radius: 6px; border: 1px solid #e2e8f0; margin-top: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);"><div style="margin-top: 8px; font-size: 12px; font-weight: 600; color: #334155; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="' + escapeHtml(p.name) + '">' + escapeHtml(p.name) + '</div>';
           container.appendChild(card);
         });
       }
@@ -1092,6 +1054,14 @@
             }
           }
 
+          if (extractedUnits > 0 && extractedNav > 0) {
+            const calc = extractedUnits * extractedNav;
+            if (!extractedValuation || Math.abs(extractedValuation - calc) / calc > 0.02) extractedValuation = calc;
+          }
+          let extractedInvested = 0;
+          const invMatch = blockText.match(/(?:cost value|total cost|purchase cost|amount invested|invested amount|invested value)\s*(?:\(inr\))?\s*[:\-\s]\s*(?:inr|rs\.?|₹)?\s*([\d,]+(?:\.\d{1,2})?)/i);
+          if (invMatch) extractedInvested = parseFloat(invMatch[1].replace(/,/g, ""));
+
           if (extractedValuation && extractedValuation > 100) {
             let cleanName = line.replace(/^(?:Folio\s*[:\w\/\-]+\s+|[0-9\/\-]{4,}\s+)/i, "");
             cleanName = cleanName.split(/INR|CAMS|KFINTECH|\d{2}-[A-Za-z]{3}-\d{4}|Folio\s*No/i)[0];
@@ -1103,6 +1073,7 @@
                 detectedHoldings.push({
                   name: cleanName,
                   value: Math.round(extractedValuation),
+                  invested: extractedInvested,
                   units: extractedUnits,
                   nav: extractedNav,
                   category: classifyFundSmart(cleanName)
@@ -1144,7 +1115,7 @@
 
           let activeModels = [];
           try {
-            const listResp = await fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + encodeURIComponent(apiKey), {
+            const listResp = await fetch("https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000&key=" + encodeURIComponent(apiKey), {
               headers: { "x-goog-api-key": apiKey }
             });
             const listData = await listResp.json();
@@ -1172,29 +1143,12 @@
             console.warn("ListModels query error:", listErr);
           }
 
-          const preferredCandidates = [
-            "gemini-3.8-flash",
-            "gemini-3.5-flash-lite",
-            "gemini-2.0-flash",
-            "gemini-1.5-flash",
-            "gemini-2.5-flash"
-          ];
-
-          let modelsToAttempt = [];
-          if (activeModels.length > 0) {
-            for (const cand of preferredCandidates) {
-              if (activeModels.includes(cand)) {
-                modelsToAttempt.push(cand);
-              }
-            }
-            if (modelsToAttempt.length === 0) {
-              modelsToAttempt = activeModels.filter(m => m.includes("flash") || m.startsWith("gemini-"));
-            }
+          let modelsToAttempt = geminiRank(activeModels);
+          if (analyzerState.detectedGeminiModel && modelsToAttempt.includes(analyzerState.detectedGeminiModel)) {
+            modelsToAttempt = [analyzerState.detectedGeminiModel].concat(modelsToAttempt.filter(m => m !== analyzerState.detectedGeminiModel));
           }
-
-          if (modelsToAttempt.length === 0) {
-            modelsToAttempt = ["gemini-3.8-flash", "gemini-2.0-flash", "gemini-1.5-flash"];
-          }
+          modelsToAttempt = modelsToAttempt.slice(0, 4);
+          if (modelsToAttempt.length === 0) throw new Error("No usable Gemini model found for this key. Click 'Test & Connect' to see the exact reason.");
 
           const targetModel = modelsToAttempt[0];
           analyzerState.detectedGeminiModel = targetModel;
@@ -1281,7 +1235,7 @@ Return a JSON array of objects:
 
           for (let mIdx = 0; mIdx < modelsToAttempt.length; mIdx++) {
             const currentModel = modelsToAttempt[mIdx];
-            const isGemini3 = currentModel.includes("3.8") || currentModel.includes("3.5");
+            const isGemini3 = /^gemini-3/.test(currentModel);
             const modelLabel = isGemini3 ? currentModel + " (Thinking: Medium)" : currentModel;
 
             statusText.innerText = "Analyzing with " + modelLabel + " (" + (mIdx + 1) + " of " + modelsToAttempt.length + ")...";
@@ -1988,9 +1942,41 @@ Return a JSON array of objects:
         document.getElementById("val-insights").innerHTML = "<p style='margin: 0 0 10px 0;'>" + insights.join("</p><p style='margin: 0 0 10px 0;'>") + "</p>";
 
         renderFundAlternativesSection(holdingsList, totalVal);
+        renderActionPlan(holdingsList, totalVal, totalInv);
 
         document.getElementById("audit-results-area").style.display = "block";
         document.getElementById("audit-results-area").scrollIntoView({ behavior: 'smooth' });
+      }
+
+
+      function verdictFor(h, total, catCount) {
+        const w = h.value / total * 100, nm = h.name.toLowerCase();
+        const ret = h.invested > 0 ? (h.value - h.invested) / h.invested * 100 : null;
+        let act = "HOLD", col = "#166534", bg = "#dcfce7", why = [];
+        const bump = (a, c, b) => { const rank = {HOLD:0, REVIEW:1, REDUCE:2, SWITCH:2}; if (rank[a] >= rank[act]) { act = a; col = c; bg = b; } };
+        if (/\bregular\b/.test(nm) && !/direct/.test(nm)) { bump("SWITCH","#b91c1c","#fee2e2"); why.push("Regular plan pays ongoing commission, typically 0.5-1% a year more than Direct. Consider moving to the Direct plan (check exit load and capital gains tax first)."); }
+        if (/idcw|dividend|payout/.test(nm)) { bump("REVIEW","#b45309","#fef3c7"); why.push("IDCW/dividend option: payouts are taxed at your slab rate and reduce NAV. Growth is usually more tax-efficient."); }
+        if (w >= 30) { bump("REDUCE","#b91c1c","#fee2e2"); why.push("It is " + w.toFixed(0) + "% of your portfolio. Trim toward 20-25% to limit single-fund risk."); }
+        if (h.category === "small" && w > 15) { bump("REDUCE","#b91c1c","#fee2e2"); why.push("Small-cap at " + w.toFixed(0) + "% is aggressive; 10-15% per small-cap fund is usually enough."); }
+        if (h.category === "sectoral" && w > 10) { bump("REDUCE","#b91c1c","#fee2e2"); why.push("Sector/thematic fund at " + w.toFixed(0) + "% is cyclical; keep such bets small (about 10% total)."); }
+        if (catCount[h.category] > 1 && ["large","flexi","mid","small"].includes(h.category)) { bump("REVIEW","#b45309","#fef3c7"); why.push("You hold " + catCount[h.category] + " funds in the same category; they hold many of the same stocks. Keep the best one and merge the rest."); }
+        if (ret !== null && ret < 0) { bump("REVIEW","#b45309","#fef3c7"); why.push("Currently " + ret.toFixed(1) + "% below cost. Compare against its category benchmark over 3 years before deciding; a loss alone is not a reason to sell."); }
+        if (h.units > 0 && h.nav > 0 && Math.abs(h.units * h.nav - h.value) / h.value > 0.03) { why.push("Data check: units x NAV does not match the value entered. Please verify this row."); }
+        if (!why.length) why.push(ret !== null ? "No red flags. Return since cost: " + (ret >= 0 ? "+" : "") + ret.toFixed(1) + "% (absolute, not annualised)." : "No red flags found. Add invested amount for a return check.");
+        return { act, col, bg, why, w, ret };
+      }
+      function renderActionPlan(list, total, inv) {
+        const catCount = {}; list.forEach(h => catCount[h.category] = (catCount[h.category] || 0) + 1);
+        const missing = list.filter(h => !(h.invested > 0)).length;
+        const rs = n => "₹" + Math.round(n).toLocaleString("en-IN");
+        let rows = list.map(h => verdictFor(h, total, catCount)).map((v, i) => '<tr style="border-top:1px solid #e2e8f0;vertical-align:top;"><td style="padding:10px;font-weight:700;color:#081b45;">' + escapeHtml(list[i].name) + '<div style="font-size:11px;color:#64748b;font-weight:600;">' + rs(list[i].value) + ' &middot; ' + v.w.toFixed(0) + '%' + (v.ret !== null ? ' &middot; ' + (v.ret >= 0 ? '+' : '') + v.ret.toFixed(1) + '%' : '') + '</div></td><td style="padding:10px;"><span style="background:' + v.bg + ';color:' + v.col + ';font-weight:800;font-size:11px;padding:3px 9px;border-radius:9999px;">' + v.act + '</span></td><td style="padding:10px;font-size:12.5px;color:#334155;line-height:1.5;">' + v.why.join("<br>") + '</td></tr>').join("");
+        let notes = "";
+        if (missing) notes += '<p style="margin:8px 0 0;font-size:12px;color:#b45309;">Invested amount is missing for ' + missing + ' fund(s), so total gain/loss only counts funds where it is known. Fill the Invested column for an exact figure.</p>';
+        const knownInv = list.filter(h => h.invested > 0), kv = knownInv.reduce((a, h) => a + h.value, 0), ki = knownInv.reduce((a, h) => a + h.invested, 0);
+        const g = document.getElementById("val-gain"), iv = document.getElementById("val-invested");
+        if (iv) iv.innerText = ki > 0 ? rs(ki) + (missing ? " *" : "") : "Not provided";
+        if (g) { if (ki > 0) { const d = kv - ki, p = d / ki * 100; g.innerText = (d >= 0 ? "+" : "-") + rs(Math.abs(d)) + " (" + (d >= 0 ? "+" : "") + p.toFixed(1) + "%)"; g.style.color = d >= 0 ? "#16a34a" : "#dc2626"; } else { g.innerText = "-"; } }
+        document.getElementById("action-plan").innerHTML = '<div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px;margin-bottom:22px;"><h4 style="margin:0 0 4px;font-size:16px;font-weight:800;color:#081b45;">Recommendation: what to do with each fund</h4><p style="margin:0 0 10px;font-size:12px;color:#64748b;">Rule-based review from category, weight, plan type and return. General education, not personalised investment advice; confirm with a SEBI-registered advisor before acting.</p><div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;min-width:560px;"><tbody>' + rows + '</tbody></table></div>' + notes + '</div>';
       }
 
       function renderFundAlternativesSection(holdings, totalVal) {
@@ -2090,6 +2076,7 @@ Return a JSON array of objects:
       }
       </script>
     </div>
+  </div>
 
     <div class="tool-panel active" id="panel-sip" role="tabpanel">
       <div class="tool-card">
