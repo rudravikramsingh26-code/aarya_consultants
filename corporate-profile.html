@@ -135,6 +135,116 @@
       image-rendering: crisp-edges;
     }
 
+    
+    /* Executive Profile Stat & Competency Strips to fill blank space */
+    .profile-meta-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+      flex-shrink: 0;
+    }
+    .profile-meta-card {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-left: 3.5px solid var(--primary-blue);
+      border-radius: 6px;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .profile-meta-card strong {
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary-blue);
+      font-weight: 800;
+    }
+    .profile-meta-card span {
+      font-size: 11.8px;
+      color: #0f172a;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .credential-insight-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-top: 3px solid var(--primary-blue);
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .credential-insight-item h5 {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .credential-insight-item p {
+      font-size: 11.5px;
+      color: #1e293b;
+      line-height: 1.45;
+      font-weight: 550;
+    }
+
+    
+    /* Pan-India Operational Presence Badges */
+    .city-pill {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #0f172a;
+      font-size: 11.2px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.01em;
+    }
+    .pan-india-strip {
+      background: linear-gradient(135deg, #071d58 0%, #0e3b9e 100%);
+      color: #ffffff;
+      border-radius: 6px;
+      padding: 8px 14px;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 4px 12px rgba(8, 27, 69, 0.12);
+      flex-shrink: 0;
+    }
+    .pan-india-label {
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .pan-india-cities {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #f8fafc;
+      text-align: right;
+    }
+
     /* =========================================================
        TOP FLOATING COMMAND BAR (WEB VIEW ONLY)
        ========================================================= */
@@ -1044,7 +1154,7 @@
       <div class="cover-group-title">AARYA GROUP OF COMPANIES</div>
 
       <div class="cover-cities-bar">
-        KOLKATA &nbsp;|&nbsp; MUMBAI &nbsp;|&nbsp; BENGALURU &nbsp;|&nbsp; GUWAHATI &nbsp;|&nbsp; RANCHI &nbsp;|&nbsp; KALINGANAGAR &nbsp;|&nbsp; SILIGURI &nbsp;|&nbsp; CHANDANNAGAR
+        KOLKATA (HQ) &nbsp;·&nbsp; GURUGRAM / NCR &nbsp;·&nbsp; MUMBAI &nbsp;·&nbsp; BENGALURU &nbsp;·&nbsp; NOIDA &nbsp;·&nbsp; GUWAHATI &nbsp;·&nbsp; RANCHI &nbsp;·&nbsp; KALINGANAGAR &nbsp;·&nbsp; SILIGURI &nbsp;·&nbsp; CHANDANNAGAR &nbsp;·&nbsp; LILUAH
       </div>
     </section>
 
@@ -1058,26 +1168,26 @@
           <div>
             <h3>Journey started in 2000….</h3>
             <div class="reg-field">
-              <strong>MSME Udyog Aadhaar Number</strong>
-              WB10D0027936
+              <strong>Head Office (Registered)</strong>
+              73C, Shyama Prasad Mukherjee Road, Beside Kalighat Post Office, Kolkata 700 026, West Bengal, India<br>
+              Phone: +91 33 2264 5505 · +91 33 3552 5603
             </div>
             <div class="reg-field">
-              <strong>UDYAM Registration Number</strong>
-              UDYAM-WB-10-0003535
+              <strong>Corporate Advisory Centre</strong>
+              C-180, Survey Park, Beside Axis Bank, Kolkata 700 075<br>
+              Mobile: +91 98366 55005 · +91 90386 20055
             </div>
             <div class="reg-field">
-              <strong>GST Number</strong>
+              <strong>MSME &amp; UDYAM Numbers</strong>
+              Udyog: WB10D0027936 · Udyam: UDYAM-WB-10-0003535
+            </div>
+            <div class="reg-field">
+              <strong>GSTIN Registration</strong>
               19ALAPG2727M1Z0
             </div>
             <div class="reg-field">
-              <strong>Registered Address</strong>
-              73C, Shyama Prasad Mukherjee Road, Beside Kalighat Post Office, Kolkata 700 026, West Bengal, India<br>
-              Phone no.: +91 33 2264 5505, +91 33 3552 5603
-            </div>
-            <div class="reg-field">
-              <strong>Corporate Office</strong>
-              C-180, Survey Park, Beside Axis Bank, Kolkata-700 075<br>
-              Mobile: +91 98366 55005, +91 82403 97373
+              <strong>Gurugram / NCR Office</strong>
+              Regus, Welldone Tech Park, Sohna Rd, Sector 49, Gurugram
             </div>
           </div>
           <div style="border-top: 1px solid rgba(255,255,255,0.22); padding-top: 8px;">
@@ -1102,6 +1212,26 @@
                 <li style="font-size:13.8px;">We have client centric approach and a robust review and monitoring process to deliver quality service to the clients.</li>
                 <li style="font-size:13.8px;">Our philosophy is ‘Let’s Grow Together’. We believe in the overall growth in health, wealth and happiness for us as well as our clients. We have more than 2000 clients in India and abroad who have reposed faith in us and avail our seamless services.</li>
               </ul>
+
+              <!-- Operational Presence Badges -->
+              <div style="margin-top:14px; padding-top:12px; border-top:1.5px solid #cbd5e1;">
+                <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:var(--primary-blue); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+                  <span>📍 Pan-India Operational Presence &amp; Regional Network Desks:</span>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                  <span class="city-pill">🏛️ Kolkata (Head Office)</span>
+                  <span class="city-pill">🏢 Gurugram (NCR Desk)</span>
+                  <span class="city-pill">🏙️ Mumbai</span>
+                  <span class="city-pill">🏙️ Bengaluru</span>
+                  <span class="city-pill">🏢 Noida (Delhi NCR)</span>
+                  <span class="city-pill">🌄 Guwahati</span>
+                  <span class="city-pill">📍 Ranchi</span>
+                  <span class="city-pill">🏭 Kalinganagar</span>
+                  <span class="city-pill">🏔️ Siliguri</span>
+                  <span class="city-pill">📍 Chandannagar</span>
+                  <span class="city-pill">📍 Liluah</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -1160,7 +1290,7 @@
 
       <div class="slide-banner">
         <h2>Aarya Group of Companies</h2>
-        <p>Multi-venture enterprise spanning financial advisory, legal &amp; estate planning, hospitality, and interior design</p>
+        <p>Multi-venture enterprise spanning financial advisory, legal &amp; estate planning, healthcare &amp; elder care, hospitality, and design</p>
       </div>
 
       <div class="slide-body">
@@ -1212,9 +1342,9 @@
 
             <div class="branch-col">
               <div class="branch-drop"></div>
-              <div class="branch-card">
-                <div class="branch-name">HOTEL RELAX N ENJOY</div>
-                <div class="branch-sub">(Guest House at Puri, Swargadwar Beach)</div>
+              <div class="branch-card" style="background:#fff7ed; border-top-color:#ea580c;">
+                <div class="branch-name" style="color:#c2410c;">SAMMAN OLDERCARE</div>
+                <div class="branch-sub">(Comprehensive Home Healthcare, Intellectual Companionship, Daily Assistance &amp; Fiduciary Senior Care)</div>
               </div>
             </div>
 
@@ -1309,26 +1439,45 @@
         </div>
       </div>
 
-      <div class="slide-body top-aligned">
-        <div class="two-col-grid" style="height:100%;">
+            <div class="slide-body top-aligned">
+        <div class="two-col-grid">
           <div class="profile-col-box">
-            <div class="col-title">Profile</div>
-            <p style="font-size:14px; font-weight:800; color:var(--primary-blue); margin-bottom:12px;">
-              Chief of Innovation and New Business Strategy
+            <div class="col-title">Profile &amp; Executive Mandate</div>
+            <p style="font-size:14.5px; font-weight:800; color:var(--primary-blue); margin-bottom:10px;">
+              Chief of Innovation and New Business Strategy · Partner, Aarya Group
             </p>
-            <p style="font-size:13.5px; color:var(--text-body); line-height:1.7;">
-              The youngest entrepreneur in our team, has successfully implemented innovative ideas towards the successful growth of the group. His strategy towards client acquisition and customer service has created many satisfied clients for our firm.
+            <p style="font-size:13.2px; color:var(--text-body); line-height:1.68; margin-bottom:12px;">
+              Aarya Gupta directs innovation, technology adoption, and next-generation business expansion across Aarya Group of Companies. He has been instrumental in modernizing institutional advisory workflows, bridging classic fiduciary stewardship with modern digital systems.
+            </p>
+            <p style="font-size:13px; color:var(--text-body); line-height:1.65;">
+              His strategic roadmap integrates proprietary portfolio screening tools, streamlined digital client onboarding, and bespoke asset preservation structures designed specifically for entrepreneurs, modern corporate executives, and global NRI families.
             </p>
           </div>
 
           <div class="profile-col-box">
-            <div class="col-title">Professional Expertise</div>
-            <ul class="bullet-list" style="gap:14px;">
-              <li>Aarya, a young budding entrepreneur, has been impressing clients by his new-age innovative ideas of business expansion.</li>
-              <li>He emphasises optimum use of technology and artificial intelligence in curating efficient solutions for providing the best service standards to our clients.</li>
-              <li>He collaborates with other team members to find new strategies for client service and customer delight.</li>
-              <li>He is a Food Connoisseur himself and avid perfectionist and always emphasises to do the work with zero error and implementation of “First Time Right Concept”.</li>
+            <div class="col-title">Professional Expertise &amp; Focus</div>
+            <ul class="bullet-list" style="gap:10px;">
+              <li><strong>Digital Innovation &amp; Technology:</strong> Spearheading the integration of analytics, digital dashboards, and AI-assisted financial screening to deliver transparency and precision.</li>
+              <li><strong>Next-Gen Wealth Architecture:</strong> Formulating customized multi-generational wealth continuity and succession strategies for modern high-net-worth business dynasties.</li>
+              <li><strong>Zero-Defect "First Time Right" Concept:</strong> Implementing strict operational standards across audit documentation, portfolio allocations, and client reporting.</li>
+              <li><strong>Strategic Cross-Venture Alliances:</strong> Fostering collaboration across corporate advisory, legal planning, elder healthcare (Samman Oldercare), and lifestyle ventures.</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Strategic Innovation Impact Strip to fill space -->
+        <div class="profile-meta-strip">
+          <div class="profile-meta-card">
+            <strong>Digital Wealth Strategy</strong>
+            <span>AI-augmented analytics, portfolio rebalancing &amp; digital family office dashboards</span>
+          </div>
+          <div class="profile-meta-card">
+            <strong>Operational Excellence</strong>
+            <span>"First Time Right" zero-defect protocol across compliance and client filings</span>
+          </div>
+          <div class="profile-meta-card">
+            <strong>Cross-Venture Expansion</strong>
+            <span>Strategic alignment across wealth advisory, elder healthcare &amp; corporate governance</span>
           </div>
         </div>
       </div>
@@ -1339,46 +1488,66 @@
       </div>
     </section>
 
-    <!-- ==================== SLIDE 07: BUSINESS PARTNER (ANAND K GUPTA) ==================== -->
+    <!-- ==================== SLIDE 07: BUSINESS PARTNER (SWAPNIL YADAV) ==================== -->
     <section class="slide-page">
       <div class="slide-num-tab">07</div>
 
       <div class="profile-header-banner">
         <div class="profile-id-left">
-          <div class="profile-avatar">AKG</div>
+          <div class="profile-avatar">
+            <img src="images/swapnil-linkedin-pic-1788939055400-59b38e33.webp" alt="Swapnil Yadav">
+          </div>
           <div>
             <h2>Business Partner’s Profile</h2>
-            <p style="font-size:12px; color:#cbd5e1;">Business Partner &amp; Chief Advisor</p>
+            <p style="font-size:12px; color:#cbd5e1;">Chief of Growth &amp; Strategy · Operations Director</p>
           </div>
         </div>
         <div class="profile-contact-meta">
-          <strong>Anand K Gupta</strong>
-          Tel: +91 33 2264 5505, +91 33 3552 5603<br>
-          Mobile: +91 90641 28235<br>
-          Email: anand.gupta@aaryaconsultants.com
+          <strong>Swapnil Yadav</strong>
+          Mobile: +91 90386 20055<br>
+          Email: swapnil.yadav@aaryaconsultants.com
         </div>
       </div>
 
       <div class="slide-body top-aligned">
-        <div class="two-col-grid" style="height:100%;">
+        <div class="two-col-grid">
           <div class="profile-col-box">
-            <div class="col-title">Profile</div>
-            <ul class="bullet-list">
-              <li>Anand, a NISM’s Level VA - Financial Consultant, is Business Partner and Chief Advisor of Aarya Consultants. By his dynamic approach and excellent decision-making capabilities, he has led the organization towards the growth pathway. Having more than 10 years of professional experience in client service and Client Relationship Management (CRM) with HDFC Bank as Branch Manager, he has provided solutions to a wide range of Indian and NRI clients.</li>
-              <li>Anand is a Chartered Inheritance &amp; Succession Planner from American Academy of Financial Management. He is Member of the Million Dollar Round Table (MDRT), the world’s largest and prestigious Association of Finance Professionals, based in US.</li>
-              <li>He has participated in various training programs in several countries of the world on Financial Planning, Wealth Management, client service and soft skills etc.</li>
-              <li>Anand has been recognized with numerous awards and citations in various parts of the world for committed and excellent client service.</li>
-            </ul>
+            <div class="col-title">Profile &amp; Executive Leadership</div>
+            <p style="font-size:14.5px; font-weight:800; color:var(--primary-blue); margin-bottom:10px;">
+              Chief of Growth &amp; Strategy · Operations Director
+            </p>
+            <p style="font-size:13.2px; color:var(--text-body); line-height:1.68; margin-bottom:12px;">
+              Swapnil Yadav is Chief of Growth &amp; Strategy and Operations Director at Aarya Consultants, bringing nearly two decades of executive experience leading People, Finance, and Enterprise Growth across multinational corporate environments.
+            </p>
+            <p style="font-size:13px; color:var(--text-body); line-height:1.65;">
+              He leads institutional partnerships, service delivery optimization, and corporate client relations, establishing rigorous operational standards and agile workflow frameworks across the entire Aarya Group consortium.
+            </p>
           </div>
 
           <div class="profile-col-box">
-            <div class="col-title">Professional Experience</div>
-            <p style="font-size:12.5px; margin-bottom:10px; color:#1e293b; font-weight:600;">He has been successfully instrumental in the overall management of the firm and managing the entire office team, co-ordinating with team members to provide the best possible client service, and leading a team to provide service to a number of clients.</p>
-            <ul class="bullet-list">
-              <li>Anand has been handling client relationships by ensuring quality services as per the needs of the clients.</li>
-              <li>Wide exposure of smoothly leading teams on various bookkeeping, accounting, legal and statutory compliance assignments.</li>
-              <li>Wide exposure of smoothly leading legal team of Attorneys, Lawyers and Advocates on various legal issues faced by our clients and helping them get relief as per their satisfaction.</li>
+            <div class="col-title">Professional Experience &amp; Capabilities</div>
+            <ul class="bullet-list" style="gap:10px;">
+              <li><strong>Enterprise Strategic Scaling:</strong> Architecting corporate client onboarding, long-term B2B partnerships, and scalable business delivery systems across India.</li>
+              <li><strong>Operations &amp; Governance Director:</strong> Overseeing cross-functional workflows between Chartered Accountants, Corporate Lawyers, and Wealth Advisors for unified service delivery.</li>
+              <li><strong>Healthcare &amp; Emergency Networks:</strong> Directing doctor networks, tertiary hospital tie-ups, diagnostic lab coordination, and emergency response pipelines for associate initiatives (Samman Oldercare).</li>
+              <li><strong>People Operations &amp; Culture:</strong> Mentoring multidisciplinary professionals, fostering institutional integrity, client confidentiality, and fiduciary excellence.</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Strategy & Operations Impact Strip to fill space -->
+        <div class="profile-meta-strip">
+          <div class="profile-meta-card">
+            <strong>Institutional Growth</strong>
+            <span>Enterprise B2B retainerships, strategic alliances &amp; nationwide service expansion</span>
+          </div>
+          <div class="profile-meta-card">
+            <strong>Cross-Venture Leadership</strong>
+            <span>Healthcare alliances, emergency coordination &amp; unified operations management</span>
+          </div>
+          <div class="profile-meta-card">
+            <strong>Operational Governance</strong>
+            <span>Standard operating procedures, high-rigor quality control &amp; rapid-turnaround delivery</span>
           </div>
         </div>
       </div>
@@ -1389,46 +1558,66 @@
       </div>
     </section>
 
-    <!-- ==================== SLIDE 08: BUSINESS PARTNER (SUMITA PRAMANICK) ==================== -->
+    <!-- ==================== SLIDE 08: BUSINESS PARTNER (RUCHITA KAPOOR) ==================== -->
     <section class="slide-page">
       <div class="slide-num-tab">08</div>
 
       <div class="profile-header-banner">
         <div class="profile-id-left">
-          <div class="profile-avatar">SP</div>
+          <div class="profile-avatar">
+            <img src="images/ruchita-1788850767168-ce1ee7a4.webp" alt="Ruchita Kapoor">
+          </div>
           <div>
             <h2>Business Partner’s Profile</h2>
-            <p style="font-size:12px; color:#cbd5e1;">Partner — Client Operations &amp; Delivery</p>
+            <p style="font-size:12px; color:#cbd5e1;">Business Development Manager · Family &amp; Institutional Liaison Lead</p>
           </div>
         </div>
         <div class="profile-contact-meta">
-          <strong>Sumita Pramanick</strong>
-          Mobile: +91 80177 84493<br>
-          Email: sumita@aaryaconsultants.com
+          <strong>Ruchita Kapoor</strong>
+          Mobile: +91 98366 55005<br>
+          Email: ruchita.kapoor@aaryaconsultants.com
         </div>
       </div>
 
       <div class="slide-body top-aligned">
-        <div class="two-col-grid" style="height:100%;">
+        <div class="two-col-grid">
           <div class="profile-col-box">
-            <div class="col-title">Profile</div>
-            <ul class="bullet-list" style="gap:11px;">
-              <li>Sumita, a PGDMM Specialization in Integrated Marketing Communication Management from Indian Institute of Social Welfare &amp; Business Management, has been partnering with the firm since 2018, providing operations support to the firm as well as our clients.</li>
-              <li>By her excellent client relationship management skills, she has helped the firm to acquire and retain clients and provide required support by co-ordinating with the team.</li>
-              <li>She handles the entire operations and back office of the firm supervising a team of junior operations executives.</li>
-              <li>She has participated in various training programs on Operations Management, client service and soft skills etc.</li>
-            </ul>
+            <div class="col-title">Profile &amp; Client Engagement</div>
+            <p style="font-size:14.5px; font-weight:800; color:var(--primary-blue); margin-bottom:10px;">
+              Business Development Manager · Family Liaison Lead
+            </p>
+            <p style="font-size:13.2px; color:var(--text-body); line-height:1.68; margin-bottom:12px;">
+              Ruchita Kapoor leads Business Development and Strategic Client Engagements at Aarya Consultants. With an acute understanding of client requirements, she specializes in institutional growth, tailored financial solution curation, and long-term stakeholder relationship nurturing.
+            </p>
+            <p style="font-size:13px; color:var(--text-body); line-height:1.65;">
+              She serves as the primary liaison between families, corporate patriarchs, and Aarya's specialized legal, tax, and fiduciary teams, ensuring that every financial roadmap is executed with precision, discretion, and compassionate understanding.
+            </p>
           </div>
 
           <div class="profile-col-box">
-            <div class="col-title">Professional Experience</div>
-            <p style="font-size:12.5px; margin-bottom:10px; color:#1e293b; font-weight:600;">She has been successfully instrumental in the overall management of the firm and managing the entire office team, co-ordinating with team members to provide the best possible client service and leading a team to provide service to a number of clients.</p>
-            <ul class="bullet-list">
-              <li>Sumita has been handling client relationships by ensuring quality services as per the needs of the clients.</li>
-              <li>Wide exposure of smoothly leading teams on various bookkeeping, accounting, legal and statutory compliance assignments.</li>
-              <li>Wide exposure of smoothly leading legal team of Attorneys, Lawyers and Advocates on various legal issues faced by our clients and helping them get relief as per their satisfaction.</li>
-              <li>She has experience of working with ICICI Prudential, Reliance Life, Tous Les Jours Confort, Skin Incorporated and Miiraki.</li>
+            <div class="col-title">Professional Expertise &amp; Core Strengths</div>
+            <ul class="bullet-list" style="gap:10px;">
+              <li><strong>Bespoke Client Onboarding:</strong> Formulating customized advisory retainerships for family businesses, MSMEs, charitable institutions, and high-net-worth individuals.</li>
+              <li><strong>Family &amp; NRI Liaison:</strong> Conducting personalized home consultations and structured discovery sessions for overseas NRI families seeking dedicated domestic management.</li>
+              <li><strong>Cross-Department Coordination:</strong> Bridging client expectations with Chartered Accountants, Statutory Auditors, and Legal Advocates for seamless execution.</li>
+              <li><strong>Elder Care Engagement:</strong> Leading family liaison, caregiver-client alignment, and emergency support under Aarya’s associate initiative, Samman Oldercare.</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Client Engagement Highlights Strip to fill space -->
+        <div class="profile-meta-strip">
+          <div class="profile-meta-card">
+            <strong>Client Centricity</strong>
+            <span>Tailored advisory structuring, family wealth continuity &amp; personalized consultations</span>
+          </div>
+          <div class="profile-meta-card">
+            <strong>NRI Family Support</strong>
+            <span>Dedicated overseas liaison for domestic asset management, legalities &amp; elder care</span>
+          </div>
+          <div class="profile-meta-card">
+            <strong>Fiduciary Trust</strong>
+            <span>End-to-end coordination ensuring confidential, transparent and compassionate service</span>
           </div>
         </div>
       </div>
@@ -1458,25 +1647,45 @@
         </div>
       </div>
 
-      <div class="slide-body top-aligned">
-        <div class="two-col-grid" style="height:100%;">
+            <div class="slide-body top-aligned">
+        <div class="two-col-grid">
           <div class="profile-col-box">
-            <div class="col-title">Profile</div>
-            <ul class="bullet-list" style="gap:14px;">
-              <li>Ayan, a B.Com Graduate with Certification of Financial Accounting and Management from Calcutta University, Certified from NSE and AMFI.</li>
-              <li>He has more than 16 years of professional experience in Accounts, Finance, Taxation, Management and Audit.</li>
-              <li>He has experience across Stock Market, Financial Institutes, Non Banking Financial Companies (NBFC), Foreign Exchange, Banking Sector, Educational Institutes, Real Estate, and Agricultural Trading Sector.</li>
-            </ul>
+            <div class="col-title">Profile &amp; Professional Credentials</div>
+            <p style="font-size:14.5px; font-weight:800; color:var(--primary-blue); margin-bottom:10px;">
+              Accounts, Taxation &amp; Statutory Audit Practice Lead
+            </p>
+            <p style="font-size:13.2px; color:var(--text-body); line-height:1.68; margin-bottom:12px;">
+              Ayan Bhattacharya is a B.Com Graduate with advanced Certification in Financial Accounting and Management from Calcutta University, alongside professional certifications from the National Stock Exchange (NSE) and AMFI.
+            </p>
+            <p style="font-size:13px; color:var(--text-body); line-height:1.65;">
+              He possesses more than 16 years of rigorous, hands-on experience in Corporate Accounts, Statutory Audit, Direct &amp; Indirect Taxation, and Financial Controllership across capital markets, NBFCs, foreign exchange houses, educational institutions, real estate, and international trading.
+            </p>
           </div>
 
           <div class="profile-col-box">
-            <div class="col-title">Professional Experience</div>
-            <p style="font-size:12.5px; margin-bottom:10px; color:#1e293b; font-weight:600;">He has been successfully instrumental in the overall management of the entire office team, co-ordinating with team members to provide the best possible client service and leading a team to provide service to a number of clients regarding the firm’s audit and accounts.</p>
-            <ul class="bullet-list">
-              <li>He has been handling client relationships by ensuring quality services as per the needs of the clients.</li>
-              <li>Wide exposure of smoothly leading teams on various bookkeeping, accounting, legal and statutory compliance assignments.</li>
-              <li>Wide exposure of smoothly leading legal team of Attorneys, Lawyers and Advocates on various legal issues faced by our clients and helping them get relief as per their satisfaction.</li>
+            <div class="col-title">Professional Experience &amp; Core Domains</div>
+            <ul class="bullet-list" style="gap:10px;">
+              <li><strong>Statutory Accounts &amp; Financial Reporting:</strong> Directing balance sheet finalization, Indian GAAP / Ind AS compliance, and audit readiness for corporate and trust entities.</li>
+              <li><strong>Direct &amp; Indirect Taxation:</strong> Managing full-spectrum corporate and personal tax planning, TDS reconciliations, monthly GST compliance, and annual GST 9/9C filings.</li>
+              <li><strong>Corporate Law &amp; ROC Filings:</strong> Leading Ministry of Corporate Affairs (MCA) compliance, director KYC, statutory register maintenance, and annual ROC returns.</li>
+              <li><strong>Scrutiny &amp; Departmental Representation:</strong> Assisting clients during assessment proceedings, tax scrutiny notices, and appellate documentation before authorities.</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Audit & Compliance Practice Highlights Strip to fill space -->
+        <div class="profile-meta-strip">
+          <div class="profile-meta-card">
+            <strong>16+ Years Mastery</strong>
+            <span>Comprehensive expertise across capital markets, NBFCs, real estate &amp; trading</span>
+          </div>
+          <div class="profile-meta-card">
+            <strong>100% On-Time Compliance</strong>
+            <span>Flawless statutory GST, TDS, corporate income tax &amp; MCA filings</span>
+          </div>
+          <div class="profile-meta-card">
+            <strong>Statutory Rigor</strong>
+            <span>Ind AS / GAAP financial statements, internal control audits &amp; scrutiny defense</span>
           </div>
         </div>
       </div>
@@ -1719,57 +1928,77 @@
         <p>Not for Profit Organisation (NPO) and Hospitality &amp; Healthcare Engagements</p>
       </div>
 
-      <div class="slide-body top-aligned" style="gap:16px;">
-        <div>
-          <div class="section-subhead">Not for Profit Organisation (NPO)</div>
-          <table class="cred-table">
-            <thead>
-              <tr>
-                <th style="width:55%;">Entity Name</th>
-                <th>Services Rendered</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Dufferin Rajendra Old Cadets Association, Calcutta (DROCA)</strong></td>
-                <td><ul><li>Preparation of Financial Statements</li><li>Income Tax Return Filing</li></ul></td>
-              </tr>
-              <tr>
-                <td><strong>Mlinda Charitable Trust</strong></td>
-                <td><ul><li>Investment Advisory</li></ul></td>
-              </tr>
-              <tr>
-                <td><strong>Mlinda Sustainable Environment Pvt Ltd.</strong></td>
-                <td><ul><li>Investment Advisory</li></ul></td>
-              </tr>
-              <tr>
-                <td><strong>Hamara Grid Private Limited</strong></td>
-                <td><ul><li>Investment Advisory</li></ul></td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="slide-body top-aligned" style="gap:10px;">
+        <div style="display:grid; grid-template-columns: 1.15fr 1fr; gap:18px;">
+          <!-- NPO Table -->
+          <div>
+            <div class="section-subhead">Not for Profit Organisation (NPO)</div>
+            <table class="cred-table">
+              <thead>
+                <tr>
+                  <th style="width:52%;">Entity Name</th>
+                  <th>Services Rendered</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Dufferin Rajendra Old Cadets Association (DROCA)</strong></td>
+                  <td><ul><li>Preparation of Financial Statements</li><li>Income Tax Return Filing</li></ul></td>
+                </tr>
+                <tr>
+                  <td><strong>Mlinda Charitable Trust</strong></td>
+                  <td><ul><li>Comprehensive Investment Advisory</li><li>Trust Corpus Structuring</li></ul></td>
+                </tr>
+                <tr>
+                  <td><strong>Mlinda Sustainable Environment Pvt Ltd.</strong></td>
+                  <td><ul><li>Investment &amp; Financial Advisory</li><li>Statutory Compliance Management</li></ul></td>
+                </tr>
+                <tr>
+                  <td><strong>Hamara Grid Private Limited</strong></td>
+                  <td><ul><li>Strategic Investment Advisory</li><li>Accounting Systems Setup</li></ul></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Healthcare & Hospitality Table -->
+          <div>
+            <div class="section-subhead">Hospitality &amp; Healthcare Engagements</div>
+            <table class="cred-table">
+              <thead>
+                <tr>
+                  <th style="width:50%;">Entity Name</th>
+                  <th>Services Rendered</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Tous Les Jours Confort (TLJC)</strong></td>
+                  <td><ul><li>Book Keeping &amp; Complete Accounting</li><li>Preparation of Financial Statements</li><li>Facilitating Statutory Audit</li><li>Direct &amp; Indirect Tax Filings</li></ul></td>
+                </tr>
+                <tr>
+                  <td><strong>Pearl Dental Clinic</strong></td>
+                  <td><ul><li>Healthcare Financial Planning</li><li>Practice Accounts &amp; IT Return Filing</li><li>Tax Optimization &amp; Expansion Planning</li></ul></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        <div>
-          <div class="section-subhead">Hospitality and Healthcare</div>
-          <table class="cred-table">
-            <thead>
-              <tr>
-                <th style="width:55%;">Entity Name</th>
-                <th>Services Rendered</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Tous Les Jours Confort (TLJC)</strong></td>
-                <td><ul><li>Book Keeping &amp; Accounting</li><li>Preparation of Financial Statements</li><li>Facilitating audit of Financial Statements</li><li>Income Tax Return Filing</li></ul></td>
-              </tr>
-              <tr>
-                <td><strong>Pearl Dental Clinic</strong></td>
-                <td><ul><li>Financial planning</li><li>Income Tax Return Filing</li></ul></td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Practice Framework & Sector Highlights Box to fill empty space -->
+        <div class="credential-insight-box">
+          <div class="credential-insight-item">
+            <h5>Institutional NPO Governance</h5>
+            <p>Specialized advisory for Section 8 companies, public trusts, and registered societies under Sections 12A and 80G of the Income Tax Act, ensuring complete transparency and donor audit readiness.</p>
+          </div>
+          <div class="credential-insight-item">
+            <h5>CSR &amp; FCRA Compliance</h5>
+            <p>Rigorous documentation and filing for foreign contribution monitoring (FCRA), CSR grant utilization certificates, and society annual returns under the West Bengal Societies Registration Act.</p>
+          </div>
+          <div class="credential-insight-item">
+            <h5>Healthcare &amp; Clinical Advisory</h5>
+            <p>Revenue cycle accounting, doctor remuneration frameworks, diagnostic inventory management, and structured tax compliance for medical practices and multi-unit hospitality operators.</p>
+          </div>
         </div>
       </div>
 
@@ -1788,40 +2017,56 @@
         <p>Corporate Practice: Trading and Export - Import Entities</p>
       </div>
 
-      <div class="slide-body">
+      <div class="slide-body top-aligned" style="gap:10px;">
         <div style="width:100%;">
-          <div class="section-subhead" style="margin-bottom:12px;">Trading / Export - Import</div>
-          <table class="cred-table" style="font-size:13.5px;">
+          <div class="section-subhead" style="margin-bottom:8px;">Trading &amp; Export - Import Corporate Clients</div>
+          <table class="cred-table" style="font-size:12.6px;">
             <thead>
               <tr>
-                <th style="width:50%; padding:11px 18px;">Entity Name</th>
-                <th style="padding:11px 18px;">Services Rendered</th>
+                <th style="width:48%; padding:8px 16px;">Corporate Entity Name</th>
+                <th style="padding:8px 16px;">Core Institutional Services Rendered</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style="padding:11px 18px;"><strong>Mohan Merchandise</strong></td>
-                <td rowspan="8" style="background:#ffffff; vertical-align:middle; padding:24px 28px; border-left:1px solid #cbd5e1;">
-                  <ul style="gap:16px; font-size:14px; font-weight:600;">
-                    <li>Financial planning</li>
-                    <li>Investment Advisory</li>
-                    <li>Insurance</li>
-                    <li>Preparation of Financial Statements</li>
-                    <li>Income Tax Planning</li>
-                    <li>IT Return Filing</li>
-                    <li>MEIS / Drawback / ROSL</li>
+                <td style="padding:7px 16px;"><strong>Mohan Merchandise</strong></td>
+                <td rowspan="8" style="background:#ffffff; vertical-align:middle; padding:14px 22px; border-left:1px solid #cbd5e1;">
+                  <ul style="gap:8px; font-size:13px; font-weight:600; line-height:1.48;">
+                    <li>Financial Planning &amp; Working Capital Advisory</li>
+                    <li>Corporate Investment Advisory &amp; Treasury Management</li>
+                    <li>Corporate Insurance &amp; Risk Mitigation Strategy</li>
+                    <li>Preparation &amp; Finalization of Financial Statements</li>
+                    <li>Corporate Income Tax Planning &amp; Statutory Filing</li>
+                    <li>Comprehensive IT &amp; GST Return Compliance</li>
+                    <li>Export Incentives: MEIS / RoDTEP / Duty Drawback / ROSL</li>
                   </ul>
                 </td>
               </tr>
-              <tr><td style="padding:11px 18px;"><strong>Mohan Impressions</strong></td></tr>
-              <tr><td style="padding:11px 18px;"><strong>Radha Krishna Company</strong></td></tr>
-              <tr><td style="padding:11px 18px;"><strong>Ashish Vincom Pvt Ltd.</strong></td></tr>
-              <tr><td style="padding:11px 18px;"><strong>Ashish Industrial Corporation</strong></td></tr>
-              <tr><td style="padding:11px 18px;"><strong>MPVI International</strong></td></tr>
-              <tr><td style="padding:11px 18px;"><strong>Paul Brothers &amp; Company</strong></td></tr>
-              <tr><td style="padding:11px 18px;"><strong>ACS Cooling Solutions Pvt Ltd</strong></td></tr>
+              <tr><td style="padding:7px 16px;"><strong>Mohan Impressions</strong></td></tr>
+              <tr><td style="padding:7px 16px;"><strong>Radha Krishna Company</strong></td></tr>
+              <tr><td style="padding:7px 16px;"><strong>Ashish Vincom Pvt Ltd.</strong></td></tr>
+              <tr><td style="padding:7px 16px;"><strong>Ashish Industrial Corporation</strong></td></tr>
+              <tr><td style="padding:7px 16px;"><strong>MPVI International</strong></td></tr>
+              <tr><td style="padding:7px 16px;"><strong>Paul Brothers &amp; Company</strong></td></tr>
+              <tr><td style="padding:7px 16px;"><strong>ACS Cooling Solutions Pvt Ltd</strong></td></tr>
             </tbody>
           </table>
+        </div>
+
+        <!-- Cross-Border Trade & FEMA Advisory Framework to fill empty space -->
+        <div class="credential-insight-box">
+          <div class="credential-insight-item">
+            <h5>Cross-Border FEMA &amp; RBI Compliance</h5>
+            <p>Advance inward remittance reconciliations, Foreign Inward Remittance Certificates (FIRC), EDPMS / IDPMS regularization, and merchant trade documentation adhering to RBI guidelines.</p>
+          </div>
+          <div class="credential-insight-item">
+            <h5>Export Incentive Monetization</h5>
+            <p>End-to-end liaison with DGFT and Customs for Duty Drawback claims, RoDTEP / RoSCTL scrips, Advance Authorization licenses, and IGST export refund reconciliations.</p>
+          </div>
+          <div class="credential-insight-item">
+            <h5>Trade Finance &amp; Working Capital</h5>
+            <p>Letter of Credit (LC) structuring, Bank Guarantees, post-shipment export credit facilitation, inventory hedging, and transfer pricing documentation for international trade.</p>
+          </div>
         </div>
       </div>
 
@@ -2058,21 +2303,21 @@
 
       <div class="slide-banner">
         <h2>Our Corporate Office</h2>
-        <p>Modern infrastructure located at C-180, Survey Park, Beside Axis Bank, Kolkata-700 075</p>
+        <p>Kolkata Head Office at 73C, S.P. Mukherjee Road (Kalighat) &amp; Corporate Advisory Infrastructure at Survey Park</p>
       </div>
 
-      <div class="slide-body">
+      <div class="slide-body top-aligned" style="gap:10px;">
         <div class="office-gallery-grid">
           <div class="office-photo-card">
-            <img src="images/conf-1784705539951-84ab987f.webp" alt="Executive Boardroom at Corporate Office">
+            <img src="images/conf-1784705539951-84ab987f.webp" alt="Executive Boardroom at Corporate Office" style="height:185px;">
             <div class="office-photo-cap">
               <span>Executive Boardroom &amp; Strategy Room</span>
-              <span style="color:var(--text-muted);">Survey Park HQ</span>
+              <span style="color:var(--text-muted);">Survey Park Advisory</span>
             </div>
           </div>
 
           <div class="office-photo-card">
-            <img src="images/whatsapp-image-2026-08-03-at-18-32-41-1785762566558-6afe63ce.webp" alt="Awards & NISM/MDRT Credentials Showcase">
+            <img src="images/whatsapp-image-2026-08-03-at-18-32-41-1785762566558-6afe63ce.webp" alt="Awards & NISM/MDRT Credentials Showcase" style="height:185px;">
             <div class="office-photo-cap">
               <span>Awards, MDRT Citations &amp; NISM Showcase</span>
               <span style="color:var(--text-muted);">Recognition Gallery</span>
@@ -2080,7 +2325,7 @@
           </div>
 
           <div class="office-photo-card">
-            <img src="images/whatsapp-image-2026-08-03-at-18-30-56-1785762567369-91c0daf3.webp" alt="Private Executive Lounge">
+            <img src="images/whatsapp-image-2026-08-03-at-18-30-56-1785762567369-91c0daf3.webp" alt="Private Executive Lounge" style="height:185px;">
             <div class="office-photo-cap">
               <span>Private Advisory &amp; Leadership Lounge</span>
               <span style="color:var(--text-muted);">Client Consultation</span>
@@ -2088,11 +2333,21 @@
           </div>
 
           <div class="office-photo-card">
-            <img src="images/working1-1784571581773-93e8d6f3.webp" alt="Operations & Statutory Audit Desk">
+            <img src="images/working1-1784571581773-93e8d6f3.webp" alt="Operations & Statutory Audit Desk" style="height:185px;">
             <div class="office-photo-cap">
               <span>Operations, Compliance &amp; Audit Desk</span>
               <span style="color:var(--text-muted);">Precision Execution</span>
             </div>
+          </div>
+        </div>
+
+        <!-- Pan-India Network Strip -->
+        <div class="pan-india-strip">
+          <div class="pan-india-label">
+            <span>🌐 PAN-INDIA NETWORK &amp; ACTIVE CLIENT PRESENCE:</span>
+          </div>
+          <div class="pan-india-cities">
+            KOLKATA (HQ) · GURUGRAM (NCR) · MUMBAI · BENGALURU · NOIDA · GUWAHATI · RANCHI · KALINGANAGAR · SILIGURI · CHANDANNAGAR · LILUAH
           </div>
         </div>
       </div>
@@ -2153,10 +2408,15 @@
             <div style="font-size:12.5px; color:#cbd5e1; margin-top:4px; letter-spacing:0.06em;">Fiduciaries For a Lifetime &amp; Beyond</div>
           </div>
           <div class="thank-you-contact">
-            <strong style="color:var(--gold-light); font-size:14px;">Aarya Consultants — Corporate Desk</strong><br>
-            C-180, Survey Park, Beside Axis Bank, Kolkata-700 075<br>
-            Phone: +91 33 2264 5505 · Mobile: +91 98366 55005 / +91 82403 97373<br>
-            Email: sanjay.gupta@aaryaconsultants.com · Web: www.aaryaconsultants.com
+            <strong style="color:var(--gold-light); font-size:14.5px;">Aarya Consultants — Kolkata Head Office</strong><br>
+            73C, Shyama Prasad Mukherjee Road, Beside Kalighat Post Office, Kolkata - 700 026<br>
+            <strong>Corporate Advisory Centre:</strong> C-180, Survey Park, Beside Axis Bank, Kolkata - 700 075<br>
+            <strong>Gurugram / NCR Office:</strong> Regus, Welldone Tech Park, Sohna Rd, Sector 49, Gurugram<br>
+            Phone: +91 33 2264 5505 · Mobile: +91 98366 55005 / +91 90386 20055<br>
+            Email: info@aaryaconsultants.com / sanjay.gupta@aaryaconsultants.com · Web: www.aaryaconsultants.com
+            <div style="font-size:11px; color:#cbd5e1; margin-top:5px; border-top:1px solid rgba(255,255,255,0.18); padding-top:4px;">
+              <strong>Operational Cities &amp; Regional Desks:</strong> Kolkata (HQ) · Gurugram (NCR) · Mumbai · Bengaluru · Noida · Guwahati · Ranchi · Kalinganagar · Siliguri · Chandannagar · Liluah
+            </div>
           </div>
         </div>
       </div>
