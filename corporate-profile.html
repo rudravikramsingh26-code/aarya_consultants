@@ -7,7 +7,7 @@
   <meta name="description" content="Official 22-Page Institutional Corporate Profile of Aarya Consultants & Aarya Group of Companies. Fiduciaries for a Lifetime & Beyond.">
   <link rel="icon" href="images/favicon-1783876190136-01f3cca3.webp">
 
-  <!-- Premium Typography -->
+  <!-- Executive Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
@@ -15,15 +15,18 @@
   <style>
     :root {
       --primary-blue: #082878;
-      --royal-gradient: linear-gradient(135deg, #071f60 0%, #0c3898 50%, #061b52 100%);
-      --accent-cyan: #00b4d8;
-      --gold: #d4af37;
+      --royal-gradient: linear-gradient(135deg, #071d58 0%, #0e3b9e 55%, #06184a 100%);
+      --gold: #c59b27;
+      --gold-light: #f6e7bc;
       --gold-foil: linear-gradient(135deg, #d4af37 0%, #f9f0c2 50%, #b8860b 100%);
       --crimson: #c81e1e;
       --dark-navy: #04102e;
       --text-dark: #0f172a;
-      --text-muted: #475569;
-      --border-gray: #cbd5e1;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --border-soft: #cbd5e1;
+      --border-light: #e2e8f0;
+      --surface-soft: #f8fafc;
       --table-header: #0b378a;
       --table-alt: #f1f5f9;
       --font-main: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -33,13 +36,15 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: #091224;
+      background: #0b1325;
       color: var(--text-dark);
       font-family: var(--font-main);
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Fixed Top Command Bar (Web View) */
+    /* =========================================================
+       TOP FLOATING COMMAND BAR (WEB VIEW ONLY)
+       ========================================================= */
     .command-bar {
       position: fixed;
       top: 14px;
@@ -48,21 +53,21 @@
       z-index: 9999;
       background: rgba(4, 16, 46, 0.94);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(212, 175, 55, 0.4);
+      border: 1px solid rgba(212, 175, 55, 0.45);
       border-radius: 9999px;
-      padding: 8px 22px;
+      padding: 8px 20px;
       display: flex;
       align-items: center;
-      gap: 14px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      gap: 12px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.65);
       color: #fff;
     }
     .cmd-brand {
       font-family: var(--font-display);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 800;
       letter-spacing: 0.12em;
-      color: var(--gold);
+      color: var(--gold-light);
       border-right: 1px solid rgba(255,255,255,0.25);
       padding-right: 14px;
       white-space: nowrap;
@@ -71,7 +76,7 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      padding: 7px 16px;
+      padding: 7px 15px;
       border-radius: 9999px;
       font-size: 12.5px;
       font-weight: 700;
@@ -86,530 +91,789 @@
       color: #04102e;
       box-shadow: 0 4px 14px rgba(212,175,55,0.4);
     }
-    .cmd-btn-pdf:hover { filter: brightness(1.1); transform: translateY(-1px); }
-    .cmd-btn-wa {
-      background: #25D366;
-      color: #fff;
-    }
+    .cmd-btn-pdf:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .cmd-btn-wa { background: #25D366; color: #fff; }
     .cmd-btn-wa:hover { filter: brightness(1.08); }
     .cmd-btn-back {
       background: rgba(255,255,255,0.12);
       color: #fff;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.22);
     }
     .cmd-btn-back:hover { background: rgba(255,255,255,0.22); }
 
-    /* Deck Master Container */
+    /* =========================================================
+       DECK CONTAINER & UNIFORM A4 LANDSCAPE SHEET GEOMETRY
+       (1122px x 793px = exact 297mm x 210mm proportion at 96dpi)
+       ========================================================= */
     .deck-container {
-      max-width: 1180px;
-      margin: 80px auto 60px;
-      padding: 0 16px;
+      max-width: 1122px;
+      margin: 78px auto 60px;
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 36px;
     }
 
-    /* Individual Slide / Page Sheet (16:9 Landscape / A4 Landscape) */
     .slide-page {
       background: #ffffff;
-      width: 100%;
-      min-height: 700px;
-      aspect-ratio: 16 / 9.8;
-      border-radius: 12px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      width: 1122px;
+      height: 793px;
+      border-radius: 10px;
+      box-shadow: 0 22px 55px rgba(0,0,0,0.65);
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      border: 1.5px solid #cbd5e1;
-      padding: 38px 48px;
+      padding: 36px 46px 26px 46px;
+      border: 1px solid #cbd5e1;
     }
 
-    /* Top Right Blue Slide Number Tab */
+    /* Subtle executive top accent strip on content slides */
+    .slide-page:not(.cover-slide)::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gold-foil);
+      z-index: 5;
+    }
+
+    /* Consistent Slide Number Tab */
     .slide-num-tab {
       position: absolute;
       top: 0;
-      right: 48px;
-      width: 52px;
-      height: 64px;
-      background: #1565c0;
+      right: 46px;
+      width: 48px;
+      height: 58px;
+      background: linear-gradient(180deg, #1d4ed8 0%, #0b378a 100%);
       color: #ffffff;
-      font-size: 22px;
+      font-size: 19px;
       font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(21, 101, 192, 0.35);
+      box-shadow: 0 4px 12px rgba(8, 40, 120, 0.35);
       border-radius: 0 0 6px 6px;
       font-family: var(--font-display);
+      letter-spacing: 0.04em;
       z-index: 10;
     }
 
-    /* Standard Slide Header Banner */
+    /* Consistent Header Banner */
     .slide-banner {
       background: var(--royal-gradient);
       color: #ffffff;
-      padding: 16px 28px;
+      padding: 15px 76px 15px 24px;
       border-radius: 8px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       position: relative;
+      box-shadow: 0 4px 14px rgba(8, 27, 69, 0.14);
+      border-bottom: 2px solid var(--gold);
+      flex-shrink: 0;
     }
     .slide-banner h2 {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
       letter-spacing: -0.01em;
-      margin-bottom: 3px;
+      line-height: 1.2;
     }
     .slide-banner p {
-      font-size: 13px;
-      color: #cbd5e1;
+      font-size: 12.5px;
+      color: #dbeafe;
       font-weight: 500;
+      margin-top: 3px;
     }
 
-    /* Slide Footer */
+    /* Main Slide Body Area — occupies exact space between header and footer */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+    }
+    .slide-body.top-aligned {
+      justify-content: flex-start;
+    }
+
+    /* Profile text tuning for uniform fit */
+    .bullet-list.compact-bullets {
+      gap: 8px;
+    }
+    .bullet-list.compact-bullets li {
+      font-size: 12.2px;
+      line-height: 1.48;
+    }
+    .bullet-list.spacious-bullets {
+      gap: 14px;
+    }
+    .bullet-list.spacious-bullets li {
+      font-size: 13.5px;
+      line-height: 1.62;
+    }
+
+    /* Uniform Slide Footer */
     .slide-footer {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
-      padding-top: 14px;
-      border-top: 1px solid #e2e8f0;
-      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1.5px solid var(--border-light);
+      margin-top: 14px;
+      flex-shrink: 0;
+    }
+    .slide-footer-left {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.04em;
     }
     .slide-footer-brand {
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 800;
       color: var(--primary-blue);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
 
-    /* Bullet Stylings */
+    /* =========================================================
+       SHARED CONTENT PRIMITIVES
+       ========================================================= */
     .bullet-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 9px;
     }
     .bullet-list li {
       position: relative;
-      padding-left: 24px;
-      font-size: 13.5px;
-      line-height: 1.6;
-      color: #334155;
+      padding-left: 20px;
+      font-size: 12.8px;
+      line-height: 1.54;
+      color: var(--text-body);
     }
     .bullet-list li::before {
       content: "►";
       position: absolute;
       left: 0;
-      color: #1976d2;
-      font-size: 12px;
-      top: 2px;
+      color: #1565c0;
+      font-size: 10.5px;
+      top: 3px;
     }
 
-    /* Standard Table for Credentials */
+    .col-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 10px;
+      border-bottom: 2px solid #93c5fd;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .section-subhead {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-subhead::before {
+      content: "";
+      width: 4px;
+      height: 15px;
+      background: var(--gold);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
     .cred-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12.5px;
-      margin-top: 12px;
+      font-size: 12.2px;
       border-radius: 6px;
       overflow: hidden;
-      border: 1px solid #cbd5e1;
+      border: 1px solid var(--border-soft);
     }
     .cred-table th {
       background: var(--table-header);
       color: #ffffff;
       text-align: left;
-      padding: 10px 14px;
+      padding: 8px 14px;
       font-weight: 700;
       letter-spacing: 0.03em;
     }
     .cred-table td {
-      padding: 9px 14px;
-      border-bottom: 1px solid #e2e8f0;
+      padding: 7.5px 14px;
+      border-bottom: 1px solid var(--border-light);
       color: #1e293b;
       vertical-align: top;
+      line-height: 1.45;
     }
-    .cred-table tr:nth-child(even) {
-      background: var(--table-alt);
-    }
-    .cred-table td ul {
-      list-style: none;
-    }
+    .cred-table tr:nth-child(even) { background: var(--table-alt); }
+    .cred-table tr:last-child td { border-bottom: none; }
+    .cred-table td ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
     .cred-table td ul li::before {
       content: "➤ ";
-      color: #1976d2;
-      font-size: 11px;
+      color: #1565c0;
+      font-size: 10.5px;
     }
 
-    /* Two-Column Grid */
     .two-col-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      gap: 24px;
+      align-items: stretch;
     }
     .three-col-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
+      align-items: stretch;
     }
 
-    /* Specific Styles for Slide 1 (Cover) */
+    /* =========================================================
+       SLIDE 1: EXECUTIVE COVER
+       ========================================================= */
     .cover-slide {
-      background: radial-gradient(circle at 50% 50%, #0d3888 0%, #082260 50%, #04102e 100%);
+      background: radial-gradient(circle at 50% 45%, #0e388d 0%, #082058 55%, #030d27 100%);
       color: #ffffff;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
       text-align: center;
-      padding: 50px 40px;
-      border: 2px solid var(--gold);
+      padding: 46px 52px 34px 52px;
+      border: 2.5px solid var(--gold);
+    }
+    .cover-slide::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 4px;
+      pointer-events: none;
     }
     .cover-badge-top {
       font-family: var(--font-display);
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
-      letter-spacing: 0.22em;
-      color: #ffffff;
+      letter-spacing: 0.28em;
+      color: var(--gold-light);
       text-transform: uppercase;
-      margin-bottom: 30px;
+      margin-top: 8px;
     }
     .cover-card-white {
       background: #ffffff;
-      border-radius: 8px;
-      padding: 28px 40px;
-      width: 88%;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      border-radius: 10px;
+      padding: 26px 40px;
+      width: 86%;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      border: 1.5px solid rgba(212, 175, 55, 0.65);
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-    .cover-main-logo {
-      display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 24px;
-      width: 100%;
-      border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 16px;
+      align-items: center;
     }
-    .cover-main-title {
-      font-family: 'Arial Black', var(--font-main);
-      font-size: 38px;
-      color: #14327a;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      line-height: 1.1;
-    }
-    .cover-sub-consortium {
-      font-size: 15px;
-      font-weight: 800;
-      color: #1e293b;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-    .cover-fiduciary-tag {
-      font-family: var(--font-serif);
-      font-size: 26px;
-      font-weight: 700;
-      color: #c93424;
-      font-style: italic;
+    .cover-card-white img {
+      max-width: 100%;
+      max-height: 215px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
     }
     .cover-group-title {
       font-family: var(--font-display);
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
       font-style: italic;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.24em;
       color: #ffffff;
-      margin-top: 24px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
     }
     .cover-cities-bar {
-      border-top: 1px solid rgba(255,255,255,0.25);
+      border-top: 1px solid rgba(212, 175, 55, 0.4);
       padding-top: 14px;
       font-size: 11.5px;
       font-weight: 700;
-      letter-spacing: 0.18em;
-      color: #94a3b8;
+      letter-spacing: 0.16em;
+      color: #e2e8f0;
       width: 100%;
       text-transform: uppercase;
     }
 
-    /* Slide 2: About Aarya Group Side Panel */
+    /* =========================================================
+       SLIDE 2: ABOUT AARYA GROUP
+       ========================================================= */
     .about-layout {
       display: grid;
-      grid-template-columns: 310px 1fr;
+      grid-template-columns: 315px 1fr;
       gap: 28px;
       height: 100%;
+      align-items: stretch;
     }
     .journey-sidebar {
       background: var(--royal-gradient);
       color: #ffffff;
       border-radius: 8px;
-      padding: 24px 20px;
-      font-size: 12px;
-      line-height: 1.55;
+      padding: 20px 18px;
+      font-size: 11.8px;
+      line-height: 1.48;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--gold);
     }
     .journey-sidebar h3 {
-      font-size: 18px;
-      font-weight: 800;
-      color: #ffffff;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      padding-bottom: 6px;
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--gold-light);
+      border-bottom: 1px solid rgba(255,255,255,0.22);
+      padding-bottom: 8px;
+      margin-bottom: 6px;
     }
-    .reg-field {
-      margin-bottom: 8px;
-    }
+    .reg-field { margin-bottom: 6px; }
     .reg-field strong {
       display: block;
-      color: #38bdf8;
-      font-size: 11px;
+      color: #7dd3fc;
+      font-size: 10.5px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      margin-bottom: 1px;
+    }
+    .about-content-card {
+      background: var(--surface-soft);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    /* Slide 3: Vision / Mission 3-Card Layout */
-    .vmv-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px;
-      margin-top: 20px;
-    }
+    /* =========================================================
+       SLIDE 3: VISION, MISSION & VALUES
+       ========================================================= */
     .vmv-card {
-      border: 1px solid #cbd5e1;
+      border: 1px solid var(--border-soft);
       border-top: 4px solid var(--primary-blue);
-      border-radius: 8px;
-      padding: 22px;
-      background: #f8fafc;
+      border-radius: 10px;
+      padding: 32px 24px;
+      background: var(--surface-soft);
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 14px;
+      box-shadow: 0 6px 18px rgba(8, 27, 69, 0.04);
+    }
+    .vmv-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #e0e7ff;
+      color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin: 0 auto;
+      font-weight: 800;
     }
     .vmv-card h3 {
-      font-size: 18px;
+      font-family: var(--font-display);
+      font-size: 17px;
       font-weight: 800;
-      color: #0d47a1;
-      text-decoration: underline;
-      margin-bottom: 14px;
+      color: var(--primary-blue);
+      letter-spacing: 0.08em;
+      border-bottom: 1.5px solid #cbd5e1;
+      padding-bottom: 8px;
       text-transform: uppercase;
     }
     .vmv-card p {
       font-size: 13.5px;
-      color: #334155;
+      color: var(--text-body);
       line-height: 1.65;
     }
 
-    /* Slide 4: Tree Hierarchy */
-    .tree-box {
+    /* =========================================================
+       SLIDE 4: AARYA GROUP ORG TREE
+       ========================================================= */
+    .org-chart-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .org-root {
       background: var(--royal-gradient);
       color: #ffffff;
-      padding: 12px 24px;
-      border-radius: 6px;
+      padding: 14px 36px;
+      border-radius: 8px;
+      font-family: var(--font-display);
       font-weight: 800;
-      font-size: 20px;
-      letter-spacing: 0.15em;
-      text-align: center;
-      margin-bottom: 30px;
+      font-size: 18px;
+      letter-spacing: 0.14em;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 8px 20px rgba(8, 27, 69, 0.18);
+    }
+    .org-stem {
+      width: 2.5px;
+      height: 28px;
+      background: #1565c0;
+    }
+    .org-rail {
+      width: calc(100% - 14.28% + 2px);
+      height: 2.5px;
+      background: #1565c0;
     }
     .branches-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
+      gap: 10px;
+      width: 100%;
+    }
+    .branch-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .branch-drop {
+      width: 2.5px;
+      height: 22px;
+      background: #1565c0;
       position: relative;
     }
+    .branch-drop::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 7px solid #1565c0;
+    }
     .branch-card {
-      border: 1px solid #93c5fd;
-      background: #f0fdf4;
-      border-radius: 6px;
-      padding: 10px 8px;
+      width: 100%;
+      flex: 1;
+      min-height: 240px;
+      border: 1px solid #bfdbfe;
+      border-top: 3px solid var(--primary-blue);
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 18px 10px;
       text-align: center;
-      font-size: 10.5px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      gap: 6px;
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(8, 27, 69, 0.04);
     }
-    .branch-card:nth-child(even) { background: #eff6ff; }
-    .branch-arrow {
-      color: #1565c0;
-      font-size: 20px;
-      margin-bottom: 2px;
+    .branch-col:nth-child(even) .branch-card {
+      background: #eff6ff;
+      border-top-color: var(--gold);
     }
     .branch-name {
       font-weight: 800;
-      color: #0c2d6b;
-      font-size: 11px;
+      color: var(--primary-blue);
+      font-size: 11.2px;
       text-transform: uppercase;
-      line-height: 1.25;
+      line-height: 1.3;
     }
     .branch-sub {
-      color: #475569;
+      color: var(--text-muted);
       font-style: italic;
-      font-size: 10px;
-      line-height: 1.35;
+      font-size: 10.5px;
+      line-height: 1.42;
     }
 
-    /* Profile Card Header (Slides 5 to 10) */
+    /* =========================================================
+       SLIDES 5-10: LEADERSHIP PROFILES
+       ========================================================= */
     .profile-header-banner {
       background: var(--royal-gradient);
       color: #ffffff;
-      padding: 18px 28px;
+      padding: 14px 74px 14px 22px;
       border-radius: 8px;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 2px solid var(--gold);
+      flex-shrink: 0;
+    }
+    .profile-id-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .profile-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1.5px solid var(--gold);
+      background: rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--gold-light);
+    }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
     }
     .profile-header-banner h2 {
-      font-size: 26px;
+      font-size: 23px;
       font-weight: 800;
+      line-height: 1.2;
     }
     .profile-contact-meta {
       text-align: right;
-      font-size: 12px;
-      line-height: 1.5;
+      font-size: 11.5px;
+      line-height: 1.48;
       color: #e2e8f0;
     }
     .profile-contact-meta strong {
-      font-size: 17px;
-      color: #ffffff;
+      font-size: 16px;
+      color: var(--gold-light);
       display: block;
       margin-bottom: 2px;
     }
-    .profile-content-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    .col-title {
-      font-size: 15px;
-      font-weight: 800;
-      color: #0c2d6b;
-      margin-bottom: 10px;
-      border-bottom: 2px solid #93c5fd;
-      padding-bottom: 4px;
+    .profile-col-box {
+      background: var(--surface-soft);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 16px 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Affiliation 3-Column Box (Slide 19) */
-    .affil-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
+    /* =========================================================
+       SLIDES 11-13: SERVICE OFFERINGS
+       ========================================================= */
+    .service-card {
+      background: var(--surface-soft);
+      border: 1px solid var(--border-soft);
+      border-left: 4px solid var(--primary-blue);
+      border-radius: 8px;
+      padding: 15px 18px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
-    .affil-card {
-      border: 1px solid #cbd5e1;
+    .service-card h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 5px;
+    }
+    .advisory-pillar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+      width: 100%;
+    }
+    .advisory-pillar {
+      background: var(--surface-soft);
+      border: 1px solid var(--border-soft);
+      border-left: 4px solid var(--primary-blue);
+      border-radius: 8px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 3px 10px rgba(8, 27, 69, 0.03);
+    }
+    .advisory-num {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--gold);
+      background: #082878;
+      width: 38px;
+      height: 38px;
       border-radius: 6px;
-      padding: 14px;
-      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .advisory-name {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--primary-blue);
+    }
+
+    /* =========================================================
+       SLIDE 19: AFFILIATIONS
+       ========================================================= */
+    .affil-card {
+      border: 1px solid var(--border-soft);
+      border-top: 4px solid var(--primary-blue);
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: var(--surface-soft);
+      display: flex;
+      flex-direction: column;
     }
     .affil-card h4 {
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 800;
-      color: #0d47a1;
+      color: var(--primary-blue);
       margin-bottom: 10px;
       border-bottom: 1.5px solid #bfdbfe;
-      padding-bottom: 4px;
+      padding-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
     .affil-card ul {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6.5px;
     }
     .affil-card ul li {
-      font-size: 11.5px;
-      color: #334155;
+      font-size: 12px;
+      color: var(--text-body);
+      font-weight: 500;
     }
     .affil-card ul li::before {
       content: "➤ ";
-      color: #1976d2;
-      font-size: 10px;
+      color: #1565c0;
+      font-size: 10.5px;
     }
 
-    /* Photo Gallery (Slide 20) */
+    /* =========================================================
+       SLIDES 20-21: CORPORATE OFFICE & TEAM GALLERIES
+       ========================================================= */
     .office-gallery-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      margin-top: 10px;
+      width: 100%;
     }
-    .office-photo {
+    .office-photo-card {
       border-radius: 8px;
       overflow: hidden;
-      border: 1px solid #cbd5e1;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-      background: #e2e8f0;
-      height: 220px;
-    }
-    .office-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Team Photo (Slide 21) */
-    .team-banner-img {
-      width: 100%;
-      height: 420px;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid #cbd5e1;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      margin-top: 10px;
-    }
-    .team-banner-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-    }
-
-    /* Disclaimer (Slide 22) */
-    .disclaimer-box {
-      background: #f8fafc;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      padding: 22px;
-      font-size: 11.5px;
-      line-height: 1.65;
-      color: #475569;
-      margin-bottom: 20px;
-    }
-    .disclaimer-box h4 {
-      font-size: 13.5px;
-      color: #0c2d6b;
-      margin-bottom: 8px;
-      text-decoration: underline;
-    }
-    .thank-you-bar {
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 6px 16px rgba(8, 27, 69, 0.08);
+      background: #ffffff;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+    }
+    .office-photo-card img {
+      width: 100%;
+      height: 202px;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    .office-photo-cap {
+      padding: 7px 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      background: var(--surface-soft);
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .team-showcase {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1.5px solid var(--border-soft);
+      box-shadow: 0 10px 26px rgba(8, 27, 69, 0.1);
+      background: #ffffff;
+    }
+    .team-showcase img {
+      width: 100%;
+      height: 455px;
+      object-fit: cover;
+      object-position: center 22%;
+      display: block;
+    }
+    .team-caption-bar {
+      padding: 12px 20px;
+      background: var(--surface-soft);
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      padding: 24px;
-      background: #082878;
-      color: #ffffff;
-      border-radius: 8px;
-      font-family: var(--font-serif);
-      font-size: 32px;
-      font-style: italic;
-      letter-spacing: 0.1em;
+      font-size: 12.5px;
+      color: var(--text-body);
     }
 
     /* =========================================================
-       PRINT ENGINE & W3C PAGED MEDIA (EXACT A4 LANDSCAPE)
+       SLIDE 22: MANDATORY DISCLAIMER & THANK YOU
+       ========================================================= */
+    .disclaimer-box {
+      background: var(--surface-soft);
+      border: 1px solid var(--border-soft);
+      border-left: 4px solid var(--primary-blue);
+      border-radius: 8px;
+      padding: 20px 24px;
+      font-size: 12.4px;
+      line-height: 1.65;
+      color: var(--text-body);
+      margin-bottom: 18px;
+    }
+    .disclaimer-box h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .thank-you-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 32px;
+      background: var(--royal-gradient);
+      color: #ffffff;
+      border-radius: 8px;
+      border: 1.5px solid var(--gold);
+    }
+    .thank-you-word {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-style: italic;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--gold-light);
+    }
+    .thank-you-contact {
+      text-align: right;
+      font-size: 12px;
+      line-height: 1.55;
+      color: #e2e8f0;
+    }
+
+    /* =========================================================
+       PRINT ENGINE — EXACT A4 LANDSCAPE (297mm x 210mm)
        ========================================================= */
     @page {
-      size: A4 landscape;
-      margin: 6mm 8mm 6mm 8mm;
+      size: 297mm 210mm;
+      margin: 0;
     }
     @media print {
       body {
         background: #ffffff !important;
-        color: #000000 !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
@@ -617,35 +881,33 @@
       .deck-container {
         margin: 0 !important;
         padding: 0 !important;
-        max-width: 100% !important;
+        max-width: none !important;
         gap: 0 !important;
       }
       .slide-page {
-        page-break-after: always !important;
-        break-after: page !important;
+        width: 297mm !important;
+        height: 210mm !important;
         border: none !important;
         box-shadow: none !important;
         border-radius: 0 !important;
-        min-height: 100vh !important;
-        height: 100vh !important;
         margin: 0 !important;
-        padding: 24px 30px !important;
+        page-break-after: always !important;
+        break-after: page !important;
       }
-      .cover-slide {
-        background: #082260 !important;
-        color: #ffffff !important;
+      .slide-page:last-child {
+        page-break-after: auto !important;
+        break-after: auto !important;
       }
     }
 
-    /* Responsive for mobile */
-    @media (max-width: 860px) {
-      .slide-page { min-height: auto; aspect-ratio: auto; padding: 24px 18px; }
-      .two-col-grid, .three-col-grid, .about-layout, .profile-content-grid { grid-template-columns: 1fr; }
-      .branches-grid { grid-template-columns: 1fr 1fr; }
-      .affil-grid { grid-template-columns: 1fr; }
-      .office-gallery-grid { grid-template-columns: 1fr; }
-      .cover-main-title { font-size: 24px; }
-      .cover-fiduciary-tag { font-size: 18px; }
+    /* Responsive Mobile Fallback (Screen Only — Never affects Print or Desktop A4) */
+    @media screen and (max-width: 900px) {
+      .deck-container { padding: 0 12px; }
+      .slide-page { width: 100%; height: auto; min-height: 620px; padding: 24px 20px; }
+      .two-col-grid, .three-col-grid, .about-layout, .advisory-pillar-grid, .office-gallery-grid { grid-template-columns: 1fr; }
+      .branches-grid { grid-template-columns: repeat(2, 1fr); }
+      .org-stem, .org-rail, .branch-drop { display: none; }
+      .slide-num-tab { right: 20px; }
     }
   </style>
 </head>
@@ -658,8 +920,7 @@
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
       Download / Print PDF Brochure
     </button>
-    <a href="https://wa.me/919038620055?text=Hello%20Aarya%20Consultants,%20I%20have%20reviewed%20your%2022-page%20Corporate%20Profile%20and%20would%20like%20to%20schedule%20a%20consultation." target="_blank" rel="noopener" class="cmd-btn cmd-btn-wa">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.074-1.785-.401-1.392-.574-2.28-1.996-2.35-2.09-.07-.094-.555-.738-.555-1.408 0-.67.352-.998.477-1.134.125-.136.273-.17.363-.17.09 0 .182.001.261.005.084.004.195-.032.304.23.114.273.39 951.424 1.02.034.07.057.15.011.24-.045.09-.068.148-.136.227-.068.079-.143.176-.205.236-.068.067-.14.139-.06.277.08.138.354.584.76 946.523.465.964.608 1.101.677.137.068.217.057.297-.034.08-.091.341-.397.432-.533.091-.137.182-.114.307-.068.125.045.796.375.932.443.136.068.227.102.261.16.034.057.034.33-.11.735z"/></svg>
+    <a href="https://wa.me/919038620055?text=Hello%20Aarya%20Consultants,%20I%20have%20reviewed%20your%20Corporate%20Profile%20and%20would%20like%20to%20schedule%20a%20consultation." target="_blank" rel="noopener" class="cmd-btn cmd-btn-wa">
       Chat on WhatsApp
     </a>
     <a href="index.html" class="cmd-btn cmd-btn-back">← Back to Site</a>
@@ -667,215 +928,250 @@
 
   <div class="deck-container">
 
-    <!-- ==================== SLIDE 1: COVER ==================== -->
+    <!-- ==================== SLIDE 01: COVER ==================== -->
     <section class="slide-page cover-slide">
-      <div class="slide-num-tab">1</div>
+      <div class="slide-num-tab">01</div>
       <div class="cover-badge-top">CORPORATE PROFILE</div>
 
       <div class="cover-card-white">
-        <div class="cover-main-logo">
-          <div>
-            <div class="cover-main-title">AARYA CONSULTANTS <span style="color:#e11d48">↑</span></div>
-            <div class="cover-sub-consortium">A CONSORTIUM OF ENTREPRENEURS</div>
-          </div>
-          <div style="text-align: right; border-left: 2px solid #e2e8f0; padding-left: 18px;">
-            <div style="font-family: var(--font-display); font-size: 32px; font-weight: 900; color: #14327a; line-height: 0.9;">AGC</div>
-            <div style="font-size: 11px; font-style: italic; color: #c2410c; font-weight: 700;">let's grow together</div>
-          </div>
-        </div>
-        <div class="cover-fiduciary-tag">
-          Fiduciaries For a Lifetime &amp; Beyond
-        </div>
+        <img src="images/arya-consultants-jpg-1790597676188-7d47f6c2.webp" alt="Aarya Consultants — A Consortium of Entrepreneurs — Fiduciaries For a Lifetime & Beyond">
       </div>
 
       <div class="cover-group-title">AARYA GROUP OF COMPANIES</div>
 
       <div class="cover-cities-bar">
-        KOLKATA &nbsp;I&nbsp; MUMBAI &nbsp;I&nbsp; BENGALURU &nbsp;I&nbsp; GUWAHATI &nbsp;I&nbsp; RANCHI &nbsp;I&nbsp; KALINGANAGAR &nbsp;I&nbsp; SILIGURI &nbsp;I&nbsp; CHANDANNAGAR
+        KOLKATA &nbsp;|&nbsp; MUMBAI &nbsp;|&nbsp; BENGALURU &nbsp;|&nbsp; GUWAHATI &nbsp;|&nbsp; RANCHI &nbsp;|&nbsp; KALINGANAGAR &nbsp;|&nbsp; SILIGURI &nbsp;|&nbsp; CHANDANNAGAR
       </div>
     </section>
 
-    <!-- ==================== SLIDE 2: ABOUT AARYA GROUP ==================== -->
+    <!-- ==================== SLIDE 02: ABOUT AARYA GROUP ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">2</div>
+      <div class="slide-num-tab">02</div>
 
       <div class="about-layout">
-        <!-- Sidebar -->
-        <div class="journey-sidebar">
-          <h3>Journey started in 2000....</h3>
-          <div class="reg-field">
-            <strong>MSME Udyog Aadhaar Number:</strong>
-            WB10D0027936
-          </div>
-          <div class="reg-field">
-            <strong>UDYAM Registration Number:</strong>
-            UDYAM-WB-10-0003535
-          </div>
-          <div class="reg-field">
-            <strong>GST Number:</strong>
-            19ALAPG2727M1Z0
-          </div>
-          <div class="reg-field">
-            <strong>Registered Address:</strong>
-            73C, Shyama Prasad Mukherjee Road, Beside Kalighat Post Office, Kolkata 700 026, West Bengal, India<br>
-            Phone no.: +91 33 2264 5505, +91 33 3552 5603
-          </div>
-          <div class="reg-field">
-            <strong>Corporate Office:</strong>
-            C-180, Survey Park, Beside Axis Bank, Kolkata-700 075<br>
-            Mobile: +91 98366 55005, +91 82403 97373
-          </div>
-          <div class="reg-field">
-            <strong>E-mail:</strong> sanjay.gupta@aaryaconsultants.com<br>
-            <strong>URL:</strong> www.aaryaconsultants.com
-          </div>
-        </div>
-
-        <!-- Main Body -->
-        <div style="display:flex; flex-direction:column; justify-content:space-between;">
+        <!-- Left Credentials Sidebar -->
+        <aside class="journey-sidebar">
           <div>
-            <h2 style="font-size: 28px; font-weight: 800; color: #0c2d6b; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">About Aarya Group</h2>
-            <ul class="bullet-list">
-              <li>Aarya Group is a consortium of entrepreneurs led by Chief Mentor, Sanjay K Gupta providing a wide spectrum of financial, investment, accounting, auditing, estate planning and legal service to the clients in India and abroad since last two decades.</li>
-              <li>We have 42 associates supported by a well experienced and qualified team of Financial Consultants, Chartered Accountants, Attorneys, Lawyers and Advocates to cater the needs of various segments of clients by providing customized solutions.</li>
-              <li>Our head office is in Kolkata having pan India presence viz Mumbai, Noida (Delhi), Bengaluru, Siliguri, Chandannagar, Liluah and Guwahati.</li>
-              <li>We have client centric approach and a robust review and monitoring process to deliver quality service to the clients.</li>
-              <li>Our philosophy is 'Let's Grow Together'. We believe in the overall growth in health, wealth and happiness for us as well as our clients. We have more than 2000 clients in India and abroad who have reposed faith in us and avail our seamless services.</li>
-            </ul>
+            <h3>Journey started in 2000….</h3>
+            <div class="reg-field">
+              <strong>MSME Udyog Aadhaar Number</strong>
+              WB10D0027936
+            </div>
+            <div class="reg-field">
+              <strong>UDYAM Registration Number</strong>
+              UDYAM-WB-10-0003535
+            </div>
+            <div class="reg-field">
+              <strong>GST Number</strong>
+              19ALAPG2727M1Z0
+            </div>
+            <div class="reg-field">
+              <strong>Registered Address</strong>
+              73C, Shyama Prasad Mukherjee Road, Beside Kalighat Post Office, Kolkata 700 026, West Bengal, India<br>
+              Phone no.: +91 33 2264 5505, +91 33 3552 5603
+            </div>
+            <div class="reg-field">
+              <strong>Corporate Office</strong>
+              C-180, Survey Park, Beside Axis Bank, Kolkata-700 075<br>
+              Mobile: +91 98366 55005, +91 82403 97373
+            </div>
           </div>
+          <div style="border-top: 1px solid rgba(255,255,255,0.22); padding-top: 8px;">
+            <div class="reg-field"><strong>E-mail</strong> sanjay.gupta@aaryaconsultants.com</div>
+            <div class="reg-field" style="margin-bottom:0;"><strong>URL</strong> www.aaryaconsultants.com</div>
+          </div>
+        </aside>
+
+        <!-- Main Column -->
+        <div style="display:flex; flex-direction:column; justify-content:space-between;">
+          <div class="slide-banner" style="margin-bottom:16px;">
+            <h2>About Aarya Group</h2>
+            <p>Two decades of multi-disciplinary fiduciary stewardship across India and abroad</p>
+          </div>
+
+          <div class="slide-body">
+            <div class="about-content-card" style="height:100%;">
+              <ul class="bullet-list" style="gap:15px;">
+                <li style="font-size:13.8px;">Aarya Group is a consortium of entrepreneurs led by Chief Mentor, Sanjay K Gupta providing a wide spectrum of financial, investment, accounting, auditing, estate planning and legal service to the clients in India and abroad since last two decades.</li>
+                <li style="font-size:13.8px;">We have 42 associates supported by a well experienced and qualified team of Financial Consultants, Chartered Accountants, Attorneys, Lawyers and Advocates to cater the needs of various segments of clients by providing customized solutions.</li>
+                <li style="font-size:13.8px;">Our head office is in Kolkata having pan India presence viz Mumbai, Noida (Delhi), Bengaluru, Siliguri, Chandannagar, Liluah and Guwahati.</li>
+                <li style="font-size:13.8px;">We have client centric approach and a robust review and monitoring process to deliver quality service to the clients.</li>
+                <li style="font-size:13.8px;">Our philosophy is ‘Let’s Grow Together’. We believe in the overall growth in health, wealth and happiness for us as well as our clients. We have more than 2000 clients in India and abroad who have reposed faith in us and avail our seamless services.</li>
+              </ul>
+            </div>
+          </div>
+
           <div class="slide-footer">
+            <span class="slide-footer-left">Corporate Profile · Aarya Group of Companies</span>
             <span class="slide-footer-brand">Aarya Consultants</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 3: VISION AND MISSION ==================== -->
+    <!-- ==================== SLIDE 03: VISION AND MISSION STATEMENT ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">3</div>
+      <div class="slide-num-tab">03</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Vision and mission statement</h2>
-          <p>Acting as a fiduciary, we shape optimised financial solutions for a lifetime and beyond</p>
-        </div>
+      <div class="slide-banner">
+        <h2>Vision and Mission Statement</h2>
+        <p>Acting as a fiduciary, we shape optimised financial solutions for a lifetime and beyond</p>
+      </div>
 
-        <div class="vmv-grid">
+      <div class="slide-body">
+        <div class="three-col-grid" style="height: 410px;">
           <div class="vmv-card">
+            <div class="vmv-icon">👁️</div>
             <h3>OUR VISION</h3>
             <p><strong>To be the most preferred and referred brand</strong></p>
-            <p style="margin-top: 10px;">We aspire to grow together with our clients and associates not only in wealth but overall happiness.</p>
+            <p>We aspire to grow together with our clients and associates not only in wealth but overall happiness.</p>
           </div>
 
           <div class="vmv-card" style="border-top-color: #0284c7;">
+            <div class="vmv-icon" style="background:#e0f2fe; color:#0284c7;">🎯</div>
             <h3 style="color:#0284c7">OUR MISSION</h3>
             <p><strong>To build and maintain stable financial future for our esteemed clients</strong></p>
-            <p style="margin-top: 10px;">Keeping in mind of their individual needs and in alignment with their personal preferences.</p>
+            <p>Keeping in mind of their individual needs and in alignment with their personal preferences.</p>
           </div>
 
-          <div class="vmv-card" style="border-top-color: #059669;">
-            <h3 style="color:#059669">OUR VALUES</h3>
+          <div class="vmv-card" style="border-top-color: #c59b27;">
+            <div class="vmv-icon" style="background:#fef3c7; color:#92400e;">⚖️</div>
+            <h3 style="color:#92400e">OUR VALUES</h3>
             <p><strong>Client focused and centric activities</strong></p>
-            <p style="margin-top: 8px;"><strong>Ethics, honesty and integrity always</strong></p>
-            <p style="margin-top: 8px;"><strong>Growth as theme in whatever we do</strong></p>
+            <p><strong>Ethics, honesty and integrity always</strong></p>
+            <p><strong>Growth as theme in whatever we do</strong></p>
           </div>
         </div>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Corporate Profile · Vision, Mission &amp; Values</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 4: GROUP OF COMPANIES ==================== -->
+    <!-- ==================== SLIDE 04: AARYA GROUP OF COMPANIES ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">4</div>
+      <div class="slide-num-tab">04</div>
 
-      <div>
-        <div class="tree-box">AARYA GROUP OF COMPANIES</div>
+      <div class="slide-banner">
+        <h2>Aarya Group of Companies</h2>
+        <p>Multi-venture enterprise spanning financial advisory, legal &amp; estate planning, hospitality, and interior design</p>
+      </div>
 
-        <div class="branches-grid">
-          <div class="branch-card">
-            <div class="branch-arrow">↓</div>
-            <div class="branch-name">AARYA CONSULTANTS</div>
-            <div class="branch-sub">(Personalised Financial Planning and Optimised Wealth Management Services)</div>
-          </div>
+      <div class="slide-body">
+        <div class="org-chart-wrap">
+          <div class="org-root">AARYA GROUP OF COMPANIES</div>
+          <div class="org-stem"></div>
+          <div class="org-rail"></div>
 
-          <div class="branch-card">
-            <div class="branch-arrow">↓</div>
-            <div class="branch-name">AARYA FINANCIAL SERVICES</div>
-            <div class="branch-sub">(Distributors of all kind of Investment Solutions)</div>
-          </div>
+          <div class="branches-grid">
+            <div class="branch-col">
+              <div class="branch-drop"></div>
+              <div class="branch-card">
+                <div class="branch-name">AARYA CONSULTANTS</div>
+                <div class="branch-sub">(Personalised Financial Planning and Optimised Wealth Management Services)</div>
+              </div>
+            </div>
 
-          <div class="branch-card">
-            <div class="branch-arrow">↓</div>
-            <div class="branch-name">AARYA ESTATE PLANNERS AND LEGAL SERVICES</div>
-            <div class="branch-sub">(Will, Succession Planning, Legal aid and consultancy)</div>
-          </div>
+            <div class="branch-col">
+              <div class="branch-drop"></div>
+              <div class="branch-card">
+                <div class="branch-name">AARYA FINANCIAL SERVICES</div>
+                <div class="branch-sub">(Distributors of all kind of Investment Solutions)</div>
+              </div>
+            </div>
 
-          <div class="branch-card">
-            <div class="branch-arrow">↓</div>
-            <div class="branch-name">AARYA HOSPITALITY SERVICES</div>
-            <div class="branch-sub">(Best in Food, beverage, catering and hospitality services)</div>
-          </div>
+            <div class="branch-col">
+              <div class="branch-drop"></div>
+              <div class="branch-card">
+                <div class="branch-name">AARYA ESTATE PLANNERS AND LEGAL SERVICES</div>
+                <div class="branch-sub">(Will, Succession Planning, Legal aid and consultancy)</div>
+              </div>
+            </div>
 
-          <div class="branch-card">
-            <div class="branch-arrow">↓</div>
-            <div class="branch-name">CHAI PE CHARCHA</div>
-            <div class="branch-sub">(Chain of Cafeterias)</div>
-          </div>
+            <div class="branch-col">
+              <div class="branch-drop"></div>
+              <div class="branch-card">
+                <div class="branch-name">AARYA HOSPITALITY SERVICES</div>
+                <div class="branch-sub">(Best in Food, beverage, catering and hospitality services)</div>
+              </div>
+            </div>
 
-          <div class="branch-card">
-            <div class="branch-arrow">↓</div>
-            <div class="branch-name">HOTEL RELAX N ENJOY</div>
-            <div class="branch-sub">(Guest House at Puri, Swargadwar Beach)</div>
-          </div>
+            <div class="branch-col">
+              <div class="branch-drop"></div>
+              <div class="branch-card">
+                <div class="branch-name">CHAI PE CHARCHA</div>
+                <div class="branch-sub">(Chain of Cafeterias)</div>
+              </div>
+            </div>
 
-          <div class="branch-card">
-            <div class="branch-arrow">↓</div>
-            <div class="branch-name">OPULENT SPACEEDGE</div>
-            <div class="branch-sub">(For world class interior designing and execution solution)</div>
+            <div class="branch-col">
+              <div class="branch-drop"></div>
+              <div class="branch-card">
+                <div class="branch-name">HOTEL RELAX N ENJOY</div>
+                <div class="branch-sub">(Guest House at Puri, Swargadwar Beach)</div>
+              </div>
+            </div>
+
+            <div class="branch-col">
+              <div class="branch-drop"></div>
+              <div class="branch-card">
+                <div class="branch-name">OPULENT SPACEEDGE</div>
+                <div class="branch-sub">(For world class interior designing and execution solution)</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Corporate Profile · Enterprise Structure</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
-    <!-- ==================== SLIDE 5: CHAIRMAN'S PROFILE (SANJAY K GUPTA) ==================== -->
+
+    <!-- ==================== SLIDE 05: CHAIRMAN'S PROFILE (SANJAY K GUPTA) ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">5</div>
+      <div class="slide-num-tab">05</div>
 
-      <div>
-        <div class="profile-header-banner">
-          <h2>Chairman’s Profile</h2>
-          <div class="profile-contact-meta">
-            <strong>Sanjay K Gupta</strong>
-            Tel: +91 33 2264 5505, +91 33 35525603<br>
-            Mobile: +91 98366 55005, +9133 8240397373<br>
-            Email: sanjay.gupta@aaryaconsultants.com
+      <div class="profile-header-banner">
+        <div class="profile-id-left">
+          <div class="profile-avatar">
+            <img src="images/whatsapp-image-2026-08-05-at-19-19-37-1785937839084-fc26458e.webp" alt="Sanjay K Gupta">
           </div>
-        </div>
-
-        <div class="profile-content-grid">
           <div>
+            <h2>Chairman’s Profile</h2>
+            <p style="font-size:12px; color:#cbd5e1;">Managing Partner &amp; Chief Mentor</p>
+          </div>
+        </div>
+        <div class="profile-contact-meta">
+          <strong>Sanjay K Gupta</strong>
+          Tel: +91 33 2264 5505, +91 33 3552 5603<br>
+          Mobile: +91 98366 55005, +91 82403 97373<br>
+          Email: sanjay.gupta@aaryaconsultants.com
+        </div>
+      </div>
+
+      <div class="slide-body top-aligned">
+        <div class="two-col-grid" style="height:100%;">
+          <div class="profile-col-box">
             <div class="col-title">Profile</div>
             <ul class="bullet-list">
-              <li>Sanjay, a NISM’s Level 10A - Investment Advisor, is Managing Partner and Chief Mentor of Aarya Consultants. He has more than 20 years of professional experience in financial planning, wealth portfolio management, succession planning, providing customised financial solutions to a wide range in Indian and NRI clients.</li>
-              <li>Sanjay is a Certified Financial Consultant, LUTCF &amp; Financial Services Specialist from The American College and Chartered Inheritance &amp; Succession Planner from American Academy of Financial Management. He is Court Of the Table qualifier of the MDRT, The world largest and prestigious Association of Finance Professionals, based in US.</li>
+              <li>Sanjay, a NISM’s Level 10A - Investment Advisor, is Managing Partner and Chief Mentor of Aarya Consultants. He has more than 20 years of professional experience in financial planning, wealth portfolio management, succession planning, providing customised financial solutions to a wide range of Indian and NRI clients.</li>
+              <li>Sanjay is a Certified Financial Consultant, LUTCF &amp; Financial Services Specialist from The American College and Chartered Inheritance &amp; Succession Planner from American Academy of Financial Management. He is Court Of the Table qualifier of the MDRT, the world’s largest and prestigious Association of Finance Professionals, based in US.</li>
               <li>He has participated in various training programs in US and several countries on Financial Planning, Wealth Management, client service and soft skills etc.</li>
-              <li>Sanjay has been recognized with numerous awards and citation in various parts of world for his committed and excellent client service.</li>
+              <li>Sanjay has been recognized with numerous awards and citations in various parts of the world for his committed and excellent client service.</li>
             </ul>
           </div>
 
-          <div>
+          <div class="profile-col-box">
             <div class="col-title">Professional Experience</div>
-            <p style="font-size:12.5px; margin-bottom:10px; color:#334155;">He has been successfully leading a team of highly motivated professionals to provide consistent, seamless and customised financial solutions and services to a number of clients.</p>
+            <p style="font-size:12.5px; margin-bottom:10px; color:#1e293b; font-weight:600;">He has been successfully leading a team of highly motivated professionals to provide consistent, seamless and customised financial solutions and services to a number of clients.</p>
             <ul class="bullet-list">
               <li>Successfully advised numerous clients about financial planning, portfolio management, insurance and increasing overall wealth to the satisfaction of the clients.</li>
               <li>Sanjay has been handling client relationships by ensuring quality services as per the needs of the client.</li>
-              <li>Wide exposure of smoothly leading teams on various books keeping, accounting, legal and statutory compliance assignments.</li>
+              <li>Wide exposure of smoothly leading teams on various bookkeeping, accounting, legal and statutory compliance assignments.</li>
               <li>His key clients include Tous Les Jours Confort (TLJC), Dufferin Rajendra Old Cadets Association, Calcutta (DROCA), Pearl Dental Clinic, Mlinda Charitable Trust, Mlinda Sustainable Environment Pvt Ltd., Mohan Merchandise, Paul Brothers &amp; Company, ACS Cooling Solutions Pvt Ltd, and a host of Senior Management personnel of large organizations viz. Medica group of Hospitals, Techno India, Cognizant, TCS, Kolkata Port Trust, Hindustan Petroleum Ltd, Peerless group, Emami group, ITC Ltd etc. among others.</li>
             </ul>
           </div>
@@ -883,84 +1179,100 @@
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Leadership · Chairman’s Profile</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 6: BUSINESS PARTNER (AARYA GUPTA) ==================== -->
+    <!-- ==================== SLIDE 06: BUSINESS PARTNER (AARYA GUPTA) ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">5</div>
+      <div class="slide-num-tab">06</div>
 
-      <div>
-        <div class="profile-header-banner">
-          <h2>Business Partner’s Profile</h2>
-          <div class="profile-contact-meta">
-            <strong>Aarya Gupta</strong>
-            Mobile: +91 6290716658<br>
-            Email: aarya.gupta@aaryaconsultants.com
+      <div class="profile-header-banner">
+        <div class="profile-id-left">
+          <div class="profile-avatar">
+            <img src="images/whatsapp-image-2026-08-05-at-19-16-52--1--1785937800106-0ac3a9a8.webp" alt="Aarya Gupta">
+          </div>
+          <div>
+            <h2>Business Partner’s Profile</h2>
+            <p style="font-size:12px; color:#cbd5e1;">Chief of Innovation &amp; New Business Strategy</p>
           </div>
         </div>
+        <div class="profile-contact-meta">
+          <strong>Aarya Gupta</strong>
+          Mobile: +91 62907 16658<br>
+          Email: aarya.gupta@aaryaconsultants.com
+        </div>
+      </div>
 
-        <div class="profile-content-grid">
-          <div>
+      <div class="slide-body top-aligned">
+        <div class="two-col-grid" style="height:100%;">
+          <div class="profile-col-box">
             <div class="col-title">Profile</div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px; margin-bottom:14px;">
-              <strong style="color:#0c2d6b; font-size:14px;">Chief of Innovation and New Business Strategy</strong>
-              <p style="font-size:13px; color:#475569; margin-top:8px; line-height:1.6;">
-                The youngest entrepreneur in our team, has successfully implemented innovative ideas towards the successful growth of the group. His strategy towards client acquisition and customer service has created many satisfied clients for our firm.
-              </p>
-            </div>
+            <p style="font-size:14px; font-weight:800; color:var(--primary-blue); margin-bottom:12px;">
+              Chief of Innovation and New Business Strategy
+            </p>
+            <p style="font-size:13.5px; color:var(--text-body); line-height:1.7;">
+              The youngest entrepreneur in our team, has successfully implemented innovative ideas towards the successful growth of the group. His strategy towards client acquisition and customer service has created many satisfied clients for our firm.
+            </p>
           </div>
 
-          <div>
+          <div class="profile-col-box">
             <div class="col-title">Professional Expertise</div>
-            <ul class="bullet-list">
-              <li>Aarya, an young budding entreprenuer, has been impressing clients by his new age innovative ideas of business expansion.</li>
+            <ul class="bullet-list" style="gap:14px;">
+              <li>Aarya, a young budding entrepreneur, has been impressing clients by his new-age innovative ideas of business expansion.</li>
               <li>He emphasises optimum use of technology and artificial intelligence in curating efficient solutions for providing the best service standards to our clients.</li>
-              <li>He collaborates with other team members to find new strategies for clients service and customer delight.</li>
-              <li>He is a Food Connoisseur himself and avid perfectionist and always emphasises to do the work with zero error and iplementation of “ first time right concept “.</li>
+              <li>He collaborates with other team members to find new strategies for client service and customer delight.</li>
+              <li>He is a Food Connoisseur himself and avid perfectionist and always emphasises to do the work with zero error and implementation of “First Time Right Concept”.</li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Leadership · Business Partner’s Profile</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 7: BUSINESS PARTNER (ANAND K GUPTA) ==================== -->
+    <!-- ==================== SLIDE 07: BUSINESS PARTNER (ANAND K GUPTA) ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">6</div>
+      <div class="slide-num-tab">07</div>
 
-      <div>
-        <div class="profile-header-banner">
-          <h2>Business Partner’s Profile</h2>
-          <div class="profile-contact-meta">
-            <strong>Anand K Gupta</strong>
-            Tel: +91 33 2264 5505, +91 33 35525603<br>
-            Mobile: +91 9064128235<br>
-            Email: anand.gupta@aaryaconsultants.com
+      <div class="profile-header-banner">
+        <div class="profile-id-left">
+          <div class="profile-avatar">AKG</div>
+          <div>
+            <h2>Business Partner’s Profile</h2>
+            <p style="font-size:12px; color:#cbd5e1;">Business Partner &amp; Chief Advisor</p>
           </div>
         </div>
+        <div class="profile-contact-meta">
+          <strong>Anand K Gupta</strong>
+          Tel: +91 33 2264 5505, +91 33 3552 5603<br>
+          Mobile: +91 90641 28235<br>
+          Email: anand.gupta@aaryaconsultants.com
+        </div>
+      </div>
 
-        <div class="profile-content-grid">
-          <div>
+      <div class="slide-body top-aligned">
+        <div class="two-col-grid" style="height:100%;">
+          <div class="profile-col-box">
             <div class="col-title">Profile</div>
             <ul class="bullet-list">
-              <li>Anand, a NISM’s Level VA - Financial Consultant, is Business Partner and Chief Advisor of the Aarya Consultants. By his dynamic approach and excellent decision making capabilities, he has led the organization towards the growth pathway. Having more than 10 years of professional experience in client service and Client Relationship Management (CRM) with HDFC Bank as Branch Manager, he have provided solutions to a wide range in Indian and NRI clients.</li>
-              <li>Anand is a Chartered Inheritance &amp; Succession Planner from American Academy of Financial Management. He is Member of the Million Dollar Round Table, MDRT, The world largest and prestigious Association of Finance Professionals, based in US.</li>
+              <li>Anand, a NISM’s Level VA - Financial Consultant, is Business Partner and Chief Advisor of Aarya Consultants. By his dynamic approach and excellent decision-making capabilities, he has led the organization towards the growth pathway. Having more than 10 years of professional experience in client service and Client Relationship Management (CRM) with HDFC Bank as Branch Manager, he has provided solutions to a wide range of Indian and NRI clients.</li>
+              <li>Anand is a Chartered Inheritance &amp; Succession Planner from American Academy of Financial Management. He is Member of the Million Dollar Round Table (MDRT), the world’s largest and prestigious Association of Finance Professionals, based in US.</li>
               <li>He has participated in various training programs in several countries of the world on Financial Planning, Wealth Management, client service and soft skills etc.</li>
-              <li>Anand has been recognized with numerous awards and citation in various parts of world for committed and excellent client service.</li>
+              <li>Anand has been recognized with numerous awards and citations in various parts of the world for committed and excellent client service.</li>
             </ul>
           </div>
 
-          <div>
+          <div class="profile-col-box">
             <div class="col-title">Professional Experience</div>
-            <p style="font-size:12.5px; margin-bottom:10px; color:#334155;">He has been successfully instrumental in the over all management of the firm and managing the entire office team, co-ordinating with team members to provide the best possible client service. and leading a team to provide service to number of clients.</p>
+            <p style="font-size:12.5px; margin-bottom:10px; color:#1e293b; font-weight:600;">He has been successfully instrumental in the overall management of the firm and managing the entire office team, co-ordinating with team members to provide the best possible client service, and leading a team to provide service to a number of clients.</p>
             <ul class="bullet-list">
               <li>Anand has been handling client relationships by ensuring quality services as per the needs of the clients.</li>
-              <li>Wide exposure of smoothly leading teams on various book keeping, accounting, legal and statutory compliance assignments.</li>
+              <li>Wide exposure of smoothly leading teams on various bookkeeping, accounting, legal and statutory compliance assignments.</li>
               <li>Wide exposure of smoothly leading legal team of Attorneys, Lawyers and Advocates on various legal issues faced by our clients and helping them get relief as per their satisfaction.</li>
             </ul>
           </div>
@@ -968,41 +1280,48 @@
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Leadership · Business Partner’s Profile</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 8: BUSINESS PARTNER (SUMITA PRAMANICK) ==================== -->
+    <!-- ==================== SLIDE 08: BUSINESS PARTNER (SUMITA PRAMANICK) ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">7</div>
+      <div class="slide-num-tab">08</div>
 
-      <div>
-        <div class="profile-header-banner">
-          <h2>Business Partner’s Profile</h2>
-          <div class="profile-contact-meta">
-            <strong>Sumita Pramanick</strong>
-            Mobile: +91 8017784493<br>
-            Email: sumita@aaryaconsultants.com
+      <div class="profile-header-banner">
+        <div class="profile-id-left">
+          <div class="profile-avatar">SP</div>
+          <div>
+            <h2>Business Partner’s Profile</h2>
+            <p style="font-size:12px; color:#cbd5e1;">Partner — Client Operations &amp; Delivery</p>
           </div>
         </div>
+        <div class="profile-contact-meta">
+          <strong>Sumita Pramanick</strong>
+          Mobile: +91 80177 84493<br>
+          Email: sumita@aaryaconsultants.com
+        </div>
+      </div>
 
-        <div class="profile-content-grid">
-          <div>
+      <div class="slide-body top-aligned">
+        <div class="two-col-grid" style="height:100%;">
+          <div class="profile-col-box">
             <div class="col-title">Profile</div>
-            <ul class="bullet-list">
-              <li>Sumita, an PGDMM Specialization in Integrated Marketing Communication Management, from Indian Institute of Social Welfare &amp; Business Management, have been partnering with the firm since 2018, providing operations support to the form as well our clients.</li>
-              <li>By her excellent client relationship management skills, she has helped the firm to aquire and retain clients and provide required support by co-ordinating with the team.</li>
+            <ul class="bullet-list" style="gap:11px;">
+              <li>Sumita, a PGDMM Specialization in Integrated Marketing Communication Management from Indian Institute of Social Welfare &amp; Business Management, has been partnering with the firm since 2018, providing operations support to the firm as well as our clients.</li>
+              <li>By her excellent client relationship management skills, she has helped the firm to acquire and retain clients and provide required support by co-ordinating with the team.</li>
               <li>She handles the entire operations and back office of the firm supervising a team of junior operations executives.</li>
               <li>She has participated in various training programs on Operations Management, client service and soft skills etc.</li>
             </ul>
           </div>
 
-          <div>
+          <div class="profile-col-box">
             <div class="col-title">Professional Experience</div>
-            <p style="font-size:12.5px; margin-bottom:10px; color:#334155;">She has been successfully instrumental in the over all management of the firm and managing the entire office team, co-ordinating with team members to provide the best possible client service and leading a team to provide service to number of clients.</p>
+            <p style="font-size:12.5px; margin-bottom:10px; color:#1e293b; font-weight:600;">She has been successfully instrumental in the overall management of the firm and managing the entire office team, co-ordinating with team members to provide the best possible client service and leading a team to provide service to a number of clients.</p>
             <ul class="bullet-list">
               <li>Sumita has been handling client relationships by ensuring quality services as per the needs of the clients.</li>
-              <li>Wide exposure of smoothly leading teams on various book keeping, accounting, legal and statutory compliance assignments.</li>
+              <li>Wide exposure of smoothly leading teams on various bookkeeping, accounting, legal and statutory compliance assignments.</li>
               <li>Wide exposure of smoothly leading legal team of Attorneys, Lawyers and Advocates on various legal issues faced by our clients and helping them get relief as per their satisfaction.</li>
               <li>She has experience of working with ICICI Prudential, Reliance Life, Tous Les Jours Confort, Skin Incorporated and Miiraki.</li>
             </ul>
@@ -1011,40 +1330,47 @@
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Leadership · Business Partner’s Profile</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 9: HEAD OF ACCOUNTS & AUDIT (AYAN BHATTACHARYA) ==================== -->
+    <!-- ==================== SLIDE 09: HEAD OF ACCOUNTS & AUDIT (AYAN BHATTACHARYA) ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">8</div>
+      <div class="slide-num-tab">09</div>
 
-      <div>
-        <div class="profile-header-banner">
-          <h2>Head of Accounts &amp; Audit Profile</h2>
-          <div class="profile-contact-meta">
-            <strong>Ayan Bhattacharya</strong>
-            Mobile: +91 9903131915<br>
-            Email: ayan@aaryaconsultants.com
+      <div class="profile-header-banner">
+        <div class="profile-id-left">
+          <div class="profile-avatar">AB</div>
+          <div>
+            <h2>Head of Accounts &amp; Audit Profile</h2>
+            <p style="font-size:12px; color:#cbd5e1;">Accounts, Taxation &amp; Audit Lead</p>
           </div>
         </div>
+        <div class="profile-contact-meta">
+          <strong>Ayan Bhattacharya</strong>
+          Mobile: +91 99031 31915<br>
+          Email: ayan@aaryaconsultants.com
+        </div>
+      </div>
 
-        <div class="profile-content-grid">
-          <div>
+      <div class="slide-body top-aligned">
+        <div class="two-col-grid" style="height:100%;">
+          <div class="profile-col-box">
             <div class="col-title">Profile</div>
-            <ul class="bullet-list">
-              <li>Ayan, an B.Com Graduate, Certification of Financial Accounting and Management from Calcutta University, Certified from NSE and AMFI.</li>
-              <li>He has more than 16 years of professional experience on Accounts, Finance, Taxation, Management and Audit.</li>
-              <li>He was experience in Stock Market, Financial Institute, Non Banking Financial Company, Foreign Exchange, Banking Sector, Educational Institute, Real Estate, Agricultural Trading Sector.</li>
+            <ul class="bullet-list" style="gap:14px;">
+              <li>Ayan, a B.Com Graduate with Certification of Financial Accounting and Management from Calcutta University, Certified from NSE and AMFI.</li>
+              <li>He has more than 16 years of professional experience in Accounts, Finance, Taxation, Management and Audit.</li>
+              <li>He has experience across Stock Market, Financial Institutes, Non Banking Financial Companies (NBFC), Foreign Exchange, Banking Sector, Educational Institutes, Real Estate, and Agricultural Trading Sector.</li>
             </ul>
           </div>
 
-          <div>
+          <div class="profile-col-box">
             <div class="col-title">Professional Experience</div>
-            <p style="font-size:12.5px; margin-bottom:10px; color:#334155;">He has been successfully instrumental in the over all management of the entire office team, co-ordinating with team members to provide the best possible client service and leading a team to provide service to number of clients regarding the firm’s audit and accounts.</p>
+            <p style="font-size:12.5px; margin-bottom:10px; color:#1e293b; font-weight:600;">He has been successfully instrumental in the overall management of the entire office team, co-ordinating with team members to provide the best possible client service and leading a team to provide service to a number of clients regarding the firm’s audit and accounts.</p>
             <ul class="bullet-list">
               <li>He has been handling client relationships by ensuring quality services as per the needs of the clients.</li>
-              <li>Wide exposure of smoothly leading teams on various book keeping, accounting, legal and statutory compliance assignments.</li>
+              <li>Wide exposure of smoothly leading teams on various bookkeeping, accounting, legal and statutory compliance assignments.</li>
               <li>Wide exposure of smoothly leading legal team of Attorneys, Lawyers and Advocates on various legal issues faced by our clients and helping them get relief as per their satisfaction.</li>
             </ul>
           </div>
@@ -1052,179 +1378,204 @@
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Leadership · Head of Accounts &amp; Audit</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
     <!-- ==================== SLIDE 10: ASSOCIATE'S PROFILE (CA SHYAM SUNDAR LOHIA) ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">9</div>
+      <div class="slide-num-tab">10</div>
 
-      <div>
-        <div class="profile-header-banner">
-          <h2>Associate’s Profile</h2>
-          <div class="profile-contact-meta">
-            <strong>CA Shyam Sundar Lohia</strong>
-            Mobile: +91 9830088731<br>
-            Email: sslohia@aaryaconsultants.com
+      <div class="profile-header-banner">
+        <div class="profile-id-left">
+          <div class="profile-avatar">
+            <img src="images/aarya-consultants--headshots--1--5-page-0001-1789396374405-f5081414.webp" alt="CA Shyam Sundar Lohia">
+          </div>
+          <div>
+            <h2>Associate’s Profile</h2>
+            <p style="font-size:12px; color:#cbd5e1;">Fellow Chartered Accountant · IFRS &amp; Statutory Assurance</p>
           </div>
         </div>
+        <div class="profile-contact-meta">
+          <strong>CA Shyam Sundar Lohia</strong>
+          Mobile: +91 98300 88731<br>
+          Email: sslohia@aaryaconsultants.com
+        </div>
+      </div>
 
-        <div class="profile-content-grid">
-          <div>
+      <div class="slide-body top-aligned">
+        <div class="two-col-grid" style="height:100%;">
+          <div class="profile-col-box">
             <div class="col-title">Profile</div>
-            <ul class="bullet-list">
-              <li>Lohia Jee, a Fellow Chartered Accountant is a Associate of the Firm. He has more than 35 years of professional experience in financial audit, concurrent audit, management and operational audits, physical verification of stock &amp; fixed assets, preparation &amp; implementation of SOP &amp; manuals, risk management and project management. He has executed various multi-lateral projects in different parts of India.</li>
+            <ul class="bullet-list" style="gap:11px;">
+              <li>Lohia Jee, a Fellow Chartered Accountant, is an Associate of the Firm. He has more than 35 years of professional experience in financial audit, concurrent audit, management and operational audits, physical verification of stock &amp; fixed assets, preparation &amp; implementation of SOP &amp; manuals, risk management and project management. He has executed various multi-lateral projects in different parts of India.</li>
               <li>He has vast experience that ranges across several industries, especially hospitality, metal &amp; mining, manufacturing and service sectors.</li>
-              <li>He has participated in various training programs on Ind AS /IFRS, Analytics, managerial and soft skills etc.</li>
+              <li>He has participated in various training programs on Ind AS / IFRS, Analytics, managerial and soft skills etc.</li>
             </ul>
           </div>
 
-          <div>
+          <div class="profile-col-box">
             <div class="col-title">Professional Experience</div>
-            <p style="font-size:12.5px; margin-bottom:8px; color:#334155;">He has successfully lead team of professionals to complete critical assignments Indian GAAP, IFRS, US GAAP etc. in India and abroad. His profile includes:</p>
+            <p style="font-size:12.5px; margin-bottom:10px; color:#1e293b; font-weight:600;">He has successfully led teams of professionals to complete critical assignments across Indian GAAP, IFRS, US GAAP etc. in India and abroad. His profile includes:</p>
             <ul class="bullet-list">
               <li>Expertise of Indian GAAP and International GAAP including IFRS. He has also worked on IFRS reporting in India and Bangladesh.</li>
               <li>Wide exposure of leading teams on various audit and assurance assignments in India.</li>
-              <li>His other key clients has been Apollo Zipper India Ltd (Lalit group of Hotels), International Cholera and Diarrhoeal Disease Research(icddr,b), Fives Stein India Projects Pvt Ltd, Adhunik Metaliks Ltd, Adhunik Power &amp; Natural Resourced Ltd., Adhunik Alloys &amp; Power Ltd,, Sikkim Mining Corporation, Uranium Corporation of India Ltd, IISCO Kulti Works, Local Government Engineering Department - Bangladesh, World Bank, ADB etc.</li>
+              <li>His other key clients have been Apollo Zipper India Ltd (Lalit group of Hotels), International Cholera and Diarrhoeal Disease Research (icddr,b), Fives Stein India Projects Pvt Ltd, Adhunik Metaliks Ltd, Adhunik Power &amp; Natural Resources Ltd., Adhunik Alloys &amp; Power Ltd., Sikkim Mining Corporation, Uranium Corporation of India Ltd, IISCO Kulti Works, Local Government Engineering Department - Bangladesh, World Bank, ADB etc.</li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Leadership · Associate’s Profile</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
     <!-- ==================== SLIDE 11: OUR SERVICE OFFERING (PART 1) ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">10</div>
-
-      <div>
-        <div class="slide-banner">
-          <h2>Our Service Offering</h2>
-          <p>Comprehensive personal wealth, portfolio, risk, and statutory compliance solutions</p>
-        </div>
-
-        <div class="two-col-grid">
-          <div>
-            <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:16px; margin-bottom:16px;">
-              <h4 style="font-size:15px; font-weight:800; color:#0c2d6b; margin-bottom:8px;">► Financial Planning</h4>
-              <ul class="bullet-list">
-                <li>Financial Health Check-up</li>
-                <li>Child Future Planning</li>
-                <li>Retirement Planning</li>
-                <li>Estate Planning, Will and Succession</li>
-              </ul>
-            </div>
-
-            <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:16px;">
-              <h4 style="font-size:15px; font-weight:800; color:#0c2d6b; margin-bottom:8px;">► Portfolio Management</h4>
-              <ul class="bullet-list">
-                <li>Financial risk analysis and management</li>
-                <li>Mutual Finds / NFOs</li>
-                <li>Stock Trading and IPOs</li>
-                <li>Bonds and Fixed Deposits</li>
-                <li>PPF and Post Office Savings</li>
-              </ul>
-            </div>
-          </div>
-
-          <div>
-            <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:16px; margin-bottom:16px;">
-              <h4 style="font-size:15px; font-weight:800; color:#0c2d6b; margin-bottom:8px;">► Insurance</h4>
-              <ul class="bullet-list">
-                <li>Analysis of Human Life Value &amp; Insurance needs</li>
-                <li>Insurance – life and non-life</li>
-                <li>Vehicle, office / shop / Godown, house, International Travel health</li>
-                <li>Professional Indemnity Insurance</li>
-                <li>Employee Benefits &amp; retention plans</li>
-                <li>Export Import Transit Insurance</li>
-              </ul>
-            </div>
-
-            <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:16px;">
-              <h4 style="font-size:15px; font-weight:800; color:#0c2d6b; margin-bottom:8px;">► Book Keeping &amp; Accounting, Taxation, Legal and Statutory compliance</h4>
-              <ul class="bullet-list">
-                <li>Day to day accounting / preparation of financial statements</li>
-                <li>TDS / GST / PF, ESI – monthly, quarterly, annual compliances</li>
-                <li>PAN / KYC related services</li>
-                <li>Income Tax Return preparation &amp; filing</li>
-                <li>Inheritance planning, registration of deeds, Mutation</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span class="slide-footer-brand">Aarya Consultants</span>
-      </div>
-    </section>
-
-    <!-- ==================== SLIDE 12: OUR SERVICE OFFERING (PART 2 - ADVISORY SPECTRUM) ==================== -->
-    <section class="slide-page">
       <div class="slide-num-tab">11</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Our Service Offering</h2>
-          <p>Institutional advisory spectrum across governance, assurance, and commercial frameworks</p>
-        </div>
+      <div class="slide-banner">
+        <h2>Our Service Offering</h2>
+        <p>Personalised financial planning, portfolio management, insurance, accounting, taxation &amp; statutory compliance</p>
+      </div>
 
-        <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:32px 40px; max-width:800px; margin:20px auto;">
-          <ul style="list-style:none; display:flex; flex-direction:column; gap:16px; font-size:16px; font-weight:700; color:#0c2d6b;">
-            <li style="display:flex; align-items:center; gap:12px;"><span style="color:#1d4ed8;">▶</span> Assurance Services</li>
-            <li style="display:flex; align-items:center; gap:12px;"><span style="color:#1d4ed8;">▶</span> Accounting Advisory Services</li>
-            <li style="display:flex; align-items:center; gap:12px;"><span style="color:#1d4ed8;">▶</span> Taxation Services (Direct and Indirect)</li>
-            <li style="display:flex; align-items:center; gap:12px;"><span style="color:#1d4ed8;">▶</span> Corporate Governance</li>
-            <li style="display:flex; align-items:center; gap:12px;"><span style="color:#1d4ed8;">▶</span> Company Law / RoC</li>
-            <li style="display:flex; align-items:center; gap:12px;"><span style="color:#1d4ed8;">▶</span> Corporate Advisory Services</li>
-            <li style="display:flex; align-items:center; gap:12px;"><span style="color:#1d4ed8;">▶</span> HR &amp; Commercial Advisory Services</li>
-            <li style="display:flex; align-items:center; gap:12px;"><span style="color:#1d4ed8;">▶</span> General Advisory Services</li>
-          </ul>
+      <div class="slide-body top-aligned">
+        <div class="two-col-grid" style="grid-template-rows: 1fr 1fr; gap: 16px; height: 100%;">
+          <div class="service-card">
+            <h4>► Financial Planning</h4>
+            <ul class="bullet-list">
+              <li>Financial Health Check-up</li>
+              <li>Child Future Planning</li>
+              <li>Retirement Planning</li>
+              <li>Estate Planning, Will and Succession</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <h4>► Insurance</h4>
+            <ul class="bullet-list" style="gap:6.5px;">
+              <li>Analysis of Human Life Value &amp; Insurance needs</li>
+              <li>Insurance – life and non-life</li>
+              <li>Vehicle, office / shop / Godown, house, International Travel health</li>
+              <li>Professional Indemnity Insurance</li>
+              <li>Employee Benefits &amp; retention plans</li>
+              <li>Export Import Transit Insurance</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <h4>► Portfolio Management</h4>
+            <ul class="bullet-list">
+              <li>Financial risk analysis and management</li>
+              <li>Mutual Funds / NFOs</li>
+              <li>Stock Trading and IPOs</li>
+              <li>Bonds and Fixed Deposits</li>
+              <li>PPF and Post Office Savings</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <h4>► Book Keeping &amp; Accounting, Taxation, Legal &amp; Statutory Compliance</h4>
+            <ul class="bullet-list" style="gap:7px;">
+              <li>Day to day accounting / preparation of financial statements</li>
+              <li>TDS / GST / PF, ESI – monthly, quarterly, annual compliances</li>
+              <li>PAN / KYC related services</li>
+              <li>Income Tax Return preparation &amp; filing</li>
+              <li>Inheritance planning, registration of deeds, Mutation</li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Practice Areas · Service Offering (1 of 3)</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 13: OUR SERVICE OFFERING (PART 3 - STATUTORY & ROC) ==================== -->
+    <!-- ==================== SLIDE 12: OUR SERVICE OFFERING (PART 2) ==================== -->
     <section class="slide-page">
       <div class="slide-num-tab">12</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Our Service Offering</h2>
-          <p>Detailed execution scope: Audit, Accounting, Compliances &amp; RoC Filings</p>
+      <div class="slide-banner">
+        <h2>Our Service Offering</h2>
+        <p>Institutional advisory spectrum across governance, assurance, and commercial frameworks</p>
+      </div>
+
+      <div class="slide-body">
+        <div class="advisory-pillar-grid">
+          <div class="advisory-pillar">
+            <div class="advisory-num">01</div>
+            <div class="advisory-name">Assurance Services</div>
+          </div>
+          <div class="advisory-pillar">
+            <div class="advisory-num">02</div>
+            <div class="advisory-name">Accounting Advisory Services</div>
+          </div>
+          <div class="advisory-pillar">
+            <div class="advisory-num">03</div>
+            <div class="advisory-name">Taxation Services (Direct and Indirect)</div>
+          </div>
+          <div class="advisory-pillar">
+            <div class="advisory-num">04</div>
+            <div class="advisory-name">Corporate Governance</div>
+          </div>
+          <div class="advisory-pillar">
+            <div class="advisory-num">05</div>
+            <div class="advisory-name">Company Law / RoC</div>
+          </div>
+          <div class="advisory-pillar">
+            <div class="advisory-num">06</div>
+            <div class="advisory-name">Corporate Advisory Services</div>
+          </div>
+          <div class="advisory-pillar">
+            <div class="advisory-num">07</div>
+            <div class="advisory-name">HR &amp; Commercial Advisory Services</div>
+          </div>
+          <div class="advisory-pillar">
+            <div class="advisory-num">08</div>
+            <div class="advisory-name">General Advisory Services</div>
+          </div>
         </div>
+      </div>
 
-        <div class="two-col-grid">
-          <div>
-            <h4 style="font-size:15px; font-weight:800; color:#0c2d6b; margin-bottom:12px;">Services provided:</h4>
+      <div class="slide-footer">
+        <span class="slide-footer-left">Practice Areas · Service Offering (2 of 3)</span>
+        <span class="slide-footer-brand">Aarya Consultants</span>
+      </div>
+    </section>
 
-            <div style="margin-bottom:14px;">
-              <strong style="color:#1e40af; font-size:13.5px;">► Audit</strong>
-              <ul class="bullet-list" style="margin-top:4px;">
+    <!-- ==================== SLIDE 13: OUR SERVICE OFFERING (PART 3) ==================== -->
+    <section class="slide-page">
+      <div class="slide-num-tab">13</div>
+
+      <div class="slide-banner">
+        <h2>Our Service Offering</h2>
+        <p>Detailed execution scope: Audit, Accounting, Statutory Compliances &amp; RoC Filings</p>
+      </div>
+
+      <div class="slide-body top-aligned">
+        <div class="section-subhead" style="margin-bottom:12px;">Services provided:</div>
+        <div class="two-col-grid" style="height: calc(100% - 30px);">
+          <div class="service-card" style="justify-content:space-between;">
+            <div>
+              <h4>► Audit</h4>
+              <ul class="bullet-list" style="margin-bottom:16px;">
                 <li>Statutory Audit</li>
                 <li>Tax Audit</li>
               </ul>
-            </div>
 
-            <div style="margin-bottom:14px;">
-              <strong style="color:#1e40af; font-size:13.5px;">► Accounting</strong>
-              <ul class="bullet-list" style="margin-top:4px;">
+              <h4>► Accounting</h4>
+              <ul class="bullet-list" style="margin-bottom:16px;">
                 <li>Book keeping &amp; Accounting</li>
                 <li>Preparation of Financial Statements</li>
               </ul>
-            </div>
 
-            <div>
-              <strong style="color:#1e40af; font-size:13.5px;">► Statutory compliances</strong>
-              <ul class="bullet-list" style="margin-top:4px;">
+              <h4>► Statutory compliances</h4>
+              <ul class="bullet-list">
                 <li>TDS</li>
                 <li>GST</li>
                 <li>PF, ESI</li>
@@ -1232,288 +1583,309 @@
             </div>
           </div>
 
-          <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:18px;">
-            <strong style="color:#0c2d6b; font-size:15px; display:block; margin-bottom:10px;">► ROC compliances</strong>
-            <ul class="bullet-list">
+          <div class="service-card">
+            <h4>► ROC compliances</h4>
+            <ul class="bullet-list" style="gap:11px;">
               <li>AOC 4 (statement of Accounts)</li>
               <li>MGT 7 (shareholders / directors details)</li>
               <li>ADT 1 (Auditors appointment)</li>
               <li>DIR 3 (KYC of directors)</li>
               <li>INC-22A (Active company - Tagging Identities and verification)</li>
               <li><strong>Other matters –</strong></li>
-              <li style="padding-left:36px;">Formation of Company/Trust/Societies</li>
-              <li style="padding-left:36px;">Removal of Disqualification of Directors</li>
-              <li style="padding-left:36px;">Striking off name of Company / closure of Company</li>
+              <li style="padding-left:34px;">Formation of Company/Trust/Societies</li>
+              <li style="padding-left:34px;">Removal of Disqualification of Directors</li>
+              <li style="padding-left:34px;">Striking off name of Company / closure of Company</li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Practice Areas · Service Offering (3 of 3)</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
     <!-- ==================== SLIDE 14: CREDENTIALS (NPO & HEALTHCARE) ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">13</div>
+      <div class="slide-num-tab">14</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Credentials</h2>
-          <p>Not for Profit Organisation (NPO) and Hospitality &amp; Healthcare Engagements</p>
+      <div class="slide-banner">
+        <h2>Credentials</h2>
+        <p>Not for Profit Organisation (NPO) and Hospitality &amp; Healthcare Engagements</p>
+      </div>
+
+      <div class="slide-body top-aligned" style="gap:16px;">
+        <div>
+          <div class="section-subhead">Not for Profit Organisation (NPO)</div>
+          <table class="cred-table">
+            <thead>
+              <tr>
+                <th style="width:55%;">Entity Name</th>
+                <th>Services Rendered</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Dufferin Rajendra Old Cadets Association, Calcutta (DROCA)</strong></td>
+                <td><ul><li>Preparation of Financial Statements</li><li>Income Tax Return Filing</li></ul></td>
+              </tr>
+              <tr>
+                <td><strong>Mlinda Charitable Trust</strong></td>
+                <td><ul><li>Investment Advisory</li></ul></td>
+              </tr>
+              <tr>
+                <td><strong>Mlinda Sustainable Environment Pvt Ltd.</strong></td>
+                <td><ul><li>Investment Advisory</li></ul></td>
+              </tr>
+              <tr>
+                <td><strong>Hamara Grid Private Limited</strong></td>
+                <td><ul><li>Investment Advisory</li></ul></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <h3 style="font-size:16px; font-weight:800; color:#0c2d6b; margin-bottom:8px;">Not for Profit Organisation (NPO)</h3>
-        <table class="cred-table" style="margin-bottom:20px;">
-          <thead>
-            <tr>
-              <th style="width:55%;">Entity Name</th>
-              <th>Services Rendered</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Dufferin Rajendra Old Cadets Association, Calcutta (DROCA)</strong></td>
-              <td><ul><li>Preparation of Financial Statements</li><li>Income Tax Return Filing</li></ul></td>
-            </tr>
-            <tr>
-              <td><strong>Mlinda Charitable Trust</strong></td>
-              <td><ul><li>Investment Advisory</li></ul></td>
-            </tr>
-            <tr>
-              <td><strong>Mlinda Sustainable Environment Pvt Ltd.</strong></td>
-              <td><ul><li>Investment Advisory</li></ul></td>
-            </tr>
-            <tr>
-              <td><strong>Hamara Grid Private Limited</strong></td>
-              <td><ul><li>Investment Advisory</li></ul></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 style="font-size:16px; font-weight:800; color:#0c2d6b; margin-bottom:8px;">Hospitality and Healthcare</h3>
-        <table class="cred-table">
-          <thead>
-            <tr>
-              <th style="width:55%;">Entity Name</th>
-              <th>Services Rendered</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Tous Les Jours Confort (TLJC)</strong></td>
-              <td><ul><li>Book Keeping &amp; Accounting</li><li>Preparation of Financial Statements</li><li>Facilitating audit of Financial Statements</li><li>Income Return Tax Filling</li></ul></td>
-            </tr>
-            <tr>
-              <td><strong>Pearl Dental Clinic</strong></td>
-              <td><ul><li>Financial planning</li><li>Income Tax Return Filing</li></ul></td>
-            </tr>
-          </tbody>
-        </table>
+        <div>
+          <div class="section-subhead">Hospitality and Healthcare</div>
+          <table class="cred-table">
+            <thead>
+              <tr>
+                <th style="width:55%;">Entity Name</th>
+                <th>Services Rendered</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tous Les Jours Confort (TLJC)</strong></td>
+                <td><ul><li>Book Keeping &amp; Accounting</li><li>Preparation of Financial Statements</li><li>Facilitating audit of Financial Statements</li><li>Income Tax Return Filing</li></ul></td>
+              </tr>
+              <tr>
+                <td><strong>Pearl Dental Clinic</strong></td>
+                <td><ul><li>Financial planning</li><li>Income Tax Return Filing</li></ul></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Client Credentials · NPO &amp; Healthcare</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
     <!-- ==================== SLIDE 15: CREDENTIALS (TRADING / EXPORT - IMPORT) ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">14</div>
+      <div class="slide-num-tab">15</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Credentials</h2>
-          <p>Corporate Practice: Trading and Export - Import Entities</p>
+      <div class="slide-banner">
+        <h2>Credentials</h2>
+        <p>Corporate Practice: Trading and Export - Import Entities</p>
+      </div>
+
+      <div class="slide-body">
+        <div style="width:100%;">
+          <div class="section-subhead" style="margin-bottom:12px;">Trading / Export - Import</div>
+          <table class="cred-table" style="font-size:13.5px;">
+            <thead>
+              <tr>
+                <th style="width:50%; padding:11px 18px;">Entity Name</th>
+                <th style="padding:11px 18px;">Services Rendered</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:11px 18px;"><strong>Mohan Merchandise</strong></td>
+                <td rowspan="8" style="background:#ffffff; vertical-align:middle; padding:24px 28px; border-left:1px solid #cbd5e1;">
+                  <ul style="gap:16px; font-size:14px; font-weight:600;">
+                    <li>Financial planning</li>
+                    <li>Investment Advisory</li>
+                    <li>Insurance</li>
+                    <li>Preparation of Financial Statements</li>
+                    <li>Income Tax Planning</li>
+                    <li>IT Return Filing</li>
+                    <li>MEIS / Drawback / ROSL</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr><td style="padding:11px 18px;"><strong>Mohan Impressions</strong></td></tr>
+              <tr><td style="padding:11px 18px;"><strong>Radha Krishna Company</strong></td></tr>
+              <tr><td style="padding:11px 18px;"><strong>Ashish Vincom Pvt Ltd.</strong></td></tr>
+              <tr><td style="padding:11px 18px;"><strong>Ashish Industrial Corporation</strong></td></tr>
+              <tr><td style="padding:11px 18px;"><strong>MPVI International</strong></td></tr>
+              <tr><td style="padding:11px 18px;"><strong>Paul Brothers &amp; Company</strong></td></tr>
+              <tr><td style="padding:11px 18px;"><strong>ACS Cooling Solutions Pvt Ltd</strong></td></tr>
+            </tbody>
+          </table>
         </div>
-
-        <h3 style="font-size:16px; font-weight:800; color:#0c2d6b; margin-bottom:8px;">Trading / Export - Import</h3>
-        <table class="cred-table">
-          <thead>
-            <tr>
-              <th style="width:50%;">Entity Name</th>
-              <th>Services Rendered</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Mohan Merchandise</strong></td>
-              <td rowspan="8" style="background:#ffffff; vertical-align:middle;">
-                <ul style="line-height:1.9;">
-                  <li>Financial planning</li>
-                  <li>Investment Advisory</li>
-                  <li>Insurance</li>
-                  <li>Preparation of Financial Statements</li>
-                  <li>Income Tax Planning</li>
-                  <li>IT Return Filing</li>
-                  <li>MEIS / Drawback / ROSL</li>
-                </ul>
-              </td>
-            </tr>
-            <tr><td><strong>Mohan Impressions</strong></td></tr>
-            <tr><td><strong>Radha Krishna Company</strong></td></tr>
-            <tr><td><strong>Ashish Vincom Pvt Ltd.</strong></td></tr>
-            <tr><td><strong>Ashish Industrial Corporation</strong></td></tr>
-            <tr><td><strong>MPVI International</strong></td></tr>
-            <tr><td><strong>Paul Brothers &amp; Company</strong></td></tr>
-            <tr><td><strong>ACS Cooling Solutions Pvt Ltd</strong></td></tr>
-          </tbody>
-        </table>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Client Credentials · Trading &amp; Export-Import</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 16: CREDENTIALS (SENIOR MANAGEMENT OF CORPORATES) ==================== -->
+    <!-- ==================== SLIDE 16: CREDENTIALS (SENIOR MANAGEMENT) ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">15</div>
+      <div class="slide-num-tab">16</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Credentials</h2>
-          <p>Personal Wealth &amp; Fiduciary Services to Senior Management of Premier Organizations</p>
+      <div class="slide-banner">
+        <h2>Credentials</h2>
+        <p>Personal Wealth &amp; Fiduciary Advisory to Senior Management of Premier Organizations</p>
+      </div>
+
+      <div class="slide-body">
+        <div style="width:100%;">
+          <div class="section-subhead" style="margin-bottom:10px;">Others – Senior management of the following entities</div>
+          <table class="cred-table" style="font-size:13px;">
+            <thead>
+              <tr>
+                <th style="width:50%; padding:10px 18px;">Entity Name</th>
+                <th style="padding:10px 18px;">Services Rendered</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:9px 18px;"><strong>Medica group of Hospitals</strong></td>
+                <td rowspan="11" style="background:#ffffff; vertical-align:middle; padding:24px 28px; border-left:1px solid #cbd5e1;">
+                  <ul style="gap:15px; font-size:14px; font-weight:600;">
+                    <li>Financial planning</li>
+                    <li>Investment Advisory</li>
+                    <li>Insurance</li>
+                    <li>Retirement Planning</li>
+                    <li>Preparation of Financial Statements</li>
+                    <li>Income Tax Planning</li>
+                    <li>IT Return Filing</li>
+                    <li>Inheritance &amp; Succession Planner</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr><td style="padding:9px 18px;"><strong>Techno India group</strong></td></tr>
+              <tr><td style="padding:9px 18px;"><strong>Presto group of Companies</strong></td></tr>
+              <tr><td style="padding:9px 18px;"><strong>Kolkata Port Trust</strong></td></tr>
+              <tr><td style="padding:9px 18px;"><strong>Hindustan Petroleum Ltd</strong></td></tr>
+              <tr><td style="padding:9px 18px;"><strong>ITC Ltd</strong></td></tr>
+              <tr><td style="padding:9px 18px;"><strong>Peerless group</strong></td></tr>
+              <tr><td style="padding:9px 18px;"><strong>ACC Ltd</strong></td></tr>
+              <tr><td style="padding:9px 18px;"><strong>Emami group</strong></td></tr>
+              <tr><td style="padding:9px 18px;"><strong>Marico Ltd</strong></td></tr>
+              <tr><td style="padding:9px 18px;"><strong>Reckitt Benckiser</strong></td></tr>
+            </tbody>
+          </table>
         </div>
-
-        <h3 style="font-size:16px; font-weight:800; color:#0c2d6b; margin-bottom:8px;">Others – Senior management of the following entities</h3>
-        <table class="cred-table">
-          <thead>
-            <tr>
-              <th style="width:50%;">Entity Name</th>
-              <th>Services Rendered</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Medica group of Hospitals</strong></td>
-              <td rowspan="11" style="background:#ffffff; vertical-align:middle;">
-                <ul style="line-height:1.85;">
-                  <li>Financial planning</li>
-                  <li>Investment Advisory</li>
-                  <li>Insurance</li>
-                  <li>Retirement Planning</li>
-                  <li>Preparation of Financial Statements</li>
-                  <li>Income Tax Planning</li>
-                  <li>IT Return Filing</li>
-                  <li>Inheritance &amp; Succession Planner</li>
-                </ul>
-              </td>
-            </tr>
-            <tr><td><strong>Techno India group</strong></td></tr>
-            <tr><td><strong>Presto group of Companies</strong></td></tr>
-            <tr><td><strong>Kolkata Port Trust</strong></td></tr>
-            <tr><td><strong>Hindustan Petroleum Ltd</strong></td></tr>
-            <tr><td><strong>ITC Ltd</strong></td></tr>
-            <tr><td><strong>Peerless group</strong></td></tr>
-            <tr><td><strong>ACC Ltd</strong></td></tr>
-            <tr><td><strong>Emami group</strong></td></tr>
-            <tr><td><strong>Marico Ltd</strong></td></tr>
-            <tr><td><strong>Reckitt Benckiser</strong></td></tr>
-          </tbody>
-        </table>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Client Credentials · Senior Corporate Leadership</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
     <!-- ==================== SLIDE 17: CHARTERED FIRM'S CREDENTIALS ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">16</div>
+      <div class="slide-num-tab">17</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Chartered Firm’s Credentials</h2>
-          <p>Statutory, Stock, Internal &amp; Operational Audits</p>
+      <div class="slide-banner">
+        <h2>Chartered Firm’s Credentials</h2>
+        <p>Statutory, Stock, Internal &amp; Operational Audit Engagements</p>
+      </div>
+
+      <div class="slide-body top-aligned" style="gap:14px;">
+        <div>
+          <div class="section-subhead">Not for Profit Organisation (NPO)</div>
+          <table class="cred-table">
+            <thead><tr><th style="width:65%;">Entity Name</th><th>Audit Engagement</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Dufferin Rajendra Old Cadets Association, Calcutta (DROCA)</strong></td>
+                <td>Statutory Audit</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <h3 style="font-size:15px; font-weight:800; color:#0c2d6b; margin-bottom:6px;">Not for Profit Organisation (NPO)</h3>
-        <table class="cred-table" style="margin-bottom:14px;">
-          <thead><tr><th style="width:65%;">Entity Name</th><th>Audit Engagement</th></tr></thead>
-          <tbody>
-            <tr>
-              <td><strong>Dufferin Rajendra Old Cadets Association, Calcutta (DROCA)</strong></td>
-              <td>Statutory Audit</td>
-            </tr>
-          </tbody>
-        </table>
+        <div>
+          <div class="section-subhead">Hospitality &amp; Healthcare</div>
+          <table class="cred-table">
+            <thead><tr><th style="width:65%;">Entity Name</th><th>Audit Engagement</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Antarik Veterinary Clinic - Chinsurah</strong></td><td>Internal audit / Cash Audit</td></tr>
+              <tr><td><strong>Medica Pharmacy Pvt Ltd, Kolkata</strong></td><td>Stock Audit</td></tr>
+              <tr><td><strong>Poorvanchal Healthcare Pvt Ltd, (Medica Group), Kolkata</strong></td><td>Internal Audit</td></tr>
+              <tr><td><strong>Gouri Enterprise – Medicine &amp; Pet Foods Distributor, Chinsurah</strong></td><td>Accounts &amp; Internal Audit</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-        <h3 style="font-size:15px; font-weight:800; color:#0c2d6b; margin-bottom:6px;">Hospitality &amp; Healthcare</h3>
-        <table class="cred-table" style="margin-bottom:14px;">
-          <thead><tr><th style="width:65%;">Entity Name</th><th>Audit Engagement</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Antarik Veterinary Clinic - Chinsurah</strong></td><td>Internal audit / Cash Audit</td></tr>
-            <tr><td><strong>Medica Pharmacy Pvt Ltd , Kolkata</strong></td><td>Stock Audit</td></tr>
-            <tr><td><strong>Poorvanchal Healthcare Pvt Ltd , ( Medica Group), Kolkata</strong></td><td>Internal Audit</td></tr>
-            <tr><td><strong>Gouri Enterprise – Medicine &amp; Pet Foods Distributor , Chinsurah</strong></td><td>Accounts &amp; Internal Audit</td></tr>
-          </tbody>
-        </table>
-
-        <h3 style="font-size:15px; font-weight:800; color:#0c2d6b; margin-bottom:6px;">Educational Institutions</h3>
-        <table class="cred-table">
-          <thead><tr><th style="width:65%;">Institution Name</th><th>Engagement</th></tr></thead>
-          <tbody>
-            <tr><td><strong>I. P. MEMORIAL SCHOOL , G T ROAD , LILUAH</strong></td><td>Operations &amp; Accounts with Audit</td></tr>
-            <tr><td><strong>I.P.KIDS , G.T.ROAD, LILUAH</strong></td><td>Operations &amp; Accounts with Audit</td></tr>
-          </tbody>
-        </table>
+        <div>
+          <div class="section-subhead">Educational Institutions</div>
+          <table class="cred-table">
+            <thead><tr><th style="width:65%;">Institution Name</th><th>Engagement</th></tr></thead>
+            <tbody>
+              <tr><td><strong>I. P. MEMORIAL SCHOOL, G T ROAD, LILUAH</strong></td><td>Operations &amp; Accounts with Audit</td></tr>
+              <tr><td><strong>I.P.KIDS, G.T.ROAD, LILUAH</strong></td><td>Operations &amp; Accounts with Audit</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Chartered Credentials · Audit &amp; Assurance</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 18: CHARTERED FIRM'S CREDENTIALS (INDIRECT TAX & RETAINERSHIP) ==================== -->
+    <!-- ==================== SLIDE 18: CHARTERED FIRM'S CREDENTIALS (INDIRECT TAX) ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">17</div>
+      <div class="slide-num-tab">18</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Chartered Firm’s Credentials</h2>
-          <p>Others – Indirect Tax, Retainership, Corporate Compliances</p>
+      <div class="slide-banner">
+        <h2>Chartered Firm’s Credentials</h2>
+        <p>Others – Indirect Tax, Retainership &amp; Corporate Compliance Mandates</p>
+      </div>
+
+      <div class="slide-body">
+        <div style="width:100%;">
+          <div class="section-subhead" style="margin-bottom:14px;">Others – Indirect Tax, retainership etc.</div>
+          <table class="cred-table" style="font-size:13.5px;">
+            <thead>
+              <tr>
+                <th style="width:50%; padding:12px 18px;">Client Entity</th>
+                <th style="width:50%; padding:12px 18px;">Client Entity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:12px 18px;"><strong>M/s MAF Consultants</strong></td><td style="padding:12px 18px;"><strong>M/s Bajrang General &amp; Kirana Stores</strong></td></tr>
+              <tr><td style="padding:12px 18px;"><strong>M/s Homes &amp; Happiness</strong></td><td style="padding:12px 18px;"><strong>M/s Nayan Enterprises</strong></td></tr>
+              <tr><td style="padding:12px 18px;"><strong>M/s Hindustan Corporation</strong></td><td style="padding:12px 18px;"><strong>M/s Youngstar Apparels</strong></td></tr>
+              <tr><td style="padding:12px 18px;"><strong>M/s G K Trading</strong></td><td style="padding:12px 18px;"><strong>M/s IUR &amp; Co.</strong></td></tr>
+              <tr><td style="padding:12px 18px;"><strong>M/s Kesar Enterprises</strong></td><td style="padding:12px 18px;"><strong>M/s Diva Apparels</strong></td></tr>
+              <tr><td style="padding:12px 18px;"><strong>M/s Four Concept</strong></td><td style="padding:12px 18px;"><strong>M/s. The Sports Agency</strong></td></tr>
+              <tr><td style="padding:12px 18px;"><strong>M/s. Black Top &amp; Beyond</strong></td><td style="padding:12px 18px;"><strong>M/s. Ashish Vincom Pvt. Ltd</strong></td></tr>
+            </tbody>
+          </table>
         </div>
-
-        <h3 style="font-size:16px; font-weight:800; color:#0c2d6b; margin-bottom:12px;">Others – Indirect Tax, retainership etc .</h3>
-        
-        <table class="cred-table">
-          <thead>
-            <tr>
-              <th>Client Entity</th>
-              <th>Client Entity</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>M/s MAF Consultants</td><td>M/s Bajrang General &amp; Kirana Stores</td></tr>
-            <tr><td>M/s Homes &amp; Happiness</td><td>M/s Nayan Enterprises</td></tr>
-            <tr><td>M/s Hindustan Corporation</td><td>M/s Youngstar Apparels</td></tr>
-            <tr><td>M/s G K Trading</td><td>M/s IUR &amp; Co.</td></tr>
-            <tr><td>M/s Kesar Enterprises</td><td>M/s Diva Apparels</td></tr>
-            <tr><td>M/s Four Concept</td><td>M/s. The Sports Agency</td></tr>
-            <tr><td>M/s. Black Top &amp; Beyond</td><td>M/s. Ashish Vincom Pvt. Ltd</td></tr>
-          </tbody>
-        </table>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Chartered Credentials · Indirect Tax &amp; Retainership</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
     <!-- ==================== SLIDE 19: OUR AFFILIATIONS ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">18</div>
+      <div class="slide-num-tab">19</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Our Affiliations</h2>
-          <p>Institutional Partnerships across Life, General Insurance &amp; AMFI Brokerage</p>
-        </div>
+      <div class="slide-banner">
+        <h2>Our Affiliations</h2>
+        <p>Institutional Partnerships across Life Insurance, General/Health Insurance &amp; AMFI Mutual Fund Distribution</p>
+      </div>
 
-        <div class="affil-grid">
+      <div class="slide-body">
+        <div class="three-col-grid" style="width:100%;">
           <div class="affil-card">
             <h4>Business Associates of</h4>
             <ul>
@@ -1532,8 +1904,8 @@
             </ul>
           </div>
 
-          <div class="affil-card">
-            <h4>Intermediaries of</h4>
+          <div class="affil-card" style="border-top-color:#0284c7;">
+            <h4 style="color:#0284c7;">Intermediaries of</h4>
             <ul>
               <li>Bajaj Allianz General Insurance</li>
               <li>New India General Insurance</li>
@@ -1550,8 +1922,8 @@
             </ul>
           </div>
 
-          <div class="affil-card">
-            <h4>AMFI Registered Broker of</h4>
+          <div class="affil-card" style="border-top-color:#c59b27;">
+            <h4 style="color:#92400e;">AMFI Registered Broker of</h4>
             <ul>
               <li>UTI Mutual Fund</li>
               <li>ICICI Prudential Mutual Fund</li>
@@ -1571,88 +1943,122 @@
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Institutional Relationships · Empaneled Partners</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
     <!-- ==================== SLIDE 20: OUR CORPORATE OFFICE ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">19</div>
+      <div class="slide-num-tab">20</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Our Corporate Office</h2>
-          <p>Modern infrastructure located at C-180, Survey Park, Beside Axis Bank, Kolkata-700 075</p>
-        </div>
+      <div class="slide-banner">
+        <h2>Our Corporate Office</h2>
+        <p>Modern infrastructure located at C-180, Survey Park, Beside Axis Bank, Kolkata-700 075</p>
+      </div>
 
+      <div class="slide-body">
         <div class="office-gallery-grid">
-          <div class="office-photo">
-            <img src="images/whatsapp-image-2026-08-03-at-18-30-56-1785762567369-91c0daf3.webp" alt="Corporate Office Lounge" onerror="this.src='images/hero-poster-desktop.webp'">
+          <div class="office-photo-card">
+            <img src="images/conf-1784705539951-84ab987f.webp" alt="Executive Boardroom at Corporate Office">
+            <div class="office-photo-cap">
+              <span>Executive Boardroom &amp; Strategy Room</span>
+              <span style="color:var(--text-muted);">Survey Park HQ</span>
+            </div>
           </div>
-          <div class="office-photo">
-            <img src="images/whatsapp-image-2026-08-03-at-18-32-41-1785762566558-6afe63ce.webp" alt="AGC Logo Emblem Wall" onerror="this.src='images/arya-consultants-jpg-1790597676188-7d47f6c2.webp'">
+
+          <div class="office-photo-card">
+            <img src="images/whatsapp-image-2026-08-03-at-18-32-41-1785762566558-6afe63ce.webp" alt="Awards & NISM/MDRT Credentials Showcase">
+            <div class="office-photo-cap">
+              <span>Awards, MDRT Citations &amp; NISM Showcase</span>
+              <span style="color:var(--text-muted);">Recognition Gallery</span>
+            </div>
           </div>
-          <div class="office-photo">
-            <img src="images/whatsapp-image-2026-08-05-at-18-44-33-1785935760358-8844488f.webp" alt="Consultation Lounge Room" onerror="this.src='images/hero-poster-desktop.webp'">
+
+          <div class="office-photo-card">
+            <img src="images/whatsapp-image-2026-08-03-at-18-30-56-1785762567369-91c0daf3.webp" alt="Private Executive Lounge">
+            <div class="office-photo-cap">
+              <span>Private Advisory &amp; Leadership Lounge</span>
+              <span style="color:var(--text-muted);">Client Consultation</span>
+            </div>
           </div>
-          <div class="office-photo">
-            <img src="images/whatsapp-image-2026-08-05-at-19-16-52--1--1785937800106-0ac3a9a8.webp" alt="Conference Room & Trophies" onerror="this.src='images/hero-poster-desktop.webp'">
+
+          <div class="office-photo-card">
+            <img src="images/working1-1784571581773-93e8d6f3.webp" alt="Operations & Statutory Audit Desk">
+            <div class="office-photo-cap">
+              <span>Operations, Compliance &amp; Audit Desk</span>
+              <span style="color:var(--text-muted);">Precision Execution</span>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Infrastructure · Corporate Headquarters</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
     <!-- ==================== SLIDE 21: OUR TEAM ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">20</div>
+      <div class="slide-num-tab">21</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Our Team</h2>
-          <p>Annual Award Meet · 42+ Dedicated Associates, Advisors, Chartered Accountants &amp; Legal Specialists</p>
-        </div>
+      <div class="slide-banner">
+        <h2>Our Team</h2>
+        <p>42+ Dedicated Associates, Financial Advisors, Chartered Accountants, Attorneys &amp; Operations Specialists</p>
+      </div>
 
-        <div class="team-banner-img">
-          <img src="images/since-2011-jpg-1784715272083-0962f15f.webp" alt="Aarya Consultants Team Annual Award Meet">
+      <div class="slide-body">
+        <div class="team-showcase">
+          <img src="images/since-2011-jpg-1784715272083-0962f15f.webp" alt="Aarya Consultants Leadership and Team at Corporate Office">
+          <div class="team-caption-bar">
+            <span><strong>Aarya Consultants Consortium Team</strong> — Serving 2,000+ client families across India and internationally</span>
+            <span style="color:var(--primary-blue); font-weight:800;">“Let’s Grow Together”</span>
+          </div>
         </div>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">Organization · Our Team</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
 
     <!-- ==================== SLIDE 22: MANDATORY DISCLAIMER & THANK YOU ==================== -->
     <section class="slide-page">
-      <div class="slide-num-tab">21</div>
+      <div class="slide-num-tab">22</div>
 
-      <div>
-        <div class="slide-banner">
-          <h2>Statutory Compliance &amp; Mandatory Disclaimer</h2>
-          <p>Official Regulatory Declarations &amp; Institutional Protocol</p>
-        </div>
+      <div class="slide-banner">
+        <h2>Regulatory Disclosures &amp; Mandatory Disclaimer</h2>
+        <p style="font-style:italic;">
+          This offer document includes certain information obtained from public and private sources and accuracy of the same cannot be warranted without further investigation. Aarya Consultants does not take any liability for any loss / damage suffered by any person by relying on such information contained herein for discussion only.
+        </p>
+      </div>
 
+      <div class="slide-body">
         <div class="disclaimer-box">
-          <p style="margin-bottom:12px; font-style:italic;">
-            This offer document includes certain information obtained from public and private sources and accuracy of the same can not be warranted without further investigation. Aarya Consultants does not take any liability for any loss / damage suffered by any person by relying on such information contained herein for discussion only.
-          </p>
-
           <h4>Mandatory Disclaimer</h4>
           <p>
-            Aarya Consultants as a group endeavors its best efforts to advice best available products and services in the market as per the client’s needs after going through an extensive and exhaustive process of selection and exclusion of various investments, insurance and service options, and no way has it guarantees that the objectives of the investments or service will be achieved. The investments in market linked instruments are subject to market risks and the past returns are not guaranteed to be achieved in future. Customer is requested to read through the detailed brochure and Key Information Memorandum (KIM) and Offer Documents (OD) before investing. Any relevant questions to clarify any doubts will be happily entertained and resolved to maintain trust and transparency. The figures projected will be rounded off for ease on understanding and presentation and the actual values may vary from the figures given in the presentation. The use of complicated terminology and jargons has been intentionally avoided in order to avoid creation of any confusion amongst prospective investors. The detailed information with complete facts and figure and deep insights will be immediately provided as and when asked by our esteemed clients. Feel always free to call us anytime. Our team of qualified, experienced and trained consultants will always be at your service 24 hrs in a day and 7 days in a week.
+            Aarya Consultants as a group endeavors its best efforts to advise the best available products and services in the market as per the client’s needs after going through an extensive and exhaustive process of selection and exclusion of various investments, insurance and service options, and in no way guarantees that the objectives of the investments or service will be achieved. The investments in market linked instruments are subject to market risks and the past returns are not guaranteed to be achieved in future. Customer is requested to read through the detailed brochure and Key Information Memorandum (KIM) and Offer Documents (OD) before investing. Any relevant questions to clarify any doubts will be happily entertained and resolved to maintain trust and transparency. The figures projected will be rounded off for ease on understanding and presentation and the actual values may vary from the figures given in the presentation. The use of complicated terminology and jargons has been intentionally avoided in order to avoid creation of any confusion amongst prospective investors. The detailed information with complete facts and figure and deep insights will be immediately provided as and when asked by our esteemed clients. Feel always free to call us anytime. Our team of qualified, experienced and trained consultants will always be at your service 24 hrs in a day and 7 days in a week.
           </p>
         </div>
 
         <div class="thank-you-bar">
-          Thank You
+          <div>
+            <div class="thank-you-word">Thank You</div>
+            <div style="font-size:12.5px; color:#cbd5e1; margin-top:4px; letter-spacing:0.06em;">Fiduciaries For a Lifetime &amp; Beyond</div>
+          </div>
+          <div class="thank-you-contact">
+            <strong style="color:var(--gold-light); font-size:14px;">Aarya Consultants — Corporate Desk</strong><br>
+            C-180, Survey Park, Beside Axis Bank, Kolkata-700 075<br>
+            Phone: +91 33 2264 5505 · Mobile: +91 98366 55005 / +91 82403 97373<br>
+            Email: sanjay.gupta@aaryaconsultants.com · Web: www.aaryaconsultants.com
+          </div>
         </div>
       </div>
 
       <div class="slide-footer">
+        <span class="slide-footer-left">© 2000–2026 Aarya Consultants (Aarya Group of Companies). All Rights Reserved.</span>
         <span class="slide-footer-brand">Aarya Consultants</span>
       </div>
     </section>
