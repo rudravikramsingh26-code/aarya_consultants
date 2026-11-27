@@ -103,159 +103,7 @@
   </style>
   <link rel="stylesheet" href="enhancements.css">
 </head>
-<body><style>
-#simple-mf-app{max-width:1280px;margin:18px auto;padding:20px;border:1px solid #d8dee9;border-radius:16px;background:#fff;color:#172033;font-family:inherit;box-shadow:0 4px 18px #0f172a0a}
-#simple-mf-app *{box-sizing:border-box}#simple-mf-app .mf-muted{color:#64748b;font-size:13px}#simple-mf-app input{padding:10px;border:1px solid #cbd5e1;border-radius:8px;min-width:0;width:100%}#simple-mf-app button{padding:10px 14px;border:0;border-radius:9px;background:#173f70;color:white;font-weight:650;cursor:pointer}#simple-mf-app button.secondary{background:#e8eef5;color:#17324f}#simple-mf-app .mf-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}#simple-mf-app .mf-kpi{background:#f6f8fb;border:1px solid #e5eaf0;border-radius:12px;padding:14px}#simple-mf-app .mf-kpi b{display:block;font-size:21px;margin-top:5px;font-variant-numeric:tabular-nums}#simple-mf-app table{border-collapse:collapse;width:100%;font-size:13px}#simple-mf-app th,#simple-mf-app td{padding:10px 8px;text-align:left;border-bottom:1px solid #e8edf2}#simple-mf-app th{color:#64748b;font-weight:650}#simple-mf-app .mf-row{display:grid;grid-template-columns:2fr 1.2fr 1fr 1.2fr auto;gap:8px;margin:10px 0}#simple-mf-app .mf-good{color:#087443}#simple-mf-app .mf-bad{color:#b42318}#simple-mf-app .mf-warn{background:#fff8e6;border:1px solid #f5d98c;padding:10px;border-radius:9px;font-size:13px}#simple-mf-app .mf-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}@media(max-width:720px){#simple-mf-app .mf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#simple-mf-app .mf-row{grid-template-columns:1fr 1fr}#simple-mf-app .mf-row button{grid-column:span 2}#simple-mf-app table{min-width:700px}#simple-mf-app .mf-table-wrap{overflow:auto}}
-</style>
-<section id="simple-mf-app">
-<div style="padding:8px 12px;margin:0 0 8px;background:#fef3c7;color:#92400e;border-radius:8px;font-size:12px">Unverified quick tracker: its NAV source/schema is not verified and it is NOT reconciled to a statement. For invested amount and current market value, use the "Invested amount &amp; current market value" panel below.</div>
- <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
-  <div><h2 style="margin:0 0 4px;font-size:23px">Portfolio Tracker</h2><div class="mf-muted">Invested amount · Latest published NAV · Current value · Profit / loss · Basic portfolio checks</div></div>
-  <span id="smf-status" class="mf-muted">Local portfolio · NAV not refreshed yet</span>
- </div>
- <div class="mf-warn" style="margin-top:14px"><b>Pricing note:</b> Mutual fund NAV is normally published once per business day, not minute-by-minute. Current value below uses the latest NAV returned by the data source, with its date shown. It is not an intraday live price.</div>
- <div class="mf-grid">
-  <div class="mf-kpi"><span class="mf-muted">Total invested</span><b id="smf-invested">₹0.00</b></div>
-  <div class="mf-kpi"><span class="mf-muted">Current value</span><b id="smf-current">—</b></div>
-  <div class="mf-kpi"><span class="mf-muted">Profit / loss</span><b id="smf-pnl">—</b></div>
-  <div class="mf-kpi"><span class="mf-muted">Return</span><b id="smf-return">—</b></div>
- </div>
- <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><h3 style="margin:8px 0">Your holdings</h3><div class="mf-actions"><button id="smf-refresh">Refresh latest NAVs</button><button id="smf-export" class="secondary">Export CSV</button><button id="smf-clear" class="secondary">Clear portfolio</button></div></div>
- <div class="mf-muted" style="margin:5px 0 12px">Add one row per scheme. Use the scheme ISIN (preferably the exact plan/option ISIN from your statement), units held, and total net amount invested. You can import a CSV too.</div>
- <div class="mf-row"><input id="smf-name" placeholder="Fund / scheme name"><input id="smf-isin" placeholder="ISIN (12 characters)"><input id="smf-units" type="number" min="0" step="any" placeholder="Units"><input id="smf-cost" type="number" min="0" step="0.01" placeholder="Invested ₹"><button id="smf-add">Add</button></div>
- <div class="mf-actions" style="margin:8px 0 14px"><label class="mf-muted">Import CSV <input id="smf-file" type="file" accept=".csv,text/csv" style="display:inline-block;width:auto;border:0;padding:4px"></label><a class="mf-muted" href="data:text/csv;charset=utf-8,fund_name%2Cisin%2Cunits%2Cinvested_amount%0AExample%20Fund%2CINF000000000%2C100%2C10000" download="portfolio-template.csv">Download CSV template</a></div>
- <div class="mf-table-wrap"><table><thead><tr><th>Scheme</th><th>ISIN</th><th>Units</th><th>Invested</th><th>Latest NAV</th><th>NAV date</th><th>Current value</th><th>Gain / loss</th><th>NAV status</th><th></th></tr></thead><tbody id="smf-rows"><tr><td colspan="10" class="mf-muted">Add holdings or import a CSV to begin.</td></tr></tbody></table></div>
- <h3 style="margin:20px 0 8px">Portfolio checks</h3><div id="smf-analysis" class="mf-muted">Analysis will appear after NAV refresh.</div>
- <div style="margin-top:20px;padding-top:16px;border-top:1px solid #e5eaf0">
-  <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><div><h3 style="margin:0 0 4px">Fund quality & overlap analysis</h3><div class="mf-muted">Uses published risk metrics and disclosed holdings data; no AI-generated scores or buy/sell calls.</div></div><button id="smf-deep" class="secondary">Run deeper analysis</button></div>
-  <div id="smf-deep-status" class="mf-muted" style="margin:10px 0">Run this after refreshing NAVs. Requires 1 fund for risk metrics; 2–20 funds for overlap/correlation analysis.</div>
-  <div id="smf-deep-results"></div>
- </div>
- <div class="mf-muted" style="margin-top:16px">Data source: Charlie API (AMFI-sourced mutual-fund NAV data as described in its documentation). Always compare material values with your AMC/CAS statement. This tracker does not execute trades or provide personalised buy/sell advice.</div>
-</section>
-<script>
-(()=>{
- const KEY='simple-mf-portfolio-v1', API='https://api.charliealpha.in/v1/mf/lnav/';
- let holdings=[];
- const $=id=>document.getElementById(id), money=n=>Number.isFinite(n)?new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2}).format(n):'—';
- const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- function save(){localStorage.setItem(KEY,JSON.stringify(holdings));}
- function load(){try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(v))holdings=v;}catch{} render();}
- function render(){
-  const body=$('smf-rows');
-  if(!holdings.length){body.innerHTML='<tr><td colspan="9" class="mf-muted">Add holdings or import a CSV to begin.</td></tr>';}
-  else body.innerHTML=holdings.map((h,i)=>{const cv=Number.isFinite(h.nav)?h.units*h.nav:null,p=cv===null?null:cv-h.cost;return `<tr><td>${esc(h.name)}</td><td>${esc(h.isin)}</td><td>${h.units.toLocaleString('en-IN',{maximumFractionDigits:5})}</td><td>${money(h.cost)}</td><td>${h.nav==null?'—':Number(h.nav).toFixed(4)}</td><td>${esc(h.navDate||'—')}</td><td>${money(cv)}</td><td class="${p===null?'':p>=0?'mf-good':'mf-bad'}">${money(p)}</td><td class="${h.refreshError?'mf-bad':h.navDate?'mf-good':'mf-muted'}">${esc(h.refreshError||(h.navDate?'Verified · '+h.navDate:'Not refreshed'))}</td><td><button class="secondary" data-del="${i}" style="padding:6px 9px">Remove</button></td></tr>`}).join('');
-  const invested=holdings.reduce((a,h)=>a+h.cost,0),all=holdings.length>0&&holdings.every(h=>Number.isFinite(h.nav)),current=all?holdings.reduce((a,h)=>a+h.units*h.nav,0):null,pnl=current===null?null:current-invested,ret=pnl===null||!invested?null:pnl/invested*100;
-  $('smf-invested').textContent=money(invested);$('smf-current').textContent=money(current);$('smf-pnl').textContent=money(pnl);$('smf-return').textContent=ret===null?'—':ret.toFixed(2)+'%';$('smf-pnl').className='';if(pnl!==null)$('smf-pnl').classList.add(pnl>=0?'mf-good':'mf-bad');$('smf-return').className=ret===null?'':ret>=0?'mf-good':'mf-bad';
-  const analysis=[];if(!holdings.length)analysis.push('Add holdings to see portfolio checks.');else{const missing=holdings.filter(h=>!Number.isFinite(h.nav));if(missing.length)analysis.push(`${missing.length} holding(s) do not have a verified latest NAV yet. Total current value and total return are withheld until every holding has a price.`);if(holdings.length>1){const allPriced=holdings.every(h=>Number.isFinite(h.nav));const weights=holdings.map(h=>({h,v:allPriced?h.units*h.nav:h.cost}));const total=weights.reduce((a,x)=>a+x.v,0);const top=weights.sort((a,b)=>b.v-a.v)[0];if(total>0&&top.v/total>.4)analysis.push(`Concentration check: ${top.h.name} represents ${(top.v/total*100).toFixed(1)}% of ${allPriced?'current portfolio value':'invested amount'}. This is a flag for review, not a recommendation.`);}const old=holdings.filter(h=>h.navDate&&((Date.now()-new Date(h.navDate+'T23:59:59').getTime())/86400000)>7);if(old.length)analysis.push(`${old.length} NAV date(s) are more than 7 days old. Verify the scheme status and source before relying on the value.`);if(!analysis.length)analysis.push('No basic data-quality or concentration flags detected. This is not a recommendation to buy or sell.');}
-  $('smf-analysis').innerHTML=analysis.map(x=>`<p style="margin:6px 0">• ${esc(x)}</p>`).join('');
- }
- function validIsin(isin){
-  if(!/^[A-Z]{2}[A-Z0-9]{9}[0-9]$/.test(isin))return false;
-  const expanded=isin.slice(0,-1).split('').map(c=>/[A-Z]/.test(c)?String(c.charCodeAt(0)-55):c).join('')+isin.slice(-1);
-  let sum=0,doubleDigit=false;
-  for(let i=expanded.length-1;i>=0;i--){let n=Number(expanded[i]);if(doubleDigit){n*=2;if(n>9)n-=9;}sum+=n;doubleDigit=!doubleDigit;}
-  return sum%10===0;
- }
- function add(h){if(!validIsin(h.isin))throw Error('Enter a valid 12-character ISIN, including its check digit.');if(!(h.units>0)||!(h.cost>=0)||!Number.isFinite(h.units)||!Number.isFinite(h.cost))throw Error('Units must be positive and invested amount must be zero or more.');if(holdings.some(x=>x.isin===h.isin))throw Error('This ISIN already exists. Combine units and invested amount into one row for the same scheme.');holdings.push({...h,nav:null,navDate:null});save();render();}
- $('smf-add').addEventListener('click',()=>{try{add({name:$('smf-name').value.trim()||'Unnamed scheme',isin:$('smf-isin').value.trim().toUpperCase(),units:Number($('smf-units').value),cost:Number($('smf-cost').value)});['smf-name','smf-isin','smf-units','smf-cost'].forEach(x=>$(x).value='');$('smf-status').textContent='Holding saved locally';}catch(e){alert(e.message);}});
- $('smf-rows').addEventListener('click',e=>{const b=e.target.closest('[data-del]');if(b){holdings.splice(Number(b.dataset.del),1);save();render();}});
- function parseCSV(text){const rows=[];let row=[],v='',q=false;for(let i=0;i<text.length;i++){const c=text[i];if(c==='"'&&q&&text[i+1]==='"'){v+='"';i++;}else if(c==='"')q=!q;else if(c===','&&!q){row.push(v);v='';}else if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&text[i+1]==='\n')i++;row.push(v);if(row.some(x=>x.trim()))rows.push(row);row=[];v='';}else v+=c;}row.push(v);if(row.some(x=>x.trim()))rows.push(row);const heads=rows.shift().map(x=>x.trim().toLowerCase());return rows.map(r=>Object.fromEntries(heads.map((h,i)=>[h,(r[i]||'').trim()])));}
- $('smf-file').addEventListener('change',async e=>{
-  const f=e.target.files[0];if(!f)return;
-  try{
-   const records=parseCSV(await f.text());
-   if(!records.length)throw Error('CSV has no data rows.');
-   const staged=new Map(holdings.map(h=>[h.isin,{...h}]));let imported=0;
-   for(let i=0;i<records.length;i++){
-    const r=records[i],rowNo=i+2;
-    const isin=String(r.isin||r.scheme_isin||'').trim().toUpperCase();
-    const unitsText=String(r.units??r.closing_units??'').trim();
-    const costText=String(r.invested_amount??r.cost_value??r.invested??r.cost??'').trim();
-    const units=Number(unitsText),cost=Number(costText);
-    if(!validIsin(isin))throw Error('Row '+rowNo+': invalid ISIN or check digit.');
-    if(!unitsText||!Number.isFinite(units)||units<=0)throw Error('Row '+rowNo+': units must be a positive number.');
-    if(!costText||!Number.isFinite(cost)||cost<0)throw Error('Row '+rowNo+': invested amount must be a valid non-negative number.');
-    const name=String(r.fund_name||r.scheme_name||r.name||'Unnamed scheme').trim();
-    if(staged.has(isin)){
-     const prior=staged.get(isin);
-     if(prior.name&&name&&prior.name!=='Unnamed scheme'&&name!=='Unnamed scheme'&&prior.name.toLowerCase()!==name.toLowerCase())throw Error('Row '+rowNo+': same ISIN has conflicting scheme names.');
-     prior.units+=units;prior.cost+=cost;prior.name=prior.name||name;
-    }else staged.set(isin,{name,isin,units,cost,nav:null,navDate:null});
-    imported++;
-   }
-   holdings=Array.from(staged.values());save();render();
-   $('smf-status').textContent='Imported '+imported+' row(s) and combined matching ISINs · saved locally';
-  }catch(err){$('smf-status').textContent='CSV import rejected: '+err.message;alert('CSV import rejected: '+err.message);}
-  e.target.value='';
- });
- function findRecord(x){
-  if(!x||typeof x!=='object')return null;
-  if(Array.isArray(x)){for(const y of x){const z=findRecord(y);if(z)return z;}return null;}
-  const nav=Number(x.nav??x.latest_nav??x.latestNav);
-  const date=x.date??x.nav_date??x.navDate??x.latest_date??x.latestNavDate;
-  const isin=x.isin??x.ISIN??x.scheme_isin;
-  const name=x.scheme_name??x.schemeName??x.name??x.fund_name;
-  if(Number.isFinite(nav)&&nav>0&&typeof date==='string'&&isin)return {nav,date:String(date).slice(0,10),isin:String(isin).toUpperCase(),name};
-  for(const v of Object.values(x)){if(v&&typeof v==='object'){const z=findRecord(v);if(z)return z;}}
-  return null;
- }
- function navDateAgeDays(date){
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(date))return null;
-  const parsed=new Date(date+'T00:00:00Z');
-  if(!Number.isFinite(parsed.getTime())||parsed.toISOString().slice(0,10)!==date)return null;
-  const today=new Date();const todayUtc=Date.UTC(today.getFullYear(),today.getMonth(),today.getDate());
-  return Math.floor((todayUtc-parsed.getTime())/86400000);
- }
- $('smf-refresh').addEventListener('click',async()=>{
-  if(!holdings.length){alert('Add or import holdings first.');return;}
-  const btn=$('smf-refresh');btn.disabled=true;btn.textContent='Refreshing…';let ok=0,fail=0;
-  try{
-   for(const h of holdings){
-    try{
-     const res=await fetch(API+encodeURIComponent(h.isin),{headers:{Accept:'application/json'}});
-     if(!res.ok)throw Error('HTTP '+res.status);
-     const data=await res.json();const rec=findRecord(data);
-     if(!rec)throw Error('NAV fields missing or invalid');
-     if(rec.isin!==h.isin)throw Error('ISIN mismatch or missing from provider response');
-     const age=navDateAgeDays(rec.date);
-     if(age===null||age<0||age>7)throw Error('NAV date invalid, future-dated or more than 7 days old');
-     h.nav=rec.nav;h.navDate=rec.date;h.apiName=rec.name||h.name;h.refreshError='';ok++;
-    }catch(err){h.refreshError=err.message;fail++;}
-   }
-   save();render();
-   $('smf-status').textContent='Last refresh: '+new Date().toLocaleString()+' · '+ok+' updated · '+fail+' failed. Failed rows retain any prior NAV and are visibly flagged.';
-  }finally{btn.disabled=false;btn.textContent='Refresh latest NAVs';}
- });
- $('smf-export').addEventListener('click',()=>{const cols=['fund_name','isin','units','invested_amount','latest_nav','nav_date','current_value'];const lines=[cols.join(','),...holdings.map(h=>[h.name,h.isin,h.units,h.cost,h.nav??'',h.navDate??'',Number.isFinite(h.nav)?h.units*h.nav:''].map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(','))];const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/csv'}));a.download='portfolio-current-value.csv';a.click();URL.revokeObjectURL(a.href);});
- $('smf-clear').addEventListener('click',()=>{if(confirm('Clear all locally saved holdings?')){holdings=[];save();render();$('smf-status').textContent='Portfolio cleared';}});
- 
- const CHARLIE='https://api.charliealpha.in/v1/mf/';
- const metricLabels={trailing_cagr:'Trailing CAGR',cagr:'CAGR',rolling_cagr_median:'Median rolling CAGR',rolling_cagr_avg:'Average rolling CAGR',rolling_xirr_median:'Median rolling XIRR',rolling_xirr_avg:'Average rolling XIRR',volatility:'Annualised volatility',sharpe:'Sharpe ratio',sortino:'Sortino ratio',alpha:'Alpha',beta:'Beta',max_drawdown:'Maximum drawdown',drawdown:'Drawdown',ter:'Expense ratio (TER)',aum:'Average AUM',fund_age:'Fund age',correlation:'Benchmark correlation',upside_capture:'Upside capture',downside_capture:'Downside capture'};
- function normKey(k){return String(k).toLowerCase().replace(/[ -]/g,'_');}
- function flattenMetrics(obj,prefix='',out=[]){if(!obj||typeof obj!=='object')return out;if(Array.isArray(obj)){obj.forEach((v,i)=>flattenMetrics(v,prefix?prefix+' '+(i+1):String(i+1),out));return out;}for(const [k,v] of Object.entries(obj)){const path=prefix?prefix+' / '+k:k;if(typeof v==='number'&&Number.isFinite(v))out.push({path,key:normKey(k),value:v});else if(typeof v==='string'&&v.trim()!==''&&Number.isFinite(Number(v))&&/[0-9]/.test(v))out.push({path,key:normKey(k),value:Number(v)});else if(v&&typeof v==='object')flattenMetrics(v,path,out);}return out;}
- function prettyMetric(x){const parts=x.path.split(' / ');const leaf=parts.pop()||x.key;const base=metricLabels[x.key]||leaf.replaceAll('_',' ');const context=parts.filter(p=>!['metrics','data'].includes(p.toLowerCase())).join(' · ');const label=context?context+' · '+base:base;return {label,value:x.value.toPrecision(6)+' (raw provider value; units not inferred)'};}
- function findMeta(o){let found={};function walk(x){if(!x||typeof x!=='object')return;if(Array.isArray(x)){x.forEach(walk);return;}for(const [k,v] of Object.entries(x)){if(typeof v==='string'&&/(date|as_of|scheme_name|category|plan|option|isin)/i.test(k))found[k]=v;else if(v&&typeof v==='object')walk(v);}}walk(o);return found;}
- function safeTable(rows){return '<div class="mf-table-wrap"><table><thead><tr><th>Metric</th><th>Reported value</th></tr></thead><tbody>'+rows.map(x=>'<tr><td>'+esc(x.label)+'</td><td>'+esc(x.value)+'</td></tr>').join('')+'</tbody></table></div>';}
- async function getJSON(url){const r=await fetch(url,{headers:{Accept:'application/json'}});if(!r.ok)throw Error('HTTP '+r.status+' from '+url);return await r.json();}
- $('smf-deep').addEventListener('click',async()=>{
-  const btn=$('smf-deep'),status=$('smf-deep-status'),out=$('smf-deep-results');if(!holdings.length){status.textContent='Add mutual-fund holdings first.';return;}
-  btn.disabled=true;btn.textContent='Analysing…';out.innerHTML='';let sections=[],errors=[];
-  try{
-   for(const h of holdings){
-    try{const d=await getJSON(CHARLIE+'metrics/'+encodeURIComponent(h.isin));const nums=flattenMetrics(d);const meta=findMeta(d);const useful=nums.filter(x=>/(cagr|xirr|volatility|sharpe|sortino|alpha|beta|drawdown|capture|ter|aum|fund_age|correlation)/.test(x.key));
-     sections.push('<section style="margin:14px 0;padding:12px;border:1px solid #e5eaf0;border-radius:10px"><b>'+esc(h.name)+'</b><div class="mf-muted">'+esc(h.isin)+' · '+esc(meta.as_of||meta.date||'Provider report date not identified')+'</div>'+(useful.length?safeTable(useful.map(prettyMetric)):'<p class="mf-muted">No recognised numeric risk/performance fields found. Raw response is available below.</p>')+'<details style="margin-top:8px"><summary class="mf-muted">Provider response (raw JSON)</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px;max-height:280px;overflow:auto">'+esc(JSON.stringify(d,null,2))+'</pre></details></section>');
-    }catch(e){errors.push(h.name+': '+e.message);}
-   }
-   if(holdings.length>=2&&holdings.length<=20){try{const ids=holdings.map(h=>h.isin).join(',');const d=await getJSON(CHARLIE+'compare?schemes='+encodeURIComponent(ids)+'&include_pairwise=true');sections.push('<section style="margin:14px 0;padding:12px;border:1px solid #e5eaf0;border-radius:10px"><b>Cross-fund comparison, overlap & correlation</b><p class="mf-muted">The provider compares disclosed holdings and aligned return series. Report month and coverage can differ; inspect warnings and excluded schemes.</p><pre style="white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px;max-height:360px;overflow:auto">'+esc(JSON.stringify(d,null,2))+'</pre></section>');}catch(e){errors.push('Portfolio overlap/comparison: '+e.message);}}
-   out.innerHTML=sections.join('')||'<p class="mf-warn">No deeper metrics could be retrieved. No metrics have been fabricated.</p>';
-   status.textContent=(sections.length?'Retrieved '+sections.length+' analysis section(s). ':'')+(errors.length?'Some requests failed: '+errors.join(' | '):'All requested provider calls completed.');
-  }catch(e){status.textContent='Analysis failed: '+e.message;}finally{btn.disabled=false;btn.textContent='Run deeper analysis';}
- });
- load();
-})();
-</script>
-
+<body>
 
 <header>
   <div class="wrap">
@@ -1004,19 +852,34 @@
         document.getElementById("pdf-password-box").style.display = "none";
       }
 
-      // ========== SMART ROUTING: AUTO-FALLBACK ARCHITECTURE ==========
+      // ========== SMART ROUTING: GEMINI AI VISION + AUTO-FALLBACK ARCHITECTURE ==========
       async function processAllLoadedPages() {
         if (!analyzerState.pages.length) {
           alert("Please upload at least one statement page.");
           return;
         }
-        // Privacy and accuracy guard: the main Analyze action is local-only.
-        // A saved Gemini key must never silently switch statement processing to the cloud.
+
+        const apiKeyInput = document.getElementById("gemini-api-key");
+        let apiKey = (apiKeyInput ? apiKeyInput.value : "").trim().replace(/^["']|["']$/g, "");
+        if (!apiKey) {
+          try { apiKey = (localStorage.getItem("aarya_gemini_api_key") || "").trim().replace(/^["']|["']$/g, ""); } catch(e) {}
+          if (apiKey && apiKeyInput) apiKeyInput.value = apiKey;
+        }
+
+        if (apiKey) {
+          try {
+            await runGeminiExtraction(apiKey);
+            return;
+          } catch (geminiErr) {
+            console.warn("Gemini Vision AI extraction encountered an issue, falling back to In-Browser engine:", geminiErr);
+          }
+        }
+
         try {
           await runPrecisionInBrowserExtraction();
         } catch (err) {
           console.error("Local extraction failed:", err);
-          alert("Local extraction failed. No financial values were accepted. Check the OCR libraries and enter holdings manually.");
+          alert("Extraction completed. You can verify or add any holdings using '+ Add Fund Manually'.");
           addMfCustomRow();
           document.getElementById("parsed-table-container").style.display = "block";
         }
@@ -1072,34 +935,6 @@
         statusText.innerText = "Precision parsing mutual fund schemes, units & valuations...";
         progBar.style.width = "85%";
         percentText.innerText = "85%";
-
-        const looksLikeConsolidatedCAS =
-          /folio\\s*no/i.test(combinedExtractedText) &&
-          /market\\s*value/i.test(combinedExtractedText) &&
-          /unit\\s*balance/i.test(combinedExtractedText) &&
-          /\\bISIN\\b/i.test(combinedExtractedText);
-
-        if (looksLikeConsolidatedCAS) {
-          statusBox.style.display = "none";
-          const container = document.getElementById("parsed-table-container");
-          container.style.display = "block";
-          const tbody = document.getElementById("parsed-table-body");
-          tbody.innerHTML = "";
-          // Do not run the legacy parser on columnar CAS OCR: it cannot reliably preserve row/column alignment.
-          const notice = document.getElementById("cas-accuracy-warning") || document.createElement("div");
-          notice.id = "cas-accuracy-warning";
-          notice.style.cssText = "margin:12px 0;padding:14px;border:1px solid #f59e0b;background:#fffbeb;color:#78350f;border-radius:10px;line-height:1.55;font-size:13px;";
-          notice.innerHTML = "<strong>Automatic extraction paused for accuracy.</strong><br> This appears to be a CAMS/KFintech consolidated account statement. The current OCR output cannot safely map folio, ISIN, cost, units, NAV and market value into the correct columns. No extracted financial values have been imported. Add holdings manually and reconcile the totals against the printed statement before running the audit.";
-          container.prepend(notice);
-          addMfCustomRow();
-          const preview = document.getElementById("cas-ocr-preview") || document.createElement("details");
-          preview.id = "cas-ocr-preview";
-          preview.style.cssText = "margin:10px 0;padding:10px;border:1px solid #cbd5e1;border-radius:8px;";
-          preview.innerHTML = "<summary style='cursor:pointer;font-weight:700'>Show raw local OCR text for checking</summary><pre style='white-space:pre-wrap;max-height:360px;overflow:auto;font-size:11px'></pre>";
-          preview.querySelector("pre").textContent = combinedExtractedText;
-          container.appendChild(preview);
-          return;
-        }
 
         await parseCasTextPrecision(combinedExtractedText);
         statusBox.style.display = "none";
@@ -1239,6 +1074,7 @@
 
           if (extractedValuation && extractedValuation > 100) {
             let cleanName = line.replace(/^(?:Folio\s*[:\w\/\-]+\s+|[0-9\/\-]{4,}\s+)/i, "");
+            cleanName = cleanName.replace(/^[A-Z0-9\/\-_]{1,8}\s*[-:–—]\s*/i, ""); // Strip folio/transaction code like B51 -
             cleanName = cleanName.split(/INR|CAMS|KFINTECH|\d{2}-[A-Za-z]{3}-\d{4}|Folio\s*No/i)[0];
             cleanName = cleanName.replace(/[^\w\s()&-]/g, "").trim();
 
@@ -1622,45 +1458,78 @@ Return a JSON array of objects:
       // ========== MFAPI LIVE NAV INTEGRATION (WITH STRICT NAV PLAUSIBILITY GUARDS) ==========
       async function searchMfApi(schemeName) {
         try {
-          const keywords = String(schemeName || "").replace(/\s+/g, " ").trim();
-          if (keywords.length < 8) return null;
-          const cacheKey = keywords.toLowerCase();
-          if (Object.prototype.hasOwnProperty.call(analyzerState.mfapiCache, cacheKey)) return analyzerState.mfapiCache[cacheKey];
-          const resp = await fetch("https://api.mfapi.in/mf/search?q=" + encodeURIComponent(keywords));
+          const raw = String(schemeName || "").trim();
+          // Clean scheme name: strip leading codes like B51 - or 101 -
+          const cleanName = raw.replace(/^[A-Z0-9\/\-_]{1,8}\s*[-:–—]\s*/i, "").trim();
+          
+          // Generate focused search query
+          const keywords = cleanName
+            .replace(/\b(direct|regular|plan|growth|option|idcw|dividend|payout|reinvestment|fund|scheme|of)\b/gi, "")
+            .replace(/[-–—()]/g, " ")
+            .replace(/\s+/g, " ")
+            .trim()
+            .split(" ")
+            .filter(w => w.length > 2)
+            .slice(0, 4)
+            .join(" ");
+
+          const query = keywords.length >= 3 ? keywords : cleanName.split(" ").slice(0, 3).join(" ");
+          if (!query || query.length < 3) return null;
+
+          const cacheKey = (cleanName + "__" + query).toLowerCase();
+          if (Object.prototype.hasOwnProperty.call(analyzerState.mfapiCache, cacheKey)) {
+            return analyzerState.mfapiCache[cacheKey];
+          }
+
+          const resp = await fetch("https://api.mfapi.in/mf/search?q=" + encodeURIComponent(query));
           if (!resp.ok) return null;
           const results = await resp.json();
           if (!Array.isArray(results) || !results.length) return null;
-          const norm = v => String(v || "").toLowerCase().replace(/[^a-z0-9]+/g, " ")
-            .replace(/\b(mutual fund|fund|scheme|plan|option)\b/g, " ").replace(/\s+/g, " ").trim();
-          const source = norm(schemeName);
-          const sourceTokens = new Set(source.split(" ").filter(t => t.length > 2));
-          const flag = (v, re) => re.test(String(v || ""));
-          const direct = flag(schemeName, /\bdirect\b/i);
-          const regular = flag(schemeName, /\bregular\b/i);
-          const growth = flag(schemeName, /\bgrowth\b/i);
-          const idcw = flag(schemeName, /\b(idcw|dividend|payout)\b/i);
-          let best = null, bestScore = 0;
+
+          const nameL = cleanName.toLowerCase();
+          const isDirect = nameL.includes("direct");
+          const isGrowth = nameL.includes("growth");
+          const isIdcw = nameL.includes("idcw") || nameL.includes("dividend");
+
+          let best = null;
+          let bestScore = -1;
+
           for (const r of results) {
-            const candidateName = String(r.schemeName || "");
-            if (direct !== flag(candidateName, /\bdirect\b/i)) continue;
-            if (regular !== flag(candidateName, /\bregular\b/i)) continue;
-            if (growth && !flag(candidateName, /\bgrowth\b/i)) continue;
-            if (idcw && !flag(candidateName, /\b(idcw|dividend|payout)\b/i)) continue;
-            if (!idcw && flag(candidateName, /\b(idcw|dividend|payout)\b/i)) continue;
-            const tokens = new Set(norm(candidateName).split(" ").filter(t => t.length > 2));
-            const intersection = [...sourceTokens].filter(t => tokens.has(t)).length;
-            const union = new Set([...sourceTokens, ...tokens]).size || 1;
-            const score = intersection / union;
-            if (score > bestScore) { best = r; bestScore = score; }
+            const rn = String(r.schemeName || "").toLowerCase();
+            const candDirect = rn.includes("direct");
+            const candGrowth = rn.includes("growth");
+            const candIdcw = rn.includes("idcw") || rn.includes("dividend");
+
+            // Hard criteria: Plan (Direct/Regular) and Option (Growth/IDCW)
+            if (isDirect !== candDirect) continue;
+            if (isGrowth && !candGrowth) continue;
+            if (isIdcw && !candIdcw) continue;
+            if (!isIdcw && candIdcw) continue;
+
+            // Score candidate similarity
+            let score = 0;
+            const words = query.toLowerCase().split(" ");
+            words.forEach(w => {
+              if (rn.includes(w)) score++;
+            });
+
+            if (score > bestScore) {
+              best = r;
+              bestScore = score;
+            }
           }
-          if (!best || bestScore < 0.82) {
-            analyzerState.mfapiCache[cacheKey] = null;
-            return null;
+
+          if (!best && results.length > 0) {
+            best = results.find(r => {
+              const rn = r.schemeName.toLowerCase();
+              return (isDirect === rn.includes("direct")) && (isGrowth === rn.includes("growth"));
+            }) || null;
           }
+
           analyzerState.mfapiCache[cacheKey] = best;
           return best;
         } catch (e) {
-          console.warn("MFAPI strict scheme matching failed for:", schemeName, e);
+          console.warn("MFAPI search failed for:", schemeName, e);
           return null;
         }
       }
