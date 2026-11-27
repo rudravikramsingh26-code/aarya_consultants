@@ -198,7 +198,7 @@
           </div>
 
           <!-- Optional Cloud AI Configuration -->
-          <details id="gemini-key-box" style="margin-top: 18px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 14px 18px;">
+          <details id="gemini-key-box" open style="margin-top: 18px; background: #f8fafc; border: 1.5px solid #93c5fd; border-radius: 12px; padding: 14px 18px; box-shadow: 0 2px 8px rgba(37,99,235,0.06);">
             <summary style="font-size: 13px; font-weight: 700; color: #1e40af; cursor: pointer; user-select: none;">
               ⚙️ Optional: Connect Google Gemini Cloud AI (Click to configure API Key)
             </summary>
@@ -535,7 +535,7 @@
       }
       function geminiRank(names) {
         const bad = /(embedding|tts|image|imagen|live|audio|aqa|robotics|computer-use|native|learnlm|gemma|-exp|argon|internal|preview)/i;
-        const preferred = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-2.5-pro", "gemini-1.5-pro"];
+        const preferred = ["gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-2.5-pro", "gemini-1.5-pro"];
         const score = n => {
           if (!/^gemini-/.test(n) || bad.test(n)) return -1;
           let s = 0;
@@ -860,18 +860,33 @@
         }
 
         const apiKeyInput = document.getElementById("gemini-api-key");
-        let apiKey = (apiKeyInput ? apiKeyInput.value : "").trim().replace(/^["']|["']$/g, "");
+        let apiKey = (apiKeyInput ? apiKeyInput.value : "").trim().replace(/^["']|["']$/g, "").replace(/\s+/g, "");
         if (!apiKey) {
-          try { apiKey = (localStorage.getItem("aarya_gemini_api_key") || "").trim().replace(/^["']|["']$/g, ""); } catch(e) {}
+          try { apiKey = (localStorage.getItem("aarya_gemini_api_key") || "").trim().replace(/^["']|["']$/g, "").replace(/\s+/g, ""); } catch(e) {}
           if (apiKey && apiKeyInput) apiKeyInput.value = apiKey;
         }
 
-        if (apiKey) {
-          try {
-            await runGeminiExtraction(apiKey);
-            return;
-          } catch (geminiErr) {
-            console.warn("Gemini Vision AI extraction encountered an issue, falling back to In-Browser engine:", geminiErr);
+        // If no API key is saved on this device (e.g. mobile phone), prompt user to enter their key
+        if (!apiKey) {
+          const keyBox = document.getElementById("gemini-key-box");
+          if (keyBox) {
+            keyBox.open = true;
+            keyBox.style.display = "block";
+            keyBox.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          if (apiKeyInput) apiKeyInput.focus();
+          alert("⚠️ Please enter your Google Gemini API key to analyze this statement with Gemini Vision AI.\n\nGet your free key at: https://aistudio.google.com/apikey (Google AI Studio Free Tier).");
+          return;
+        }
+
+        try {
+          await runGeminiExtraction(apiKey);
+          return;
+        } catch (geminiErr) {
+          console.warn("Gemini Vision AI extraction encountered an error:", geminiErr);
+          const errMsg = geminiErr.message || String(geminiErr);
+          if (errMsg.toLowerCase().includes("key") || errMsg.toLowerCase().includes("quota") || errMsg.toLowerCase().includes("permission")) {
+            alert("Gemini Vision AI: " + errMsg + "\n\nAttempting local in-browser parsing as fallback...");
           }
         }
 
@@ -879,7 +894,7 @@
           await runPrecisionInBrowserExtraction();
         } catch (err) {
           console.error("Local extraction failed:", err);
-          alert("Extraction completed. You can verify or add any holdings using '+ Add Fund Manually'.");
+          alert("Extraction could not parse all holdings automatically. You can add or verify holdings using '+ Add Fund Manually'.");
           addMfCustomRow();
           document.getElementById("parsed-table-container").style.display = "block";
         }
@@ -1226,8 +1241,8 @@ Return a JSON array of objects:
             }
 
             parts.push({
-              inline_data: {
-                mime_type: "image/jpeg",
+              inlineData: {
+                mimeType: "image/jpeg",
                 data: base64
               }
             });
