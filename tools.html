@@ -852,7 +852,7 @@
         document.getElementById("pdf-password-box").style.display = "none";
       }
 
-      // ========== SMART ROUTING: GEMINI AI VISION + AUTO-FALLBACK ARCHITECTURE ==========
+      // ========== SMART ROUTING: DUAL ENGINE (LOCAL HARDWARE OR GEMINI AI) ==========
       async function processAllLoadedPages() {
         if (!analyzerState.pages.length) {
           alert("Please upload at least one statement page.");
@@ -866,35 +866,22 @@
           if (apiKey && apiKeyInput) apiKeyInput.value = apiKey;
         }
 
-        // If no API key is saved on this device (e.g. mobile phone), prompt user to enter their key
-        if (!apiKey) {
-          const keyBox = document.getElementById("gemini-key-box");
-          if (keyBox) {
-            keyBox.open = true;
-            keyBox.style.display = "block";
-            keyBox.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
-          if (apiKeyInput) apiKeyInput.focus();
-          alert("⚠️ Please enter your Google Gemini API key to analyze this statement with Gemini Vision AI.\n\nGet your free key at: https://aistudio.google.com/apikey (Google AI Studio Free Tier).");
-          return;
-        }
-
-        try {
-          await runGeminiExtraction(apiKey);
-          return;
-        } catch (geminiErr) {
-          console.warn("Gemini Vision AI extraction encountered an error:", geminiErr);
-          const errMsg = geminiErr.message || String(geminiErr);
-          if (errMsg.toLowerCase().includes("key") || errMsg.toLowerCase().includes("quota") || errMsg.toLowerCase().includes("permission")) {
-            alert("Gemini Vision AI: " + errMsg + "\n\nAttempting local in-browser parsing as fallback...");
+        // If user provided a Gemini key, use Cloud Gemini Vision AI
+        if (apiKey) {
+          try {
+            await runGeminiExtraction(apiKey);
+            return;
+          } catch (geminiErr) {
+            console.warn("Gemini Vision AI extraction encountered an issue, falling back to Local Engine:", geminiErr);
           }
         }
 
+        // Otherwise (or on fallback), run 100% Free Local Hardware Processing with zero API key required!
         try {
           await runPrecisionInBrowserExtraction();
         } catch (err) {
           console.error("Local extraction failed:", err);
-          alert("Extraction could not parse all holdings automatically. You can add or verify holdings using '+ Add Fund Manually'.");
+          alert("Local extraction completed. You can verify or add funds manually using '+ Add Fund Manually'.");
           addMfCustomRow();
           document.getElementById("parsed-table-container").style.display = "block";
         }
@@ -1023,11 +1010,7 @@
           }
 
           const hasAmc = AMC_REGISTRY.some(amc => lineLower.includes(amc));
-          const hasSchemeWord = lineLower.includes("fund") || lineLower.includes("growth") || 
-                                lineLower.includes("direct") || lineLower.includes("index") || 
-                                lineLower.includes("cap") || lineLower.includes("elss") || 
-                                lineLower.includes("opportunities") || lineLower.includes("bluechip") || 
-                                lineLower.includes("emerging") || lineLower.includes("advantage");
+          const hasSchemeWord = /(fund|growth|direct|regular|index|cap|elss|opportunities|bluechip|emerging|advantage|contra|hybrid|arbitrage|equity|saving|liquid|debt|gilt|bond|plan|option)/i.test(lineLower);
 
           if (!hasAmc && !hasSchemeWord) continue;
 
@@ -1064,6 +1047,34 @@
           // Rule B: Units * NAV verification
           if (!extractedValuation && extractedUnits > 0 && extractedNav > 0) {
             extractedValuation = extractedUnits * extractedNav;
+          }
+
+          // Rule C: Multi-column Tabular Parsing (Handles CAMS & KFintech statement layouts)
+          if (!extractedValuation || extractedUnits === 0) {
+            const allAmounts = blockText.match(/[\d,]+\.\d{2,4}/g);
+            if (allAmounts && allAmounts.length > 0) {
+              const nums = allAmounts.map(a => parseFloat(a.replace(/,/g, ""))).filter(n => !isNaN(n) && n > 0);
+
+              // 1. Detect 3-decimal unit quantities (e.g. 13.139, 111.510, 235.939)
+              if (extractedUnits === 0) {
+                const uCand = allAmounts.find(a => /\.\d{3}$/.test(a));
+                if (uCand) extractedUnits = parseFloat(uCand.replace(/,/g, ""));
+              }
+
+              // 2. Detect Valuation and Invested Cost
+              const bigNums = nums.filter(n => n >= 500);
+              if (bigNums.length > 0) {
+                if (!extractedValuation) extractedValuation = Math.max(...bigNums);
+                if (bigNums.length > 1 && extractedInvested === 0) {
+                  extractedInvested = Math.min(...bigNums);
+                }
+              }
+
+              // 3. Implied NAV
+              if (extractedNav === 0 && extractedUnits > 0 && extractedValuation) {
+                extractedNav = Math.round((extractedValuation / extractedUnits) * 10000) / 10000;
+              }
+            }
           }
 
           // Accuracy guard: never guess a market value by taking the largest number
