@@ -977,7 +977,7 @@
       async function parseCasTextPrecision(raw) {
         const lines = String(raw || "").split(/\\r?\\n/).map(s => s.replace(/\\s+/g, " ").trim()).filter(Boolean);
         const holdings = [];
-        const rowStart = /(?:^|\\s)(\\d{5,}(?:\\/\\d+)?)[\\s|]+(IN[A-Z0-9]{10})\\b/i;
+        const rowStart = /(?:^|\\s)(\\d{5,}(?:\\/\\d+)?)[\\s|]+(IN[A-Z0-9]{9,11})\\b/i;
         const dateRe = /\\b\\d{1,2}[-/ ](?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*[-/ ]\\d{2,4}\\b/i;
         const parseNum = v => {
           const n = Number(String(v || "").replace(/,/g, ""));
