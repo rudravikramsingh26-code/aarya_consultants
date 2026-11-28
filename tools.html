@@ -853,37 +853,21 @@
       }
 
       // ========== SMART ROUTING: DUAL ENGINE (LOCAL HARDWARE OR GEMINI AI) ==========
+      // Local-only processing: never reads or sends a Gemini/API key.
       async function processAllLoadedPages() {
         if (!analyzerState.pages.length) {
           alert("Please upload at least one statement page.");
           return;
         }
-
-        const apiKeyInput = document.getElementById("gemini-api-key");
-        let apiKey = (apiKeyInput ? apiKeyInput.value : "").trim().replace(/^["']|["']$/g, "").replace(/\s+/g, "");
-        if (!apiKey) {
-          try { apiKey = (localStorage.getItem("aarya_gemini_api_key") || "").trim().replace(/^["']|["']$/g, "").replace(/\s+/g, ""); } catch(e) {}
-          if (apiKey && apiKeyInput) apiKeyInput.value = apiKey;
-        }
-
-        // If user provided a Gemini key, use Cloud Gemini Vision AI
-        if (apiKey) {
-          try {
-            await runGeminiExtraction(apiKey);
-            return;
-          } catch (geminiErr) {
-            console.warn("Gemini Vision AI extraction encountered an issue, falling back to Local Engine:", geminiErr);
-          }
-        }
-
-        // Otherwise (or on fallback), run 100% Free Local Hardware Processing with zero API key required!
+        const keyBox = document.getElementById("gemini-key-box");
+        if (keyBox) keyBox.open = false;
         try {
           await runPrecisionInBrowserExtraction();
         } catch (err) {
           console.error("Local extraction failed:", err);
-          alert("Local extraction completed. You can verify or add funds manually using '+ Add Fund Manually'.");
-          addMfCustomRow();
-          document.getElementById("parsed-table-container").style.display = "block";
+          const statusBox = document.getElementById("ocr-status-box");
+          if (statusBox) statusBox.style.display = "none";
+          alert("Local statement processing failed: " + (err && err.message ? err.message : "Unknown error") + ". Your uploaded statement has not been sent to any API.");
         }
       }
 
