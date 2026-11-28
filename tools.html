@@ -872,58 +872,82 @@
       }
 
       // ========== PRECISION IN-BROWSER EXTRACTION ==========
+      // ===== Local agent 1: page extraction =====
+      // Prefer PDF.js text; use OCR when text is absent or the parser cannot build rows.
+      async function localAgentExtractPages(forceOcr = false) {
+        const statusText = document.getElementById("ocr-status-text");
+        const progBar = document.getElementById("ocr-progress-bar");
+        const percentText = document.getElementById("ocr-percentage");
+        let combined = "";
+        const total = analyzerState.pages.length;
+
+        for (let i = 0; i < total; i++) {
+          const pageObj = analyzerState.pages[i];
+          const base = Math.round((i / Math.max(total, 1)) * 70);
+          let pageText = !forceOcr && pageObj.text && pageObj.text.length > 30 ? pageObj.text : "";
+
+          if (!pageText) {
+            statusText.innerText = "Local OCR agent: reading page " + (i + 1) + " of " + total + "...";
+            if (!window.Tesseract || typeof Tesseract.recognize !== "function") {
+              throw new Error("Local OCR engine is unavailable. Reload the page with an internet connection to load its OCR library.");
+            }
+            const result = await Tesseract.recognize(pageObj.dataUrl, "eng", {
+              logger: m => {
+                if (m.status === "recognizing text") {
+                  const p = Math.min(78, Math.round(base + m.progress * (70 / Math.max(total, 1))));
+                  progBar.style.width = p + "%";
+                  percentText.innerText = p + "%";
+                }
+              }
+            });
+            pageText = result && result.data ? (result.data.text || "") : "";
+            if (pageText) pageObj.ocrText = pageText;
+          } else {
+            statusText.innerText = "Local text agent: reading page " + (i + 1) + " of " + total + "...";
+          }
+
+          combined += "\n--- PAGE " + (i + 1) + " ---\n" + pageText;
+          const p = Math.min(80, Math.round(((i + 1) / Math.max(total, 1)) * 80));
+          progBar.style.width = p + "%";
+          percentText.innerText = p + "%";
+        }
+        return combined;
+      }
+
+      // ===== Local agent 2: CAS row reconstruction =====
+      // ===== Local agent 3: independent arithmetic and duplicate validation =====
       async function runPrecisionInBrowserExtraction() {
         const statusBox = document.getElementById("ocr-status-box");
         const statusText = document.getElementById("ocr-status-text");
         const progBar = document.getElementById("ocr-progress-bar");
         const percentText = document.getElementById("ocr-percentage");
-
         statusBox.style.display = "block";
-        statusText.innerText = "Analyzing statement text across all pages...";
-        progBar.style.width = "10%";
-        percentText.innerText = "10%";
+        progBar.style.width = "5%";
+        percentText.innerText = "5%";
 
-        let combinedExtractedText = "";
-        const total = analyzerState.pages.length;
+        try {
+          statusText.innerText = "Agent 1/3: extracting local PDF text...";
+          let raw = await localAgentExtractPages(false);
 
-        for (let i = 0; i < total; i++) {
-          const pageObj = analyzerState.pages[i];
-          statusText.innerText = "Processing Page " + (i + 1) + " of " + total + "...";
-          const baseProgress = Math.round((i / total) * 70);
+          statusText.innerText = "Agent 2/3: reconstructing CAS holding rows...";
+          let holdings = await parseCasTextPrecision(raw);
 
-          if (pageObj.text && pageObj.text.length > 80) {
-            combinedExtractedText += "\n--- PAGE " + (i + 1) + " ---\n" + pageObj.text;
-            progBar.style.width = (baseProgress + 25) + "%";
-            percentText.innerText = (baseProgress + 25) + "%";
-          } else {
-            statusText.innerText = "Running OCR on Page " + (i + 1) + " of " + total + "...";
-            try {
-              const ocrResult = await Tesseract.recognize(
-                pageObj.dataUrl,
-                'eng',
-                {
-                  logger: m => {
-                    if (m.status === 'recognizing text') {
-                      const p = Math.round(baseProgress + (m.progress * (70 / total)));
-                      progBar.style.width = p + "%";
-                      percentText.innerText = p + "%";
-                    }
-                  }
-                }
-              );
-              combinedExtractedText += "\n--- PAGE " + (i + 1) + " ---\n" + (ocrResult.data.text || "");
-            } catch (err) {
-              console.warn("OCR failed on page " + (i + 1), err);
-            }
+          // A digital-text PDF may still have unusable column order. Retry with OCR.
+          if (!holdings.length && analyzerState.pages.some(p => p.dataUrl)) {
+            statusText.innerText = "Digital text was insufficient. Retrying every page with local OCR...";
+            raw = await localAgentExtractPages(true);
+            statusText.innerText = "Agent 2/3: rebuilding rows from OCR...";
+            holdings = await parseCasTextPrecision(raw);
           }
+
+          statusText.innerText = "Agent 3/3: validating units, NAV, values and duplicate folios...";
+          const checked = localAgentValidateHoldings(holdings);
+          progBar.style.width = "100%";
+          percentText.innerText = "100%";
+          renderExtractedHoldings(checked);
+        } finally {
+          statusBox.style.display = "none";
         }
-
-        statusText.innerText = "Precision parsing mutual fund schemes, units & valuations...";
-        progBar.style.width = "85%";
-        percentText.innerText = "85%";
-
-        await parseCasTextPrecision(combinedExtractedText);
-        statusBox.style.display = "none";
       }
 
       const NOISE_BLACKLIST = [
@@ -975,89 +999,97 @@
       // Local CAS parser: row-oriented CAMS/KFintech extraction.
       // Keeps folios distinct and never invents invested/current values.
       async function parseCasTextPrecision(raw) {
-        const lines = String(raw || "").split(/\\r?\\n/).map(s => s.replace(/\\s+/g, " ").trim()).filter(Boolean);
-        const holdings = [];
-        const rowStart = /(?:^|\\s)(\\d{5,}(?:\\/\\d+)?)[\\s|]+(IN[A-Z0-9]{9,11})\\b/i;
-        const dateRe = /\\b\\d{1,2}[-/ ](?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*[-/ ]\\d{2,4}\\b/i;
-        const parseNum = v => {
+        const lines = String(raw || "").split(/\r?\n/).map(v => v.replace(/\s+/g, " ").trim()).filter(Boolean);
+        const rowStart = /(?:^|\s)(\d{5,}(?:\/\d+)?)[\s|]+(IN[A-Z0-9]{9,11})\b/i;
+        const dateRe = /\b\d{1,2}[-/ ](?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*[-/ ]\d{2,4}\b/i;
+        const numberRe = /(?:₹|INR|Rs\.?\s*)?([0-9]{1,3}(?:,[0-9]{2,3})*(?:\.\d{1,4})?|[0-9]+\.\d{1,4})/g;
+        const toNum = v => {
           const n = Number(String(v || "").replace(/,/g, ""));
           return Number.isFinite(n) ? n : 0;
         };
-        const clean = v => String(v || "").replace(/\\s+/g, " ").replace(/[|]+/g, " ").trim();
-        const isNoise = s => NOISE_BLACKLIST.some(p => s.toLowerCase().includes(p)) ||
-          /^(folio no|isin|scheme name|cost value|unit balance|nav date|market value|registrar)\\b/i.test(s);
-
-        // Rejoin wrapped scheme-name rows until the next folio/ISIN record.
         const records = [];
+
+        // Reconstruct wrapped table rows. Do not merge one folio into another.
         for (let i = 0; i < lines.length; i++) {
-          if (isNoise(lines[i])) continue;
-          const m = lines[i].match(rowStart);
-          if (!m) continue;
+          const match = lines[i].match(rowStart);
+          if (!match) continue;
           let block = lines[i];
           let j = i + 1;
-          while (j < lines.length && !rowStart.test(lines[j]) && j <= i + 3) {
-            if (!/^(page \\d+|total|grand total|sub.?total)\\b/i.test(lines[j])) block += " " + lines[j];
+          while (j < lines.length && !rowStart.test(lines[j]) && j <= i + 4) {
+            if (!/^(page\s+\d+|total|grand total|sub.?total)\b/i.test(lines[j])) block += " " + lines[j];
             j++;
           }
           i = j - 1;
-          records.push({ block, folio: m[1], isin: m[2].toUpperCase() });
+          records.push({ block, folio: match[1], isin: match[2].toUpperCase() });
         }
 
-        for (const rec of records) {
-          const block = clean(rec.block);
+        const holdings = [];
+        for (const record of records) {
+          const block = record.block.replace(/\s+/g, " ").trim();
           const dateMatch = block.match(dateRe);
           if (!dateMatch) continue;
-          const dateIndex = block.indexOf(dateMatch[0]);
-          const beforeDate = block.slice(block.indexOf(rec.isin) + rec.isin.length, dateIndex);
-          const afterDate = block.slice(dateIndex + dateMatch[0].length);
-          const numberRe = /(?:₹|INR|Rs\\.?\\s*)?([0-9]{1,3}(?:,[0-9]{2,3})*(?:\\.[0-9]{1,4})?|[0-9]+\\.[0-9]{1,4})/g;
-          const beforeNums = [...beforeDate.matchAll(numberRe)].map(x => parseNum(x[1]));
-          const afterNums = [...afterDate.matchAll(numberRe)].map(x => parseNum(x[1])).filter(n => n > 0);
-          if (beforeNums.length < 2 || afterNums.length < 2) continue;
+          const isinAt = block.indexOf(record.isin);
+          const dateAt = block.indexOf(dateMatch[0]);
+          if (isinAt < 0 || dateAt <= isinAt) continue;
 
-          // CAS table order: Cost Value, Unit Balance, NAV Date, NAV, Market Value.
-          const invested = beforeNums[beforeNums.length - 2];
-          const units = beforeNums[beforeNums.length - 1];
-          const nav = afterNums[0];
-          const value = afterNums[1];
+          const beforeDate = block.slice(isinAt + record.isin.length, dateAt);
+          const afterDate = block.slice(dateAt + dateMatch[0].length);
+          const beforeNumbers = [...beforeDate.matchAll(numberRe)].map(m => toNum(m[1]));
+          const afterNumbers = [...afterDate.matchAll(numberRe)].map(m => toNum(m[1])).filter(n => n > 0);
+          if (beforeNumbers.length < 2 || afterNumbers.length < 2) continue;
+
+          // CAS order: scheme / cost value / unit balance / NAV date / NAV / market value.
+          const invested = beforeNumbers[beforeNumbers.length - 2];
+          const units = beforeNumbers[beforeNumbers.length - 1];
+          const nav = afterNumbers[0];
+          const value = afterNumbers[1];
           if (!(invested > 0 && units > 0 && nav > 0 && value > 0)) continue;
-          const name = clean(beforeDate.replace(numberRe, " ")).replace(/^[\\s|,:-]+|[\\s|,:-]+$/g, "");
-          if (name.length < 5) continue;
 
-          const impliedValue = units * nav;
-          const mismatch = Math.abs(impliedValue - value) / Math.max(value, 1);
-          const quality = mismatch > 0.03
-            ? "WARNING: units × NAV differs from statement market value by over 3%; verify"
-            : "CAS row parsed: folio + ISIN + cost + units + NAV + market value";
+          const name = beforeDate.replace(numberRe, " ").replace(/^[\s|,:-]+|[\s|,:-]+$/g, "").replace(/\s+/g, " ").trim();
+          if (name.length < 5 || /^(total|grand total|subtotal|statement|investor|folio|scheme name)$/i.test(name)) continue;
 
           holdings.push({
             name,
-            folio: rec.folio,
-            isin: rec.isin,
-            value: Math.round(value * 100) / 100,
-            invested: Math.round(invested * 100) / 100,
+            folio: record.folio,
+            isin: record.isin,
+            value,
+            invested,
             units,
             nav,
             navDate: dateMatch[0],
             category: classifyFundSmart(name),
-            dataQuality: quality
+            dataQuality: "Pending independent validation"
           });
         }
+        return holdings;
+      }
 
-        // De-duplicate only exact folio+ISIN pairs; same scheme across folios remains separate.
-        const unique = [];
+      function localAgentValidateHoldings(holdings) {
+        const accepted = [];
         const seen = new Set();
-        for (const h of holdings) {
-          const key = h.folio + "|" + h.isin;
+        for (const h of (holdings || [])) {
+          const key = String(h.folio) + "|" + String(h.isin);
           if (seen.has(key)) continue;
           seen.add(key);
-          unique.push(h);
-        }
 
-        if (!unique.length) {
-          console.warn("CAS parser found no valid table rows. Text sample:", lines.slice(0, 35));
+          const calc = Number(h.units) * Number(h.nav);
+          const value = Number(h.value);
+          const invested = Number(h.invested);
+          if (!(h.name && h.name.length >= 5 && value > 0 && invested > 0 &&
+                Number(h.units) > 0 && Number(h.nav) > 0 && Number.isFinite(calc))) continue;
+
+          const difference = Math.abs(calc - value) / Math.max(value, 1);
+          h.value = Math.round(value * 100) / 100;
+          h.invested = Math.round(invested * 100) / 100;
+          if (difference > 0.03) {
+            h.dataQuality = "REVIEW REQUIRED: units × NAV differs from statement value by " +
+              (difference * 100).toFixed(2) + "%. Check OCR and source row.";
+          } else {
+            h.dataQuality = "Validated: folio + ISIN + cost + units + NAV + market value agree within 3%.";
+          }
+          accepted.push(h);
         }
-        renderExtractedHoldings(unique);
+        return accepted;
       }
 
       // ========== GEMINI AI VISION EXTRACTION (WITH ROBUST MODEL FALLBACK) ==========
