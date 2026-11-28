@@ -1667,9 +1667,16 @@ Return a JSON array of objects:
         tbody.innerHTML = "";
 
         if (!holdings || holdings.length === 0) {
-          alert("No mutual fund folios could be automatically extracted from this statement.\n\nTip: You can add your funds using '+ Add Fund Manually'.");
-          addMfCustomRow();
+          const oldNotice = document.getElementById("cas-empty-result");
+          if (oldNotice) oldNotice.remove();
+          const notice = document.createElement("div");
+          notice.id = "cas-empty-result";
+          notice.style.cssText = "margin:12px 0;padding:14px;border:1px solid #f59e0b;background:#fffbeb;color:#92400e;border-radius:10px;font-size:13px;line-height:1.5;";
+          notice.textContent = "No verified holdings were extracted. No sample values have been added. Retry OCR, check the statement pages, or use + Add Fund Manually.";
+          tbody.parentElement.parentElement.insertBefore(notice, tbody.parentElement);
         } else {
+          const oldNotice = document.getElementById("cas-empty-result");
+          if (oldNotice) oldNotice.remove();
           const firstWithDate = holdings.find(h => h.navDate);
           if (firstWithDate) {
             const badge = document.getElementById("nav-date-badge");
